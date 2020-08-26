@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bella722.github.io/404.html</loc>
+    
+    <lastmod>2020-08-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/post/4a17b156.html</loc>
     
     <lastmod>2020-08-25</lastmod>
@@ -31,13 +38,6 @@
   
   <url>
     <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
-    
-    <lastmod>2020-08-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/404.html</loc>
     
     <lastmod>2020-08-25</lastmod>
     

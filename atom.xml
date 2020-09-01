@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-08-31T10:56:20.877Z</updated>
+  <updated>2020-09-01T06:21:12.978Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下利用TensorFlow Object Detection API训练自己的数据集</title>
+    <link href="https://bella722.github.io/post/bb2ec196.html"/>
+    <id>https://bella722.github.io/post/bb2ec196.html</id>
+    <published>2020-09-01T06:13:51.000Z</published>
+    <updated>2020-09-01T06:21:12.978Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight tex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Ubuntu下TensorRT实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorRT%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>

@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-02T02:46:26.977Z</updated>
+  <updated>2020-09-02T08:07:24.253Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下利用TensorFlow Object Detection API测试训练的模型</title>
+    <link href="https://bella722.github.io/post/e88b7107.html"/>
+    <id>https://bella722.github.io/post/e88b7107.html</id>
+    <published>2020-09-02T08:07:24.000Z</published>
+    <updated>2020-09-02T08:07:24.253Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下利用TensorFlow Object Detection API训练自己的数据集</title>
@@ -45,14 +69,14 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-02T02:46:07.861Z</updated>
+    <updated>2020-09-02T07:30:29.210Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h3 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot;</summary>
         
       
     

@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-01T06:21:12.978Z</updated>
+  <updated>2020-09-02T02:46:26.977Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-01T06:21:12.978Z</updated>
+    <updated>2020-09-02T02:46:26.977Z</updated>
     
     
       
@@ -35,7 +35,7 @@
     
     
     
-    <category term="Ubuntu下TensorRT实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorRT%E5%AE%9E%E6%88%98/"/>
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
     
     
   </entry>
@@ -45,7 +45,7 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-08-31T10:56:20.877Z</updated>
+    <updated>2020-09-02T02:46:07.861Z</updated>
     
     
       
@@ -58,28 +58,7 @@
     
     
     
-    <category term="Ubuntu下TensorRT实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorRT%E5%AE%9E%E6%88%98/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://bella722.github.io/post/4a17b156.html"/>
-    <id>https://bella722.github.io/post/4a17b156.html</id>
-    <published>2020-08-19T08:52:43.865Z</published>
-    <updated>2020-08-25T08:38:20.484Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
     
     
   </entry>

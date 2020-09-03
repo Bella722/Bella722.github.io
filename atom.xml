@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-02T08:07:33.501Z</updated>
+  <updated>2020-09-03T08:04:30.170Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <link href="https://bella722.github.io/post/3c4ff36.html"/>
+    <id>https://bella722.github.io/post/3c4ff36.html</id>
+    <published>2020-09-03T08:04:30.000Z</published>
+    <updated>2020-09-03T08:04:30.170Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;1-准备好图标文件&quot;&gt;&lt;a href=&quot;#1-准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;1. 准备好图标文件&quot;&gt;&lt;/a&gt;1. 准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx</summary>
+        
+      
+    
+    
+    
+    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下利用TensorFlow Object Detection API测试训练的模型</title>

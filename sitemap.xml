@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bella722.github.io/about/index.html</loc>
+    
+    <lastmod>2020-09-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/post/a231f91f.html</loc>
     
     <lastmod>2020-09-08</lastmod>
@@ -44,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/about/index.html</loc>
-    
-    <lastmod>2020-09-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://bella722.github.io/404.html</loc>
     
     <lastmod>2020-08-26</lastmod>
@@ -72,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
     
     <lastmod>2020-08-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
     
     <lastmod>2020-08-25</lastmod>
     

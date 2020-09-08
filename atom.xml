@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-03T08:04:44.949Z</updated>
+  <updated>2020-09-08T01:10:26.390Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,20 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="https://bella722.github.io/post/4a17b156.html"/>
+    <id>https://bella722.github.io/post/4a17b156.html</id>
+    <published>2020-09-08T01:10:26.386Z</published>
+    <updated>2020-09-08T01:10:26.390Z</updated>
+    
+    
+    <summary type="html">欢迎使用Hexo</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
     <link href="https://bella722.github.io/post/3c4ff36.html"/>
     <id>https://bella722.github.io/post/3c4ff36.html</id>
     <published>2020-09-03T08:04:30.000Z</published>
-    <updated>2020-09-03T08:04:44.949Z</updated>
+    <updated>2020-09-08T01:15:32.229Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;1-准备好图标文件&quot;&gt;&lt;a href=&quot;#1-准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;1. 准备好图标文件&quot;&gt;&lt;/a&gt;1. 准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx</summary>
-        
-      
+    <summary type="html">应用的图标太丑怎么办？一个步骤就搞定</summary>
     
     
     
@@ -44,17 +53,10 @@
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-02T08:07:33.501Z</updated>
+    <updated>2020-09-08T01:15:27.041Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
+    <summary type="html">TensorFlow Object Detection API 学习第三步——测试自己的训练模型</summary>
     
     
     
@@ -68,17 +70,10 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-02T02:46:26.977Z</updated>
+    <updated>2020-09-08T01:15:20.325Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight tex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
+    <summary type="html">TensorFlow Object Detection API 学习第二步——训练自己的数据集</summary>
     
     
     
@@ -92,41 +87,14 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-02T07:30:29.210Z</updated>
+    <updated>2020-09-08T01:15:39.613Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">TensorFlow Object Detection API 学习第一步——环境配置</summary>
     
     
     
     <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://bella722.github.io/post/4a17b156.html"/>
-    <id>https://bella722.github.io/post/4a17b156.html</id>
-    <published>2020-08-19T08:52:43.865Z</published>
-    <updated>2020-08-25T08:38:20.484Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
     
     
   </entry>

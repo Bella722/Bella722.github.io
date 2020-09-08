@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-08T01:15:32.229Z</updated>
+  <updated>2020-09-08T07:35:46.216Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu20.04下成功配置Qv2ray</title>
+    <link href="https://bella722.github.io/post/a231f91f.html"/>
+    <id>https://bella722.github.io/post/a231f91f.html</id>
+    <published>2020-09-08T07:35:46.000Z</published>
+    <updated>2020-09-08T07:35:46.216Z</updated>
+    
+    
+    <summary type="html">科学上网指南</summary>
+    
+    
+    
+    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>

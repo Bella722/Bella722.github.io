@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-08T01:10:26.390Z</updated>
+  <updated>2020-09-08T01:15:32.229Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,21 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://bella722.github.io/post/4a17b156.html"/>
-    <id>https://bella722.github.io/post/4a17b156.html</id>
-    <published>2020-09-08T01:10:26.386Z</published>
-    <updated>2020-09-08T01:10:26.390Z</updated>
-    
-    
-    <summary type="html">欢迎使用Hexo</summary>
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
@@ -78,6 +63,21 @@
     
     
     <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://bella722.github.io/post/4a17b156.html"/>
+    <id>https://bella722.github.io/post/4a17b156.html</id>
+    <published>2020-09-01T01:28:11.000Z</published>
+    <updated>2020-09-08T01:29:45.462Z</updated>
+    
+    
+    <summary type="html">欢迎使用Hexo</summary>
+    
+    
     
     
   </entry>

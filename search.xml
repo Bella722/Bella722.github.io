@@ -20,7 +20,7 @@
 <p>link 1:  <a href="http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/">http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/</a></p>
 <p>link 2: <a href="https://view.freev2ray.org/">https://view.freev2ray.org/</a></p>
 <p>link 2的accounts info每12H 会更新一次，只要删除旧连接添加另一个新连接就哦了</p>
-<h3 id="4-最后主页右键选中线路连接就搞定啦"><a href="#4-最后主页右键选中线路连接就搞定啦" class="headerlink" title="4. 最后主页右键选中线路连接就搞定啦"></a>4. 最后主页右键选中线路连接就搞定啦</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"><br>&emsp;<br>&emsp;</p>
+<h3 id="4-最后主页右键选中线路连接就搞定啦"><a href="#4-最后主页右键选中线路连接就搞定啦" class="headerlink" title="4. 最后主页右键选中线路连接就搞定啦"></a>4. 最后主页右键选中线路连接就搞定啦</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"><br>&emsp;</p>
 <blockquote>
 <p><em>写在最后：请在合理合法的范围内使用。希望大家都好好珍惜这些资源，不然使用不当造成账号被封是大家都不愿意看到的事。</em></p>
 </blockquote>
@@ -31,30 +31,6 @@
       <tags>
         <tag>qv2ray</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
-    <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<h3 id="1-准备好图标文件"><a href="#1-准备好图标文件" class="headerlink" title="1. 准备好图标文件"></a>1. 准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
-<h3 id="2-创建xx-desktop"><a href="#2-创建xx-desktop" class="headerlink" title="2. 创建xx.desktop"></a>2. 创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name&#x3D;DiffChecker</span><br><span class="line">Exec&#x3D;&#x2F;home&#x2F;xxx&#x2F;Downloads&#x2F;Diffchecker-3.7.2.AppImage</span><br><span class="line">Icon&#x3D;&#x2F;home&#x2F;xxx&#x2F;Downloads&#x2F;Diffchecker.png</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">StartupNotify&#x3D;true</span><br></pre></td></tr></table></figure>
-
-<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png" alt="Screenshot from 2020-09-03 15-23-27"></p>
-<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png" alt="Screenshot from 2020-09-03 15-51-52"></p>
-<h3 id="3-添加到应用"><a href="#3-添加到应用" class="headerlink" title="3. 添加到应用"></a>3. 添加到应用</h3><p>打开终端，输入sudo nautilus</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
-
-<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png" alt="Screenshot from 2020-09-03 15-17-49"></p>
-<p>关闭终端</p>
-<h3 id="4-添加到快捷应用栏"><a href="#4-添加到快捷应用栏" class="headerlink" title="4. 添加到快捷应用栏"></a>4. 添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png" alt="Screenshot from 2020-09-03 15-25-30"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png" alt="Screenshot from 2020-09-03 15-25-52"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png" alt="Screenshot from 2020-09-03 15-26-08"></p>
-]]></content>
-      <categories>
-        <category>教你玩转Ubuntu</category>
-      </categories>
   </entry>
   <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
@@ -89,22 +65,28 @@
       </categories>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/post/4a17b156.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <url>/post/3c4ff36.html</url>
+    <content><![CDATA[<h3 id="1-准备好图标文件"><a href="#1-准备好图标文件" class="headerlink" title="1. 准备好图标文件"></a>1. 准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+<h3 id="2-创建xx-desktop"><a href="#2-创建xx-desktop" class="headerlink" title="2. 创建xx.desktop"></a>2. 创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name&#x3D;DiffChecker</span><br><span class="line">Exec&#x3D;&#x2F;home&#x2F;xxx&#x2F;Downloads&#x2F;Diffchecker-3.7.2.AppImage</span><br><span class="line">Icon&#x3D;&#x2F;home&#x2F;xxx&#x2F;Downloads&#x2F;Diffchecker.png</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">StartupNotify&#x3D;true</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png" alt="Screenshot from 2020-09-03 15-23-27"></p>
+<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png" alt="Screenshot from 2020-09-03 15-51-52"></p>
+<h3 id="3-添加到应用"><a href="#3-添加到应用" class="headerlink" title="3. 添加到应用"></a>3. 添加到应用</h3><p>打开终端，输入sudo nautilus</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png" alt="Screenshot from 2020-09-03 15-17-49"></p>
+<p>关闭终端</p>
+<h3 id="4-添加到快捷应用栏"><a href="#4-添加到快捷应用栏" class="headerlink" title="4. 添加到快捷应用栏"></a>4. 添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png" alt="Screenshot from 2020-09-03 15-25-30"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png" alt="Screenshot from 2020-09-03 15-25-52"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png" alt="Screenshot from 2020-09-03 15-26-08"></p>
 ]]></content>
+      <categories>
+        <category>教你玩转Ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>Ubuntu下利用TensorFlow Object Detection API测试训练的模型</title>
@@ -129,6 +111,24 @@
       <categories>
         <category>Ubuntu下TensorFlow Object Detection API实战</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/4a17b156.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Ubuntu下利用TensorFlow Object Detection API训练自己的数据集</title>

@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-08T07:36:01.856Z</updated>
+  <updated>2020-09-09T02:45:37.740Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.000Z</published>
-    <updated>2020-09-08T07:36:01.856Z</updated>
+    <updated>2020-09-09T02:45:37.740Z</updated>
     
     
     <summary type="html">科学上网指南</summary>
@@ -30,6 +30,8 @@
     
     <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
     
+    
+    <category term="qv2ray" scheme="https://bella722.github.io/tags/qv2ray/"/>
     
   </entry>
   

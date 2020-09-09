@@ -3,6 +3,8 @@ Allow: /
 Allow: /archives/
 Allow: /categories/
 Allow: /tags/
+Allow: /home
+Allow: /about
 
 Disallow: /js/
 Disallow: /css/

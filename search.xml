@@ -3,7 +3,9 @@
   <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>
     <url>/post/a231f91f.html</url>
-    <content><![CDATA[<p>​        对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴。</p>
+    <content><![CDATA[<blockquote>
+<p><em>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴。</em></p>
+</blockquote>
 <h3 id="1-安装客户端"><a href="#1-安装客户端" class="headerlink" title="1. 安装客户端"></a>1. 安装客户端</h3><p>​    软件中心搜索qv2ray安装</p>
 <p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-10.png"></p>
 <h3 id="2-配置客户端"><a href="#2-配置客户端" class="headerlink" title="2. 配置客户端"></a>2. 配置客户端</h3><h4 id="1-从应用列表将app右键添加到主页最常用应用栏"><a href="#1-从应用列表将app右键添加到主页最常用应用栏" class="headerlink" title="(1) 从应用列表将app右键添加到主页最常用应用栏"></a>(1) 从应用列表将app右键添加到主页最常用应用栏</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-17-24.png"></p>
@@ -17,8 +19,9 @@
 <p>link 1:  <a href="http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/">http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/</a></p>
 <p>link 2: <a href="https://view.freev2ray.org/">https://view.freev2ray.org/</a></p>
 <p>link 2的accounts info每12H 会更新一次，只要删除旧连接添加另一个新连接就哦了</p>
-<h3 id="4-最后主页右键选中线路连接就搞定啦"><a href="#4-最后主页右键选中线路连接就搞定啦" class="headerlink" title="4. 最后主页右键选中线路连接就搞定啦"></a>4. 最后主页右键选中线路连接就搞定啦<img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"></h3><p>写在最后：</p>
-<p>请在合理合法的范围内使用。希望大家都好好珍惜这些资源，不然使用不当造成账号被封是大家都不愿意看到的事。</p>
+<h3 id="4-最后主页右键选中线路连接就搞定啦"><a href="#4-最后主页右键选中线路连接就搞定啦" class="headerlink" title="4. 最后主页右键选中线路连接就搞定啦"></a>4. 最后主页右键选中线路连接就搞定啦<img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"></h3><blockquote>
+<p><em>写在最后：请在合理合法的范围内使用。希望大家都好好珍惜这些资源，不然使用不当造成账号被封是大家都不愿意看到的事。</em></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>教你玩转Ubuntu</category>

@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-09T03:37:41.864Z</updated>
+  <updated>2020-09-09T07:55:17.244Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,17 +21,19 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-09-09T03:37:41.864Z</updated>
+    <updated>2020-09-09T07:55:17.244Z</updated>
     
     
-    <summary type="html">科学上网指南</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
     <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
     
     
-    <category term="qv2ray" scheme="https://bella722.github.io/tags/qv2ray/"/>
+    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
     
   </entry>
   
@@ -40,15 +42,18 @@
     <link href="https://bella722.github.io/post/3c4ff36.html"/>
     <id>https://bella722.github.io/post/3c4ff36.html</id>
     <published>2020-09-03T08:04:30.000Z</published>
-    <updated>2020-09-08T01:15:32.229Z</updated>
+    <updated>2020-09-09T07:56:24.722Z</updated>
     
     
-    <summary type="html">应用的图标太丑怎么办？一个步骤就搞定</summary>
+    <summary type="html">&lt;h3 id=&quot;1-准备好图标文件&quot;&gt;&lt;a href=&quot;#1-准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;1. 准备好图标文件&quot;&gt;&lt;/a&gt;1. 准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点&lt;/p&gt;
+&lt;h3 id=&quot;2-创建xx-desktop&quot;&gt;&lt;a href=&quot;#2-创建xx-desktop&quot; class=&quot;headerlink&quot; title=&quot;2. 创建xx.desktop&quot;&gt;&lt;/a&gt;2. 创建xx.desktop&lt;/h3&gt;&lt;p&gt;在任意位置新建一个名为xx.desktop的文件，并写入如下内容：&lt;/p&gt;</summary>
     
     
     
     <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
     
+    
+    <category term="Ubuntu" scheme="https://bella722.github.io/tags/Ubuntu/"/>
     
   </entry>
   
@@ -57,15 +62,19 @@
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-08T01:15:27.041Z</updated>
+    <updated>2020-09-09T07:56:43.828Z</updated>
     
     
-    <summary type="html">TensorFlow Object Detection API 学习第三步——测试自己的训练模型</summary>
+    <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;../images/Ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8TensorFlow-Object-Detection-API%E6%B5%8B%E8%AF%95%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B/Screenshot%20from%202020-09-02%2015-34-14.png&quot; alt=&quot;训练得到的模型列表&quot;&gt;&lt;/p&gt;
+&lt;p&gt;准备好你要测试的图像文件，接下来我们开始测试。&lt;/p&gt;</summary>
     
     
     
     <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
     
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
     
   </entry>
   
@@ -74,15 +83,20 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-09T07:03:36.252Z</updated>
+    <updated>2020-09-09T07:57:20.847Z</updated>
     
     
-    <summary type="html">TensorFlow Object Detection API 学习第二步——训练自己的数据集</summary>
+    <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight yml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;TensorFlow/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;└─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;models/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;string&quot;&gt;├─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;community/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;string&quot;&gt;├─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;official/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;string&quot;&gt;├─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;orbit/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;string&quot;&gt;├─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;research/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;string&quot;&gt;└─&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;接下来我们就直入主题开始训练步骤。&lt;/p&gt;</summary>
     
     
     
     <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
     
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
     
   </entry>
   
@@ -91,15 +105,19 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-08T01:15:39.613Z</updated>
+    <updated>2020-09-09T07:55:50.511Z</updated>
     
     
-    <summary type="html">TensorFlow Object Detection API 学习第一步——环境配置</summary>
+    <summary type="html">&lt;h3 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot; title=&quot;1.新建一个名为TensorFlow的文件夹&quot;&gt;&lt;/a&gt;1.新建一个名为TensorFlow的文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;2-打开终端，cd进入TensorFlow&quot;&gt;&lt;a href=&quot;#2-打开终端，cd进入TensorFlow&quot; class=&quot;headerlink&quot; title=&quot;2.打开终端，cd进入TensorFlow&quot;&gt;&lt;/a&gt;2.打开终端，cd进入TensorFlow&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
     <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
     
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
     
   </entry>
   
@@ -108,13 +126,17 @@
     <link href="https://bella722.github.io/post/4a17b156.html"/>
     <id>https://bella722.github.io/post/4a17b156.html</id>
     <published>2020-08-28T01:28:11.000Z</published>
-    <updated>2020-09-08T02:01:38.911Z</updated>
+    <updated>2020-09-09T07:52:25.357Z</updated>
     
     
-    <summary type="html">欢迎使用Hexo</summary>
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
     
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
     
   </entry>
   

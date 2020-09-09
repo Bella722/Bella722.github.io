@@ -25,20 +25,21 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="TensorFlow Object Detection API 学习第一步——环境配置">
+  <meta name="description" content="1.新建一个名为TensorFlow的文件夹1mkdir TensorFlow  2.打开终端，cd进入TensorFlow1cd TensorFlow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu20.04下成功配置TensorFlow Object Detection API 教程">
 <meta property="og:url" content="https://bella722.github.io/post/1a71c089.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="TensorFlow Object Detection API 学习第一步——环境配置">
+<meta property="og:description" content="1.新建一个名为TensorFlow的文件夹1mkdir TensorFlow  2.打开终端，cd进入TensorFlow1cd TensorFlow">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bella722.github.io/images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-04-34-1598871276938.png">
 <meta property="og:image" content="https://bella722.github.io/images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-05-1598871293831.png">
 <meta property="og:image" content="https://bella722.github.io/images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-18-1598871310225.png">
 <meta property="og:image" content="https://bella722.github.io/images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2018-03-06-1598871325137.png">
 <meta property="article:published_time" content="2020-08-31T10:49:56.000Z">
-<meta property="article:modified_time" content="2020-09-08T01:15:39.613Z">
+<meta property="article:modified_time" content="2020-09-09T07:55:50.511Z">
 <meta property="article:author" content="Bella">
+<meta property="article:tag" content="TensorFlow Object Detection API">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://bella722.github.io/images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-04-34-1598871276938.png">
 
@@ -281,13 +282,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -378,7 +379,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-09-08 09:15:39" itemprop="dateModified" datetime="2020-09-08T09:15:39+08:00">2020-09-08</time>
+        <time title="修改时间：2020-09-09 15:55:50" itemprop="dateModified" datetime="2020-09-09T15:55:50+08:00">2020-09-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -430,7 +431,6 @@
     </span>
 </div>
 
-            <div class="post-description">TensorFlow Object Detection API 学习第一步——环境配置</div>
         </div>
       </header>
 
@@ -438,30 +438,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="1-新建一个名为TensorFlow的文件夹"><a href="#1-新建一个名为TensorFlow的文件夹" class="headerlink" title="1.新建一个名为TensorFlow的文件夹"></a>1.新建一个名为TensorFlow的文件夹</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> TensorFlow</span><br></pre></td></tr></table></figure>
+        <h3 id="1-新建一个名为TensorFlow的文件夹"><a href="#1-新建一个名为TensorFlow的文件夹" class="headerlink" title="1.新建一个名为TensorFlow的文件夹"></a>1.新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir TensorFlow</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-打开终端，cd进入TensorFlow"><a href="#2-打开终端，cd进入TensorFlow" class="headerlink" title="2.打开终端，cd进入TensorFlow"></a>2.打开终端，cd进入TensorFlow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> TensorFlow</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-克隆TensorFlow-Models"><a href="#3-克隆TensorFlow-Models" class="headerlink" title="3.克隆TensorFlow Models"></a>3.克隆TensorFlow Models</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/tensorflow/m</span>odels.git</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="3-克隆TensorFlow-Models"><a href="#3-克隆TensorFlow-Models" class="headerlink" title="3.克隆TensorFlow Models"></a>3.克隆TensorFlow Models</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tensorflow/models.git</span><br></pre></td></tr></table></figure>
 
 <p>现在你的TensorFlow文件夹应该如下：</p>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TensorFlow/</span><br><span class="line">└─ models/</span><br><span class="line">   ├─ community/</span><br><span class="line">   ├─ official/</span><br><span class="line">   ├─ orbit/</span><br><span class="line">   ├─ research/</span><br><span class="line">   └── ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">TensorFlow/</span></span><br><span class="line"><span class="string">└─</span> <span class="string">models/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">community/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">official/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">orbit/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">research/</span></span><br><span class="line">   <span class="string">└──</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="4-配置Protobuf"><a href="#4-配置Protobuf" class="headerlink" title="4.配置Protobuf"></a>4.配置Protobuf</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install protobuf</span><br><span class="line">cd models<span class="regexp">/research/</span></span><br><span class="line">protoc object_detection<span class="regexp">/protos/</span>*.proto --python_out=.</span><br></pre></td></tr></table></figure>
+<h3 id="4-配置Protobuf"><a href="#4-配置Protobuf" class="headerlink" title="4.配置Protobuf"></a>4.配置Protobuf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install protobuf</span><br><span class="line"><span class="built_in">cd</span> models/research/</span><br><span class="line">protoc object_detection/protos/*.proto --python_out=.</span><br></pre></td></tr></table></figure>
 
-<h3 id="5-配置COCO-API"><a href="#5-配置COCO-API" class="headerlink" title="5.配置COCO API"></a>5.配置COCO API</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/cocodataset/</span>cocoapi.git</span><br><span class="line">cd cocoapi/PythonAPI</span><br><span class="line">make</span><br><span class="line">cp -r pycocotools &lt;PATH_TO_TF&gt;<span class="regexp">/TensorFlow/m</span>odels<span class="regexp">/research/</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-配置COCO-API"><a href="#5-配置COCO-API" class="headerlink" title="5.配置COCO API"></a>5.配置COCO API</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cocodataset/cocoapi.git</span><br><span class="line"><span class="built_in">cd</span> cocoapi/PythonAPI</span><br><span class="line">make</span><br><span class="line">cp -r pycocotools &lt;PATH_TO_TF&gt;/TensorFlow/models/research/</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-04-34-1598871276938.png" alt="Screenshot from 2020-08-31 16-04-34"></p>
-<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-05-1598871293831.png" alt="Screenshot from 2020-08-31 16-05-05"></p>
+<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-04-34-1598871276938.png" alt="配置1"></p>
+<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-05-1598871293831.png" alt="配置2"></p>
 <h3 id="6-安装Object-Detection-API"><a href="#6-安装Object-Detection-API" class="headerlink" title="6.安装Object Detection API"></a>6.安装Object Detection API</h3><p>这里需要注意一点，先要确认你的tensorflow版本，我的是tf1.x，所以这里我要拷贝的是tf1的setup,如果你的是tf2.x,那就拷贝tf2的setup.</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#确保你当前在TensorFlow<span class="regexp">/models/</span>research/文件夹下</span><br><span class="line">cp object_detection<span class="regexp">/packages/</span>tf2/setup.py .</span><br><span class="line">python -m pip install .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#确保你当前在TensorFlow/models/research/文件夹下</span></span><br><span class="line">cp object_detection/packages/tf2/setup.py .</span><br><span class="line">python -m pip install .</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-18-1598871310225.png" alt="Screenshot from 2020-08-31 16-05-18"></p>
-<h3 id="7-测试Object-Detection-API是否安装成功"><a href="#7-测试Object-Detection-API是否安装成功" class="headerlink" title="7.测试Object Detection API是否安装成功"></a>7.测试Object Detection API是否安装成功</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python object_detection<span class="regexp">/builders/m</span>odel_builder_tf1_test.py</span><br></pre></td></tr></table></figure>
+<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-18-1598871310225.png" alt="配置3"></p>
+<h3 id="7-测试Object-Detection-API是否安装成功"><a href="#7-测试Object-Detection-API是否安装成功" class="headerlink" title="7.测试Object Detection API是否安装成功"></a>7.测试Object Detection API是否安装成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python object_detection/builders/model_builder_tf1_test.py</span><br></pre></td></tr></table></figure>
 
 <p>注意这里也是要和你自己的tensorflow版本对上。</p>
 <p>测试通过则说明安装无误。</p>
-<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2018-03-06-1598871325137.png" alt="Screenshot from 2020-08-31 18-03-06"></p>
+<p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2018-03-06-1598871325137.png" alt="配置4"></p>
 
     </div>
 
@@ -530,6 +532,9 @@
     </div>
   </div>
 
+          <div class="post-tags">
+              <a href="/tags/TensorFlow-Object-Detection-API/" rel="tag"><i class="fa fa-tag"></i> TensorFlow Object Detection API</a>
+          </div>
 
         
 

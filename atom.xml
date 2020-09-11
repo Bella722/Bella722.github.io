@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-09T07:55:17.244Z</updated>
+  <updated>2020-09-11T06:55:41.082Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Next 8.0 进阶美化篇一</title>
+    <link href="https://bella722.github.io/post/74c4f787.html"/>
+    <id>https://bella722.github.io/post/74c4f787.html</id>
+    <published>2020-09-11T05:10:57.000Z</published>
+    <updated>2020-09-11T06:55:41.082Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;1-笔记标签&quot;&gt;&lt;a href=&quot;#1-笔记标签&quot; class=&quot;headerlink&quot; title=&quot;1. 笔记标签&quot;&gt;&lt;/a&gt;1. 笔记标签&lt;/h3&gt;&lt;p&gt;效果：&lt;/p&gt;
+&lt;div class=&quot;note</summary>
+        
+      
+    
+    
+    
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>
@@ -84,7 +110,7 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-10T09:15:54.877Z</updated>
+    <updated>2020-09-10T09:23:22.015Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;

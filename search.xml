@@ -6,7 +6,9 @@
     <content><![CDATA[<h3 id="1-笔记标签"><a href="#1-笔记标签" class="headerlink" title="1. 笔记标签"></a>1. 笔记标签</h3><p>效果：</p>
 <div class="note default"><p>这里输入文字</p></div>
 
-<h4 id="1-1-先修改主题配置文件-blog-themes-next-config-yml"><a href="#1-1-先修改主题配置文件-blog-themes-next-config-yml" class="headerlink" title="1.1 先修改主题配置文件/blog/themes/next/_config.yml"></a>1.1 先修改主题配置文件/blog/themes/next/_config.yml</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bs-callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># 风格</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="comment"># 要不要图标</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-先修改主题配置文件-blog-themes-next-config-yml"><a href="#1-1-先修改主题配置文件-blog-themes-next-config-yml" class="headerlink" title="1.1 先修改主题配置文件/blog/themes/next/_config.yml"></a>1.1 先修改主题配置文件/blog/themes/next/_config.yml</h4><a id="more"></a>
+
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bs-callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># 风格</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="comment"># 要不要图标</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-2-使用方法"><a href="#1-2-使用方法" class="headerlink" title="1.2 使用方法"></a>1.2 使用方法</h4><p>default效果：</p>
 <div class="note default"><p>这里输入文字</p></div>

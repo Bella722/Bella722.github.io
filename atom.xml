@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-11T06:58:27.107Z</updated>
+  <updated>2020-09-11T08:47:17.697Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://bella722.github.io/post/74c4f787.html"/>
     <id>https://bella722.github.io/post/74c4f787.html</id>
     <published>2020-09-11T05:10:57.000Z</published>
-    <updated>2020-09-11T06:58:27.107Z</updated>
+    <updated>2020-09-11T08:47:17.697Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;1-笔记标签&quot;&gt;&lt;a href=&quot;#1-笔记标签&quot; class=&quot;headerlink&quot; title=&quot;1. 笔记标签&quot;&gt;&lt;/a&gt;1. 笔记标签&lt;/h3&gt;&lt;p&gt;效果：&lt;/p&gt;
@@ -43,12 +43,10 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-09-09T07:55:17.244Z</updated>
+    <updated>2020-09-11T08:48:24.496Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt; &lt;strong&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     
@@ -64,12 +62,10 @@
     <link href="https://bella722.github.io/post/3c4ff36.html"/>
     <id>https://bella722.github.io/post/3c4ff36.html</id>
     <published>2020-09-03T08:04:30.000Z</published>
-    <updated>2020-09-09T09:25:39.550Z</updated>
+    <updated>2020-09-11T08:49:46.556Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;嫌弃应用图标太丑怎么办？教你怎样自行更换设置应用图标&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;1-准备好图标文件&quot;&gt;&lt;a href=&quot;#1-准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;1. 准备好图标文件&quot;&gt;&lt;/a&gt;1. 准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点&lt;/p&gt;</summary>
     
     
     
@@ -85,12 +81,10 @@
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-09T09:23:31.417Z</updated>
+    <updated>2020-09-11T08:50:49.124Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu下实战TensorFlow Object Detection API ——步骤三 验证模型&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;</summary>
     
     
     
@@ -106,15 +100,10 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-10T09:23:22.015Z</updated>
+    <updated>2020-09-11T08:51:15.003Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu下实战TensorFlow Object Detection API ——步骤二 开始训练&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&quot;note info&quot;&gt;&lt;p&gt;Ubuntu下实战TensorFlow Object Detection API ——步骤二 开始训练&lt;/p&gt;&lt;/div&gt;
-
-&lt;blockquote class=&quot;question&quot;&gt;Ubuntu下实战TensorFlow Object Detection API ——步骤二 开始训练&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;</summary>
     
     
     
@@ -130,12 +119,10 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-09T09:22:07.771Z</updated>
+    <updated>2020-09-11T08:49:05.436Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu下实战TensorFlow Object Detection API ——步骤一 环境配置&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot; title=&quot;1.新建一个名为TensorFlow的文件夹&quot;&gt;&lt;/a&gt;1.新建一个名为TensorFlow的文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -151,12 +138,10 @@
     <link href="https://bella722.github.io/post/4a17b156.html"/>
     <id>https://bella722.github.io/post/4a17b156.html</id>
     <published>2020-08-28T01:28:11.000Z</published>
-    <updated>2020-09-09T09:17:35.045Z</updated>
+    <updated>2020-09-11T08:38:30.478Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt; &lt;strong&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     

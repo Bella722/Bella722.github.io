@@ -42,10 +42,10 @@
     <link href="https://bella722.github.io/post/74c4f787.html"/>
     <id>https://bella722.github.io/post/74c4f787.html</id>
     <published>2020-09-11T05:10:57.000Z</published>
-    <updated>2020-09-16T08:17:10.179Z</updated>
+    <updated>2020-09-16T08:43:13.936Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;1-笔记标签&quot;&gt;&lt;a href=&quot;#1-笔记标签&quot; class=&quot;headerlink&quot; title=&quot;1. 笔记标签&quot;&gt;&lt;/a&gt;1. 笔记标签&lt;/h3&gt;&lt;p&gt;效果：&lt;/p&gt;
+    <summary type="html">&lt;h3 id=&quot;笔记标签&quot;&gt;&lt;a href=&quot;#笔记标签&quot; class=&quot;headerlink&quot; title=&quot;笔记标签&quot;&gt;&lt;/a&gt;笔记标签&lt;/h3&gt;&lt;p&gt;效果：&lt;/p&gt;
 &lt;div class=&quot;note default&quot;&gt;&lt;p&gt;这里输入文字&lt;/p&gt;&lt;/div&gt;</summary>
     
     
@@ -62,7 +62,7 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-09-11T08:48:24.496Z</updated>
+    <updated>2020-09-16T08:44:18.632Z</updated>
     
     
     <summary type="html">&lt;p&gt; &lt;strong&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/strong&gt;&lt;/p&gt;</summary>
@@ -81,10 +81,10 @@
     <link href="https://bella722.github.io/post/3c4ff36.html"/>
     <id>https://bella722.github.io/post/3c4ff36.html</id>
     <published>2020-09-03T08:04:30.000Z</published>
-    <updated>2020-09-11T08:49:46.556Z</updated>
+    <updated>2020-09-16T08:45:20.421Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;1-准备好图标文件&quot;&gt;&lt;a href=&quot;#1-准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;1. 准备好图标文件&quot;&gt;&lt;/a&gt;1. 准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点&lt;/p&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;准备好图标文件&quot;&gt;&lt;a href=&quot;#准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;准备好图标文件&quot;&gt;&lt;/a&gt;准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点&lt;/p&gt;</summary>
     
     
     
@@ -100,7 +100,7 @@
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-11T08:50:49.124Z</updated>
+    <updated>2020-09-16T08:45:52.705Z</updated>
     
     
     <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;</summary>
@@ -119,7 +119,7 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-16T05:39:04.889Z</updated>
+    <updated>2020-09-16T08:46:48.230Z</updated>
     
     
     <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;</summary>
@@ -138,10 +138,10 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-16T08:20:48.925Z</updated>
+    <updated>2020-09-16T08:45:01.885Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;1-新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#1-新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot; title=&quot;1.新建一个名为TensorFlow的文件夹&quot;&gt;&lt;/a&gt;1.新建一个名为TensorFlow的文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot; title=&quot;新建一个名为TensorFlow的文件夹&quot;&gt;&lt;/a&gt;新建一个名为TensorFlow的文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     

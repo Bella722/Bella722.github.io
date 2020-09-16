@@ -96,11 +96,11 @@
   </entry>
   
   <entry>
-    <title>Ubuntu下利用TensorFlow Object Detection API测试训练的模型</title>
+    <title>Ubuntu下用TensorFlow Object Detection API测试训练的模型</title>
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-16T08:45:52.705Z</updated>
+    <updated>2020-09-16T09:00:50.673Z</updated>
     
     
     <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;</summary>
@@ -115,11 +115,11 @@
   </entry>
   
   <entry>
-    <title>Ubuntu下利用TensorFlow Object Detection API训练自己的数据集</title>
+    <title>Ubuntu下用TensorFlow Object Detection API训练自己的数据</title>
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-16T08:46:48.230Z</updated>
+    <updated>2020-09-16T09:01:35.197Z</updated>
     
     
     <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;</summary>

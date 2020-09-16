@@ -3242,23 +3242,17 @@ blockquote.question {
   border-bottom-right-radius: 3px;
   margin-bottom: 20px;
 }
-h3 {
-  font-size: 1.17rem;
-/* 18px */
-/* 24px */
-/* 24px */
-  letter-spacing: -1px;
-  font-weight: bold;
-/* 自定义标题样式*/
-  margin-top: 10px;
-  margin-bottom: 10px;
-  white-space: lage;
-  outline: none;
-  font-family: sans-serif;
-  line-height: 1.5rem;
-  color: #232b2d;
-  border-left-width: 30px;
-  border-left-style: solid;
-  border-left-color: #232b2d;
-  background: #00f9a5;
+.post {
+  margin-top: 0px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.posts-expand .post-eof {
+  display: block;
+  width: 0%;
+  height: 0px;
+  background: #ccc;
+  text-align: center;
 }

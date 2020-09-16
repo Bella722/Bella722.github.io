@@ -95,6 +95,83 @@
       </tags>
   </entry>
   <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <url>/post/4f44d92e.html</url>
+    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
+  </entry>
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型一</title>
+    <url>/post/c02a3ba5.html</url>
+    <content><![CDATA[<p>经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。</p>
+<p>介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>首先，给出我自己的软件环境及各个版本号。</p>
+<table>
+<thead>
+<tr>
+<th>Ubuntu</th>
+<th>20.04</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CUDA</td>
+<td>10.0.130</td>
+</tr>
+<tr>
+<td>CUDNN</td>
+<td>7.6.5</td>
+</tr>
+<tr>
+<td>TensorFlow</td>
+<td>1.14.0</td>
+</tr>
+<tr>
+<td>Keras</td>
+<td>2.2.5</td>
+</tr>
+<tr>
+<td>TensorRT</td>
+<td>7.0.0</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.7.0</td>
+</tr>
+</tbody></table>
+<div class="note danger"><p>根据经验，推荐先确定tensorrt安装版本，再回溯到cuda、cudnn、以及python版本进行安装，如果你现在已经装好了cuda以及cudnn等，这里有两个办法解决，一个就是另外装一套cuda等覆盖掉之前的版本，另一个办法就是利用虚拟环境设置一个专门针对tensorrt的环境，我自己也是先前就已经有了一套环境，后来为了配合TensorRT，就将原先的cuda以及cudnn等删除，然后再装了一套环境。</p></div>
+
+<p>另外，这里关于TensorFlow版本需要说明一点，选择1.14是因为根据Tensorrt的样例有说，在tf1.14上通过验证的，所以最后适配了这个版本。</p>
+<p>对于cuda cudnn的安装就按照一般方法装就好了。然后装好anaconda。现在从tensorrt的安装说起。</p>
+<h3 id="下载安装包并解压"><a href="#下载安装包并解压" class="headerlink" title="下载安装包并解压"></a>下载安装包并解压</h3><p>进入<a href="https://developer.nvidia.com/tensorrt%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD">https://developer.nvidia.com/tensorrt选择合适的版本进行下载</a></p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-148078235d66d2480f6c503d8ea398a8_r.jpg" alt="preview"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xzvf /Downloads/TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装python的tensorRT包"><a href="#安装python的tensorRT包" class="headerlink" title="安装python的tensorRT包"></a>安装python的tensorRT包</h3><p>进入tensorRT目录下的Python目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /TensorRT-7.0.0.11/python</span><br><span class="line"><span class="comment"># 对于python3</span></span><br><span class="line">$ sudo pip3 install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
+
+<p>这里注意可能会遇到两个问题：</p>
+<h4 id="sudo-pip3-command-not-found"><a href="#sudo-pip3-command-not-found" class="headerlink" title="sudo: pip3 :command not found"></a>sudo: pip3 :command not found</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install python3-pip</span><br></pre></td></tr></table></figure>
+
+<h4 id="ERROR-tensorrt-7-0-0-11-cp37-none-linux-x86-64-whl-is-not-a-supported-wheel-on-this-platform"><a href="#ERROR-tensorrt-7-0-0-11-cp37-none-linux-x86-64-whl-is-not-a-supported-wheel-on-this-platform" class="headerlink" title="ERROR: tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl is not a supported wheel on this platform"></a>ERROR: tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl is not a supported wheel on this platform</h4><p>原因是cp37即python=3.7.0,如果你的anaconda下的python版本不是3.7.0就会报错。所以这里我使用创建虚拟环境解决</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create --name python370 python=3.7.0</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-87374487a31bae782989d1c0bcaeaca4_r.jpg" alt="preview"></p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-86d66326888b51bbb37372e7fec9f5c0_r.jpg" alt="preview"></p>
+<p>虚拟环境创建成功后进行激活再安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda activate python370</span><br><span class="line"><span class="built_in">cd</span> /TensorRT-7.0.0.11/python</span><br><span class="line">python -m pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl </span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-39b61e60e7a07ae33c66b0b70609f4f3_r.jpg" alt="preview"></p>
+<p>进入python输入tensorRT即可验证tensorRT是否安装成功</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-f3c225f88d9c5b2d0d733e9ea3b9670c_r.jpg" alt="preview"></p>
+<p>不报错即成功</p>
+<p>接着进入uff与graphsurgeon文件夹安装whl</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg" alt="preview"></p>
+<p>至此，TensorRT安装成功！</p>
+]]></content>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>
     <url>/post/a231f91f.html</url>
     <content><![CDATA[<p> <strong>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</strong></p>
@@ -123,39 +200,6 @@
       </categories>
       <tags>
         <tag>Qv2ray</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next 8.0 进阶美化篇二</title>
-    <url>/post/4f44d92e.html</url>
-    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
-  </entry>
-  <entry>
-    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
-    <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
-<a id="more"></a>
-<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
-
-<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
-<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
-<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
-
-<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
-<p>关闭终端</p>
-<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
-]]></content>
-      <categories>
-        <category>教你玩转Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -192,6 +236,34 @@
       </categories>
       <tags>
         <tag>TensorFlow Object Detection API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <url>/post/3c4ff36.html</url>
+    <content><![CDATA[<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+<a id="more"></a>
+<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
+
+<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
+<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
+<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
+
+<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
+<p>关闭终端</p>
+<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
+]]></content>
+      <categories>
+        <category>教你玩转Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>

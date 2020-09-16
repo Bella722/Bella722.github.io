@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bella722.github.io/post/c02a3ba5.html</loc>
+    
+    <lastmod>2020-09-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/post/bb2ec196.html</loc>
     
     <lastmod>2020-09-16</lastmod>
@@ -86,14 +93,14 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
     
     <lastmod>2020-08-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
     
     <lastmod>2020-08-25</lastmod>
     
@@ -130,6 +137,13 @@
   </url>
   
   <url>
+    <loc>https://bella722.github.io/tags/TensorRT/</loc>
+    <lastmod>2020-09-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/tags/Qv2ray/</loc>
     <lastmod>2020-09-16</lastmod>
     <changefreq>daily</changefreq>
@@ -137,14 +151,14 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
+    <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
     <lastmod>2020-09-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
+    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
     <lastmod>2020-09-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

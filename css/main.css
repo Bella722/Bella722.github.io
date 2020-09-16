@@ -3242,17 +3242,11 @@ blockquote.question {
   border-bottom-right-radius: 3px;
   margin-bottom: 20px;
 }
-post {
-  margin-top: 0px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+.post-block {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 20px;
+  -webkit-box-shadow: 0 0 24px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
-}
-posts-expand .post-eof {
-  display: block;
-  width: 0%;
-  height: 0px;
-  background: #ccc;
-  text-align: center;
 }

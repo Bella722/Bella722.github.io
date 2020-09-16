@@ -97,11 +97,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Next 8.0 进阶美化篇二</title>
-    <url>/post/4f44d92e.html</url>
-    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>
     <url>/post/a231f91f.html</url>
     <content><![CDATA[<p> <strong>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</strong></p>
@@ -131,6 +126,11 @@
       <tags>
         <tag>Qv2ray</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <url>/post/4f44d92e.html</url>
+    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
   </entry>
   <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>

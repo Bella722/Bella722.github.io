@@ -95,16 +95,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Next 8.0 进阶美化篇二</title>
-    <url>/post/4f44d92e.html</url>
-    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
-  </entry>
-  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型一</title>
     <url>/post/c02a3ba5.html</url>
     <content><![CDATA[<p>经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。</p>
 <p>介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。</p>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>首先，给出我自己的软件环境及各个版本号。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><a id="more"></a>
+
+<p>首先，给出我自己的软件环境及各个版本号。</p>
 <table>
 <thead>
 <tr>
@@ -170,6 +167,11 @@
       <tags>
         <tag>TensorRT</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <url>/post/4f44d92e.html</url>
+    <content><![CDATA[<h3 id="测试自定义标题"><a href="#测试自定义标题" class="headerlink" title="测试自定义标题"></a>测试自定义标题</h3>]]></content>
   </entry>
   <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>

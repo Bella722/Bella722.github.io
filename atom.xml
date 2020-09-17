@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-16T10:04:23.769Z</updated>
+  <updated>2020-09-17T01:25:13.710Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="https://bella722.github.io/post/c02a3ba5.html"/>
     <id>https://bella722.github.io/post/c02a3ba5.html</id>
     <published>2020-09-16T09:10:59.000Z</published>
-    <updated>2020-09-16T10:04:23.769Z</updated>
+    <updated>2020-09-17T01:25:13.710Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。&lt;/p&gt;
-&lt;p&gt;介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xu</summary>
-        
-      
+&lt;p&gt;介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。&lt;/p&gt;
+&lt;h2 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h2&gt;</summary>
     
     
     

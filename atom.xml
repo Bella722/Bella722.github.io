@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-17T09:37:12.948Z</updated>
+  <updated>2020-09-17T09:57:36.311Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://bella722.github.io/post/fbaa150c.html"/>
     <id>https://bella722.github.io/post/fbaa150c.html</id>
     <published>2020-09-17T06:51:03.000Z</published>
-    <updated>2020-09-17T09:37:12.948Z</updated>
+    <updated>2020-09-17T09:57:36.311Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -39,16 +39,13 @@
     <link href="https://bella722.github.io/post/c02a3ba5.html"/>
     <id>https://bella722.github.io/post/c02a3ba5.html</id>
     <published>2020-09-16T09:10:59.000Z</published>
-    <updated>2020-09-17T08:56:30.454Z</updated>
+    <updated>2020-09-18T03:01:53.142Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。&lt;/p&gt;
-&lt;p&gt;介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。&lt;/p&gt;
+&lt;p&gt;经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。并且介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。&lt;/p&gt;
 
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h2&gt;</summary>
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -62,19 +59,18 @@
     <link href="https://bella722.github.io/post/4f44d92e.html"/>
     <id>https://bella722.github.io/post/4f44d92e.html</id>
     <published>2020-09-15T07:39:43.000Z</published>
-    <updated>2020-09-15T09:31:07.682Z</updated>
+    <updated>2020-09-18T10:28:52.649Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;测试自定义标题&quot;&gt;&lt;a href=&quot;#测试自定义标题&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义一个背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
     
   </entry>
   

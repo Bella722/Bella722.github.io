@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-17T09:57:36.311Z</updated>
+  <updated>2020-09-22T07:35:32.221Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <link href="https://bella722.github.io/post/b9f68301.html"/>
+    <id>https://bella722.github.io/post/b9f68301.html</id>
+    <published>2020-09-21T01:18:04.000Z</published>
+    <updated>2020-09-22T07:35:32.221Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见&lt;a href=&quot;https://bella722.github.io/post/fbaa150c.html&quot;&gt;TensorRT成功测试自己的数据集SSD模型二&lt;/a&gt;，现在讲述在tensorrt中具体如何使用。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型二</title>
     <link href="https://bella722.github.io/post/fbaa150c.html"/>
     <id>https://bella722.github.io/post/fbaa150c.html</id>
     <published>2020-09-17T06:51:03.000Z</published>
-    <updated>2020-09-17T09:57:36.311Z</updated>
+    <updated>2020-09-21T01:18:37.441Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -31,6 +51,8 @@
     
     
     
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
     
   </entry>
   

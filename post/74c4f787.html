@@ -25,16 +25,17 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="笔记标签效果： 这里输入文字">
+  <meta name="description" content="本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Next 8.0 进阶美化篇一">
 <meta property="og:url" content="https://bella722.github.io/post/74c4f787.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="笔记标签效果： 这里输入文字">
+<meta property="og:description" content="本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-11%2013-24-06.png">
+<meta property="og:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-22%2016-18-47.png">
 <meta property="article:published_time" content="2020-09-11T05:10:57.000Z">
-<meta property="article:modified_time" content="2020-09-16T08:43:13.936Z">
+<meta property="article:modified_time" content="2020-09-22T08:20:07.289Z">
 <meta property="article:author" content="Bella">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -257,7 +258,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%94%E8%AE%B0%E6%A0%87%E7%AD%BE"><span class="nav-number">1.</span> <span class="nav-text">笔记标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-blog-themes-next-config-yml"><span class="nav-number">1.1.</span> <span class="nav-text">先修改主题配置文件&#x2F;blog&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E8%83%8C%E6%99%AF%E8%89%B2%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">文字背景色块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-Bolg-themes-next-config-yml"><span class="nav-number">2.1.</span> <span class="nav-text">更改主题配置文件&#x2F;Bolg&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%B6%E5%90%8E%E5%9C%A8%E4%B8%BB%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84source%E4%B8%8B%E6%96%B0%E5%BB%BA-data%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%92%8Cstyles-styl%E6%96%87%E4%BB%B6%EF%BC%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">然后在主目录下的source下新建_data子文件夹和styles.styl文件，键入以下内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.3.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">背景自定义效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8styles-styl%E9%87%8C%E9%94%AE%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BD%A2%E7%8A%B6%E8%89%B2%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">在styles.styl里键入自定义形状色块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9-1"><span class="nav-number">3.2.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87%E8%BE%B9%E6%A1%86%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">图标边框效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text">文本居中</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%94%E8%AE%B0%E6%A0%87%E7%AD%BE"><span class="nav-number">1.</span> <span class="nav-text">笔记标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-blog-themes-next-config-yml"><span class="nav-number">1.1.</span> <span class="nav-text">先修改主题配置文件&#x2F;blog&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E8%83%8C%E6%99%AF%E8%89%B2%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">文字背景色块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-Bolg-themes-next-config-yml"><span class="nav-number">2.1.</span> <span class="nav-text">更改主题配置文件&#x2F;Bolg&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%B6%E5%90%8E%E5%9C%A8%E4%B8%BB%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84source%E4%B8%8B%E6%96%B0%E5%BB%BA-data%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%92%8Cstyles-styl%E6%96%87%E4%BB%B6%EF%BC%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">然后在主目录下的source下新建_data子文件夹和styles.styl文件，键入以下内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.3.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">背景自定义效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8styles-styl%E9%87%8C%E9%94%AE%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BD%A2%E7%8A%B6%E8%89%B2%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">在styles.styl里键入自定义形状色块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9-1"><span class="nav-number">3.2.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87%E8%BE%B9%E6%A1%86%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">图标边框效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text">文本居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E5%AD%97%E5%9D%97"><span class="nav-number">6.</span> <span class="nav-text">自定义数字块</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -376,7 +377,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-09-16 16:43:13" itemprop="dateModified" datetime="2020-09-16T16:43:13+08:00">2020-09-16</time>
+        <time title="修改时间：2020-09-22 16:20:07" itemprop="dateModified" datetime="2020-09-22T16:20:07+08:00">2020-09-22</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -417,7 +418,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.5k</span>
+      <span>7.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -435,10 +436,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
-<div class="note default"><p>这里输入文字</p></div>
+        <blockquote class="blockquote-center">
+<p>本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。</p>
+
+</blockquote>
 
 <a id="more"></a>
+
+<h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
+<div class="note default"><p>这里输入文字</p></div>
+
+<!--more-->
 
 <h4 id="先修改主题配置文件-blog-themes-next-config-yml"><a href="#先修改主题配置文件-blog-themes-next-config-yml" class="headerlink" title="先修改主题配置文件/blog/themes/next/_config.yml"></a>先修改主题配置文件/blog/themes/next/_config.yml</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Note tag (bs-callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># 风格</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="comment"># 要不要图标</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
@@ -519,6 +527,16 @@
 </blockquote>
 
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">%cq%</span>&#125;</span><br><span class="line"><span class="string">Szabadság，Szerelem!</span></span><br><span class="line"><span class="string">E</span> <span class="string">kettő</span> <span class="string">kell</span> <span class="string">nekem</span></span><br><span class="line"><span class="string">Szerelmemért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Az</span> <span class="string">életet</span></span><br><span class="line"><span class="string">Szabadságért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Szerelmemet.</span></span><br><span class="line">&#123;<span class="string">%endcq%</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义数字块"><a href="#自定义数字块" class="headerlink" title="自定义数字块"></a>自定义数字块</h3><p>效果：</p>
+<figure class="highlight ruby"><figcaption><span>/sourse/_data/styles.styl */</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 自定义的数字块 *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">span#inline-toc &#123;</span></span><br><span class="line"><span class="regexp">    display: inline-block;</span></span><br><span class="line"><span class="regexp">    border-radius: 80% 100% 90% 20%;</span></span><br><span class="line"><span class="regexp">    background-color: rgb(227, 242, 253);</span></span><br><span class="line"><span class="regexp">    color: #555;</span></span><br><span class="line"><span class="regexp">    padding: 0.05em 0.4em;</span></span><br><span class="line"><span class="regexp">    margin: 2px 5px 2px 0px;</span></span><br><span class="line"><span class="regexp">    line-height: 1.5;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-22%2016-18-47.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-toc&quot;</span>&gt;</span>1.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
     </div>
 
     

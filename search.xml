@@ -3,10 +3,17 @@
   <entry>
     <title>Next 8.0 进阶美化篇一</title>
     <url>/post/74c4f787.html</url>
-    <content><![CDATA[<h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
-<div class="note default"><p>这里输入文字</p></div>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。</p>
+
+</blockquote>
 
 <a id="more"></a>
+
+<h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
+<div class="note default"><p>这里输入文字</p></div>
+
+<!--more-->
 
 <h4 id="先修改主题配置文件-blog-themes-next-config-yml"><a href="#先修改主题配置文件-blog-themes-next-config-yml" class="headerlink" title="先修改主题配置文件/blog/themes/next/_config.yml"></a>先修改主题配置文件/blog/themes/next/_config.yml</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bs-callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># 风格</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="comment"># 要不要图标</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
@@ -86,7 +93,17 @@
 
 </blockquote>
 
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">%cq%</span>&#125;</span><br><span class="line"><span class="string">Szabadság，Szerelem!</span></span><br><span class="line"><span class="string">E</span> <span class="string">kettő</span> <span class="string">kell</span> <span class="string">nekem</span></span><br><span class="line"><span class="string">Szerelmemért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Az</span> <span class="string">életet</span></span><br><span class="line"><span class="string">Szabadságért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Szerelmemet.</span></span><br><span class="line">&#123;<span class="string">%endcq%</span>&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">%cq%</span>&#125;</span><br><span class="line"><span class="string">Szabadság，Szerelem!</span></span><br><span class="line"><span class="string">E</span> <span class="string">kettő</span> <span class="string">kell</span> <span class="string">nekem</span></span><br><span class="line"><span class="string">Szerelmemért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Az</span> <span class="string">életet</span></span><br><span class="line"><span class="string">Szabadságért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Szerelmemet.</span></span><br><span class="line">&#123;<span class="string">%endcq%</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义数字块"><a href="#自定义数字块" class="headerlink" title="自定义数字块"></a>自定义数字块</h3><p>效果：</p>
+<figure class="highlight ruby"><figcaption><span>/sourse/_data/styles.styl */</span></figcaption><table><tr><td class="code"><pre><span class="line">/* 自定义的数字块 *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">span#inline-toc &#123;</span></span><br><span class="line"><span class="regexp">    display: inline-block;</span></span><br><span class="line"><span class="regexp">    border-radius: 80% 100% 90% 20%;</span></span><br><span class="line"><span class="regexp">    background-color: rgb(227, 242, 253);</span></span><br><span class="line"><span class="regexp">    color: #555;</span></span><br><span class="line"><span class="regexp">    padding: 0.05em 0.4em;</span></span><br><span class="line"><span class="regexp">    margin: 2px 5px 2px 0px;</span></span><br><span class="line"><span class="regexp">    line-height: 1.5;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-22%2016-18-47.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-toc&quot;</span>&gt;</span>1.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
       <categories>
         <category>小白学搭Hexo</category>
       </categories>
@@ -98,7 +115,7 @@
     <title>Next 8.0 进阶美化篇二</title>
     <url>/post/4f44d92e.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
-<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义一个背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
+<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
 
 </blockquote>       
 
@@ -136,56 +153,6 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型三</title>
-    <url>/post/b9f68301.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
-<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
-<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
-<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
-<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
-<p>打开<span id="inline-blue"> detect_object.py </span></p>
-<ul>
-<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
-
-<ul>
-<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>  接着注释掉model下的raise error和download_model</p>
-<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
-
-<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3>]]></content>
-      <tags>
-        <tag>TensorRT</tag>
       </tags>
   </entry>
   <entry>
@@ -265,9 +232,63 @@
       </tags>
   </entry>
   <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <url>/post/b9f68301.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
+<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
+<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
+<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
+<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
+<p>打开<span id="inline-blue"> detect_object.py </span></p>
+<ul>
+<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
+
+<ul>
+<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>  接着注释掉model下的raise error和download_model</p>
+<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
+
+<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3>]]></content>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>
     <url>/post/a231f91f.html</url>
-    <content><![CDATA[<p> <strong>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</strong></p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</p>
+
+</blockquote>
+
 <a id="more"></a>
 
 <h3 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h3><p>​    软件中心搜索qv2ray安装</p>
@@ -298,8 +319,15 @@
   <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
     <url>/post/1a71c089.html</url>
-    <content><![CDATA[<h3 id="新建一个名为TensorFlow的文件夹"><a href="#新建一个名为TensorFlow的文件夹" class="headerlink" title="新建一个名为TensorFlow的文件夹"></a>新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir TensorFlow</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>TensorFlow Object Detection API 作为目前开源的接口，集成了当下比较主流的一些网络模型，并且作了系统性的划分，所以适合快速上手各个算法模型，在使用之前，必须按照官方指导配置好环境，具体参考本篇内容完成配置</p>
+
+</blockquote>
+
 <a id="more"></a>
+
+<h3 id="新建一个名为TensorFlow的文件夹"><a href="#新建一个名为TensorFlow的文件夹" class="headerlink" title="新建一个名为TensorFlow的文件夹"></a>新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir TensorFlow</span><br></pre></td></tr></table></figure>
+
 
 <h3 id="打开终端，cd进入TensorFlow"><a href="#打开终端，cd进入TensorFlow" class="headerlink" title="打开终端，cd进入TensorFlow"></a>打开终端，cd进入TensorFlow</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> TensorFlow</span><br></pre></td></tr></table></figure>
 
@@ -334,8 +362,14 @@
   <entry>
     <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
     <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
+
+</blockquote>
+
 <a id="more"></a>
+
+<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
 <h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
 
@@ -362,8 +396,14 @@
   <entry>
     <title>Ubuntu下用TensorFlow Object Detection API测试训练的模型</title>
     <url>/post/e88b7107.html</url>
-    <content><![CDATA[<p>经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。</p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>得到训练的模型后，进行测试前需要进行inference graph 的pb文件导出，本文记载了详细的操作步骤，以及最终的模型加载直到最终的检测结果</p>
+
+</blockquote>
+
 <a id="more"></a>
+
+<p>经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。</p>
 <p><img data-src="../images/Ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8TensorFlow-Object-Detection-API%E6%B5%8B%E8%AF%95%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B/Screenshot%20from%202020-09-02%2015-34-14.png"></p>
 <p>准备好你要测试的图像文件，接下来我们开始测试。</p>
 <h3 id="ckpt模型转换pb模型"><a href="#ckpt模型转换pb模型" class="headerlink" title="ckpt模型转换pb模型"></a>ckpt模型转换pb模型</h3><h4 id="打开终端，激活虚拟环境"><a href="#打开终端，激活虚拟环境" class="headerlink" title="打开终端，激活虚拟环境"></a>打开终端，激活虚拟环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> activate python370</span><br></pre></td></tr></table></figure>
@@ -496,9 +536,14 @@
   <entry>
     <title>Ubuntu下用TensorFlow Object Detection API训练自己的数据</title>
     <url>/post/bb2ec196.html</url>
-    <content><![CDATA[<p>如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：</p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>对于使用TensorFlow Object Detection API训练自己的数据集，网上教程还是很全的，只要认真细心，跟着官方指导就不会有任何问题</p>
+
+</blockquote>
+
 <a id="more"></a>
 
+<p>如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">TensorFlow/</span></span><br><span class="line"><span class="string">└─</span> <span class="string">models/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">community/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">official/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">orbit/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">research/</span></span><br><span class="line">   <span class="string">└─</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
 
 <p>接下来我们就直入主题开始训练步骤。</p>

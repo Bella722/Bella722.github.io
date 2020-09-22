@@ -81,11 +81,11 @@
     <link href="https://bella722.github.io/post/4f44d92e.html"/>
     <id>https://bella722.github.io/post/4f44d92e.html</id>
     <published>2020-09-15T07:39:43.000Z</published>
-    <updated>2020-09-18T10:28:52.649Z</updated>
+    <updated>2020-09-22T08:08:30.129Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义一个背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。&lt;/p&gt;
+&lt;p&gt;原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     
@@ -101,11 +101,13 @@
     <link href="https://bella722.github.io/post/74c4f787.html"/>
     <id>https://bella722.github.io/post/74c4f787.html</id>
     <published>2020-09-11T05:10:57.000Z</published>
-    <updated>2020-09-16T08:43:13.936Z</updated>
+    <updated>2020-09-22T08:20:07.289Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;笔记标签&quot;&gt;&lt;a href=&quot;#笔记标签&quot; class=&quot;headerlink&quot; title=&quot;笔记标签&quot;&gt;&lt;/a&gt;笔记标签&lt;/h3&gt;&lt;p&gt;效果：&lt;/p&gt;
-&lt;div class=&quot;note default&quot;&gt;&lt;p&gt;这里输入文字&lt;/p&gt;&lt;/div&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -121,10 +123,13 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-09-16T08:44:18.632Z</updated>
+    <updated>2020-09-22T08:21:38.940Z</updated>
     
     
-    <summary type="html">&lt;p&gt; &lt;strong&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/strong&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -140,10 +145,13 @@
     <link href="https://bella722.github.io/post/3c4ff36.html"/>
     <id>https://bella722.github.io/post/3c4ff36.html</id>
     <published>2020-09-03T08:04:30.000Z</published>
-    <updated>2020-09-16T08:45:20.421Z</updated>
+    <updated>2020-09-22T08:24:01.893Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;准备好图标文件&quot;&gt;&lt;a href=&quot;#准备好图标文件&quot; class=&quot;headerlink&quot; title=&quot;准备好图标文件&quot;&gt;&lt;/a&gt;准备好图标文件&lt;/h3&gt;&lt;p&gt;这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -159,10 +167,13 @@
     <link href="https://bella722.github.io/post/e88b7107.html"/>
     <id>https://bella722.github.io/post/e88b7107.html</id>
     <published>2020-09-02T08:07:24.000Z</published>
-    <updated>2020-09-16T09:00:50.673Z</updated>
+    <updated>2020-09-22T08:37:51.035Z</updated>
     
     
-    <summary type="html">&lt;p&gt;经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;得到训练的模型后，进行测试前需要进行inference graph 的pb文件导出，本文记载了详细的操作步骤，以及最终的模型加载直到最终的检测结果&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -178,10 +189,13 @@
     <link href="https://bella722.github.io/post/bb2ec196.html"/>
     <id>https://bella722.github.io/post/bb2ec196.html</id>
     <published>2020-09-01T06:13:51.000Z</published>
-    <updated>2020-09-16T09:01:35.197Z</updated>
+    <updated>2020-09-22T08:33:14.562Z</updated>
     
     
-    <summary type="html">&lt;p&gt;如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;对于使用TensorFlow Object Detection API训练自己的数据集，网上教程还是很全的，只要认真细心，跟着官方指导就不会有任何问题&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -197,10 +211,13 @@
     <link href="https://bella722.github.io/post/1a71c089.html"/>
     <id>https://bella722.github.io/post/1a71c089.html</id>
     <published>2020-08-31T10:49:56.000Z</published>
-    <updated>2020-09-16T08:45:01.885Z</updated>
+    <updated>2020-09-22T08:28:31.787Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;新建一个名为TensorFlow的文件夹&quot;&gt;&lt;a href=&quot;#新建一个名为TensorFlow的文件夹&quot; class=&quot;headerlink&quot; title=&quot;新建一个名为TensorFlow的文件夹&quot;&gt;&lt;/a&gt;新建一个名为TensorFlow的文件夹&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir TensorFlow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;TensorFlow Object Detection API 作为目前开源的接口，集成了当下比较主流的一些网络模型，并且作了系统性的划分，所以适合快速上手各个算法模型，在使用之前，必须按照官方指导配置好环境，具体参考本篇内容完成配置&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     

@@ -139,6 +139,56 @@
       </tags>
   </entry>
   <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <url>/post/b9f68301.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
+<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
+<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
+<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
+<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
+<p>打开<span id="inline-blue"> detect_object.py </span></p>
+<ul>
+<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
+
+<ul>
+<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>  接着注释掉model下的raise error和download_model</p>
+<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
+
+<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3>]]></content>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型一</title>
     <url>/post/c02a3ba5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -210,56 +260,6 @@
 <p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg" alt="preview"></p>
 <p>至此，TensorRT安装成功！</p>
 ]]></content>
-      <tags>
-        <tag>TensorRT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型三</title>
-    <url>/post/b9f68301.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
-<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
-<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
-<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
-<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
-<p>打开<span id="inline-blue"> detect_object.py </span></p>
-<ul>
-<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
-
-<ul>
-<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>  接着注释掉model下的raise error和download_model</p>
-<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
-
-<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3>]]></content>
       <tags>
         <tag>TensorRT</tag>
       </tags>

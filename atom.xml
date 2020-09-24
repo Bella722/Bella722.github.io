@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-22T07:35:32.221Z</updated>
+  <updated>2020-09-24T03:27:46.357Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
+    <link href="https://bella722.github.io/post/4b9525f5.html"/>
+    <id>https://bella722.github.io/post/4b9525f5.html</id>
+    <published>2020-09-24T02:41:13.000Z</published>
+    <updated>2020-09-24T03:27:46.357Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;昨天换到windows下写个文档顺手用电脑管家清理了下垃圾，然后再切回Ubuntu的时候发现分辨率一下降到老人机模式，再运行加载cuda的代码的时候竟然说cudainit 失败，没有可用的显卡，用nvidia-smi自查一下，凉凉，折腾了整整一天呐，现在就把解决结果记录下来。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>TensorRT成功测试自己的数据集SSD模型三</title>

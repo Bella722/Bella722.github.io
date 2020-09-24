@@ -454,6 +454,42 @@
       </tags>
   </entry>
   <entry>
+    <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
+    <url>/post/4b9525f5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>昨天换到windows下写个文档顺手用电脑管家清理了下垃圾，然后再切回Ubuntu的时候发现分辨率一下降到老人机模式，再运行加载cuda的代码的时候竟然说cudainit 失败，没有可用的显卡，用nvidia-smi自查一下，凉凉，折腾了整整一天呐，现在就把解决结果记录下来。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h2 id="nvidia-smi"><a href="#nvidia-smi" class="headerlink" title="nvidia-smi"></a>nvidia-smi</h2><p><font color="#0000dd"> NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running</font></p>
+<h2 id="nvidia-settings"><a href="#nvidia-settings" class="headerlink" title="nvidia-settings"></a>nvidia-settings</h2><p><font color="#0000dd"> <strong>ERROR</strong>: NVIDIA driver <strong>is</strong> <strong>not</strong> loaded </font></p>
+<p><font color="#0000dd"> <strong>ERROR</strong>: Unable <strong>to</strong> <strong>load</strong> info <strong>from</strong> <strong>any</strong> available <strong>system</strong></font></p>
+<div class="note info"><p>在网上搜索解决办法的时候，搜过error, 搜过那个关机出现的PCIe Bus Error, 根据搜到的解决内容看，问题是出在nvidia-drive 驱动坏了，依照那些解决办法添加源，安装驱动，刷新再重启，还是没能解决，最后终于心一横，卸载所有nvidia*，再重装驱动，重启，结果意外还成功了，看到熟悉的界面，内牛满面啊</p></div>
+
+<p><img data-src="../images/%E8%A7%A3%E5%86%B3%E5%8F%8C%E7%B3%BB%E7%BB%9FUbuntu%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0NVIDIA%E9%A9%B1%E5%8A%A8/0924_6.jpg"></p>
+<p><img data-src="../images/%E8%A7%A3%E5%86%B3%E5%8F%8C%E7%B3%BB%E7%BB%9FUbuntu%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0NVIDIA%E9%A9%B1%E5%8A%A8/0924_2.jpg"></p>
+<p><img data-src="../images/%E8%A7%A3%E5%86%B3%E5%8F%8C%E7%B3%BB%E7%BB%9FUbuntu%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0NVIDIA%E9%A9%B1%E5%8A%A8/0924_4.jpg"></p>
+<p><img data-src="../images/%E8%A7%A3%E5%86%B3%E5%8F%8C%E7%B3%BB%E7%BB%9FUbuntu%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0NVIDIA%E9%A9%B1%E5%8A%A8/0924_5.jpg"></p>
+<h3 id="卸载清理以前所有的nvidia"><a href="#卸载清理以前所有的nvidia" class="headerlink" title="卸载清理以前所有的nvidia*"></a>卸载清理以前所有的nvidia*</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get purge nvidia*</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加PPA源"><a href="#添加PPA源" class="headerlink" title="添加PPA源"></a>添加PPA源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:graphics-drivers</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="预览驱动列表"><a href="#预览驱动列表" class="headerlink" title="预览驱动列表"></a>预览驱动列表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu-drivers devices</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装推荐的驱动"><a href="#安装推荐的驱动" class="headerlink" title="安装推荐的驱动"></a>安装推荐的驱动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nvidia-driver-&lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%A7%A3%E5%86%B3%E5%8F%8C%E7%B3%BB%E7%BB%9FUbuntu%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0NVIDIA%E9%A9%B1%E5%8A%A8/Screenshot%20from%202020-09-24%2010-29-46.png"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型二</title>
     <url>/post/fbaa150c.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">

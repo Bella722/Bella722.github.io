@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bella722.github.io/post/c02a3ba5.html</loc>
+    
+    <lastmod>2020-09-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/post/b9f68301.html</loc>
+    
+    <lastmod>2020-09-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/post/fbaa150c.html</loc>
     
-    <lastmod>2020-09-24</lastmod>
+    <lastmod>2020-09-27</lastmod>
     
   </url>
   
   <url>
     <loc>https://bella722.github.io/post/4b9525f5.html</loc>
     
-    <lastmod>2020-09-24</lastmod>
+    <lastmod>2020-09-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/post/1a71c089.html</loc>
+    
+    <lastmod>2020-09-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/post/4f44d92e.html</loc>
+    
+    <lastmod>2020-09-27</lastmod>
     
   </url>
   
@@ -37,13 +65,6 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/post/1a71c089.html</loc>
-    
-    <lastmod>2020-09-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://bella722.github.io/post/3c4ff36.html</loc>
     
     <lastmod>2020-09-22</lastmod>
@@ -61,27 +82,6 @@
     <loc>https://bella722.github.io/post/74c4f787.html</loc>
     
     <lastmod>2020-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/post/4f44d92e.html</loc>
-    
-    <lastmod>2020-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/post/b9f68301.html</loc>
-    
-    <lastmod>2020-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/post/c02a3ba5.html</loc>
-    
-    <lastmod>2020-09-18</lastmod>
     
   </url>
   
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
     
     <lastmod>2020-08-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://bella722.github.io/lib/jquery_lazyload/bower.json</loc>
+    <loc>https://bella722.github.io/lib/jquery_lazyload/README.html</loc>
     
     <lastmod>2020-08-25</lastmod>
     
@@ -172,14 +172,14 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
+    <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
     <lastmod>2020-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
+    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
     <lastmod>2020-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -189,6 +189,13 @@
   
   <url>
     <loc>https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/</loc>
+    <lastmod>2020-09-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/</loc>
     <lastmod>2020-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -317,6 +317,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <url>/post/3c4ff36.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
+
+<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
+<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
+<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
+
+<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
+<p>关闭终端</p>
+<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
+]]></content>
+      <categories>
+        <category>教你玩转Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
     <url>/post/1a71c089.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -391,40 +425,6 @@
       </categories>
       <tags>
         <tag>TensorFlow Object Detection API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
-    <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
-<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
-
-<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
-<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
-<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
-
-<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
-<p>关闭终端</p>
-<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
-]]></content>
-      <categories>
-        <category>教你玩转Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>

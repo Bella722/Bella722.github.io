@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-10-09T05:36:41.851Z</updated>
+  <updated>2020-10-09T07:13:18.131Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型四</title>
+    <link href="https://bella722.github.io/post/f524ef1f.html"/>
+    <id>https://bella722.github.io/post/f524ef1f.html</id>
+    <published>2020-10-09T05:44:58.000Z</published>
+    <updated>2020-10-09T07:13:18.131Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Windows下成功配置Qv2ray</title>
     <link href="https://bella722.github.io/post/a6ffce94.html"/>
     <id>https://bella722.github.io/post/a6ffce94.html</id>
     <published>2020-10-09T05:31:57.000Z</published>
-    <updated>2020-10-09T05:36:41.851Z</updated>
+    <updated>2020-10-09T07:33:26.078Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -65,7 +87,7 @@
     <link href="https://bella722.github.io/post/b9f68301.html"/>
     <id>https://bella722.github.io/post/b9f68301.html</id>
     <published>2020-09-21T01:18:04.000Z</published>
-    <updated>2020-09-27T05:53:04.521Z</updated>
+    <updated>2020-10-09T07:31:48.464Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;

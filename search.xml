@@ -282,7 +282,56 @@
 
 <div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
 
-<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3>]]></content>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>TensorRT实战记</category>
+      </categories>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型四</title>
+    <url>/post/f524ef1f.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3><table>
+    <tr>
+        <td colspan="12"><font color=red><center>单张推理结果</center></font></td>
+    </tr>
+    <tr>
+        <td colspan="12"><center>3类目标，训练样本219张，训练代数50K</center></td>
+    </tr>
+    <tr>
+        <td colspan="4"><center>No tensorrt infer GTX 1070 Ti</center></td>
+        <td colspan="8"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center>precision</center></td>
+        <td colspan="1"><center>time</center></td>
+        <td colspan="6"><center>precision</center></td>
+        <td colspan="2"><center>time</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center></center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="3"><center>half</center></td>
+        <td colspan="3"><center>float</center></td>
+        <td colspan="1"><center>half</center></td>
+        <td colspan="1"><center>float</center></td>
+    </tr>
+    <tr>
+        <td>![1_res_2390](../../../TensorRT-7.0.0.11/samples/python/uff_ssd/3cls_test/1_res_2390.bmp)</td>
+    </tr>
+</table>
+
+
+]]></content>
       <categories>
         <category>TensorRT实战记</category>
       </categories>
@@ -449,8 +498,9 @@
 <h3 id="安装图像界面"><a href="#安装图像界面" class="headerlink" title="安装图像界面"></a>安装图像界面</h3><p><a href="https://github.com/Qv2ray/Qv2ray/releases"><font color=blue>EXE下载地址</font></a></p>
 <p>根据你自己的<font color=red>环境</font>选择对应的exe，下载成功后直接双击傻瓜式安装，选择在桌面建立快捷方式，完成即可</p>
 <p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20003%20-%20Releases%20%C2%B7%20Qv2ray_Qv2ray%20-%20github.com.png"></p>
-<h3 id="配置核心文件"><a href="#配置核心文件" class="headerlink" title="配置核心文件"></a>配置核心文件</h3><p><a href="https://github.com/Qv2ray/Qv2ray/releases"><font color=blue>核心文件下载地址</font></a></p>
+<h3 id="配置核心文件"><a href="#配置核心文件" class="headerlink" title="配置核心文件"></a>配置核心文件</h3><p><a href="https://github.com/v2fly/v2ray-core/releases"><font color=blue>核心文件下载地址</font></a></p>
 <p>根据你自己的<font color=red>环境</font>选择对应的压缩包下载，成功后先从桌面打开qv2ray, 进入界面后在设置里根据提示的核心文件路径进行配置。</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20006%20-%20Releases%20%C2%B7%20v2fly_v2ray-core%20-%20github.com.png"></p>
 <p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20201009105336.png"></p>
 <div class="note success"><p>这里注意，根据路径提示需要有一个名为vcore的文件夹，因此这里必须在相应路径下新建该文件夹</p>
 </div>

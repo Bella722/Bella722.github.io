@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-09-27T05:52:12.812Z</updated>
+  <updated>2020-10-09T05:31:57.802Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows下成功配置Qv2ray</title>
+    <link href="https://bella722.github.io/post/a6ffce94.html"/>
+    <id>https://bella722.github.io/post/a6ffce94.html</id>
+    <published>2020-10-09T05:31:57.000Z</published>
+    <updated>2020-10-09T05:31:57.802Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;免费冲浪是真香，小伙伴且浪且珍惜&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
+    
+    
+    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
+    
+  </entry>
   
   <entry>
     <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
@@ -153,7 +175,7 @@
     <link href="https://bella722.github.io/post/a231f91f.html"/>
     <id>https://bella722.github.io/post/a231f91f.html</id>
     <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-09-22T08:21:38.940Z</updated>
+    <updated>2020-10-09T05:31:42.962Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -163,7 +185,7 @@
     
     
     
-    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
+    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
     
     
     <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>

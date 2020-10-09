@@ -25,20 +25,28 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="google-site-verification: google5756544d25aa2be6.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bella&#39;s Blog">
-<meta property="og:url" content="https://bella722.github.io/google5756544d25aa2be6.html">
+  <meta name="description" content="免费冲浪是真香，小伙伴且浪且珍惜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下成功配置Qv2ray">
+<meta property="og:url" content="https://bella722.github.io/post/a6ffce94.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="google-site-verification: google5756544d25aa2be6.html">
+<meta property="og:description" content="免费冲浪是真香，小伙伴且浪且珍惜">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-25T06:11:13.687Z">
-<meta property="article:modified_time" content="2020-08-25T06:07:05.807Z">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20003%20-%20Releases%20%C2%B7%20Qv2ray_Qv2ray%20-%20github.com.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20201009105336.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20201009111935.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105405.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105410.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105415.png">
+<meta property="article:published_time" content="2020-10-09T05:31:57.000Z">
+<meta property="article:modified_time" content="2020-10-09T05:31:57.802Z">
 <meta property="article:author" content="Bella">
+<meta property="article:tag" content="Qv2ray">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20003%20-%20Releases%20%C2%B7%20Qv2ray_Qv2ray%20-%20github.com.png">
 
 
-<link rel="canonical" href="https://bella722.github.io/google5756544d25aa2be6.html">
+<link rel="canonical" href="https://bella722.github.io/post/a6ffce94.html">
 
 
 <script class="page-configurations">
@@ -46,13 +54,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title> | Bella's Blog
-</title>
+  <title>Windows下成功配置Qv2ray | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -243,7 +250,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -255,6 +262,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">安装图像界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%A0%B8%E5%BF%83%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">配置核心文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E9%85%8D%E7%BD%AE%E8%81%94%E7%BD%91"><span class="nav-number">3.</span> <span class="nav-text">最后配置联网</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -330,44 +338,216 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
       
-  
-  
 
       
 
     
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/a6ffce94.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
     
     
-    <div class="post-block" lang="zh-CN">
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows下成功配置Qv2ray
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">
-</h1>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-<div class="post-meta-container">
+      <time title="创建时间：2020-10-09 13:31:57" itemprop="dateCreated datePublished" datetime="2020-10-09T13:31:57+08:00">2020-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">科学上网指南</span></a>
+        </span>
+    </span>
+
   
-
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/a6ffce94.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/a6ffce94.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>338</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body">
-          google-site-verification: google5756544d25aa2be6.html
-      </div>
-      
-      
-      
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>免费冲浪是真香，小伙伴且浪且珍惜</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="安装图像界面"><a href="#安装图像界面" class="headerlink" title="安装图像界面"></a>安装图像界面</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/Qv2ray/Qv2ray/releases">EXE下载地址</a></p>
+<p>根据你自己的<font color="red">环境</font>选择对应的exe，下载成功后直接双击傻瓜式安装，选择在桌面建立快捷方式，完成即可</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20003%20-%20Releases%20%C2%B7%20Qv2ray_Qv2ray%20-%20github.com.png"></p>
+<h3 id="配置核心文件"><a href="#配置核心文件" class="headerlink" title="配置核心文件"></a>配置核心文件</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/Qv2ray/Qv2ray/releases">核心文件下载地址</a></p>
+<p>根据你自己的<font color="red">环境</font>选择对应的压缩包下载，成功后先从桌面打开qv2ray, 进入界面后在设置里根据提示的核心文件路径进行配置。</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20201009105336.png"></p>
+<div class="note success"><p>这里注意，根据路径提示需要有一个名为vcore的文件夹，因此这里必须在相应路径下新建该文件夹</p>
+</div>
+
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20201009111935.png"></p>
+<p>vcore文件夹新建好之后需要将刚才下载的压缩包里的核心文件拷贝过来，所以直接进行复制粘贴就行</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105405.png"></p>
+<p>接着通过核心验证</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105410.png"></p>
+<h3 id="最后配置联网"><a href="#最后配置联网" class="headerlink" title="最后配置联网"></a>最后配置联网</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://view.freev2ray.org/">免费账号地址</a></p>
+<p>这个网址的账号是每12小时更新一次的，连不上的时候直接更新信息就行了。</p>
+<p>具体账号配置方法参见文章<a href="https://bella722.github.io/post/a231f91f.html">Ubuntu20.04下成功配置Qv2ray</a></p>
+<p>联网成功！</p>
+<p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201009105415.png" alt="微信图片_20201009105415"></p>
+
     </div>
-    
 
     
     
     
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/a6ffce94.html" title="Windows下成功配置Qv2ray">https://bella722.github.io/post/a6ffce94.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/Qv2ray/" rel="tag"><i class="fa fa-tag"></i> Qv2ray</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/4b9525f5.html" rel="prev" title="解决双系统Ubuntu检测不到NVIDIA驱动">
+                  <i class="fa fa-chevron-left"></i> 解决双系统Ubuntu检测不到NVIDIA驱动
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
 
 
       
@@ -549,7 +729,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/google5756544d25aa2be6.html",
+      path: "/post/a6ffce94.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

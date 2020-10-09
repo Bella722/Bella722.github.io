@@ -291,10 +291,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/post/0.html</url>
-    <content><![CDATA[<p>title: TensorRT成功测试自己的数据集SSD模型四<br>tags: TensorRT<br>categories: TensorRT实战记<br>abbrlink: f524ef1f<br>date: 2020-10-09 13:44:58</p>
-<blockquote class="blockquote-center">
+    <title>TensorRT成功测试自己的数据集SSD模型四</title>
+    <url>/post/f524ef1f.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
 <p>经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。</p>
 
 </blockquote>
@@ -511,6 +510,12 @@
 
 
 ]]></content>
+      <categories>
+        <category>TensorRT实战记</category>
+      </categories>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>

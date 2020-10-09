@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-10-09T09:56:00.538Z</updated>
+  <updated>2020-10-09T10:02:21.032Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,21 +17,24 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://bella722.github.io/post/0.html"/>
-    <id>https://bella722.github.io/post/0.html</id>
-    <published>2020-10-09T05:44:58.344Z</published>
-    <updated>2020-10-09T09:56:00.538Z</updated>
+    <title>TensorRT成功测试自己的数据集SSD模型四</title>
+    <link href="https://bella722.github.io/post/f524ef1f.html"/>
+    <id>https://bella722.github.io/post/f524ef1f.html</id>
+    <published>2020-10-09T05:44:58.000Z</published>
+    <updated>2020-10-09T10:02:21.032Z</updated>
     
     
-    <summary type="html">&lt;p&gt;title: TensorRT成功测试自己的数据集SSD模型四&lt;br&gt;tags: TensorRT&lt;br&gt;categories: TensorRT实战记&lt;br&gt;abbrlink: f524ef1f&lt;br&gt;date: 2020-10-09 13:44:58&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
 &lt;p&gt;经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     
     
     
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
     
   </entry>
   

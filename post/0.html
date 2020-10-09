@@ -25,21 +25,45 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。">
+  <meta name="description" content="title: TensorRT成功测试自己的数据集SSD模型四tags: TensorRTcategories: TensorRT实战记abbrlink: f524ef1fdate: 2020-10-09 13:44:58  经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorRT成功测试自己的数据集SSD模型四">
-<meta property="og:url" content="https://bella722.github.io/post/f524ef1f.html">
+<meta property="og:title" content="Bella&#39;s Blog">
+<meta property="og:url" content="https://bella722.github.io/post/0.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。">
+<meta property="og:description" content="title: TensorRT成功测试自己的数据集SSD模型四tags: TensorRTcategories: TensorRT实战记abbrlink: f524ef1fdate: 2020-10-09 13:44:58  经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-09T05:44:58.000Z">
-<meta property="article:modified_time" content="2020-10-09T07:13:18.131Z">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_res_2390.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_h_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_f_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_res_2387-1602234745418.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_h_7.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_f_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_res_2375.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_h_6.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_f_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_res_2372.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_h_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_f_6.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_res_2871.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_h_6.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_f_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_res_2470.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_h_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_f_6.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_res_2648.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_h_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_f_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_res_2485.bmp">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_h_5.jpg">
+<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_f_5.jpg">
+<meta property="article:published_time" content="2020-10-09T05:44:58.344Z">
+<meta property="article:modified_time" content="2020-10-09T09:56:00.538Z">
 <meta property="article:author" content="Bella">
-<meta property="article:tag" content="TensorRT">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_res_2390.bmp">
 
 
-<link rel="canonical" href="https://bella722.github.io/post/f524ef1f.html">
+<link rel="canonical" href="https://bella722.github.io/post/0.html">
 
 
 <script class="page-configurations">
@@ -52,7 +76,7 @@
   };
 </script>
 
-  <title>TensorRT成功测试自己的数据集SSD模型四 | Bella's Blog</title>
+  <title> | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -340,7 +364,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/f524ef1f.html">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/unnamed.jpg">
@@ -356,7 +380,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TensorRT成功测试自己的数据集SSD模型四
+          
         </h1>
 
         <div class="post-meta-container">
@@ -368,16 +392,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2020-10-09 13:44:58 / 修改时间：15:13:18" itemprop="dateCreated datePublished" datetime="2020-10-09T13:44:58+08:00">2020-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
-        </span>
+      <time title="创建时间：2020-10-09 13:44:58 / 修改时间：17:56:00" itemprop="dateCreated datePublished" datetime="2020-10-09T13:44:58+08:00">2020-10-09</time>
     </span>
 
   
@@ -396,8 +411,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/f524ef1f.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/f524ef1f.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/0.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -409,7 +424,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>295</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -427,7 +442,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <blockquote class="blockquote-center">
+        <p>title: TensorRT成功测试自己的数据集SSD模型四<br>tags: TensorRT<br>categories: TensorRT实战记<br>abbrlink: f524ef1f<br>date: 2020-10-09 13:44:58</p>
+<blockquote class="blockquote-center">
 <p>经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。</p>
 
 </blockquote>
@@ -460,9 +476,187 @@
         <td colspan="1"><center>float</center></td>
     </tr>
     <tr>
-        <td>![1_res_2390](../../../TensorRT-7.0.0.11/samples/python/uff_ssd/3cls_test/1_res_2390.bmp)</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_res_2390.bmp"></td>
+        <td>21.9ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_h_5.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_f_5.jpg"></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_res_2387-1602234745418.bmp"></td>
+        <td>21.87ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_h_7.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_f_5.jpg"></td>
+        <td>7ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_res_2375.bmp"></td>
+        <td>21.75ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_h_6.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_f_5.jpg"></td>
+        <td>6ms</td>
+        <td>5ms</td>
+    </tr>
+   <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_res_2372.bmp"></td>
+        <td>21.72ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_h_5.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_f_6.jpg"></td>
+        <td>5ms</td>
+        <td>6ms</td>
+    </tr>
+        <tr>
+        <td colspan="12"><center>5类目标，训练样本1006张，训练代数200K</center></td>
+    </tr>
+    <tr>
+        <td colspan="4"><center>No tensorrt infer GTX 1070 Ti</center></td>
+        <td colspan="8"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center>precision</center></td>
+        <td colspan="1"><center>time</center></td>
+        <td colspan="6"><center>precision</center></td>
+        <td colspan="2"><center>time</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center></center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="3"><center>half</center></td>
+        <td colspan="3"><center>float</center></td>
+        <td colspan="1"><center>half</center></td>
+        <td colspan="1"><center>float</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_res_2871.bmp"></td>
+        <td>21.86ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_h_6.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_f_5.jpg"></td>
+        <td>6ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_res_2470.bmp"></td>
+        <td>21.7ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_h_5.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_f_6.jpg"></td>
+        <td>5ms</td>
+        <td>6ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_res_2648.bmp"></td>
+        <td>21.48ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_h_5.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_f_5.jpg"></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_res_2485.bmp"></td>
+        <td>21.85ms</td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_h_5.jpg"></td>
+        <td colspan="3"><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_f_5.jpg"></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+        <tr>
+        <td colspan="12"><font color="red">结论：1. 无论从推测用时还是检测精度来看，tensorrt下选择精度为16或32的检测结果都基本无差；2. 用了tensorrt后的推理时长相比不用的时候能够提升4倍左右；3.  用了tensorrt后的预测精度相比不用的时候有所提升</font></td>
+    </tr>
+    <tr>
+        <td colspan="12"><font color="red"><center>批量推理结果</center></font></td>
+    </tr>
+    <tr>
+        <td colspan="12"><center>Image size(8k×40k), 预测裁剪小图size(300×300)，w方向：8000/300=26，h方向：40000/300= 133，裁剪生成的小图有：26×133 = 3458张</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>No tensorrt infer GTX 1070 Ti</center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>infer_batch_size = 70</center></td>
+        <td colspan="6"><center>infer_batch_size = 13</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>1.0401s</center></td>
+        <td colspan="6"><center>26.68ms</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>total_time</center></td>
+        <td colspan="6"><center>total_time</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>52.0058s</center></td>
+        <td colspan="6"><center>7.097s</center></td>
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 26</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>47.47ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>6.314s</center></td>    
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 38</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>65.076ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>5.922s</center></td>    
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 70</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>117.3ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>5.865s</center></td>    
+    </tr>
+        <tr>
+        <td colspan="12"><font color="red">结论： 1. 用了tensorrt后的推理时长相比不用的时候能够提升8-10倍左右；2. 一直到batch_size = 70GPU未饱和，并且最大利用率到70%左右，仍有剩余</font></td>
     </tr>
 </table>
+
+
+
+
 
 
 
@@ -496,7 +690,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://bella722.github.io/post/f524ef1f.html" title="TensorRT成功测试自己的数据集SSD模型四">https://bella722.github.io/post/f524ef1f.html</a>
+      <a href="https://bella722.github.io/post/0.html" title>https://bella722.github.io/post/0.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -533,9 +727,6 @@
     </div>
   </div>
 
-          <div class="post-tags">
-              <a href="/tags/TensorRT/" rel="tag"><i class="fa fa-tag"></i> TensorRT</a>
-          </div>
 
         
 
@@ -735,7 +926,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/post/f524ef1f.html",
+      path: "/post/0.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

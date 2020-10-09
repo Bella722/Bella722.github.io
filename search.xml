@@ -291,9 +291,10 @@
       </tags>
   </entry>
   <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型四</title>
-    <url>/post/f524ef1f.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
+    <title></title>
+    <url>/post/0.html</url>
+    <content><![CDATA[<p>title: TensorRT成功测试自己的数据集SSD模型四<br>tags: TensorRT<br>categories: TensorRT实战记<br>abbrlink: f524ef1f<br>date: 2020-10-09 13:44:58</p>
+<blockquote class="blockquote-center">
 <p>经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。</p>
 
 </blockquote>
@@ -326,18 +327,190 @@
         <td colspan="1"><center>float</center></td>
     </tr>
     <tr>
-        <td>![1_res_2390](../../../TensorRT-7.0.0.11/samples/python/uff_ssd/3cls_test/1_res_2390.bmp)</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_res_2390.bmp'></td>
+        <td>21.9ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_h_5.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/1_f_5.jpg'></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_res_2387-1602234745418.bmp'></td>
+        <td>21.87ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_h_7.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/2_f_5.jpg'></td>
+        <td>7ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_res_2375.bmp'></td>
+        <td>21.75ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_h_6.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/3_f_5.jpg'></td>
+        <td>6ms</td>
+        <td>5ms</td>
+    </tr>
+   <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_res_2372.bmp'></td>
+        <td>21.72ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_h_5.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/4_f_6.jpg'></td>
+        <td>5ms</td>
+        <td>6ms</td>
+    </tr>
+        <tr>
+        <td colspan="12"><center>5类目标，训练样本1006张，训练代数200K</center></td>
+    </tr>
+    <tr>
+        <td colspan="4"><center>No tensorrt infer GTX 1070 Ti</center></td>
+        <td colspan="8"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center>precision</center></td>
+        <td colspan="1"><center>time</center></td>
+        <td colspan="6"><center>precision</center></td>
+        <td colspan="2"><center>time</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><center></center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="3"><center>half</center></td>
+        <td colspan="3"><center>float</center></td>
+        <td colspan="1"><center>half</center></td>
+        <td colspan="1"><center>float</center></td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_res_2871.bmp'></td>
+        <td>21.86ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_h_6.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_1_f_5.jpg'></td>
+        <td>6ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_res_2470.bmp'></td>
+        <td>21.7ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_h_5.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_2_f_6.jpg'></td>
+        <td>5ms</td>
+        <td>6ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_res_2648.bmp'></td>
+        <td>21.48ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_h_5.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_3_f_5.jpg'></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_res_2485.bmp'></td>
+        <td>21.85ms</td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_h_5.jpg'></td>
+        <td colspan="3"><img data-src='../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E5%9B%9B/5_4_f_5.jpg'></td>
+        <td>5ms</td>
+        <td>5ms</td>
+    </tr>
+        <tr>
+        <td colspan="12"><font color=red>结论：1. 无论从推测用时还是检测精度来看，tensorrt下选择精度为16或32的检测结果都基本无差；2. 用了tensorrt后的推理时长相比不用的时候能够提升4倍左右；3.  用了tensorrt后的预测精度相比不用的时候有所提升</font></td>
+    </tr>
+    <tr>
+        <td colspan="12"><font color=red><center>批量推理结果</center></font></td>
+    </tr>
+    <tr>
+        <td colspan="12"><center>Image size(8k×40k), 预测裁剪小图size(300×300)，w方向：8000/300=26，h方向：40000/300= 133，裁剪生成的小图有：26×133 = 3458张</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>No tensorrt infer GTX 1070 Ti</center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>infer_batch_size = 70</center></td>
+        <td colspan="6"><center>infer_batch_size = 13</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>1.0401s</center></td>
+        <td colspan="6"><center>26.68ms</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>total_time</center></td>
+        <td colspan="6"><center>total_time</center></td>
+    </tr>
+    <tr>
+        <td colspan="6"><center>52.0058s</center></td>
+        <td colspan="6"><center>7.097s</center></td>
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 26</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>47.47ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>6.314s</center></td>    
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 38</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>65.076ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>5.922s</center></td>    
+    </tr>
+    <tr>        
+        <td colspan="6"><center></center></td>
+        <td colspan="6"><center>With tensorrt infer GTX 1070 Ti</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>infer_batch_size = 70</center></td>
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>117.3ms</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>total_time</center></td>    
+    </tr>    
+    <tr>        
+        <td colspan="6"><center></center></td>        
+        <td colspan="6"><center>5.865s</center></td>    
+    </tr>
+        <tr>
+        <td colspan="12"><font color=red>结论： 1. 用了tensorrt后的推理时长相比不用的时候能够提升8-10倍左右；2. 一直到batch_size = 70GPU未饱和，并且最大利用率到70%左右，仍有剩余</font></td>
     </tr>
 </table>
 
 
+
+
+
+
 ]]></content>
-      <categories>
-        <category>TensorRT实战记</category>
-      </categories>
-      <tags>
-        <tag>TensorRT</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu20.04下成功配置Qv2ray</title>

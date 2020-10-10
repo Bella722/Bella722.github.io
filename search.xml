@@ -728,6 +728,90 @@
       </tags>
   </entry>
   <entry>
+    <title>利用Google Colab成功测试TensorRT指南一</title>
+    <url>/post/f9d0431a.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="在-google-drive-新建笔记本并配置GPU"><a href="#在-google-drive-新建笔记本并配置GPU" class="headerlink" title="在 google drive 新建笔记本并配置GPU"></a>在 google drive 新建笔记本并配置GPU</h3><p>Colab的使用方法可以参见<a href="https://zhuanlan.zhihu.com/p/129663051"><font color="blue">使用Google colab免费GPU训练模型攻略</font></a></p>
+<p>创建好笔记本之后打开；</p>
+<h3 id="查看所分配得到的GPU资源"><a href="#查看所分配得到的GPU资源" class="headerlink" title="查看所分配得到的GPU资源"></a>查看所分配得到的GPU资源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2016-57-25.png"></p>
+<h3 id="挂载云端硬盘"><a href="#挂载云端硬盘" class="headerlink" title="挂载云端硬盘"></a>挂载云端硬盘</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&#x27;/content/gdrive&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输入验证码后挂载成功。</p>
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-00-25.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">project_path = <span class="string">&#x27;/content/gdrive/My Drive/Colab Notebooks/TensorRT Colab Test&#x27;</span></span><br><span class="line">os.chdir(project_path) </span><br></pre></td></tr></table></figure>
+
+<p>我的工作目录是谷歌硬盘下的Colab Notebooks下的TensorRT Colab Test文件夹</p>
+<h3 id="查看当前的CUDA版本"><a href="#查看当前的CUDA版本" class="headerlink" title="查看当前的CUDA版本"></a>查看当前的CUDA版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!nvcc --version</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-03-47.png"></p>
+<h3 id="查看Ubuntu版本"><a href="#查看Ubuntu版本" class="headerlink" title="查看Ubuntu版本"></a>查看Ubuntu版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!cat /etc/issue</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-05-02.png"></p>
+<h3 id="查看Tensorflow版本"><a href="#查看Tensorflow版本" class="headerlink" title="查看Tensorflow版本"></a>查看Tensorflow版本</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">print(tf.__version__)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-06-30.png"></p>
+<p>现在我要换掉cuda cudnn 以及tensorflow的版本，所以先要卸载掉就版本。</p>
+<h3 id="卸载当前CUDA版本"><a href="#卸载当前CUDA版本" class="headerlink" title="卸载当前CUDA版本"></a>卸载当前CUDA版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!sudo apt-get --purge remove cuda nvidia* libnvidia-*</span><br><span class="line">!sudo dpkg -l | grep cuda- | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs -n1 dpkg --purge</span><br><span class="line">!sudo apt-get remove cuda-*</span><br><span class="line">!sudo apt autoremove</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20067%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png"></p>
+<h3 id="安装CUDA-10-0"><a href="#安装CUDA-10-0" class="headerlink" title="安装CUDA 10.0"></a>安装CUDA 10.0</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb</span><br><span class="line">!sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb</span><br><span class="line">!sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub</span><br><span class="line">!sudo apt-get update</span><br><span class="line">!wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span><br><span class="line">!sudo apt install -y ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span><br><span class="line">!sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20070%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png"></p>
+<h3 id="安装nvidia驱动"><a href="#安装nvidia驱动" class="headerlink" title="安装nvidia驱动"></a>安装nvidia驱动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!sudo apt-get -y install nvidia-driver-418</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-16-41.png"></p>
+<h3 id="安装CUDNN"><a href="#安装CUDNN" class="headerlink" title="安装CUDNN"></a>安装CUDNN</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!sudo apt-get install -y \</span><br><span class="line">    cuda-10-0 \</span><br><span class="line">    libcudnn7=7.6.2.24-1+cuda10.0  \</span><br><span class="line">    libcudnn7-dev=7.6.2.24-1+cuda10.0 --allow-change-held-packages</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-18-17.png"></p>
+<h3 id="检查CUDA是否已经改变了版本"><a href="#检查CUDA是否已经改变了版本" class="headerlink" title="检查CUDA是否已经改变了版本"></a>检查CUDA是否已经改变了版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!nvcc --version</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-19-50.png"></p>
+<h3 id="安装TensorRT"><a href="#安装TensorRT" class="headerlink" title="安装TensorRT"></a>安装TensorRT</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!sudo dpkg -i <span class="string">&quot;nv-tensorrt-repo-ubuntu1804-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb&quot;</span></span><br><span class="line">!sudo apt-key add /var/nv-tensorrt-repo-cuda10.0-trt7.0.0.11-ga-20191216/7fa2af80.pub</span><br><span class="line">!sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>这里的nv-tensorrt-repo-ubuntu1804-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb是在官网根据自己系统的环境下载下来然后从本地上传到谷歌硬盘的工作目录下</p></div>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-24-37.png"></p>
+<h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!sudo apt-get install libnvinfer7=7.0.0-1+cuda10.0 libnvonnxparsers7=7.0.0-1+cuda10.0 libnvparsers7=7.0.0-1+cuda10.0 libnvinfer-plugin7=7.0.0-1+cuda10.0 libnvinfer-dev=7.0.0-1+cuda10.0 libnvonnxparsers-dev=7.0.0-1+cuda10.0 libnvparsers-dev=7.0.0-1+cuda10.0 libnvinfer-plugin-dev=7.0.0-1+cuda10.0 python-libnvinfer=7.0.0-1+cuda10.0 python3-libnvinfer=7.0.0-1+cuda10.0</span><br><span class="line"></span><br><span class="line">!sudo apt-mark hold libnvinfer7 libnvonnxparsers7 libnvparsers7 libnvinfer-plugin7 libnvinfer-dev libnvonnxparsers-dev libnvparsers-dev libnvinfer-plugin-dev python-libnvinfer python3-libnvinfer</span><br><span class="line"></span><br><span class="line">!sudo apt-get install tensorrt</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-25-57.png"></p>
+<h3 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!dpkg -l | grep TensorRT</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-27-31.png"></p>
+<h3 id="开始测试，先看看samples-python-uff-ssd例子能不能运行"><a href="#开始测试，先看看samples-python-uff-ssd例子能不能运行" class="headerlink" title="开始测试，先看看samples/python/uff_ssd例子能不能运行"></a>开始测试，先看看samples/python/uff_ssd例子能不能运行</h3><h4 id="解压压缩包"><a href="#解压压缩包" class="headerlink" title="解压压缩包"></a>解压压缩包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!tar zxvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.0.cudnn7.6.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>这里的TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.0.cudnn7.6.tar.gz也是在官网下载后直接上传到网盘的。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!python uff_ssd/detect_objects.py</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>这里可能会遇到几个问题，特此说明解决办法如下</p></div>
+
+<h4 id="解决ModuleNotFoundError-No-module-named-‘pycuda’"><a href="#解决ModuleNotFoundError-No-module-named-‘pycuda’" class="headerlink" title="解决ModuleNotFoundError: No module named ‘pycuda’"></a>解决ModuleNotFoundError: No module named ‘pycuda’</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!pip install pycuda</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ModuleNotFoundError-No-module-named-‘graphsurgeon’"><a href="#解决ModuleNotFoundError-No-module-named-‘graphsurgeon’" class="headerlink" title="解决ModuleNotFoundError: No module named ‘graphsurgeon’"></a>解决ModuleNotFoundError: No module named ‘graphsurgeon’</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!pip install graphsurgeon-0.4.1-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ImportError-cannot-import-name-‘uff’"><a href="#解决ImportError-cannot-import-name-‘uff’" class="headerlink" title="解决ImportError: cannot import name ‘uff’"></a>解决ImportError: cannot import name ‘uff’</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!pip install uff-0.6.5-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ImportError-cannot-import-name-‘NodeDef’"><a href="#解决ImportError-cannot-import-name-‘NodeDef’" class="headerlink" title="解决ImportError: cannot import name ‘NodeDef’"></a>解决ImportError: cannot import name ‘NodeDef’</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!pip uninstall tensorflow</span><br><span class="line">!pip install tensorflow-gpu==1.14.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!python TensorRT-7.0.0.11/samples/python/uff_ssd/detect_objects.py TensorRT-7.0.0.11/samples/python/uff_ssd/images/image2.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-36-05.png"><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/image_inferred.jpg"></p>
+<div class="note danger"><p>后面就是以批量图像测试对比推理耗时。</p></div>]]></content>
+      <categories>
+        <category>TensorRT实战记</category>
+      </categories>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
     <url>/post/4b9525f5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">

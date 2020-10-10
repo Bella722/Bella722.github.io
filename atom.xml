@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-10-09T10:02:21.032Z</updated>
+  <updated>2020-10-10T09:38:29.872Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用Google Colab成功测试TensorRT指南一</title>
+    <link href="https://bella722.github.io/post/f9d0431a.html"/>
+    <id>https://bella722.github.io/post/f9d0431a.html</id>
+    <published>2020-10-10T08:37:31.000Z</published>
+    <updated>2020-10-10T09:38:29.872Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
   
   <entry>
     <title>TensorRT成功测试自己的数据集SSD模型四</title>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="LvN4FGGbc9Vme6ce05eYu_48RUGHRy_pigApzzTaM3M">
+  <meta name="baidu-site-verification" content="o6hoZgunLj">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="fonts.loli.net/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic|Cinzel+Decorative:300,300italic,400,400italic,700,700italic|Source+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Google Colab成功测试TensorRT指南一">
+<meta property="og:url" content="https://bella722.github.io/post/f9d0431a.html">
+<meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2016-57-25.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-00-25.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-03-47.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-05-02.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-06-30.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20067%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20070%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-16-41.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-18-17.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-19-50.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-24-37.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-25-57.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-27-31.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-36-05.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/image_inferred.jpg">
+<meta property="article:published_time" content="2020-10-10T08:37:31.000Z">
+<meta property="article:modified_time" content="2020-10-10T09:38:29.872Z">
+<meta property="article:author" content="Bella">
+<meta property="article:tag" content="TensorRT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2016-57-25.png">
+
+
+<link rel="canonical" href="https://bella722.github.io/post/f9d0431a.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>利用Google Colab成功测试TensorRT指南一 | Bella's Blog</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-176286323-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?769f4127dcca8da828bdccc3e338c7d4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Bella's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bella's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-google-drive-%E6%96%B0%E5%BB%BA%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%B9%B6%E9%85%8D%E7%BD%AEGPU"><span class="nav-number">1.</span> <span class="nav-text">在 google drive 新建笔记本并配置GPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E5%88%86%E9%85%8D%E5%BE%97%E5%88%B0%E7%9A%84GPU%E8%B5%84%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">查看所分配得到的GPU资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E4%BA%91%E7%AB%AF%E7%A1%AC%E7%9B%98"><span class="nav-number">3.</span> <span class="nav-text">挂载云端硬盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">切换工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9A%84CUDA%E7%89%88%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">查看当前的CUDA版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BUbuntu%E7%89%88%E6%9C%AC"><span class="nav-number">6.</span> <span class="nav-text">查看Ubuntu版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BTensorflow%E7%89%88%E6%9C%AC"><span class="nav-number">7.</span> <span class="nav-text">查看Tensorflow版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E5%BD%93%E5%89%8DCUDA%E7%89%88%E6%9C%AC"><span class="nav-number">8.</span> <span class="nav-text">卸载当前CUDA版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85CUDA-10-0"><span class="nav-number">9.</span> <span class="nav-text">安装CUDA 10.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nvidia%E9%A9%B1%E5%8A%A8"><span class="nav-number">10.</span> <span class="nav-text">安装nvidia驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85CUDNN"><span class="nav-number">11.</span> <span class="nav-text">安装CUDNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5CUDA%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E6%94%B9%E5%8F%98%E4%BA%86%E7%89%88%E6%9C%AC"><span class="nav-number">12.</span> <span class="nav-text">检查CUDA是否已经改变了版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85TensorRT"><span class="nav-number">13.</span> <span class="nav-text">安装TensorRT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="nav-number">14.</span> <span class="nav-text">安装依赖包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="nav-number">15.</span> <span class="nav-text">验证是否安装成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%B5%8B%E8%AF%95%EF%BC%8C%E5%85%88%E7%9C%8B%E7%9C%8Bsamples-python-uff-ssd%E4%BE%8B%E5%AD%90%E8%83%BD%E4%B8%8D%E8%83%BD%E8%BF%90%E8%A1%8C"><span class="nav-number">16.</span> <span class="nav-text">开始测试，先看看samples&#x2F;python&#x2F;uff_ssd例子能不能运行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-number">16.1.</span> <span class="nav-text">解压压缩包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3ModuleNotFoundError-No-module-named-%E2%80%98pycuda%E2%80%99"><span class="nav-number">16.2.</span> <span class="nav-text">解决ModuleNotFoundError: No module named ‘pycuda’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3ModuleNotFoundError-No-module-named-%E2%80%98graphsurgeon%E2%80%99"><span class="nav-number">16.3.</span> <span class="nav-text">解决ModuleNotFoundError: No module named ‘graphsurgeon’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3ImportError-cannot-import-name-%E2%80%98uff%E2%80%99"><span class="nav-number">16.4.</span> <span class="nav-text">解决ImportError: cannot import name ‘uff’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3ImportError-cannot-import-name-%E2%80%98NodeDef%E2%80%99"><span class="nav-number">16.5.</span> <span class="nav-text">解决ImportError: cannot import name ‘NodeDef’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">16.6.</span> <span class="nav-text">开始测试</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bella" src="/images/unnamed.jpg">
+  <p class="site-author-name" itemprop="name">Bella</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Bella722" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Bella722" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:727664970@qq.com" title="E-Mail → mailto:727664970@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Isabella_Galaxy" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Isabella_Galaxy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/galaxyzhangj" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;galaxyzhangj" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Bella722" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/f9d0431a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          利用Google Colab成功测试TensorRT指南一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-10 16:37:31 / 修改时间：17:38:29" itemprop="dateCreated datePublished" datetime="2020-10-10T16:37:31+08:00">2020-10-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/f9d0431a.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/f9d0431a.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="在-google-drive-新建笔记本并配置GPU"><a href="#在-google-drive-新建笔记本并配置GPU" class="headerlink" title="在 google drive 新建笔记本并配置GPU"></a>在 google drive 新建笔记本并配置GPU</h3><p>Colab的使用方法可以参见<a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/129663051"><font color="blue">使用Google colab免费GPU训练模型攻略</font></a></p>
+<p>创建好笔记本之后打开；</p>
+<h3 id="查看所分配得到的GPU资源"><a href="#查看所分配得到的GPU资源" class="headerlink" title="查看所分配得到的GPU资源"></a>查看所分配得到的GPU资源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2016-57-25.png"></p>
+<h3 id="挂载云端硬盘"><a href="#挂载云端硬盘" class="headerlink" title="挂载云端硬盘"></a>挂载云端硬盘</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&#x27;/content/gdrive&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输入验证码后挂载成功。</p>
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-00-25.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">project_path = <span class="string">&#x27;/content/gdrive/My Drive/Colab Notebooks/TensorRT Colab Test&#x27;</span></span><br><span class="line">os.chdir(project_path) </span><br></pre></td></tr></table></figure>
+
+<p>我的工作目录是谷歌硬盘下的Colab Notebooks下的TensorRT Colab Test文件夹</p>
+<h3 id="查看当前的CUDA版本"><a href="#查看当前的CUDA版本" class="headerlink" title="查看当前的CUDA版本"></a>查看当前的CUDA版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!nvcc --version</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-03-47.png"></p>
+<h3 id="查看Ubuntu版本"><a href="#查看Ubuntu版本" class="headerlink" title="查看Ubuntu版本"></a>查看Ubuntu版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!cat /etc/issue</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-05-02.png"></p>
+<h3 id="查看Tensorflow版本"><a href="#查看Tensorflow版本" class="headerlink" title="查看Tensorflow版本"></a>查看Tensorflow版本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">print(tf.__version__)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-06-30.png"></p>
+<p>现在我要换掉cuda cudnn 以及tensorflow的版本，所以先要卸载掉就版本。</p>
+<h3 id="卸载当前CUDA版本"><a href="#卸载当前CUDA版本" class="headerlink" title="卸载当前CUDA版本"></a>卸载当前CUDA版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">!sudo apt-get --purge remove cuda nvidia* libnvidia-*</span><br><span class="line">!sudo dpkg -l | grep cuda- | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs -n1 dpkg --purge</span><br><span class="line">!sudo apt-get remove cuda-*</span><br><span class="line">!sudo apt autoremove</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20067%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png"></p>
+<h3 id="安装CUDA-10-0"><a href="#安装CUDA-10-0" class="headerlink" title="安装CUDA 10.0"></a>安装CUDA 10.0</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb</span><br><span class="line">!sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb</span><br><span class="line">!sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub</span><br><span class="line">!sudo apt-get update</span><br><span class="line">!wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span><br><span class="line">!sudo apt install -y ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span><br><span class="line">!sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/FireShot%20Capture%20070%20-%20tensorrt%20colab%20test.ipynb%20-%20Colaboratory%20-%20colab.research.google.com.png"></p>
+<h3 id="安装nvidia驱动"><a href="#安装nvidia驱动" class="headerlink" title="安装nvidia驱动"></a>安装nvidia驱动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!sudo apt-get -y install nvidia-driver-418</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-16-41.png"></p>
+<h3 id="安装CUDNN"><a href="#安装CUDNN" class="headerlink" title="安装CUDNN"></a>安装CUDNN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">!sudo apt-get install -y \</span><br><span class="line">    cuda-10-0 \</span><br><span class="line">    libcudnn7=7.6.2.24-1+cuda10.0  \</span><br><span class="line">    libcudnn7-dev=7.6.2.24-1+cuda10.0 --allow-change-held-packages</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-18-17.png"></p>
+<h3 id="检查CUDA是否已经改变了版本"><a href="#检查CUDA是否已经改变了版本" class="headerlink" title="检查CUDA是否已经改变了版本"></a>检查CUDA是否已经改变了版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!nvcc --version</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-19-50.png"></p>
+<h3 id="安装TensorRT"><a href="#安装TensorRT" class="headerlink" title="安装TensorRT"></a>安装TensorRT</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!sudo dpkg -i <span class="string">&quot;nv-tensorrt-repo-ubuntu1804-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb&quot;</span></span><br><span class="line">!sudo apt-key add /var/nv-tensorrt-repo-cuda10.0-trt7.0.0.11-ga-20191216/7fa2af80.pub</span><br><span class="line">!sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>这里的nv-tensorrt-repo-ubuntu1804-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb是在官网根据自己系统的环境下载下来然后从本地上传到谷歌硬盘的工作目录下</p></div>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-24-37.png"></p>
+<h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!sudo apt-get install libnvinfer7=7.0.0-1+cuda10.0 libnvonnxparsers7=7.0.0-1+cuda10.0 libnvparsers7=7.0.0-1+cuda10.0 libnvinfer-plugin7=7.0.0-1+cuda10.0 libnvinfer-dev=7.0.0-1+cuda10.0 libnvonnxparsers-dev=7.0.0-1+cuda10.0 libnvparsers-dev=7.0.0-1+cuda10.0 libnvinfer-plugin-dev=7.0.0-1+cuda10.0 python-libnvinfer=7.0.0-1+cuda10.0 python3-libnvinfer=7.0.0-1+cuda10.0</span><br><span class="line"></span><br><span class="line">!sudo apt-mark hold libnvinfer7 libnvonnxparsers7 libnvparsers7 libnvinfer-plugin7 libnvinfer-dev libnvonnxparsers-dev libnvparsers-dev libnvinfer-plugin-dev python-libnvinfer python3-libnvinfer</span><br><span class="line"></span><br><span class="line">!sudo apt-get install tensorrt</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-25-57.png"></p>
+<h3 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!dpkg -l | grep TensorRT</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-27-31.png"></p>
+<h3 id="开始测试，先看看samples-python-uff-ssd例子能不能运行"><a href="#开始测试，先看看samples-python-uff-ssd例子能不能运行" class="headerlink" title="开始测试，先看看samples/python/uff_ssd例子能不能运行"></a>开始测试，先看看samples/python/uff_ssd例子能不能运行</h3><h4 id="解压压缩包"><a href="#解压压缩包" class="headerlink" title="解压压缩包"></a>解压压缩包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!tar zxvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.0.cudnn7.6.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>这里的TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.0.cudnn7.6.tar.gz也是在官网下载后直接上传到网盘的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!python uff_ssd/detect_objects.py</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>这里可能会遇到几个问题，特此说明解决办法如下</p></div>
+
+<h4 id="解决ModuleNotFoundError-No-module-named-‘pycuda’"><a href="#解决ModuleNotFoundError-No-module-named-‘pycuda’" class="headerlink" title="解决ModuleNotFoundError: No module named ‘pycuda’"></a>解决ModuleNotFoundError: No module named ‘pycuda’</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install pycuda</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ModuleNotFoundError-No-module-named-‘graphsurgeon’"><a href="#解决ModuleNotFoundError-No-module-named-‘graphsurgeon’" class="headerlink" title="解决ModuleNotFoundError: No module named ‘graphsurgeon’"></a>解决ModuleNotFoundError: No module named ‘graphsurgeon’</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install graphsurgeon-0.4.1-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ImportError-cannot-import-name-‘uff’"><a href="#解决ImportError-cannot-import-name-‘uff’" class="headerlink" title="解决ImportError: cannot import name ‘uff’"></a>解决ImportError: cannot import name ‘uff’</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install uff-0.6.5-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决ImportError-cannot-import-name-‘NodeDef’"><a href="#解决ImportError-cannot-import-name-‘NodeDef’" class="headerlink" title="解决ImportError: cannot import name ‘NodeDef’"></a>解决ImportError: cannot import name ‘NodeDef’</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!pip uninstall tensorflow</span><br><span class="line">!pip install tensorflow-gpu==1.14.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!python TensorRT-7.0.0.11/samples/python/uff_ssd/detect_objects.py TensorRT-7.0.0.11/samples/python/uff_ssd/images/image2.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-36-05.png"><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/image_inferred.jpg"></p>
+<div class="note danger"><p>后面就是以批量图像测试对比推理耗时。</p></div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/f9d0431a.html" title="利用Google Colab成功测试TensorRT指南一">https://bella722.github.io/post/f9d0431a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/TensorRT/" rel="tag"><i class="fa fa-tag"></i> TensorRT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/f524ef1f.html" rel="prev" title="TensorRT成功测试自己的数据集SSD模型四">
+                  <i class="fa fa-chevron-left"></i> TensorRT成功测试自己的数据集SSD模型四
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isabella</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/post/f9d0431a.html",
+    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

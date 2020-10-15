@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-10-12T01:19:30.903Z</updated>
+  <updated>2020-10-15T09:36:04.356Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用Google-Colab成功测试TensorRT指南二</title>
+    <link href="https://bella722.github.io/post/4f1188dc.html"/>
+    <id>https://bella722.github.io/post/4f1188dc.html</id>
+    <published>2020-10-15T07:33:43.000Z</published>
+    <updated>2020-10-15T09:36:04.356Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
   
   <entry>
     <title>利用Google Colab成功测试TensorRT指南一</title>
@@ -43,7 +65,7 @@
     <link href="https://bella722.github.io/post/f524ef1f.html"/>
     <id>https://bella722.github.io/post/f524ef1f.html</id>
     <published>2020-10-09T05:44:58.000Z</published>
-    <updated>2020-10-12T00:53:11.768Z</updated>
+    <updated>2020-10-15T09:30:50.649Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;

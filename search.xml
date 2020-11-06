@@ -10,6 +10,8 @@
 
 <a id="more"></a>
 
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="red">Next 8.0 进阶美化篇一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="blue">Next 8.0 进阶美化篇二</font></a> </p>
 <h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
 <div class="note default"><p>这里输入文字</p></div>
 
@@ -126,8 +128,17 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="blue">Next 8.0 进阶美化篇一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="red">Next 8.0 进阶美化篇二</font></a> </p>
 <p>我的next版本为8.0，这里先贴出我最终实现的首页样式。</p>
 <p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/FireShot%20Capture%20039%20-%20Bella's%20Blog%20-%20localhost.png" alt="Bella&#39;s Blog"></p>
+<h3 id="去除首页文章间隔与短横线"><a href="#去除首页文章间隔与短横线" class="headerlink" title="去除首页文章间隔与短横线"></a>去除首页文章间隔与短横线</h3><p>原版首页文章之间是以间距与一条短横线作为分文标记的</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-46-49.png"></p>
+<p>这里我不需要这个就需要把它删掉，这里要改的地方是Bolg/themes/next/source/css/_common/components/post下的post-footer.styl文件，具体如下：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-44-04.png"></p>
+<p>注释后可以预览效果</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-49-06.png"></p>
+<p>接下来就是自定义美化内容了</p>
 <h3 id="自定义首页背景图片"><a href="#自定义首页背景图片" class="headerlink" title="自定义首页背景图片"></a>自定义首页背景图片</h3><p><span id="inline-toc"><b>1. </b></span>在styles.styl里自定义post, 添加背景图象</p>
 <figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/全局布局美化代码</span></span><br><span class="line"><span class="regexp">body &#123;</span></span><br><span class="line"><span class="regexp">    background-image:url(/images</span><span class="regexp">/Background.jpg);</span></span><br><span class="line"><span class="regexp">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="regexp">    background-attachment: fixed;</span></span><br><span class="line"><span class="regexp">    background-position: center;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -172,6 +183,11 @@
 </blockquote>
 
 <a id="more"></a>
+
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="red">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>首先，给出我自己的软件环境及各个版本号。</p>
 <table>
 <thead>
@@ -252,6 +268,10 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="red">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
 <h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
 <li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
 <li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
@@ -305,6 +325,10 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="red">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
 <h3 id="检测结果"><a href="#检测结果" class="headerlink" title="检测结果"></a>检测结果</h3><table>
     <tr>
         <td colspan="12"><font color=red><center>单张推理结果</center></font></td>
@@ -532,6 +556,8 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="red">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
 <h3 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h3><p>​    软件中心搜索qv2ray安装</p>
 <p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-10.png"></p>
 <h3 id="配置客户端"><a href="#配置客户端" class="headerlink" title="配置客户端"></a>配置客户端</h3><h4 id="从应用列表将app右键添加到主页最常用应用栏"><a href="#从应用列表将app右键添加到主页最常用应用栏" class="headerlink" title="从应用列表将app右键添加到主页最常用应用栏"></a>从应用列表将app右键添加到主页最常用应用栏</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-17-24.png"></p>
@@ -567,6 +593,9 @@
 
 <a id="more"></a>
 
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/1a71c089.html"><font color="red">Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/bb2ec196.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API训练自己的数据</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/e88b7107.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API测试自己的数据</font></a> </p>
 <h3 id="新建一个名为TensorFlow的文件夹"><a href="#新建一个名为TensorFlow的文件夹" class="headerlink" title="新建一个名为TensorFlow的文件夹"></a>新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir TensorFlow</span><br></pre></td></tr></table></figure>
 
 
@@ -644,6 +673,9 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/1a71c089.html"><font color="blue">Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/bb2ec196.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API训练自己的数据</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/e88b7107.html"><font color="red">Ubuntu下用TensorFlow Object Detection API测试自己的数据</font></a> </p>
 <p>经过之前的训练后，会在workspace/training_demo/models/my_ssd_inception_v2保存最终生成的模型文件。</p>
 <p><img data-src="../images/Ubuntu%E4%B8%8B%E5%88%A9%E7%94%A8TensorFlow-Object-Detection-API%E6%B5%8B%E8%AF%95%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B/Screenshot%20from%202020-09-02%2015-34-14.png"></p>
 <p>准备好你要测试的图像文件，接下来我们开始测试。</p>
@@ -678,6 +710,8 @@
 
 <a id="more"></a>
 
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="red">Windows下成功配置Qv2ray</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="blue">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
 <h3 id="安装图像界面"><a href="#安装图像界面" class="headerlink" title="安装图像界面"></a>安装图像界面</h3><p><a href="https://github.com/Qv2ray/Qv2ray/releases"><font color=blue>EXE下载地址</font></a></p>
 <p>根据你自己的<font color=red>环境</font>选择对应的exe，下载成功后直接双击傻瓜式安装，选择在桌面建立快捷方式，完成即可</p>
 <p><img data-src="../images/Windows%E4%B8%8B%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85QV2Ray/FireShot%20Capture%20003%20-%20Releases%20%C2%B7%20Qv2ray_Qv2ray%20-%20github.com.png"></p>
@@ -742,6 +776,8 @@
 
 <a id="more"></a>
 
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/f9d0431a.html"><font color="red">利用Google Colab成功测试TensorRT指南一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f1188dc.html"><font color="blue">利用Google Colab成功测试TensorRT指南二</font></a> </p>
 <h3 id="在-google-drive-新建笔记本并配置GPU"><a href="#在-google-drive-新建笔记本并配置GPU" class="headerlink" title="在 google drive 新建笔记本并配置GPU"></a>在 google drive 新建笔记本并配置GPU</h3><p>Colab的使用方法可以参见<a href="https://zhuanlan.zhihu.com/p/129663051"><font color="blue">使用Google colab免费GPU训练模型攻略</font></a></p>
 <p>创建好笔记本之后打开；</p>
 <h3 id="查看所分配得到的GPU资源"><a href="#查看所分配得到的GPU资源" class="headerlink" title="查看所分配得到的GPU资源"></a>查看所分配得到的GPU资源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">!nvidia-smi</span><br></pre></td></tr></table></figure>
@@ -829,6 +865,8 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f9d0431a.html"><font color="blue">利用Google Colab成功测试TensorRT指南一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f1188dc.html"><font color="red">利用Google Colab成功测试TensorRT指南二</font></a> </p>
 <h3 id="分配得到的环境"><a href="#分配得到的环境" class="headerlink" title="分配得到的环境"></a>分配得到的环境</h3><h4 id="Tesla-K80"><a href="#Tesla-K80" class="headerlink" title="Tesla K80"></a>Tesla K80</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png" alt="Tesla K80"></p>
 <h4 id="Tesla-P4"><a href="#Tesla-P4" class="headerlink" title="Tesla P4"></a>Tesla P4</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P4.png" alt="Tesla P4"></p>
 <h4 id="Tesla-P100"><a href="#Tesla-P100" class="headerlink" title="Tesla P100"></a>Tesla P100</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P100.png" alt="Tesla P100"></p>
@@ -994,6 +1032,10 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="red">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
 <h3 id="首先新建一个名为TensorFlow文件夹"><a href="#首先新建一个名为TensorFlow文件夹" class="headerlink" title="首先新建一个名为TensorFlow文件夹"></a>首先新建一个名为TensorFlow文件夹</h3><p>然后定位到该文件夹内</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> TensorFlow</span><br></pre></td></tr></table></figure>
 
@@ -1081,6 +1123,9 @@
 
 <a id="more"></a>
 
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/1a71c089.html"><font color="blue">Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/bb2ec196.html"><font color="red">Ubuntu下用TensorFlow Object Detection API训练自己的数据</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/e88b7107.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API测试自己的数据</font></a> </p>
 <p>如果你是跟着我之前的教程配置过来的，那相信你目前已经有一个名为Tensorflow的文件夹了，且包含的内容具体如下：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">TensorFlow/</span></span><br><span class="line"><span class="string">└─</span> <span class="string">models/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">community/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">official/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">orbit/</span></span><br><span class="line">   <span class="string">├─</span> <span class="string">research/</span></span><br><span class="line">   <span class="string">└─</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
 

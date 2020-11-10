@@ -25,28 +25,16 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="利用Google-Colab成功测试TensorRT指南二">
-<meta property="og:url" content="https://bella722.github.io/post/4f1188dc.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Bella&#39;s Blog">
+<meta property="og:url" content="https://bella722.github.io/archives/2020/11/index.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P4.png">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P100.png">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20T4.png">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/avg-1602753935076.png">
-<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/sum.png">
-<meta property="article:published_time" content="2020-10-15T07:33:43.000Z">
-<meta property="article:modified_time" content="2020-11-06T02:41:37.528Z">
 <meta property="article:author" content="Bella">
-<meta property="article:tag" content="TensorRT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png">
 
 
-<link rel="canonical" href="https://bella722.github.io/post/4f1188dc.html">
+<link rel="canonical" href="https://bella722.github.io/archives/2020/11/">
 
 
 <script class="page-configurations">
@@ -54,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>利用Google-Colab成功测试TensorRT指南二 | Bella's Blog</title>
+  <title>归档 | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -250,7 +238,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -262,7 +250,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E5%BE%97%E5%88%B0%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">分配得到的环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-K80"><span class="nav-number">1.1.</span> <span class="nav-text">Tesla K80</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-P4"><span class="nav-number">1.2.</span> <span class="nav-text">Tesla P4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-P100"><span class="nav-number">1.3.</span> <span class="nav-text">Tesla P100</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-T4"><span class="nav-number">1.4.</span> <span class="nav-text">Tesla T4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">2.</span> <span class="nav-text">批量测试结果</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -338,318 +325,55 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner archive posts-collapse">
       
 
       
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/4f1188dc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          利用Google-Colab成功测试TensorRT指南二
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-15 15:33:43" itemprop="dateCreated datePublished" datetime="2020-10-15T15:33:43+08:00">2020-10-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:41:37" itemprop="dateModified" datetime="2020-11-06T10:41:37+08:00">2020-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
-        </span>
-    </span>
-
   
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/4f1188dc.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/4f1188dc.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>823</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <blockquote class="blockquote-center">
-<p>继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f9d0431a.html"><font color="blue">利用Google Colab成功测试TensorRT指南一</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f1188dc.html"><font color="red">利用Google Colab成功测试TensorRT指南二</font></a> </p>
-<h3 id="分配得到的环境"><a href="#分配得到的环境" class="headerlink" title="分配得到的环境"></a>分配得到的环境</h3><h4 id="Tesla-K80"><a href="#Tesla-K80" class="headerlink" title="Tesla K80"></a>Tesla K80</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png" alt="Tesla K80"></p>
-<h4 id="Tesla-P4"><a href="#Tesla-P4" class="headerlink" title="Tesla P4"></a>Tesla P4</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P4.png" alt="Tesla P4"></p>
-<h4 id="Tesla-P100"><a href="#Tesla-P100" class="headerlink" title="Tesla P100"></a>Tesla P100</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P100.png" alt="Tesla P100"></p>
-<h4 id="Tesla-T4"><a href="#Tesla-T4" class="headerlink" title="Tesla T4"></a>Tesla T4</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20T4.png" alt="Tesla T4"></p>
-<h3 id="批量测试结果"><a href="#批量测试结果" class="headerlink" title="批量测试结果"></a>批量测试结果</h3><table>
-    <tr>
-        <td colspan="9"><font color="red"><center>批量推理结果</center></font></td>
-    </tr>
-    <tr>
-        <td colspan="9"><center>Image size(8k×40k), 预测裁剪小图size(300×300)，w方向：8000/300=26，h方向：40000/300= 133，裁剪生成的小图有：26×133 = 3458张</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center></center></td>
-        <td colspan="2"><center>Tesla K80</center></td>
-        <td colspan="2"><center>Tesla P4</center></td>
-        <td colspan="2"><center>Tesla P100</center></td>
-        <td colspan="2"><center>Tesla T4</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>batch size</center></td>
-        <td colspan="1"><center>avg time(ms)</center></td>
-        <td colspan="1"><center>tol time(ms)</center></td>
-        <td colspan="1"><center>avg time(ms)</center></td>
-        <td colspan="1"><center>tol time(ms)</center></td>
-        <td colspan="1"><center>avg time(ms)</center></td>
-        <td colspan="1"><center>tol time(ms)</center></td>
-        <td colspan="1"><center>avg time(ms)</center></td>
-        <td colspan="1"><center>tol time(ms)</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>13</center></td>
-        <td colspan="1"><center>104.39</center></td>
-        <td colspan="1"><center>28083</center></td>
-        <td colspan="1"><center>41.78</center></td>
-        <td colspan="1"><center>11241</center></td>
-        <td colspan="1"><center>23.42</center></td>
-        <td colspan="1"><center>6302</center></td>
-        <td colspan="1"><center>55.01</center></td>
-        <td colspan="1"><center>14799</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>26</center></td>
-        <td colspan="1"><center>207.29</center></td>
-        <td colspan="1"><center>27985</center></td>
-        <td colspan="1"><center>67</center></td>
-        <td colspan="1"><center>9046</center></td>
-        <td colspan="1"><center></center></td>
-        <td colspan="1"><center></center></td>
-        <td colspan="1"><center>83.85</center></td>
-        <td colspan="1"><center>11321</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>38</center></td>
-        <td colspan="1"><center>297.91</center></td>
-        <td colspan="1"><center>27408</center></td>
-        <td colspan="1"><center>96.25</center></td>
-        <td colspan="1"><center>8855</center></td>
-        <td colspan="1"><center></center></td>
-        <td colspan="1"><center></center></td>
-        <td colspan="1"><center>88.05</center></td>
-        <td colspan="1"><center>8101</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>70</center></td>
-        <td colspan="1"><center>515.76</center></td>
-        <td colspan="1"><center>25788</center></td>
-        <td colspan="1"><center>175.18</center></td>
-        <td colspan="1"><center>8759</center></td>
-        <td colspan="1"><center>98.42</center></td>
-        <td colspan="1"><center>4921</center></td>
-        <td colspan="1"><center>161.22</center></td>
-        <td colspan="1"><center>8061</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>91</center></td>
-        <td colspan="1"><center>665.23</center></td>
-        <td colspan="1"><center>25944</center></td>
-        <td colspan="1"><center>224.12</center></td>
-        <td colspan="1"><center>8741</center></td>
-        <td colspan="1"><center>127.46</center></td>
-        <td colspan="1"><center>4971</center></td>
-        <td colspan="1"><center>222.69</center></td>
-        <td colspan="1"><center>8685</center></td>
-    </tr>
-    <tr>
-        <td colspan="1"><center>133</center></td>
-        <td colspan="1"><center>972.25</center></td>
-        <td colspan="1"><center>26251</center></td>
-        <td colspan="1"><center>329.07</center></td>
-        <td colspan="1"><center>8885</center></td>
-        <td colspan="1"><center>184.25</center></td>
-        <td colspan="1"><center>4975</center></td>
-        <td colspan="1"><center>375.88</center></td>
-        <td colspan="1"><center>10149</center></td>
-    </tr>
-</table>
-
-<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/avg-1602753935076.png"></p>
-<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/sum.png"></p>
-<div class="note info">
-    <p>
-    结论：
-        1.就目前的测试结果来看，不同显卡的加速耗时是有挺大区别的，并且与batch的大小有关，所以要获取最优的时间，需要尝试不同的batch size;
-        2.对于云计算的环境，计算时长比本地还是有些差距，究其原因还需要思考，是否更优的显卡能获取更好的测试结果，只能再多测以结果为准了。
-    </p>
-</div>
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>Buy me a coffee</div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechat.png" alt="Bella 微信">
-        <span>微信</span>
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 17 篇日志。 继续努力。</span>
       </div>
 
-  </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Bella
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://bella722.github.io/post/4f1188dc.html" title="利用Google-Colab成功测试TensorRT指南二">https://bella722.github.io/post/4f1188dc.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-          
-
-  <div class="followme">
-    <span>欢迎关注我的其它发布渠道</span>
-
-    <div class="social-list">
-
-        <div class="social-item">
-          <a target="_blank" class="social-link" href="/images/wechat.png">
-            <span class="icon">
-              <i class="fab fa-weixin"></i>
-            </span>
-
-            <span class="label">WeChat</span>
-          </a>
-        </div>
-
-        <div class="social-item">
-          <a target="_blank" class="social-link" href="/atom.xml">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-
-            <span class="label">RSS</span>
-          </a>
-        </div>
+      
+    <div class="collection-year">
+      <span class="collection-header">2020</span>
     </div>
-  </div>
 
-          <div class="post-tags">
-              <a href="/tags/TensorRT/" rel="tag"><i class="fa fa-tag"></i> TensorRT</a>
-          </div>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated" datetime="2020-11-10T17:25:16+08:00" content="2020-11-10">
+          11-10
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/post/575cdcda.html" itemprop="url">
+            <span itemprop="name">关于TensorRT和TF-TRT的一些事儿</span>
+          </a>
+      </div>
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/post/f9d0431a.html" rel="prev" title="利用Google Colab成功测试TensorRT指南一">
-                  <i class="fa fa-chevron-left"></i> 利用Google Colab成功测试TensorRT指南一
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/post/575cdcda.html" rel="next" title="关于TensorRT和TF-TRT的一些事儿">
-                  关于TensorRT和TF-TRT的一些事儿 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
 
       
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -827,7 +551,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/post/4f1188dc.html",
+      path: "/archives/2020/11/",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

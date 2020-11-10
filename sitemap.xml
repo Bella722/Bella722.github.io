@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bella722.github.io/post/575cdcda.html</loc>
+    
+    <lastmod>2020-11-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/post/74c4f787.html</loc>
+    
+    <lastmod>2020-11-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/post/4f1188dc.html</loc>
     
     <lastmod>2020-11-06</lastmod>
@@ -73,13 +87,6 @@
   
   <url>
     <loc>https://bella722.github.io/post/c02a3ba5.html</loc>
-    
-    <lastmod>2020-11-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/post/74c4f787.html</loc>
     
     <lastmod>2020-11-06</lastmod>
     
@@ -172,7 +179,7 @@
 
   <url>
     <loc>https://bella722.github.io/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -180,35 +187,42 @@
   
   <url>
     <loc>https://bella722.github.io/tags/Hexo/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/tags/TensorRT/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/tags/Qv2ray/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/tags/Ubuntu/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/tags/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/</loc>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -217,35 +231,35 @@
   
   <url>
     <loc>https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

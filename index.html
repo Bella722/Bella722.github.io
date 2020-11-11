@@ -363,10 +363,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-11-10 17:25:16 / 修改时间：17:30:09" itemprop="dateCreated datePublished" datetime="2020-11-10T17:25:16+08:00">2020-11-10</time>
+      <time title="创建时间：2020-11-10 17:25:16" itemprop="dateCreated datePublished" datetime="2020-11-10T17:25:16+08:00">2020-11-10</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-11 09:23:19" itemprop="dateModified" datetime="2020-11-11T09:23:19+08:00">2020-11-11</time>
+      </span>
 
   
   
@@ -390,7 +396,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -408,127 +414,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="TensorRT简介"><a href="#TensorRT简介" class="headerlink" title="TensorRT简介"></a>TensorRT简介</h3><p>TensorRT是NVIDIA 推出的基于CUDA和cudnn的进行高性能推理（Inference）加速引擎。</p>
-<p>●曾用名：GPU Inference Engine（GIE）</p>
-<p> ●Tensor：表示数据流动以张量的形式</p>
-<p>●RT：Runtime</p>
-<h3 id="训练阶段优化方法"><a href="#训练阶段优化方法" class="headerlink" title="训练阶段优化方法"></a>训练阶段优化方法</h3><ol>
-<li><p>外部数据：数据增强</p>
-<p>其中具体方式有：平移、 翻转、噪声、对比度、缩放、尺度变换</p>
-</li>
-<li><p>内部网络：</p>
-<ol>
-<li><p>一阶优化：</p>
-<ol>
-<li>梯度下降：随机梯度下降、批量梯度下降、小批量梯度下降</li>
-<li>权重初始化</li>
-<li>批规范化</li>
-<li>Dropout</li>
-<li>动量法：AdaGrad      RMSProp      AdaDeita      Adam</li>
-</ol>
-</li>
-<li><p>分治法：</p>
-<ol>
-<li>坐标下降法</li>
-<li>SMO</li>
-<li>分阶段优化</li>
-</ol>
-</li>
-<li><p>二阶优化：</p>
-<ol>
-<li><p>牛顿法</p>
-</li>
-<li><p>拟牛顿法</p>
-</li>
-<li><p>可信域牛顿</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<p><img data-src="../images/%E5%85%B3%E4%BA%8ETensorRT%E5%92%8CTF-TRT%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E5%84%BF/%E8%AE%AD%E7%BB%83%E4%BC%98%E5%8C%96.png" alt="训练优化"></p>
-<h3 id="推理阶段优化方法"><a href="#推理阶段优化方法" class="headerlink" title="推理阶段优化方法"></a>推理阶段优化方法</h3><ol>
-<li><p>模型压缩：</p>
-<ol>
-<li>前端压缩：<ol>
-<li>知识蒸馏</li>
-<li>模型紧凑结构化</li>
-<li>滤波器剪枝</li>
-</ol>
-</li>
-<li>后端压缩：<ol>
-<li>低秩近似：矩阵分解、分组卷积、卷积分解</li>
-<li>网络二值化</li>
-<li>参数量化</li>
-<li>随机剪枝：突触剪枝、神经元剪枝、权重矩阵剪枝</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>优化推理引擎</p>
-<ol>
-<li><p>TVM</p>
-</li>
-<li><p>TensorRT</p>
-</li>
-<li><p>OpenVINO</p>
-</li>
-</ol>
-</li>
-</ol>
-<p><img data-src="../images/%E5%85%B3%E4%BA%8ETensorRT%E5%92%8CTF-TRT%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E5%84%BF/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96.png" alt="推理优化"></p>
-<h3 id="TensorRT加速原理"><a href="#TensorRT加速原理" class="headerlink" title="TensorRT加速原理"></a>TensorRT加速原理</h3><h4 id="TensorRT优化方式"><a href="#TensorRT优化方式" class="headerlink" title="TensorRT优化方式"></a>TensorRT优化方式</h4><ol>
-<li>权重与激活精度校准：通过将模型量化为 INT8 来更大限度地提高吞吐量，同时保持高准确度</li>
-<li>层与张量融合：通过融合内核中的节点，优化 GPU 显存和带宽的使用</li>
-<li>内核自动调整：基于目标 GPU 平台选择最佳数据层和算法</li>
-<li>动态张量显存：更大限度减少显存占用，并高效地为张量重复利用内存</li>
-<li>多流执行：用于并行处理多个输入流的可扩展设计</li>
-</ol>
-<h4 id="优化方式的可行性分析"><a href="#优化方式的可行性分析" class="headerlink" title="优化方式的可行性分析"></a>优化方式的可行性分析</h4><ol>
-<li>样本数据中存在角度、目标位置、目标姿态以及数据噪声，通过训练，我们获得具有强鲁棒性的模型，该模型对噪声有一定的容忍度。所以当进行推理时，我们便可以将FP32数据转低精度执行，引起的误差视为引入噪声，噪声引进的变动同样会使各个层的激活值输出发生变动，然而却对结果影响不大，所以以低精度推理是可行的；</li>
-<li>推理中的时间消耗主要集中在：<ol>
-<li>每次启动CUDA核心需要大量时间</li>
-<li>每一层输入/输出张量的读写耗时<br>所以按照一般推理工作流，数据流经每一层都需要输入输出以及调用，势必造成时间线越拉越长，因此层与张量融合就是通过聚合具有足够相似参数和相同源张量的operations，减少调用CUDA次数，将零碎数据整理到一起传输，减少向CPU传输次数，最终实现减少横向时间</li>
-</ol>
-</li>
-<li>在每个tensor的使用期间，TensorRT会为其指定显存，避免显存重复申请，减少内存占用和提高重复使用效率</li>
-<li>TensorRT里边调用了一些方法，以一个最合理的方式去调用、操作这些数据</li>
-<li>CUDA多流执行把数据在传输过程中进行计算，隐藏了传输部分</li>
-</ol>
-<h3 id="TensorRT-amp-TF-TRT"><a href="#TensorRT-amp-TF-TRT" class="headerlink" title="TensorRT &amp; TF-TRT"></a>TensorRT &amp; TF-TRT</h3><ol>
-<li><p>TensorRT是由NVIDIA开发，而TF-TRT是由NVIDIA和Google TensorFlow团队共同开发</p>
-</li>
-<li><p>TensorRT的当前版本支持3种“解析器”：Caffe，UFF和ONNX。根据<a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.nvidia.com/deeplearning/sdk/tensorrt-release-notes/tensorrt-7.html#rel_7-0-0">TensorRT 7.0.0发行说明中</a>的“弃用Caffe解析器和UFF解析器”，不建议使用Caffe和UFF解析器，首选ONNX解析器</p>
-</li>
-<li><p>为了优化TensorFlow模型，您可以选择将pb转换为UFF或ONNX，然后转换为TensorRT引擎。如果模型中的某些层不被TensorRT支持（<a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.nvidia.com/deeplearning/sdk/tensorrt-support-matrix/index.html#layers-matrix">请查看此表</a>），则可以：</p>
-<ol>
-<li>用插件替换这些层；</li>
-<li>在构建TensorRT引擎时不要包括这些层，而是获取TensorRT引擎输出并进行处理以后再完成这些层的功能</li>
-</ol>
-</li>
-<li><p>TF-TRT的优缺点：</p>
-<p>​    优点：</p>
-<ol>
-<li>API易于使用；</li>
-<li>无需担心插件。</li>
-</ol>
-<p>​    缺点：</p>
-<ol>
-<li>需要将整个TensorFlow库存储在平台中（这对部署环境不利）</li>
-<li>需要在运行时将TensorFlow加载到内存中</li>
-<li>通常比纯TensorRT引擎运行慢</li>
-</ol>
-</li>
-<li><p>UFF TensorRT引擎的运行速度通常比TF-TRT优化图快得多，原因可能如下：</p>
-<ol>
-<li>在整个图上进行优化，而不仅仅是在图的单个节点或部分上。TF-TRT是针对部分优化，而TensorRT是对整个计算图做优化；</li>
-<li>基于计算图不同的优化方式，所以在后续选择版精度FP16甚至INT8时，在TF-TRT情况下也仅在图形的某些优化部分上进行FP16/INT8计算</li>
-<li>TensorRT在对CUDA内核的选取上有自己设计的优化机制，可以根据数据size\shape自动选取适合的CUDA内核，所以相较TF-TRT也是节省了时间</li>
-</ol>
-</li>
-</ol>
+          <blockquote class="blockquote-center">
+<p>近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看</p>
 
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/575cdcda.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

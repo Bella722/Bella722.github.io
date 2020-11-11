@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2020-11-10T09:30:09.851Z</updated>
+  <updated>2020-11-11T01:23:19.388Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="https://bella722.github.io/post/575cdcda.html"/>
     <id>https://bella722.github.io/post/575cdcda.html</id>
     <published>2020-11-10T09:25:16.000Z</published>
-    <updated>2020-11-10T09:30:09.851Z</updated>
+    <updated>2020-11-11T01:23:19.388Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;TensorRT简介&quot;&gt;&lt;a href=&quot;#TensorRT简介&quot; class=&quot;headerlink&quot; title=&quot;TensorRT简介&quot;&gt;&lt;/a&gt;TensorRT简介&lt;/h3&gt;&lt;p&gt;TensorRT是NVIDIA</summary>
-        
-      
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
     
     
     

@@ -1,62 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Next 8.0 进阶美化篇二</title>
-    <url>/post/4f44d92e.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
-
-</blockquote>       
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="blue">Next 8.0 进阶美化篇一</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="red">Next 8.0 进阶美化篇二</font></a> </p>
-<p>我的next版本为8.0，这里先贴出我最终实现的首页样式。</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/FireShot%20Capture%20039%20-%20Bella's%20Blog%20-%20localhost.png" alt="Bella&#39;s Blog"></p>
-<h3 id="去除首页文章间隔与短横线"><a href="#去除首页文章间隔与短横线" class="headerlink" title="去除首页文章间隔与短横线"></a>去除首页文章间隔与短横线</h3><p>原版首页文章之间是以间距与一条短横线作为分文标记的</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-46-49.png"></p>
-<p>这里我不需要这个就需要把它删掉，这里要改的地方是Bolg/themes/next/source/css/_common/components/post下的post-footer.styl文件，具体如下：</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-44-04.png"></p>
-<p>注释后可以预览效果</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-49-06.png"></p>
-<p>接下来就是自定义美化内容了</p>
-<h3 id="自定义首页背景图片"><a href="#自定义首页背景图片" class="headerlink" title="自定义首页背景图片"></a>自定义首页背景图片</h3><p><span id="inline-toc"><b>1. </b></span>在styles.styl里自定义post, 添加背景图象</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/全局布局美化代码</span></span><br><span class="line"><span class="regexp">body &#123;</span></span><br><span class="line"><span class="regexp">    background-image:url(/images</span><span class="regexp">/Background.jpg);</span></span><br><span class="line"><span class="regexp">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="regexp">    background-attachment: fixed;</span></span><br><span class="line"><span class="regexp">    background-position: center;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><span id="inline-red"> 这里的images为Bolg/themes/next/source/images </span></p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-11-00.png" alt="before"></p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-12-01.png" alt="after"></p>
-<p><span id="inline-toc"><b>2. </b></span>预览时又发现next自身设置的背景有个main-inner的属性，颜色是继承post content color，所以我们的思路是自定义main-inner的background-color</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>rgba(255, 255, 255, 0)里的0代表透明度大小，值在0-1之间，0为全透明。再次预览发现此时文章的背景也为透明了。</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-21.png" alt="before"></p>
-<p>那为了突出文章，我们想让它的颜色透明度为1，那就再次自定义一下，加上之前我们设置过每篇文章的边框，所以我们直接在post-block里加上background-color设置。</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        margin-<span class="symbol">top:</span> <span class="number">24</span>px;</span><br><span class="line">        margin-<span class="symbol">bottom:</span> <span class="number">24</span>px;</span><br><span class="line">        <span class="symbol">padding:</span> <span class="number">20</span>px;</span><br><span class="line">        border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">        box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-58.png" alt="after"></p>
-<h3 id="调整组件位置"><a href="#调整组件位置" class="headerlink" title="调整组件位置"></a>调整组件位置</h3><p>这时发现post-block的位置距离顶端有些距离，看起来不美观，</p>
-<p>所以这里就把main-inner的padding顶部置0, 并注释post-block的margin-top</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="symbol">padding:</span> 0px <span class="number">40</span>px <span class="number">40</span>px <span class="number">40</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-16-20.png"></p>
-<p>post-block的内容太靠近边框了，那就用padding集中一下</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        /<span class="regexp">/margin-top: 24px;</span></span><br><span class="line"><span class="regexp">        margin-bottom: 24px;</span></span><br><span class="line"><span class="regexp">        padding: 20px;</span></span><br><span class="line"><span class="regexp">        border-radius: 30px 50px 30px 50px;</span></span><br><span class="line"><span class="regexp">        box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-17-06.png"></p>
-<h3 id="组件边框椭圆化"><a href="#组件边框椭圆化" class="headerlink" title="组件边框椭圆化"></a>组件边框椭圆化</h3><figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br><span class="line">.sidebar-inner&#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);    </span><br><span class="line">&#125;</span><br><span class="line">.pagination &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">80</span>px <span class="number">30</span>px <span class="number">80</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-18-11.png"></p>
-]]></content>
-      <categories>
-        <category>小白学搭Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Next 8.0 进阶美化篇一</title>
     <url>/post/74c4f787.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -166,6 +110,62 @@
 
 
 
+]]></content>
+      <categories>
+        <category>小白学搭Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <url>/post/4f44d92e.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
+
+</blockquote>       
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="blue">Next 8.0 进阶美化篇一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="red">Next 8.0 进阶美化篇二</font></a> </p>
+<p>我的next版本为8.0，这里先贴出我最终实现的首页样式。</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/FireShot%20Capture%20039%20-%20Bella's%20Blog%20-%20localhost.png" alt="Bella&#39;s Blog"></p>
+<h3 id="去除首页文章间隔与短横线"><a href="#去除首页文章间隔与短横线" class="headerlink" title="去除首页文章间隔与短横线"></a>去除首页文章间隔与短横线</h3><p>原版首页文章之间是以间距与一条短横线作为分文标记的</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-46-49.png"></p>
+<p>这里我不需要这个就需要把它删掉，这里要改的地方是Bolg/themes/next/source/css/_common/components/post下的post-footer.styl文件，具体如下：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-44-04.png"></p>
+<p>注释后可以预览效果</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-49-06.png"></p>
+<p>接下来就是自定义美化内容了</p>
+<h3 id="自定义首页背景图片"><a href="#自定义首页背景图片" class="headerlink" title="自定义首页背景图片"></a>自定义首页背景图片</h3><p><span id="inline-toc"><b>1. </b></span>在styles.styl里自定义post, 添加背景图象</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/全局布局美化代码</span></span><br><span class="line"><span class="regexp">body &#123;</span></span><br><span class="line"><span class="regexp">    background-image:url(/images</span><span class="regexp">/Background.jpg);</span></span><br><span class="line"><span class="regexp">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="regexp">    background-attachment: fixed;</span></span><br><span class="line"><span class="regexp">    background-position: center;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><span id="inline-red"> 这里的images为Bolg/themes/next/source/images </span></p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-11-00.png" alt="before"></p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-12-01.png" alt="after"></p>
+<p><span id="inline-toc"><b>2. </b></span>预览时又发现next自身设置的背景有个main-inner的属性，颜色是继承post content color，所以我们的思路是自定义main-inner的background-color</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>rgba(255, 255, 255, 0)里的0代表透明度大小，值在0-1之间，0为全透明。再次预览发现此时文章的背景也为透明了。</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-21.png" alt="before"></p>
+<p>那为了突出文章，我们想让它的颜色透明度为1，那就再次自定义一下，加上之前我们设置过每篇文章的边框，所以我们直接在post-block里加上background-color设置。</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        margin-<span class="symbol">top:</span> <span class="number">24</span>px;</span><br><span class="line">        margin-<span class="symbol">bottom:</span> <span class="number">24</span>px;</span><br><span class="line">        <span class="symbol">padding:</span> <span class="number">20</span>px;</span><br><span class="line">        border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">        box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-58.png" alt="after"></p>
+<h3 id="调整组件位置"><a href="#调整组件位置" class="headerlink" title="调整组件位置"></a>调整组件位置</h3><p>这时发现post-block的位置距离顶端有些距离，看起来不美观，</p>
+<p>所以这里就把main-inner的padding顶部置0, 并注释post-block的margin-top</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="symbol">padding:</span> 0px <span class="number">40</span>px <span class="number">40</span>px <span class="number">40</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-16-20.png"></p>
+<p>post-block的内容太靠近边框了，那就用padding集中一下</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        /<span class="regexp">/margin-top: 24px;</span></span><br><span class="line"><span class="regexp">        margin-bottom: 24px;</span></span><br><span class="line"><span class="regexp">        padding: 20px;</span></span><br><span class="line"><span class="regexp">        border-radius: 30px 50px 30px 50px;</span></span><br><span class="line"><span class="regexp">        box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-17-06.png"></p>
+<h3 id="组件边框椭圆化"><a href="#组件边框椭圆化" class="headerlink" title="组件边框椭圆化"></a>组件边框椭圆化</h3><figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br><span class="line">.sidebar-inner&#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);    </span><br><span class="line">&#125;</span><br><span class="line">.pagination &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">80</span>px <span class="number">30</span>px <span class="number">80</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-18-11.png"></p>
 ]]></content>
       <categories>
         <category>小白学搭Hexo</category>
@@ -769,7 +769,14 @@
   <entry>
     <title>关于TensorRT和TF-TRT的一些事儿</title>
     <url>/post/575cdcda.html</url>
-    <content><![CDATA[<h3 id="TensorRT简介"><a href="#TensorRT简介" class="headerlink" title="TensorRT简介"></a>TensorRT简介</h3><p>TensorRT是NVIDIA 推出的基于CUDA和cudnn的进行高性能推理（Inference）加速引擎。</p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="TensorRT简介"><a href="#TensorRT简介" class="headerlink" title="TensorRT简介"></a>TensorRT简介</h3><p>TensorRT是NVIDIA 推出的基于CUDA和cudnn的进行高性能推理（Inference）加速引擎。</p>
 <p>●曾用名：GPU Inference Engine（GIE）</p>
 <p> ●Tensor：表示数据流动以张量的形式</p>
 <p>●RT：Runtime</p>
@@ -883,11 +890,22 @@
 </li>
 <li><p>UFF TensorRT引擎的运行速度通常比TF-TRT优化图快得多，原因可能如下：</p>
 <ol>
-<li>在整个图上进行优化，而不仅仅是在图的单个节点或部分上。TF-TRT是针对部分优化，而TensorRT是对整个计算图做优化；</li>
-<li>基于计算图不同的优化方式，所以在后续选择版精度FP16甚至INT8时，在TF-TRT情况下也仅在图形的某些优化部分上进行FP16/INT8计算</li>
-<li>TensorRT在对CUDA内核的选取上有自己设计的优化机制，可以根据数据size\shape自动选取适合的CUDA内核，所以相较TF-TRT也是节省了时间</li>
+<li><p>在整个图上进行优化，而不仅仅是在图的单个节点或部分上。TF-TRT是针对部分优化，而TensorRT是对整个计算图做优化；</p>
+</li>
+<li><p>基于计算图不同的优化方式，所以在后续选择版精度FP16甚至INT8时，在TF-TRT情况下也仅在图形的某些优化部分上进行FP16/INT8计算</p>
+</li>
+<li><p>TensorRT在对CUDA内核的选取上有自己设计的优化机制，可以根据数据size\shape自动选取适合的CUDA内核，所以相较TF-TRT也是节省了时间</p>
+</li>
 </ol>
 </li>
+</ol>
+<p><a href="/download/tensorrt.pptx"><font color="blue">点击下载TensorRT原理简析PPT</font></a></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/35657027">高性能深度学习支持引擎实战——TensorRT</a></li>
+<li><a href="https://github.com/jkjung-avt/tensorrt_demos/issues/43">TensorRT 与 TF-TRT的区别</a></li>
+<li><a href="https://blog.inten.to/hardware-for-deep-learning-part-3-gpu-8906c1644664">Hardware for Deep Learning. Part 3: GPU</a></li>
+<li><a href="https://blog.tensorflow.org/2018/04/speed-up-tensorflow-inference-on-gpus-tensorRT.html">Speed up TensorFlow Inference on GPUs with TensorRT</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/138059904">一文看懂深度学习模型压缩和加速</a></li>
 </ol>
 ]]></content>
       <tags>

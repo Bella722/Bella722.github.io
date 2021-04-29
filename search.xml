@@ -119,6 +119,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <url>/post/4f44d92e.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
+
+</blockquote>       
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="blue">Next 8.0 进阶美化篇一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="red">Next 8.0 进阶美化篇二</font></a> </p>
+<p>我的next版本为8.0，这里先贴出我最终实现的首页样式。</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/FireShot%20Capture%20039%20-%20Bella's%20Blog%20-%20localhost.png" alt="Bella&#39;s Blog"></p>
+<h3 id="去除首页文章间隔与短横线"><a href="#去除首页文章间隔与短横线" class="headerlink" title="去除首页文章间隔与短横线"></a>去除首页文章间隔与短横线</h3><p>原版首页文章之间是以间距与一条短横线作为分文标记的</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-46-49.png"></p>
+<p>这里我不需要这个就需要把它删掉，这里要改的地方是Bolg/themes/next/source/css/_common/components/post下的post-footer.styl文件，具体如下：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-44-04.png"></p>
+<p>注释后可以预览效果</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-49-06.png"></p>
+<p>接下来就是自定义美化内容了</p>
+<h3 id="自定义首页背景图片"><a href="#自定义首页背景图片" class="headerlink" title="自定义首页背景图片"></a>自定义首页背景图片</h3><p><span id="inline-toc"><b>1. </b></span>在styles.styl里自定义post, 添加背景图象</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/全局布局美化代码</span></span><br><span class="line"><span class="regexp">body &#123;</span></span><br><span class="line"><span class="regexp">    background-image:url(/images</span><span class="regexp">/Background.jpg);</span></span><br><span class="line"><span class="regexp">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="regexp">    background-attachment: fixed;</span></span><br><span class="line"><span class="regexp">    background-position: center;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><span id="inline-red"> 这里的images为Bolg/themes/next/source/images </span></p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-11-00.png" alt="before"></p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-12-01.png" alt="after"></p>
+<p><span id="inline-toc"><b>2. </b></span>预览时又发现next自身设置的背景有个main-inner的属性，颜色是继承post content color，所以我们的思路是自定义main-inner的background-color</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>rgba(255, 255, 255, 0)里的0代表透明度大小，值在0-1之间，0为全透明。再次预览发现此时文章的背景也为透明了。</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-21.png" alt="before"></p>
+<p>那为了突出文章，我们想让它的颜色透明度为1，那就再次自定义一下，加上之前我们设置过每篇文章的边框，所以我们直接在post-block里加上background-color设置。</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        margin-<span class="symbol">top:</span> <span class="number">24</span>px;</span><br><span class="line">        margin-<span class="symbol">bottom:</span> <span class="number">24</span>px;</span><br><span class="line">        <span class="symbol">padding:</span> <span class="number">20</span>px;</span><br><span class="line">        border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">        box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-58.png" alt="after"></p>
+<h3 id="调整组件位置"><a href="#调整组件位置" class="headerlink" title="调整组件位置"></a>调整组件位置</h3><p>这时发现post-block的位置距离顶端有些距离，看起来不美观，</p>
+<p>所以这里就把main-inner的padding顶部置0, 并注释post-block的margin-top</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="symbol">padding:</span> 0px <span class="number">40</span>px <span class="number">40</span>px <span class="number">40</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-16-20.png"></p>
+<p>post-block的内容太靠近边框了，那就用padding集中一下</p>
+<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        /<span class="regexp">/margin-top: 24px;</span></span><br><span class="line"><span class="regexp">        margin-bottom: 24px;</span></span><br><span class="line"><span class="regexp">        padding: 20px;</span></span><br><span class="line"><span class="regexp">        border-radius: 30px 50px 30px 50px;</span></span><br><span class="line"><span class="regexp">        box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-17-06.png"></p>
+<h3 id="组件边框椭圆化"><a href="#组件边框椭圆化" class="headerlink" title="组件边框椭圆化"></a>组件边框椭圆化</h3><figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br><span class="line">.sidebar-inner&#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);    </span><br><span class="line">&#125;</span><br><span class="line">.pagination &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">80</span>px <span class="number">30</span>px <span class="number">80</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-18-11.png"></p>
+]]></content>
+      <categories>
+        <category>小白学搭Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型一</title>
     <url>/post/c02a3ba5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -195,119 +251,6 @@
 <p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg" alt="preview"></p>
 <p>至此，TensorRT安装成功！</p>
 ]]></content>
-      <categories>
-        <category>TensorRT实战记</category>
-      </categories>
-      <tags>
-        <tag>TensorRT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next 8.0 进阶美化篇二</title>
-    <url>/post/4f44d92e.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。</p>
-
-</blockquote>       
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="blue">Next 8.0 进阶美化篇一</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="red">Next 8.0 进阶美化篇二</font></a> </p>
-<p>我的next版本为8.0，这里先贴出我最终实现的首页样式。</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/FireShot%20Capture%20039%20-%20Bella's%20Blog%20-%20localhost.png" alt="Bella&#39;s Blog"></p>
-<h3 id="去除首页文章间隔与短横线"><a href="#去除首页文章间隔与短横线" class="headerlink" title="去除首页文章间隔与短横线"></a>去除首页文章间隔与短横线</h3><p>原版首页文章之间是以间距与一条短横线作为分文标记的</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-46-49.png"></p>
-<p>这里我不需要这个就需要把它删掉，这里要改的地方是Bolg/themes/next/source/css/_common/components/post下的post-footer.styl文件，具体如下：</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-44-04.png"></p>
-<p>注释后可以预览效果</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-11-06%2009-49-06.png"></p>
-<p>接下来就是自定义美化内容了</p>
-<h3 id="自定义首页背景图片"><a href="#自定义首页背景图片" class="headerlink" title="自定义首页背景图片"></a>自定义首页背景图片</h3><p><span id="inline-toc"><b>1. </b></span>在styles.styl里自定义post, 添加背景图象</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/全局布局美化代码</span></span><br><span class="line"><span class="regexp">body &#123;</span></span><br><span class="line"><span class="regexp">    background-image:url(/images</span><span class="regexp">/Background.jpg);</span></span><br><span class="line"><span class="regexp">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="regexp">    background-attachment: fixed;</span></span><br><span class="line"><span class="regexp">    background-position: center;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><span id="inline-red"> 这里的images为Bolg/themes/next/source/images </span></p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-11-00.png" alt="before"></p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-12-01.png" alt="after"></p>
-<p><span id="inline-toc"><b>2. </b></span>预览时又发现next自身设置的背景有个main-inner的属性，颜色是继承post content color，所以我们的思路是自定义main-inner的background-color</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>rgba(255, 255, 255, 0)里的0代表透明度大小，值在0-1之间，0为全透明。再次预览发现此时文章的背景也为透明了。</p>
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-21.png" alt="before"></p>
-<p>那为了突出文章，我们想让它的颜色透明度为1，那就再次自定义一下，加上之前我们设置过每篇文章的边框，所以我们直接在post-block里加上background-color设置。</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        margin-<span class="symbol">top:</span> <span class="number">24</span>px;</span><br><span class="line">        margin-<span class="symbol">bottom:</span> <span class="number">24</span>px;</span><br><span class="line">        <span class="symbol">padding:</span> <span class="number">20</span>px;</span><br><span class="line">        border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">        box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-13-58.png" alt="after"></p>
-<h3 id="调整组件位置"><a href="#调整组件位置" class="headerlink" title="调整组件位置"></a>调整组件位置</h3><p>这时发现post-block的位置距离顶端有些距离，看起来不美观，</p>
-<p>所以这里就把main-inner的padding顶部置0, 并注释post-block的margin-top</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.main-inner &#123;</span><br><span class="line">    background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="symbol">padding:</span> 0px <span class="number">40</span>px <span class="number">40</span>px <span class="number">40</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-16-20.png"></p>
-<p>post-block的内容太靠近边框了，那就用padding集中一下</p>
-<figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.post-block&#123;</span><br><span class="line">        background-<span class="symbol">color:</span> rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);</span><br><span class="line">        /<span class="regexp">/margin-top: 24px;</span></span><br><span class="line"><span class="regexp">        margin-bottom: 24px;</span></span><br><span class="line"><span class="regexp">        padding: 20px;</span></span><br><span class="line"><span class="regexp">        border-radius: 30px 50px 30px 50px;</span></span><br><span class="line"><span class="regexp">        box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-17-06.png"></p>
-<h3 id="组件边框椭圆化"><a href="#组件边框椭圆化" class="headerlink" title="组件边框椭圆化"></a>组件边框椭圆化</h3><figure class="highlight ruby"><figcaption><span>Bolg/source/_data/styles.styl</span></figcaption><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br><span class="line">.sidebar-inner&#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px <span class="number">30</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);    </span><br><span class="line">&#125;</span><br><span class="line">.pagination &#123;</span><br><span class="line">    border-<span class="symbol">radius:</span> <span class="number">30</span>px <span class="number">80</span>px <span class="number">30</span>px <span class="number">80</span>px;</span><br><span class="line">    box-<span class="symbol">shadow:</span> <span class="number">8</span>px <span class="number">7</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>), <span class="number">7</span>px <span class="number">4</span>px <span class="number">1</span>px -<span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">06</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">5</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>.<span class="number">12</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%BA%8C/Screenshot%20from%202020-09-18%2018-18-11.png"></p>
-]]></content>
-      <categories>
-        <category>小白学搭Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型三</title>
-    <url>/post/b9f68301.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="red">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
-<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
-<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
-<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
-<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
-<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
-<p>打开<span id="inline-blue"> detect_object.py </span></p>
-<ul>
-<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
-
-<ul>
-<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>  接着注释掉model下的raise error和download_model</p>
-<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <categories>
         <category>TensorRT实战记</category>
       </categories>
@@ -539,6 +482,63 @@
 
 
 ]]></content>
+      <categories>
+        <category>TensorRT实战记</category>
+      </categories>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <url>/post/b9f68301.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="red">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
+<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
+<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
+<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
+<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
+<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
+<p>打开<span id="inline-blue"> detect_object.py </span></p>
+<ul>
+<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
+
+<ul>
+<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>  接着注释掉model下的raise error和download_model</p>
+<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <categories>
         <category>TensorRT实战记</category>
       </categories>

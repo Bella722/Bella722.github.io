@@ -175,6 +175,63 @@
       </tags>
   </entry>
   <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <url>/post/b9f68301.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="red">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
+<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
+<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
+<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
+<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
+<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
+<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
+<p>打开<span id="inline-blue"> detect_object.py </span></p>
+<ul>
+<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
+
+<ul>
+<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>  接着注释掉model下的raise error和download_model</p>
+<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
+</ul>
+<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>TensorRT实战记</category>
+      </categories>
+      <tags>
+        <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型一</title>
     <url>/post/c02a3ba5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -251,63 +308,6 @@
 <p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg" alt="preview"></p>
 <p>至此，TensorRT安装成功！</p>
 ]]></content>
-      <categories>
-        <category>TensorRT实战记</category>
-      </categories>
-      <tags>
-        <tag>TensorRT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型三</title>
-    <url>/post/b9f68301.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见<a href="https://bella722.github.io/post/fbaa150c.html">TensorRT成功测试自己的数据集SSD模型二</a>，现在讲述在tensorrt中具体如何使用。</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="red">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
-<h3 id="导出Trained-Inference-Graph"><a href="#导出Trained-Inference-Graph" class="headerlink" title="导出Trained Inference Graph"></a>导出Trained Inference Graph</h3><ul>
-<li><h4 id="TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹"><a href="#TensorFlow-models-research-object-detection-export-inference-graph-py复制到training-demo文件夹" class="headerlink" title="TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹"></a>TensorFlow/models/research/object_detection/export_inference_graph.py复制到training_demo文件夹</h4></li>
-<li><h4 id="找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0"><a href="#找到training-demo-training下的model-ckpt-的-第一个index-比如model-ckpt-0" class="headerlink" title="找到training_demo/training下的model.ckpt-*的 第一个index , 比如model.ckpt-0"></a>找到training_demo/training下的model.ckpt-*的<span id="inline-red"> 第一个index </span>, 比如model.ckpt-0</h4></li>
-<li><h4 id="cd-training-demo"><a href="#cd-training-demo" class="headerlink" title="cd training_demo"></a>cd training_demo</h4></li>
-<li><h4 id="导出pb"><a href="#导出pb" class="headerlink" title="导出pb"></a>导出pb</h4></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
-<p>打开<span id="inline-blue"> detect_object.py </span></p>
-<ul>
-<li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
-
-<ul>
-<li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>  接着注释掉model下的raise error和download_model</p>
-<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
-</ul>
-<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <categories>
         <category>TensorRT实战记</category>
       </categories>
@@ -630,6 +630,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <url>/post/3c4ff36.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
+
+<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
+<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
+<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
+
+<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
+<p>关闭终端</p>
+<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
+]]></content>
+      <categories>
+        <category>教你玩转Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu下用TensorFlow Object Detection API测试训练的模型</title>
     <url>/post/e88b7107.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -664,40 +698,6 @@
       </categories>
       <tags>
         <tag>TensorFlow Object Detection API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
-    <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
-<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
-
-<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
-<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
-<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
-
-<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
-<p>关闭终端</p>
-<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
-]]></content>
-      <categories>
-        <category>教你玩转Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -798,6 +798,56 @@
 <p>​        然后，我们根据异或函数的输入输出反推各神经节点的参数值，具体情况如下图推导过程。</p>
 <p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422150622.jpg" alt="微信图片_20210422150622"><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422150655.jpg" alt="微信图片_20210422150655"><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422150701.jpg" alt="微信图片_20210422150701"></p>
 <p>​        至此，我们可以看出，合理的参数取值可以实现异或函数XOR的表达，这个进步完全弥补了线性模型的缺陷，深度学习也因此迎来新一波的学习浪潮。</p>
+]]></content>
+      <categories>
+        <category>《Deep Learning》读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Deep Learning》第一章读书笔记二</title>
+    <url>/post/39c58280.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>相信大家都知道我们经常在深度学习评价指标中常用的精度、召回率、准确率以及ROC曲线，我之前对部分指标的理解还是不到位，所以这里再次把更直观的解释展示出来，方便大家理解</p>
+
+</blockquote>
+<a id="more"></a>
+
+<h2 id="关于TP-、-FP、-TN以及FN"><a href="#关于TP-、-FP、-TN以及FN" class="headerlink" title="关于TP 、 FP、  TN以及FN"></a>关于TP 、 FP、  TN以及FN</h2><p>​        假设当前一张图像样本里总共包括230个行人，现在对图像中的行人进行检测，结果检测出来100个目标框，其中60个框检测到了行人，其余40个框没有检测到行人</p>
+<p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/%E7%B2%BE%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE2.png"></p>
+<p>根据上图</p>
+<p>$$<br>TP = 60,FP=40, FN=230-60=170<br>$$<br>所以</p>
+<h2 id="精度Precision"><a href="#精度Precision" class="headerlink" title="精度Precision"></a>精度Precision</h2><p>$$<br>precision=\frac{TP}{TP+FP}=\frac{60}{60+40}=0.6<br>$$</p>
+<h2 id="召回率Recall"><a href="#召回率Recall" class="headerlink" title="召回率Recall"></a>召回率Recall</h2><p>$$<br>recall=\frac{TP}{TP+FN}=\frac{60}{60+170}≈0.26<br>$$</p>
+<p>举一个图像实例</p>
+<p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/IOU%E9%98%88%E5%80%BC%E7%A4%BA%E6%84%8F%E5%9B%BE3.png"><br>$$<br>precision=\frac{TP}{TP+FP}=\frac{1}{1+0}=1<br>$$</p>
+<p>$$<br>recall=\frac{TP}{TP+FN}=\frac{1}{1+4}=0.2<br>$$</p>
+<h2 id="为什么说仅仅精度无法有力说明网络模型的检测能力呢？"><a href="#为什么说仅仅精度无法有力说明网络模型的检测能力呢？" class="headerlink" title="为什么说仅仅精度无法有力说明网络模型的检测能力呢？"></a>为什么说仅仅精度无法有力说明网络模型的检测能力呢？</h2><p>​        假设上面的例子里样本总共包含2300个目标，对样本中的目标进行检测，结果检测出来100个目标框，其中60个框检测到了目标，其余40个框没有检测到目标。</p>
+<p>那么，<br>$$<br>precision=\frac{TP}{TP+FP}=\frac{60}{60+40}=0.6<br>$$</p>
+<p>$$<br>recall=\frac{TP}{TP+FN}=\frac{60}{60+1700}≈0.026<br>$$</p>
+<p>​        可以看出，精度在两种情况下没有变化，而召回率则差异巨大，所以要综合指标进行考量。</p>
+<h2 id="目标检测下IoU与FP、TP的关系"><a href="#目标检测下IoU与FP、TP的关系" class="headerlink" title="目标检测下IoU与FP、TP的关系"></a>目标检测下IoU与FP、TP的关系</h2><p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/IOU%E9%98%88%E5%80%BC%E7%A4%BA%E6%84%8F%E5%9B%BE.png"><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/IOU%E9%98%88%E5%80%BC%E7%A4%BA%E6%84%8F%E5%9B%BE2.png"></p>
+<h2 id="延伸扩展"><a href="#延伸扩展" class="headerlink" title="延伸扩展"></a>延伸扩展</h2><h3 id="平均精度AP-average-precision）"><a href="#平均精度AP-average-precision）" class="headerlink" title="平均精度AP(average precision）"></a>平均精度AP(average precision）</h3><p><span id="inline-red"> AP: AP at IoU= 0.50: 0.05: 0.95 </span></p>
+<div class="note default"><p> 含义：一般情况下通常使用的IoU取值0.5，0.05指step, 0.95指自己确定阈值范围的最大阈值。那么AP即指从0.5到0.95，每0.05步长取一个阈值对数据集中的每张图片进行单个类别目标检测，得到一组所有样本的precision值，当把这10组精度值都得到之后，再取其平均值，即可得到AP.</p></div>
+
+<p>$$<br>AP^{50}，即指当IoU取值0.5时的数据集中的每张图片的单个类别目标检测的精度先求和再求其平均值。<br>$$</p>
+<p>$$<br>AP^{75}，即指当IoU取值0.75时的数据集中的每张图片的单个类别目标检测的精度先求和再求其平均值。<br>$$</p>
+<h3 id="mAP-mean-average-precision）"><a href="#mAP-mean-average-precision）" class="headerlink" title="mAP(mean average precision）"></a>mAP(mean average precision）</h3><div class="note default"><p> 含义：当IoU取某个定值时的数据集中的每张图片的所有类别目标检测的精度先求出每种类别的AP再求和最后求其平均值。</p></div>
+
+<h3 id="通常赛事中的评价指标以及含义可参见下图"><a href="#通常赛事中的评价指标以及含义可参见下图" class="headerlink" title="通常赛事中的评价指标以及含义可参见下图"></a>通常赛事中的评价指标以及含义可参见下图</h3><p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/1__IkyrFHlqt_xCovk7l0rQQ.png"></p>
+<h2 id="准确率"><a href="#准确率" class="headerlink" title="准确率"></a>准确率</h2><p>$$<br>accuracy=\frac{TP+TN}{TP+TN+FP+FN}=\frac{TP+TN}{Total}<br>$$</p>
+<h2 id="F-Score"><a href="#F-Score" class="headerlink" title="F-Score"></a>F-Score</h2><p>分别比较两个模型的精度和召回率比较困难得出哪个模型更好，因此，为了使它们具有可比性，建议使用F-Score<br>$$<br>F_{score} = \frac{2\ast precision\ast recall}{precision + recall}<br>$$</p>
+<h2 id="ROC-Receiver-operating-characteristic-曲线"><a href="#ROC-Receiver-operating-characteristic-曲线" class="headerlink" title="ROC(Receiver operating characteristic)曲线"></a>ROC(Receiver operating characteristic)曲线</h2><p>显示分类模型在所有分类阈值下的效果的图表。</p>
+<p>X轴：真正例率 True Positive Rate，简称TPR<br>$$<br>TPR=\frac{TP}{TP+FN}<br>$$<br>Y轴：假正例率 False Positive Rate，简称FPR<br>$$<br>FPR=\frac{FP}{FP+TN}<br>$$<br>​    这里我给出一组例子方便大家更具体的理解ROC曲线：假定现在有总数为100的样本，其中正样本50张，负样本50张，现在要对样本进行分类，首先在阈值设定为0.3的时候，得到每张图像的分类结果，进行统计，再设定阈值为0.5对所有样本进行分类并统计，最后设定阈值为0.7对所有样本进行分类并统计，这样我们便会得到三组当在不同阈值下的分类统计数表。具体表格内容如下图：<img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/FPR%E4%B8%8ETPR.png" alt="FPR与TPR"></p>
+<p>当然，你也许会问，这些数据背后的逻辑是什么呢？或者有什么隐含的关系吗？</p>
+<p>我们不妨推理一下，当阈值设的越低的时候，是不是有更多的样本会被分类为正样本，即更多的正样本被分类为正样本，更多的负样本被分类为正样本，那么TP与FP的数值应该是随着阈值的降低而增大的，那么相应的，因为正样本与负样本的各类的总数是没有变化的，所以正样本被认为是负样本的数量即FN是减少的，负样本被认为是负样本的数量即TN也是减少的。</p>
+<p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/AOC1.png"></p>
+<p>反映在曲线图上即如下图所示：</p>
+<p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/ROC2.png"></p>
+<p>我以上图红点、绿点、蓝点、黄点以及紫点进行说明：黄点代表阈值为0.3的分类结果，蓝点代表阈值为0.5的分类结果，绿点代表阈值为0.7的分类结果。</p>
+<p>​    （1）<font color ='red'>将同一模型每个阈值 的 (FPR, TPR) 座标都画在ROC空间里，就成为特定模型的ROC曲线。</font><br>​    （2）红点：当阈值设置的足够大时，分类为正样本的数量理论上接近于0，即包括TP=0以及FP=0，那么对应的TPR=0,FPR=0,对应到上图，相当于坐标轴的（0，0）点，则可得出<font color ='red'>红点对应的是阈值足够大的分类情况。</font><br>​        反之，当当阈值设置的足够小时，分类为正样本的数量理论上达到最大，相当于TP=所有的正样本数，FP=所有的负样本数，那么此时的TPR=1,FPR=1,对应到上图，相当于坐标轴的（1，1）点，则可得出<font color ='red'>紫点对应的是阈值足够小的分类情况。</font><br>​    （3）越靠近左上角准确度越高<br>当FPR=0时，得出FP=0,那么TPR=TP/(TP+0)=1, 又因为所有正样本都被分为正，那么正样本被分为负的数量就是0，即FN=0, 对应到图中，正确；那么此时的准确度ACC=(TP+TN)/(TP+FP+TN+FN)=(TP+TN)/(TP+0+TN+0)=1,所以证明了<font color ='red'>越靠近左上角的点准确度越高。同理可证，离右下角越近的点，预测越不准。</font><br>​    (4) <font color ='red'>随着阈值降低，ROC上的点向右上方移动，随着阈值变大，ROC上的点向左下方移动。</font></p>
 ]]></content>
       <categories>
         <category>《Deep Learning》读书笔记</category>

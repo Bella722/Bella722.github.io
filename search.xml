@@ -630,40 +630,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
-    <url>/post/3c4ff36.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
-<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
-
-<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
-<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
-<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
-
-<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
-<p>关闭终端</p>
-<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
-<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
-]]></content>
-      <categories>
-        <category>教你玩转Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu下用TensorFlow Object Detection API测试训练的模型</title>
     <url>/post/e88b7107.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -701,29 +667,37 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/post/4a17b156.html</url>
-    <content><![CDATA[<p> <strong>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</strong></p>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <url>/post/3c4ff36.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情</p>
+
+</blockquote>
+
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="准备好图标文件"><a href="#准备好图标文件" class="headerlink" title="准备好图标文件"></a>准备好图标文件</h3><p>这里建议下载的时候搜索xx图标或者xx icon进行下载，这样之后生成的图标能美观点</p>
+<h3 id="创建xx-desktop"><a href="#创建xx-desktop" class="headerlink" title="创建xx.desktop"></a>创建xx.desktop</h3><p>在任意位置新建一个名为xx.desktop的文件，并写入如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line">[<span class="string">Desktop</span> <span class="string">Entry</span>]</span><br><span class="line"><span class="string">Name=DiffChecker</span></span><br><span class="line"><span class="string">Exec=/home/xxx/Downloads/Diffchecker-3.7.2.AppImage</span></span><br><span class="line"><span class="string">Icon=/home/xxx/Downloads/Diffchecker.png</span></span><br><span class="line"><span class="string">Type=Application</span></span><br><span class="line"><span class="string">StartupNotify=true</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>Name：快捷方式的名称<br>Exec：AppImage所在的文件路径<br>icon：要为其添加的图标的文件路径</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-23-27.png"></p>
+<p>保存xx.desktop后右键属性,在权限目录下允许作为程序执行文件上打钩。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-51-52.png"></p>
+<h3 id="添加到应用"><a href="#添加到应用" class="headerlink" title="添加到应用"></a>添加到应用</h3><p>打开终端，输入sudo nautilus</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nautilus</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>然后在弹出的文件窗口定位到/usr/share/applications，再将xx.desktop复制过来</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-17-49.png"></p>
+<p>关闭终端</p>
+<h3 id="添加到快捷应用栏"><a href="#添加到快捷应用栏" class="headerlink" title="添加到快捷应用栏"></a>添加到快捷应用栏</h3><p>现在在应用列表里就可以看到已经更换好图标的应用了，选中然后右键选择添加到常用，最后在快捷应用栏就可以看到我们的应用啦，验证以下使用也正常无误。</p>
+<p><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-30.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-25-52.png"><img data-src="../images/Ubuntu%E4%B8%8B%E4%B8%BAAppImage%E5%BA%94%E7%94%A8%E6%B7%BB%E5%8A%A0%E5%9B%BE%E6%A0%87%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%BA%94%E7%94%A8/Screenshot%20from%202020-09-03%2015-26-08.png"></p>
 ]]></content>
       <categories>
-        <category>小白学搭Hexo</category>
+        <category>教你玩转Ubuntu</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -764,6 +738,32 @@
       </categories>
       <tags>
         <tag>Qv2ray</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/4a17b156.html</url>
+    <content><![CDATA[<p> <strong>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</strong></p>
+<a id="more"></a>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>小白学搭Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -810,7 +810,7 @@
     <title>《Deep Learning》第九章读书笔记一</title>
     <url>/post/434b3c5a.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
-<p>最近回过头来在看<a href="https://github.com/exacity/deeplearningbook-chinese"><font color="red">《Deep Learning》</font></a> 这本书，经过三年的工作时间，再看这本书的时候曾经理解不了的问题或者推导原理有了自己切身的认识与思考，所以现在想把自己曾经算是一个半路出家的机器视觉从业者从新手到上手的一些原理性和实践性的点加上我自己的思考把底层的基础点分享出来，帮助大家可以更直观的理解和学习</p>
+<p>关于卷积的运算过程相信大家已经读过各种各样的解释了，本文旨在以图示的方法从浅到深由单张图像到多张图像的卷积的图示形象的向大家解释卷积的基本原理，从单通道到多通道在卷积过程中输入到输出的具体映射都可以看到，相信在阅读本文之后，大家对卷积会有更直观的认识</p>
 
 </blockquote>
 <a id="more"></a>
@@ -853,12 +853,13 @@
 <p>若s为奇数2m+1,则上式化为：<br>$$<br>2p=(w-1)\times2m+(2k-1)<br>$$</p>
 <p>$$<br>2p=偶数+奇数=奇数<br>$$</p>
 <p><font color='red'>显然不成立！</font></p>
-<p><span id="inline-red"> 所以一般不使用偶数size的kernel,从而避免padding不居中的问题</span></p>
+<div class="note danger"><p>所以一般不使用偶数size的kernel,从而避免padding不居中的问题</p></div>
+
 <h3 id="为什么经常使用3×3或5×5的卷积核，而不是7×7或者11×11？"><a href="#为什么经常使用3×3或5×5的卷积核，而不是7×7或者11×11？" class="headerlink" title="为什么经常使用3×3或5×5的卷积核，而不是7×7或者11×11？"></a>为什么经常使用3×3或5×5的卷积核，而不是7×7或者11×11？</h3><p>​        答：推导过程如下：<br>​        假设一张单通道的7×7图像进行7×7卷积输出一个值</p>
 <p><img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/v2-b72c69b808b48b1772938cb6950f2bc3_r.jpg" alt="卷积核尺寸逐渐减小"></p>
 <p>​        三种卷积思路都是实现同一种卷积结果，但是可以看出第三种的参数个数最少，相较第一种参数量下降44.8%，这在实际内存中是非常客观的缩减量。</p>
 <p>从卷积层的深入在特征映射上的反映：<img data-src="../images/%E3%80%8ADeep-Learning%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/v2-b2f87d8c2793f24574f74a1abcbadf8d_r.jpg" alt="卷积核在特征映射上的反映"></p>
-<p><span id="inline-red"> 由此可以看出小尺寸的卷积核不仅降低了参数量，还能随着卷积层的增多，还能抽取更丰富的特征信息</span></p>
+<div class="note danger"><p>由此可以看出小尺寸的卷积核不仅降低了参数量，还能随着卷积层的增多，还能抽取更丰富的特征信息</p></div>
 ]]></content>
       <categories>
         <category>《Deep Learning》读书笔记</category>

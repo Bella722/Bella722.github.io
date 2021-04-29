@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2021-04-29T11:52:29.927Z</updated>
+  <updated>2021-04-29T12:03:49.557Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://bella722.github.io/post/434b3c5a.html"/>
     <id>https://bella722.github.io/post/434b3c5a.html</id>
     <published>2021-04-29T11:52:21.000Z</published>
-    <updated>2021-04-29T11:52:29.927Z</updated>
+    <updated>2021-04-29T12:03:49.557Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;最近回过头来在看&lt;a href=&quot;https://github.com/exacity/deeplearningbook-chinese&quot;&gt;&lt;font color=&quot;red&quot;&gt;《Deep Learning》&lt;/font&gt;&lt;/a&gt; 这本书，经过三年的工作时间，再看这本书的时候曾经理解不了的问题或者推导原理有了自己切身的认识与思考，所以现在想把自己曾经算是一个半路出家的机器视觉从业者从新手到上手的一些原理性和实践性的点加上我自己的思考把底层的基础点分享出来，帮助大家可以更直观的理解和学习&lt;/p&gt;
+&lt;p&gt;关于卷积的运算过程相信大家已经读过各种各样的解释了，本文旨在以图示的方法从浅到深由单张图像到多张图像的卷积的图示形象的向大家解释卷积的基本原理，从单通道到多通道在卷积过程中输入到输出的具体映射都可以看到，相信在阅读本文之后，大家对卷积会有更直观的认识&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     

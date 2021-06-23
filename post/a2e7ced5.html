@@ -25,16 +25,26 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Bella&#39;s Blog">
-<meta property="og:url" content="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/index.html">
+  <meta name="description" content="不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu20.04安装v2rayL">
+<meta property="og:url" content="https://bella722.github.io/post/a2e7ced5.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png">
+<meta property="og:image" content="https://bella722.github.io/home/zhangjiao/Pictures/6.23/%E5%B7%B2%E5%AE%89%E8%A3%85.png">
+<meta property="og:image" content="https://bella722.github.io/home/zhangjiao/Pictures/6.23/%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://bella722.github.io/home/zhangjiao/Pictures/6.23/%E7%BA%BF%E8%B7%AF.png">
+<meta property="article:published_time" content="2021-06-23T07:35:30.000Z">
+<meta property="article:modified_time" content="2021-06-23T08:54:46.928Z">
 <meta property="article:author" content="Bella">
+<meta property="article:tag" content="v2rayL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png">
 
 
-<link rel="canonical" href="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/">
+<link rel="canonical" href="https://bella722.github.io/post/a2e7ced5.html">
 
 
 <script class="page-configurations">
@@ -42,12 +52,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 教你玩转Ubuntu | Bella's Blog</title>
+  <title>Ubuntu20.04安装v2rayL | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -238,7 +248,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -250,6 +260,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%93%9C%E8%B1%8C%E8%B1%86%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">添加铜豌豆软件源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">安装软件包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%AE%A2%E9%98%85"><span class="nav-number">3.</span> <span class="nav-text">配置订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -325,74 +336,226 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/a2e7ced5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu20.04安装v2rayL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-23 15:35:30 / 修改时间：16:54:46" itemprop="dateCreated datePublished" datetime="2021-06-23T15:35:30+08:00">2021-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">科学上网指南</span></a>
+        </span>
+    </span>
+
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">教你玩转Ubuntu
-          <small>分类</small>
-        </h2>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/a2e7ced5.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/a2e7ced5.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>686</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="blue">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="red">Ubuntu20.04下成功配置v2rayL</font></a> </p>
+<h3 id="添加铜豌豆软件源"><a href="#添加铜豌豆软件源" class="headerlink" title="添加铜豌豆软件源"></a>添加铜豌豆软件源</h3><p>第一次使用 铜豌豆 Linux 的系统，需要先添加铜豌豆软件源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt -y install wget</span><br><span class="line">sudo wget -c -O atzlinux-archive-keyring_lastest_all.deb </span><br><span class="line">sudo https://www.atzlinux.com/atzlinux/pool/main/a/atzlinux-archive-keyring/atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo apt -y install ./atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install v2raylui</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png" alt="安装v2rayL"></p>
+<h3 id="配置订阅"><a href="#配置订阅" class="headerlink" title="配置订阅"></a>配置订阅</h3><p>上面安装完成后，可以在应用里看到这个萝卜图标，右键添加到桌面栏常用。</p>
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%B7%B2%E5%AE%89%E8%A3%85.png" alt="已安装"></p>
+<p>点击打开应用，选择配置订阅，将URL填到横线上然后<span id="inline-red"> 回车</span>。</p>
+<div class="note info"><p>一定要回车，不然无法添加成功线路</p></div>
+
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E9%85%8D%E7%BD%AE.png" alt="配置"></p>
+<p>再返回可用连接即可看到添加的线路了，将按钮点击即可由off转换为on，连接成功！</p>
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E7%BA%BF%E8%B7%AF.png" alt="线路"></p>
+<p>现在就可以享受冲浪啦<del>~</del></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jiangxufeng/v2rayL"><font color="black">Github源码v2rayL</font></a> </p>
+<p><i class="fas fa-rss"></i><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.atzlinux.com/allpackages.htm"><font color="black">铜豌豆软件源</font></a> </p>
+<p><i class="fas fa-rss"></i><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/freefq/free"><font color="black">免费节点</font></a> </p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2020-09-24T10:41:13+08:00" content="2020-09-24">
-          09-24
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/post/4b9525f5.html" itemprop="url">
-            <span itemprop="name">解决双系统Ubuntu检测不到NVIDIA驱动</span>
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/a2e7ced5.html" title="Ubuntu20.04安装v2rayL">https://bella722.github.io/post/a2e7ced5.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
           </a>
-      </div>
+        </div>
 
-      
-    </header>
-  </article>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2020-09-03T16:04:30+08:00" content="2020-09-03">
-          09-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/3c4ff36.html" itemprop="url">
-            <span itemprop="name">Ubuntu下为AppImage应用添加图标并添加到应用</span>
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-      
-    </header>
-  </article>
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
+          <div class="post-tags">
+              <a href="/tags/v2rayL/" rel="tag"><i class="fa fa-tag"></i> v2rayL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/39c58280.html" rel="prev" title="《Deep Learning》第一章读书笔记二">
+                  <i class="fa fa-chevron-left"></i> 《Deep Learning》第一章读书笔记二
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/f16bee1a.html" rel="next" title="记录Hexo博客成功迁移">
+                  记录Hexo博客成功迁移 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
   
 
 
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -570,7 +733,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/",
+      path: "/post/a2e7ced5.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

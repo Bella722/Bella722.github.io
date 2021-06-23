@@ -1504,7 +1504,7 @@
 
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
 <p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="blue">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="red">Ubuntu20.04下成功配置v2rayL</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a2e7ced5.html"><font color="red">Ubuntu20.04下成功配置v2rayL</font></a> </p>
 <h3 id="添加铜豌豆软件源"><a href="#添加铜豌豆软件源" class="headerlink" title="添加铜豌豆软件源"></a>添加铜豌豆软件源</h3><p>第一次使用 铜豌豆 Linux 的系统，需要先添加铜豌豆软件源</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt -y install wget</span><br><span class="line">sudo wget -c -O atzlinux-archive-keyring_lastest_all.deb </span><br><span class="line">sudo https://www.atzlinux.com/atzlinux/pool/main/a/atzlinux-archive-keyring/atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo apt -y install ./atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bella&#39;s Blog</title>
+  <icon>https://bella722.github.io/icon.png</icon>
+  
+  <link href="https://bella722.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://bella722.github.io/"/>
+  <updated>2021-04-29T12:33:08.875Z</updated>
+  <id>https://bella722.github.io/</id>
+  
+  <author>
+    <name>Bella</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Deep Learning》第一章读书笔记二</title>
+    <link href="https://bella722.github.io/post/39c58280.html"/>
+    <id>https://bella722.github.io/post/39c58280.html</id>
+    <published>2021-04-29T12:33:02.000Z</published>
+    <updated>2021-04-29T12:33:08.875Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;相信大家都知道我们经常在深度学习评价指标中常用的精度、召回率、准确率以及ROC曲线，我之前对部分指标的理解还是不到位，所以这里再次把更直观的解释展示出来，方便大家理解&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="《Deep Learning》读书笔记" scheme="https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Deep Learning" scheme="https://bella722.github.io/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Deep Learning》第九章读书笔记一</title>
+    <link href="https://bella722.github.io/post/434b3c5a.html"/>
+    <id>https://bella722.github.io/post/434b3c5a.html</id>
+    <published>2021-04-29T11:52:21.000Z</published>
+    <updated>2021-04-29T12:03:49.557Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;关于卷积的运算过程相信大家已经读过各种各样的解释了，本文旨在以图示的方法从浅到深由单张图像到多张图像的卷积的图示形象的向大家解释卷积的基本原理，从单通道到多通道在卷积过程中输入到输出的具体映射都可以看到，相信在阅读本文之后，大家对卷积会有更直观的认识&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="《Deep Learning》读书笔记" scheme="https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Deep Learning" scheme="https://bella722.github.io/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Deep Learning》第一章读书笔记一</title>
+    <link href="https://bella722.github.io/post/245ac29.html"/>
+    <id>https://bella722.github.io/post/245ac29.html</id>
+    <published>2021-04-29T10:41:24.000Z</published>
+    <updated>2021-04-29T10:41:35.380Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;最近回过头来在看&lt;a href=&quot;https://github.com/exacity/deeplearningbook-chinese&quot;&gt;&lt;font color=&quot;red&quot;&gt;《Deep Learning》&lt;/font&gt;&lt;/a&gt; 这本书，经过三年的工作时间，再看这本书的时候曾经理解不了的问题或者推导原理有了自己切身的认识与思考，所以现在想把自己曾经算是一个半路出家的机器视觉从业者从新手到上手的一些原理性和实践性的点加上我自己的思考把底层的基础点分享出来，帮助大家可以更直观的理解和学习&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="《Deep Learning》读书笔记" scheme="https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Deep Learning" scheme="https://bella722.github.io/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于TensorRT和TF-TRT的一些事儿</title>
+    <link href="https://bella722.github.io/post/575cdcda.html"/>
+    <id>https://bella722.github.io/post/575cdcda.html</id>
+    <published>2020-11-10T09:25:16.000Z</published>
+    <updated>2020-11-11T01:23:19.388Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/tags/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Google-Colab成功测试TensorRT指南二</title>
+    <link href="https://bella722.github.io/post/4f1188dc.html"/>
+    <id>https://bella722.github.io/post/4f1188dc.html</id>
+    <published>2020-10-15T07:33:43.000Z</published>
+    <updated>2020-11-06T02:41:37.528Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Google Colab成功测试TensorRT指南一</title>
+    <link href="https://bella722.github.io/post/f9d0431a.html"/>
+    <id>https://bella722.github.io/post/f9d0431a.html</id>
+    <published>2020-10-10T08:37:31.000Z</published>
+    <updated>2020-11-06T02:29:02.959Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型四</title>
+    <link href="https://bella722.github.io/post/f524ef1f.html"/>
+    <id>https://bella722.github.io/post/f524ef1f.html</id>
+    <published>2020-10-09T05:44:58.000Z</published>
+    <updated>2020-11-06T02:26:06.113Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows下成功配置Qv2ray</title>
+    <link href="https://bella722.github.io/post/a6ffce94.html"/>
+    <id>https://bella722.github.io/post/a6ffce94.html</id>
+    <published>2020-10-09T05:31:57.000Z</published>
+    <updated>2020-11-06T02:37:59.989Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;免费冲浪是真香，小伙伴且浪且珍惜&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
+    
+    
+    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
+    <link href="https://bella722.github.io/post/4b9525f5.html"/>
+    <id>https://bella722.github.io/post/4b9525f5.html</id>
+    <published>2020-09-24T02:41:13.000Z</published>
+    <updated>2020-09-27T05:52:12.812Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;昨天换到windows下写个文档顺手用电脑管家清理了下垃圾，然后再切回Ubuntu的时候发现分辨率一下降到老人机模式，再运行加载cuda的代码的时候竟然说cudainit 失败，没有可用的显卡，用nvidia-smi自查一下，凉凉，折腾了整整一天呐，现在就把解决结果记录下来。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://bella722.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型三</title>
+    <link href="https://bella722.github.io/post/b9f68301.html"/>
+    <id>https://bella722.github.io/post/b9f68301.html</id>
+    <published>2020-09-21T01:18:04.000Z</published>
+    <updated>2020-11-06T02:25:13.009Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见&lt;a href=&quot;https://bella722.github.io/post/fbaa150c.html&quot;&gt;TensorRT成功测试自己的数据集SSD模型二&lt;/a&gt;，现在讲述在tensorrt中具体如何使用。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型二</title>
+    <link href="https://bella722.github.io/post/fbaa150c.html"/>
+    <id>https://bella722.github.io/post/fbaa150c.html</id>
+    <published>2020-09-17T06:51:03.000Z</published>
+    <updated>2020-11-06T02:24:25.286Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;经过前面的指导我们安装好环境后，现在就准备训练我自己的数据集的SSD模型，这里我跟TensorRT的例子保持一致，都用TensorFlow Object Detection API训练获取模型。那么开始详细介绍TensorFlow Object Detection API的安装以及SSD inception V2训练我自己的数据集。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TensorRT成功测试自己的数据集SSD模型一</title>
+    <link href="https://bella722.github.io/post/c02a3ba5.html"/>
+    <id>https://bella722.github.io/post/c02a3ba5.html</id>
+    <published>2020-09-16T09:10:59.000Z</published>
+    <updated>2020-11-06T02:23:39.302Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。并且介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
+    
+    
+    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Next 8.0 进阶美化篇二</title>
+    <link href="https://bella722.github.io/post/4f44d92e.html"/>
+    <id>https://bella722.github.io/post/4f44d92e.html</id>
+    <published>2020-09-15T07:39:43.000Z</published>
+    <updated>2020-11-06T02:14:59.299Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;原始next-pieces的布局不太符合我的审美，所以想按照自己的喜好自定义以下页面样式，比如自定义背景图片，去掉文章底部的白色背景，部件边框椭圆化一下，以及位置调整一下。所以这里就把自己的实现步骤记录一下。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Next 8.0 进阶美化篇一</title>
+    <link href="https://bella722.github.io/post/74c4f787.html"/>
+    <id>https://bella722.github.io/post/74c4f787.html</id>
+    <published>2020-09-11T05:10:57.000Z</published>
+    <updated>2020-11-06T02:48:36.313Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu20.04下成功配置Qv2ray</title>
+    <link href="https://bella722.github.io/post/a231f91f.html"/>
+    <id>https://bella722.github.io/post/a231f91f.html</id>
+    <published>2020-09-08T07:35:46.212Z</published>
+    <updated>2020-11-06T02:38:53.695Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
+    
+    
+    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu下为AppImage应用添加图标并添加到应用</title>
+    <link href="https://bella722.github.io/post/3c4ff36.html"/>
+    <id>https://bella722.github.io/post/3c4ff36.html</id>
+    <published>2020-09-03T08:04:30.000Z</published>
+    <updated>2020-09-22T08:24:01.893Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;有时下载的一些AppImage应用是没有配置图标的，所以不是很美观，本篇教程指导根据自己喜好自定义应用图标，具体内容参见文章详情&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://bella722.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu下用TensorFlow Object Detection API测试训练的模型</title>
+    <link href="https://bella722.github.io/post/e88b7107.html"/>
+    <id>https://bella722.github.io/post/e88b7107.html</id>
+    <published>2020-09-02T08:07:24.000Z</published>
+    <updated>2020-11-06T02:35:23.170Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;得到训练的模型后，进行测试前需要进行inference graph 的pb文件导出，本文记载了详细的操作步骤，以及最终的模型加载直到最终的检测结果&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu下用TensorFlow Object Detection API训练自己的数据</title>
+    <link href="https://bella722.github.io/post/bb2ec196.html"/>
+    <id>https://bella722.github.io/post/bb2ec196.html</id>
+    <published>2020-09-01T06:13:51.000Z</published>
+    <updated>2020-11-06T02:34:39.298Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;对于使用TensorFlow Object Detection API训练自己的数据集，网上教程还是很全的，只要认真细心，跟着官方指导就不会有任何问题&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
+    <link href="https://bella722.github.io/post/1a71c089.html"/>
+    <id>https://bella722.github.io/post/1a71c089.html</id>
+    <published>2020-08-31T10:49:56.000Z</published>
+    <updated>2020-11-06T02:33:40.872Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;TensorFlow Object Detection API 作为目前开源的接口，集成了当下比较主流的一些网络模型，并且作了系统性的划分，所以适合快速上手各个算法模型，在使用之前，必须按照官方指导配置好环境，具体参考本篇内容完成配置&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://bella722.github.io/post/4a17b156.html"/>
+    <id>https://bella722.github.io/post/4a17b156.html</id>
+    <published>2020-08-28T01:28:11.000Z</published>
+    <updated>2020-09-11T08:38:30.478Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; &lt;strong&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>

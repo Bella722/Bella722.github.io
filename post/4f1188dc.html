@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="LvN4FGGbc9Vme6ce05eYu_48RUGHRy_pigApzzTaM3M">
+  <meta name="baidu-site-verification" content="o6hoZgunLj">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="fonts.loli.net/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic|Cinzel+Decorative:300,300italic,400,400italic,700,700italic|Source+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Google-Colab成功测试TensorRT指南二">
+<meta property="og:url" content="https://bella722.github.io/post/4f1188dc.html">
+<meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P4.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P100.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20T4.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/avg-1602753935076.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/sum.png">
+<meta property="article:published_time" content="2020-10-15T07:33:43.000Z">
+<meta property="article:modified_time" content="2020-11-06T02:41:37.528Z">
+<meta property="article:author" content="Bella">
+<meta property="article:tag" content="TensorRT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png">
+
+
+<link rel="canonical" href="https://bella722.github.io/post/4f1188dc.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>利用Google-Colab成功测试TensorRT指南二 | Bella's Blog</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-176286323-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?769f4127dcca8da828bdccc3e338c7d4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Bella's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bella's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E5%BE%97%E5%88%B0%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">分配得到的环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-K80"><span class="nav-number">1.1.</span> <span class="nav-text">Tesla K80</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-P4"><span class="nav-number">1.2.</span> <span class="nav-text">Tesla P4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-P100"><span class="nav-number">1.3.</span> <span class="nav-text">Tesla P100</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tesla-T4"><span class="nav-number">1.4.</span> <span class="nav-text">Tesla T4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">2.</span> <span class="nav-text">批量测试结果</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bella" src="/images/unnamed.jpg">
+  <p class="site-author-name" itemprop="name">Bella</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Bella722" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Bella722" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:727664970@qq.com" title="E-Mail → mailto:727664970@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Isabella_Galaxy" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Isabella_Galaxy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/galaxyzhangj" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;galaxyzhangj" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Bella722" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/4f1188dc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          利用Google-Colab成功测试TensorRT指南二
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-15 15:33:43" itemprop="dateCreated datePublished" datetime="2020-10-15T15:33:43+08:00">2020-10-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-06 10:41:37" itemprop="dateModified" datetime="2020-11-06T10:41:37+08:00">2020-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/4f1188dc.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/4f1188dc.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>823</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f9d0431a.html"><font color="blue">利用Google Colab成功测试TensorRT指南一</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f1188dc.html"><font color="red">利用Google Colab成功测试TensorRT指南二</font></a> </p>
+<h3 id="分配得到的环境"><a href="#分配得到的环境" class="headerlink" title="分配得到的环境"></a>分配得到的环境</h3><h4 id="Tesla-K80"><a href="#Tesla-K80" class="headerlink" title="Tesla K80"></a>Tesla K80</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20K80.png" alt="Tesla K80"></p>
+<h4 id="Tesla-P4"><a href="#Tesla-P4" class="headerlink" title="Tesla P4"></a>Tesla P4</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P4.png" alt="Tesla P4"></p>
+<h4 id="Tesla-P100"><a href="#Tesla-P100" class="headerlink" title="Tesla P100"></a>Tesla P100</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20P100.png" alt="Tesla P100"></p>
+<h4 id="Tesla-T4"><a href="#Tesla-T4" class="headerlink" title="Tesla T4"></a>Tesla T4</h4><p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/Tesla%20T4.png" alt="Tesla T4"></p>
+<h3 id="批量测试结果"><a href="#批量测试结果" class="headerlink" title="批量测试结果"></a>批量测试结果</h3><table>
+    <tr>
+        <td colspan="9"><font color="red"><center>批量推理结果</center></font></td>
+    </tr>
+    <tr>
+        <td colspan="9"><center>Image size(8k×40k), 预测裁剪小图size(300×300)，w方向：8000/300=26，h方向：40000/300= 133，裁剪生成的小图有：26×133 = 3458张</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center></center></td>
+        <td colspan="2"><center>Tesla K80</center></td>
+        <td colspan="2"><center>Tesla P4</center></td>
+        <td colspan="2"><center>Tesla P100</center></td>
+        <td colspan="2"><center>Tesla T4</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>batch size</center></td>
+        <td colspan="1"><center>avg time(ms)</center></td>
+        <td colspan="1"><center>tol time(ms)</center></td>
+        <td colspan="1"><center>avg time(ms)</center></td>
+        <td colspan="1"><center>tol time(ms)</center></td>
+        <td colspan="1"><center>avg time(ms)</center></td>
+        <td colspan="1"><center>tol time(ms)</center></td>
+        <td colspan="1"><center>avg time(ms)</center></td>
+        <td colspan="1"><center>tol time(ms)</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>13</center></td>
+        <td colspan="1"><center>104.39</center></td>
+        <td colspan="1"><center>28083</center></td>
+        <td colspan="1"><center>41.78</center></td>
+        <td colspan="1"><center>11241</center></td>
+        <td colspan="1"><center>23.42</center></td>
+        <td colspan="1"><center>6302</center></td>
+        <td colspan="1"><center>55.01</center></td>
+        <td colspan="1"><center>14799</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>26</center></td>
+        <td colspan="1"><center>207.29</center></td>
+        <td colspan="1"><center>27985</center></td>
+        <td colspan="1"><center>67</center></td>
+        <td colspan="1"><center>9046</center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="1"><center>83.85</center></td>
+        <td colspan="1"><center>11321</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>38</center></td>
+        <td colspan="1"><center>297.91</center></td>
+        <td colspan="1"><center>27408</center></td>
+        <td colspan="1"><center>96.25</center></td>
+        <td colspan="1"><center>8855</center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="1"><center></center></td>
+        <td colspan="1"><center>88.05</center></td>
+        <td colspan="1"><center>8101</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>70</center></td>
+        <td colspan="1"><center>515.76</center></td>
+        <td colspan="1"><center>25788</center></td>
+        <td colspan="1"><center>175.18</center></td>
+        <td colspan="1"><center>8759</center></td>
+        <td colspan="1"><center>98.42</center></td>
+        <td colspan="1"><center>4921</center></td>
+        <td colspan="1"><center>161.22</center></td>
+        <td colspan="1"><center>8061</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>91</center></td>
+        <td colspan="1"><center>665.23</center></td>
+        <td colspan="1"><center>25944</center></td>
+        <td colspan="1"><center>224.12</center></td>
+        <td colspan="1"><center>8741</center></td>
+        <td colspan="1"><center>127.46</center></td>
+        <td colspan="1"><center>4971</center></td>
+        <td colspan="1"><center>222.69</center></td>
+        <td colspan="1"><center>8685</center></td>
+    </tr>
+    <tr>
+        <td colspan="1"><center>133</center></td>
+        <td colspan="1"><center>972.25</center></td>
+        <td colspan="1"><center>26251</center></td>
+        <td colspan="1"><center>329.07</center></td>
+        <td colspan="1"><center>8885</center></td>
+        <td colspan="1"><center>184.25</center></td>
+        <td colspan="1"><center>4975</center></td>
+        <td colspan="1"><center>375.88</center></td>
+        <td colspan="1"><center>10149</center></td>
+    </tr>
+</table>
+
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/avg-1602753935076.png"></p>
+<p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%BA%8C/sum.png"></p>
+<div class="note info">
+    <p>
+    结论：
+        1.就目前的测试结果来看，不同显卡的加速耗时是有挺大区别的，并且与batch的大小有关，所以要获取最优的时间，需要尝试不同的batch size;
+        2.对于云计算的环境，计算时长比本地还是有些差距，究其原因还需要思考，是否更优的显卡能获取更好的测试结果，只能再多测以结果为准了。
+    </p>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/4f1188dc.html" title="利用Google-Colab成功测试TensorRT指南二">https://bella722.github.io/post/4f1188dc.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/TensorRT/" rel="tag"><i class="fa fa-tag"></i> TensorRT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/f9d0431a.html" rel="prev" title="利用Google Colab成功测试TensorRT指南一">
+                  <i class="fa fa-chevron-left"></i> 利用Google Colab成功测试TensorRT指南一
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/575cdcda.html" rel="next" title="关于TensorRT和TF-TRT的一些事儿">
+                  关于TensorRT和TF-TRT的一些事儿 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isabella</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/post/4f1188dc.html",
+    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

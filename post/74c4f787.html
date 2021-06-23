@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="LvN4FGGbc9Vme6ce05eYu_48RUGHRy_pigApzzTaM3M">
+  <meta name="baidu-site-verification" content="o6hoZgunLj">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="fonts.loli.net/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic|Cinzel+Decorative:300,300italic,400,400italic,700,700italic|Source+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next 8.0 进阶美化篇一">
+<meta property="og:url" content="https://bella722.github.io/post/74c4f787.html">
+<meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-11%2013-24-06.png">
+<meta property="og:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/FireShot%20Capture%20075%20-%20File%20Download%20Icon%20-%20Font%20Awesome%20-%20fontawesome.com.png">
+<meta property="og:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-22%2016-18-47.png">
+<meta property="article:published_time" content="2020-09-11T05:10:57.000Z">
+<meta property="article:modified_time" content="2020-11-06T02:48:36.313Z">
+<meta property="article:author" content="Bella">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-11%2013-24-06.png">
+
+
+<link rel="canonical" href="https://bella722.github.io/post/74c4f787.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Next 8.0 进阶美化篇一 | Bella's Blog</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-176286323-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?769f4127dcca8da828bdccc3e338c7d4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Bella's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bella's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%94%E8%AE%B0%E6%A0%87%E7%AD%BE"><span class="nav-number">1.</span> <span class="nav-text">笔记标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-blog-themes-next-config-yml"><span class="nav-number">1.1.</span> <span class="nav-text">先修改主题配置文件&#x2F;blog&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E8%83%8C%E6%99%AF%E8%89%B2%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">文字背景色块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-Bolg-themes-next-config-yml"><span class="nav-number">2.1.</span> <span class="nav-text">更改主题配置文件&#x2F;Bolg&#x2F;themes&#x2F;next&#x2F;_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%B6%E5%90%8E%E5%9C%A8%E4%B8%BB%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84source%E4%B8%8B%E6%96%B0%E5%BB%BA-data%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%92%8Cstyles-styl%E6%96%87%E4%BB%B6%EF%BC%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">然后在主目录下的source下新建_data子文件夹和styles.styl文件，键入以下内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">2.3.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">背景自定义效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8styles-styl%E9%87%8C%E9%94%AE%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BD%A2%E7%8A%B6%E8%89%B2%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">在styles.styl里键入自定义形状色块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-%E5%9C%A8%E4%BD%A0%E8%A6%81%E7%BC%96%E8%BE%91%E7%9A%84markdown%E6%96%87%E4%BB%B6%E9%87%8C%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9-1"><span class="nav-number">3.2.</span> <span class="nav-text">使用方法: 在你要编辑的markdown文件里键入以下内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87%E8%BE%B9%E6%A1%86%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">图标边框效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text">文本居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E5%AD%97%E5%9D%97"><span class="nav-number">6.</span> <span class="nav-text">自定义数字块</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bella" src="/images/unnamed.jpg">
+  <p class="site-author-name" itemprop="name">Bella</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Bella722" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Bella722" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:727664970@qq.com" title="E-Mail → mailto:727664970@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Isabella_Galaxy" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Isabella_Galaxy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/galaxyzhangj" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;galaxyzhangj" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Bella722" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/74c4f787.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Next 8.0 进阶美化篇一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-11 13:10:57" itemprop="dateCreated datePublished" datetime="2020-09-11T13:10:57+08:00">2020-09-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-06 10:48:36" itemprop="dateModified" datetime="2020-11-06T10:48:36+08:00">2020-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/" itemprop="url" rel="index"><span itemprop="name">小白学搭Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/74c4f787.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/74c4f787.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>本篇教程主要讲解在markdown下对文本的部分美化效果，包括块状标签，文字色块，居中，自定义数字块等, 对初学者友好易上手。</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/74c4f787.html"><font color="red">Next 8.0 进阶美化篇一</font></a> </p>
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f44d92e.html"><font color="blue">Next 8.0 进阶美化篇二</font></a> </p>
+<h3 id="笔记标签"><a href="#笔记标签" class="headerlink" title="笔记标签"></a>笔记标签</h3><p>效果：</p>
+<div class="note default"><p>这里输入文字</p></div>
+
+<!--more-->
+
+<h4 id="先修改主题配置文件-blog-themes-next-config-yml"><a href="#先修改主题配置文件-blog-themes-next-config-yml" class="headerlink" title="先修改主题配置文件/blog/themes/next/_config.yml"></a>先修改主题配置文件/blog/themes/next/_config.yml</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Note tag (bs-callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># 风格</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="comment"># 要不要图标</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>default效果：</p>
+<div class="note default"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note default&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;note default&quot;&gt;&lt;p&gt;这里输入文字&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>primary效果：</p>
+<div class="note primary"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note primary&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note primary %&#125; 这里输入文字 &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>success效果：</p>
+<div class="note success"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note success&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note success %&#125; 这里输入文字 &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>info效果：</p>
+<div class="note info"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note info&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note info %&#125; 这里输入文字 &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>warning效果：</p>
+<div class="note warning"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note warning&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note warning %&#125; 这里输入文字 &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>danger效果：</p>
+<div class="note danger"><p>这里输入文字</p></div>
+用法：在你要编辑的markdown文件里键入以下内容
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;note danger&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+或者：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note danger %&#125; 这里输入文字 &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文字背景色块"><a href="#文字背景色块" class="headerlink" title="文字背景色块"></a>文字背景色块</h3><p>效果：<span id="inline-red"> 红色背景色块 </span></p>
+<h4 id="更改主题配置文件-Bolg-themes-next-config-yml"><a href="#更改主题配置文件-Bolg-themes-next-config-yml" class="headerlink" title="更改主题配置文件/Bolg/themes/next/_config.yml"></a>更改主题配置文件/Bolg/themes/next/_config.yml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  #head: source&#x2F;_data&#x2F;head.njk</span><br><span class="line">  #header: source&#x2F;_data&#x2F;header.njk</span><br><span class="line">  #sidebar: source&#x2F;_data&#x2F;sidebar.njk</span><br><span class="line">  #postMeta: source&#x2F;_data&#x2F;post-meta.njk</span><br><span class="line">  #postBodyEnd: source&#x2F;_data&#x2F;post-body-end.njk</span><br><span class="line">  #footer: source&#x2F;_data&#x2F;footer.njk</span><br><span class="line">  #bodyEnd: source&#x2F;_data&#x2F;body-end.njk</span><br><span class="line">  #variable: source&#x2F;_data&#x2F;variables.styl</span><br><span class="line">  #mixin: source&#x2F;_data&#x2F;mixins.styl</span><br><span class="line">&#x2F;&#x2F;开启自定义style</span><br><span class="line">  style: source&#x2F;_data&#x2F;styles.styl</span><br></pre></td></tr></table></figure>
+
+<h4 id="然后在主目录下的source下新建-data子文件夹和styles-styl文件，键入以下内容"><a href="#然后在主目录下的source下新建-data子文件夹和styles-styl文件，键入以下内容" class="headerlink" title="然后在主目录下的source下新建_data子文件夹和styles.styl文件，键入以下内容"></a>然后在主目录下的source下新建_data子文件夹和styles.styl文件，键入以下内容</h4><p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-11%2013-24-06.png"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">下载样式</span></span><br><span class="line"><span class="string">a#download</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">inline-block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="number">0</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">color:</span> <span class="comment">#000;</span></span><br><span class="line"><span class="attr">background:</span> <span class="string">transparent;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">2px</span> <span class="string">solid</span> <span class="comment">#000;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">2px;</span></span><br><span class="line"><span class="attr">transition:</span> <span class="string">all</span> <span class="string">.5s</span> <span class="string">ease;</span></span><br><span class="line"><span class="attr">font-weight:</span> <span class="string">bold;</span></span><br><span class="line"><span class="string">&amp;:hover</span> &#123;</span><br><span class="line"><span class="attr">background:</span> <span class="comment">#000;</span></span><br><span class="line"><span class="attr">color:</span> <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">颜色块-黄</span></span><br><span class="line"><span class="string">span#inline-yellow</span> &#123;</span><br><span class="line"><span class="string">display:inline;</span></span><br><span class="line"><span class="string">padding:.2em</span> <span class="string">.6em</span> <span class="string">.3em;</span></span><br><span class="line"><span class="string">font-size:80%;</span></span><br><span class="line"><span class="string">font-weight:bold;</span></span><br><span class="line"><span class="string">line-height:1;</span></span><br><span class="line"><span class="string">color:#fff;</span></span><br><span class="line"><span class="string">text-align:center;</span></span><br><span class="line"><span class="string">white-space:nowrap;</span></span><br><span class="line"><span class="string">vertical-align:baseline;</span></span><br><span class="line"><span class="string">border-radius:0;</span></span><br><span class="line"><span class="attr">background-color:</span> <span class="comment">#f0ad4e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">颜色块-绿</span></span><br><span class="line"><span class="string">span#inline-green</span> &#123;</span><br><span class="line"><span class="string">display:inline;</span></span><br><span class="line"><span class="string">padding:.2em</span> <span class="string">.6em</span> <span class="string">.3em;</span></span><br><span class="line"><span class="string">font-size:80%;</span></span><br><span class="line"><span class="string">font-weight:bold;</span></span><br><span class="line"><span class="string">line-height:1;</span></span><br><span class="line"><span class="string">color:#fff;</span></span><br><span class="line"><span class="string">text-align:center;</span></span><br><span class="line"><span class="string">white-space:nowrap;</span></span><br><span class="line"><span class="string">vertical-align:baseline;</span></span><br><span class="line"><span class="string">border-radius:0;</span></span><br><span class="line"><span class="attr">background-color:</span> <span class="comment">#5cb85c;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">颜色块-蓝</span></span><br><span class="line"><span class="string">span#inline-blue</span> &#123;</span><br><span class="line"><span class="string">display:inline;</span></span><br><span class="line"><span class="string">padding:.2em</span> <span class="string">.6em</span> <span class="string">.3em;</span></span><br><span class="line"><span class="string">font-size:80%;</span></span><br><span class="line"><span class="string">font-weight:bold;</span></span><br><span class="line"><span class="string">line-height:1;</span></span><br><span class="line"><span class="string">color:#fff;</span></span><br><span class="line"><span class="string">text-align:center;</span></span><br><span class="line"><span class="string">white-space:nowrap;</span></span><br><span class="line"><span class="string">vertical-align:baseline;</span></span><br><span class="line"><span class="string">border-radius:0;</span></span><br><span class="line"><span class="attr">background-color:</span> <span class="comment">#2780e3;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">颜色块-紫</span></span><br><span class="line"><span class="string">span#inline-purple</span> &#123;</span><br><span class="line"><span class="string">display:inline;</span></span><br><span class="line"><span class="string">padding:.2em</span> <span class="string">.6em</span> <span class="string">.3em;</span></span><br><span class="line"><span class="string">font-size:80%;</span></span><br><span class="line"><span class="string">font-weight:bold;</span></span><br><span class="line"><span class="string">line-height:1;</span></span><br><span class="line"><span class="string">color:#fff;</span></span><br><span class="line"><span class="string">text-align:center;</span></span><br><span class="line"><span class="string">white-space:nowrap;</span></span><br><span class="line"><span class="string">vertical-align:baseline;</span></span><br><span class="line"><span class="string">border-radius:0;</span></span><br><span class="line"><span class="attr">background-color:</span> <span class="comment">#9954bb;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">颜色块-红</span></span><br><span class="line"><span class="string">span#inline-red</span> &#123;</span><br><span class="line"><span class="string">display:inline;</span></span><br><span class="line"><span class="string">padding:.2em</span> <span class="string">.6em</span> <span class="string">.3em;</span></span><br><span class="line"><span class="string">font-size:80%;</span></span><br><span class="line"><span class="string">font-weight:bold;</span></span><br><span class="line"><span class="string">line-height:1;</span></span><br><span class="line"><span class="string">color:#fff;</span></span><br><span class="line"><span class="string">text-align:center;</span></span><br><span class="line"><span class="string">white-space:nowrap;</span></span><br><span class="line"><span class="string">vertical-align:baseline;</span></span><br><span class="line"><span class="string">border-radius:0;</span></span><br><span class="line"><span class="attr">background-color:</span> <span class="comment">#df3e3e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">左侧边框红色块级</span></span><br><span class="line"><span class="string">p#div-border-left-red</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-left-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-left-color:</span> <span class="comment">#df3e3e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">左侧边框黄色块级</span></span><br><span class="line"><span class="string">p#div-border-left-yellow</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-left-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-left-color:</span> <span class="comment">#f0ad4e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">左侧边框绿色块级</span></span><br><span class="line"><span class="string">p#div-border-left-green</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-left-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-left-color:</span> <span class="comment">#5cb85c;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">左侧边框蓝色块级</span></span><br><span class="line"><span class="string">p#div-border-left-blue</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-left-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-left-color:</span> <span class="comment">#2780e3;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">左侧边框紫色块级</span></span><br><span class="line"><span class="string">p#div-border-left-purple</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-left-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-left-color:</span> <span class="comment">#9954bb;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">右侧边框红色块级</span></span><br><span class="line"><span class="string">p#div-border-right-red</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-right-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-right-color:</span> <span class="comment">#df3e3e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">右侧边框黄色块级</span></span><br><span class="line"><span class="string">p#div-border-right-yellow</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-right-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-right-color:</span> <span class="comment">#f0ad4e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">右侧边框绿色块级</span></span><br><span class="line"><span class="string">p#div-border-right-green</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-right-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-right-color:</span> <span class="comment">#5cb85c;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">右侧边框蓝色块级</span></span><br><span class="line"><span class="string">p#div-border-right-blue</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-right-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-right-color:</span> <span class="comment">#2780e3;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">右侧边框紫色块级</span></span><br><span class="line"><span class="string">p#div-border-right-purple</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-right-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-right-color:</span> <span class="comment">#9954bb;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">上侧边框红色</span></span><br><span class="line"><span class="string">p#div-border-top-red</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-top-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-top-color:</span> <span class="comment">#df3e3e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">上侧边框黄色</span></span><br><span class="line"><span class="string">p#div-border-top-yellow</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-top-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-top-color:</span> <span class="comment">#f0ad4e;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">上侧边框绿色</span></span><br><span class="line"><span class="string">p#div-border-top-green</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-top-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-top-color:</span> <span class="comment">#5cb85c;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">上侧边框蓝色</span></span><br><span class="line"><span class="string">p#div-border-top-blue</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-top-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-top-color:</span> <span class="comment">#2780e3;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">//</span> <span class="string">上侧边框紫色</span></span><br><span class="line"><span class="string">p#div-border-top-purple</span> &#123;</span><br><span class="line"><span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">10px;</span></span><br><span class="line"><span class="attr">margin:</span> <span class="string">10px</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line"><span class="attr">border:</span> <span class="string">1px</span> <span class="string">solid</span> <span class="comment">#ccc;</span></span><br><span class="line"><span class="attr">border-top-width:</span> <span class="string">5px;</span></span><br><span class="line"><span class="attr">border-radius:</span> <span class="string">3px;</span></span><br><span class="line"><span class="attr">border-top-color:</span> <span class="comment">#9954bb;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法-在你要编辑的markdown文件里键入以下内容"><a href="#使用方法-在你要编辑的markdown文件里键入以下内容" class="headerlink" title="使用方法: 在你要编辑的markdown文件里键入以下内容"></a>使用方法: 在你要编辑的markdown文件里键入以下内容</h4><p><span id="inline-red"> 红色背景色块 </span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-red&quot;</span>&gt;</span> 这里输入文字 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><span id="inline-blue"> 蓝色背景色块 </span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-blue&quot;</span>&gt;</span> 这里输入文字 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><span id="inline-purple"> 紫色背景色块 </span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-purple&quot;</span>&gt;</span> 这里输入文字 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><span id="inline-yellow"> 黄色背景色块 </span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-yellow&quot;</span>&gt;</span> 这里输入文字 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><span id="inline-green"> 绿色背景色块 </span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-green&quot;</span>&gt;</span> 这里输入文字 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="背景自定义效果"><a href="#背景自定义效果" class="headerlink" title="背景自定义效果"></a>背景自定义效果</h3><p>效果：<br><span id="inline-toc">这里输入文字</span></p>
+<h4 id="在styles-styl里键入自定义形状色块"><a href="#在styles-styl里键入自定义形状色块" class="headerlink" title="在styles.styl里键入自定义形状色块"></a>在styles.styl里键入自定义形状色块</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">自定义形状色块</span></span><br><span class="line"><span class="string">span#inline-toc</span> &#123;</span><br><span class="line">    <span class="attr">display:</span> <span class="string">inline-block;</span></span><br><span class="line">    <span class="attr">border-radius:</span> <span class="number">80</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span> <span class="number">90</span><span class="string">%</span> <span class="number">20</span><span class="string">%;</span></span><br><span class="line">    <span class="attr">background-color:</span> <span class="string">rgb(237</span>, <span class="number">237</span>, <span class="number">237</span><span class="string">);</span></span><br><span class="line">    <span class="attr">color:</span> <span class="comment">#555;</span></span><br><span class="line">    <span class="attr">padding:</span> <span class="number">0.</span><span class="string">05em</span> <span class="number">0.</span><span class="string">4em;</span></span><br><span class="line">    <span class="attr">margin:</span> <span class="string">2px</span> <span class="string">5px</span> <span class="string">2px</span> <span class="string">0px;</span></span><br><span class="line">    <span class="attr">line-height:</span> <span class="number">1.5</span><span class="string">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法-在你要编辑的markdown文件里键入以下内容-1"><a href="#使用方法-在你要编辑的markdown文件里键入以下内容-1" class="headerlink" title="使用方法: 在你要编辑的markdown文件里键入以下内容"></a>使用方法: 在你要编辑的markdown文件里键入以下内容</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-toc&quot;</span>&gt;</span>这里输入文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="图标边框效果"><a href="#图标边框效果" class="headerlink" title="图标边框效果"></a>图标边框效果</h3><p>效果：</p>
+<p><a id="download" href="/download/model_infer.py"><i class="fas fa-book-reader"></i><span> 查看内容</span><br></a></p>
+<p>使用方法: 在你要编辑的markdown文件里键入以下内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">&quot;download&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/download/model_infer.py&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-book-reader&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span> 查看内容<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>附注：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://fontawesome.com/icons?d=gallery"><font color="blue">图标整理网站</font></a> 可以在其中选中想要实现的图标效果，获取相应的名称进行替换即可。</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/FireShot%20Capture%20075%20-%20File%20Download%20Icon%20-%20Font%20Awesome%20-%20fontawesome.com.png" alt="FireShot Capture 075 - File Download Icon - Font Awesome - fontawesome.com"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">&quot;download&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/download/model_infer.py&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-file-download&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>下载内容<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a id="download" href="/download/model_infer.py"><i class="fas fa-file-download"></i><span> <font color="blue">下载内容</font></span></a></p>
+<h3 id="文本居中"><a href="#文本居中" class="headerlink" title="文本居中"></a>文本居中</h3><p>效果：</p>
+<blockquote class="blockquote-center">
+<p>Szabadság，Szerelem!<br>E kettő kell nekem<br>Szerelmemért föláldozom<br>Az életet<br>Szabadságért föláldozom<br>Szerelmemet.</p>
+
+</blockquote>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">%cq%</span>&#125;</span><br><span class="line"><span class="string">Szabadság，Szerelem!</span></span><br><span class="line"><span class="string">E</span> <span class="string">kettő</span> <span class="string">kell</span> <span class="string">nekem</span></span><br><span class="line"><span class="string">Szerelmemért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Az</span> <span class="string">életet</span></span><br><span class="line"><span class="string">Szabadságért</span> <span class="string">föláldozom</span></span><br><span class="line"><span class="string">Szerelmemet.</span></span><br><span class="line">&#123;<span class="string">%endcq%</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义数字块"><a href="#自定义数字块" class="headerlink" title="自定义数字块"></a>自定义数字块</h3><p>效果：</p>
+<figure class="highlight ruby"><figcaption><span>/sourse/_data/styles.styl */</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 自定义的数字块 *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">span#inline-toc &#123;</span></span><br><span class="line"><span class="regexp">    display: inline-block;</span></span><br><span class="line"><span class="regexp">    border-radius: 80% 100% 90% 20%;</span></span><br><span class="line"><span class="regexp">    background-color: rgb(227, 242, 253);</span></span><br><span class="line"><span class="regexp">    color: #555;</span></span><br><span class="line"><span class="regexp">    padding: 0.05em 0.4em;</span></span><br><span class="line"><span class="regexp">    margin: 2px 5px 2px 0px;</span></span><br><span class="line"><span class="regexp">    line-height: 1.5;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<p><img data-src="../images/Next-8-0-%E8%BF%9B%E9%98%B6%E7%BE%8E%E5%8C%96%E7%AF%87%E4%B8%80/Screenshot%20from%202020-09-22%2016-18-47.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;inline-toc&quot;</span>&gt;</span>1.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/74c4f787.html" title="Next 8.0 进阶美化篇一">https://bella722.github.io/post/74c4f787.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/a231f91f.html" rel="prev" title="Ubuntu20.04下成功配置Qv2ray">
+                  <i class="fa fa-chevron-left"></i> Ubuntu20.04下成功配置Qv2ray
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/4f44d92e.html" rel="next" title="Next 8.0 进阶美化篇二">
+                  Next 8.0 进阶美化篇二 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isabella</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/post/74c4f787.html",
+    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

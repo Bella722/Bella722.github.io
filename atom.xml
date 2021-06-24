@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2021-06-23T09:47:55.636Z</updated>
+  <updated>2021-04-29T12:33:08.875Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,50 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>记录Hexo博客成功迁移</title>
-    <link href="https://bella722.github.io/post/f16bee1a.html"/>
-    <id>https://bella722.github.io/post/f16bee1a.html</id>
-    <published>2021-06-23T08:13:05.000Z</published>
-    <updated>2021-06-23T09:47:55.636Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;换工作新换了电脑，要写文档，正好就把hexo博客迁移过来，所以把自己成功迁移的整个过程记录下来，也方便有同样需求的小伙伴进行参考&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
-    
-    
-    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu20.04安装v2rayL</title>
-    <link href="https://bella722.github.io/post/a2e7ced5.html"/>
-    <id>https://bella722.github.io/post/a2e7ced5.html</id>
-    <published>2021-06-23T07:35:30.000Z</published>
-    <updated>2021-06-23T10:02:24.724Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
-    
-    
-    <category term="v2rayL" scheme="https://bella722.github.io/tags/v2rayL/"/>
-    
-  </entry>
   
   <entry>
     <title>《Deep Learning》第一章读书笔记二</title>
@@ -451,6 +407,47 @@
     
     
     <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
+    <link href="https://bella722.github.io/post/1a71c089.html"/>
+    <id>https://bella722.github.io/post/1a71c089.html</id>
+    <published>2020-08-31T10:49:56.000Z</published>
+    <updated>2020-11-06T02:33:40.872Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;TensorFlow Object Detection API 作为目前开源的接口，集成了当下比较主流的一些网络模型，并且作了系统性的划分，所以适合快速上手各个算法模型，在使用之前，必须按照官方指导配置好环境，具体参考本篇内容完成配置&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Ubuntu下TensorFlow Object Detection API实战" scheme="https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="TensorFlow Object Detection API" scheme="https://bella722.github.io/tags/TensorFlow-Object-Detection-API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://bella722.github.io/post/4a17b156.html"/>
+    <id>https://bella722.github.io/post/4a17b156.html</id>
+    <published>2020-08-28T01:28:11.000Z</published>
+    <updated>2020-09-11T08:38:30.478Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; &lt;strong&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="小白学搭Hexo" scheme="https://bella722.github.io/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
     
   </entry>
   

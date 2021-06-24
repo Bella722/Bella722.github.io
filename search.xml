@@ -280,8 +280,6 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
 
-
-
 <h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
 <p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
 <p>打开<span id="inline-blue"> detect_object.py </span></p>
@@ -313,43 +311,6 @@
       </categories>
       <tags>
         <tag>TensorRT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu20.04下成功配置Qv2ray</title>
-    <url>/post/a231f91f.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="red">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
-<h3 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h3><p>​    软件中心搜索qv2ray安装</p>
-<p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-10.png"></p>
-<h3 id="配置客户端"><a href="#配置客户端" class="headerlink" title="配置客户端"></a>配置客户端</h3><h4 id="从应用列表将app右键添加到主页最常用应用栏"><a href="#从应用列表将app右键添加到主页最常用应用栏" class="headerlink" title="从应用列表将app右键添加到主页最常用应用栏"></a>从应用列表将app右键添加到主页最常用应用栏</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-17-24.png"></p>
-<h4 id="打开Qv2ray-会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹"><a href="#打开Qv2ray-会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹" class="headerlink" title="打开Qv2ray, 会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹"></a>打开Qv2ray, 会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-42.png"></p>
-<h4 id="先配置语言，点击preferences进入设置，语言栏选中中文并确定"><a href="#先配置语言，点击preferences进入设置，语言栏选中中文并确定" class="headerlink" title="先配置语言，点击preferences进入设置，语言栏选中中文并确定"></a>先配置语言，点击preferences进入设置，语言栏选中中文并确定</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-59.png"></p>
-<h4 id="核心core文件配置"><a href="#核心core文件配置" class="headerlink" title="核心core文件配置"></a>核心core文件配置</h4><h5 id="进入https-github-com-v2ray-v2ray-core-releases-根据自己的系统下载相应的核心文件"><a href="#进入https-github-com-v2ray-v2ray-core-releases-根据自己的系统下载相应的核心文件" class="headerlink" title="进入https://github.com/v2ray/v2ray-core/releases 根据自己的系统下载相应的核心文件"></a>进入<a href="https://github.com/v2ray/v2ray-core/releases">https://github.com/v2ray/v2ray-core/releases</a> 根据自己的系统下载相应的核心文件</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/FireShot%20Capture%20019%20-%20Releases%20%C2%B7%20v2ray_v2ray-core%20-%20github.com.png"></p>
-<h5 id="在-home-xxx-snap-qv2ray-2733-config-qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl-h才能显示隐藏的-config文件夹，这里注意即可。"><a href="#在-home-xxx-snap-qv2ray-2733-config-qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl-h才能显示隐藏的-config文件夹，这里注意即可。" class="headerlink" title="在/home/xxx/snap/qv2ray/2733/.config/qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl+h才能显示隐藏的.config文件夹，这里注意即可。"></a>在/home/xxx/snap/qv2ray/2733/.config/qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl+h才能显示隐藏的.config文件夹，这里注意即可。</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-06-18.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-06-52.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-13.png"></p>
-<h5 id="验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功"><a href="#验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功" class="headerlink" title="验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功"></a>验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-30.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-34.png"></p>
-<h3 id="回到app首页配置入网config文件。选择新建下的手动输入开始录入信息"><a href="#回到app首页配置入网config文件。选择新建下的手动输入开始录入信息" class="headerlink" title="回到app首页配置入网config文件。选择新建下的手动输入开始录入信息"></a>回到app首页配置入网config文件。选择新建下的手动输入开始录入信息</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-08-27.png"></p>
-<p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-08-55.png"></p>
-<blockquote>
-<p><strong>以下是我经常获取free acounts的两个网址：<br>link 1:  <a href="http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/">http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/</a><br>link 2: <a href="https://view.freev2ray.org/">https://view.freev2ray.org/</a><br>ink 2的accounts info每12H 会更新一次，只要删除旧连接添加另一个新连接就哦了</strong></p>
-</blockquote>
-<h3 id="最后主页右键选中线路连接就搞定啦"><a href="#最后主页右键选中线路连接就搞定啦" class="headerlink" title="最后主页右键选中线路连接就搞定啦"></a>最后主页右键选中线路连接就搞定啦</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"><br>&emsp;</p>
-<blockquote>
-<p><em>写在最后：请在合理合法的范围内使用。希望大家都好好珍惜这些资源，不然使用不当造成账号被封是大家都不愿意看到的事。</em></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>科学上网指南</category>
-      </categories>
-      <tags>
-        <tag>Qv2ray</tag>
       </tags>
   </entry>
   <entry>
@@ -584,6 +545,43 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu20.04下成功配置Qv2ray</title>
+    <url>/post/a231f91f.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="red">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
+<h3 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h3><p>​    软件中心搜索qv2ray安装</p>
+<p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-10.png"></p>
+<h3 id="配置客户端"><a href="#配置客户端" class="headerlink" title="配置客户端"></a>配置客户端</h3><h4 id="从应用列表将app右键添加到主页最常用应用栏"><a href="#从应用列表将app右键添加到主页最常用应用栏" class="headerlink" title="从应用列表将app右键添加到主页最常用应用栏"></a>从应用列表将app右键添加到主页最常用应用栏</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-17-24.png"></p>
+<h4 id="打开Qv2ray-会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹"><a href="#打开Qv2ray-会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹" class="headerlink" title="打开Qv2ray, 会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹"></a>打开Qv2ray, 会在主文件夹下的snap下自动生成一个名为qv2ray的文件夹</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-42.png"></p>
+<h4 id="先配置语言，点击preferences进入设置，语言栏选中中文并确定"><a href="#先配置语言，点击preferences进入设置，语言栏选中中文并确定" class="headerlink" title="先配置语言，点击preferences进入设置，语言栏选中中文并确定"></a>先配置语言，点击preferences进入设置，语言栏选中中文并确定</h4><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-03-59.png"></p>
+<h4 id="核心core文件配置"><a href="#核心core文件配置" class="headerlink" title="核心core文件配置"></a>核心core文件配置</h4><h5 id="进入https-github-com-v2ray-v2ray-core-releases-根据自己的系统下载相应的核心文件"><a href="#进入https-github-com-v2ray-v2ray-core-releases-根据自己的系统下载相应的核心文件" class="headerlink" title="进入https://github.com/v2ray/v2ray-core/releases 根据自己的系统下载相应的核心文件"></a>进入<a href="https://github.com/v2ray/v2ray-core/releases">https://github.com/v2ray/v2ray-core/releases</a> 根据自己的系统下载相应的核心文件</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/FireShot%20Capture%20019%20-%20Releases%20%C2%B7%20v2ray_v2ray-core%20-%20github.com.png"></p>
+<h5 id="在-home-xxx-snap-qv2ray-2733-config-qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl-h才能显示隐藏的-config文件夹，这里注意即可。"><a href="#在-home-xxx-snap-qv2ray-2733-config-qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl-h才能显示隐藏的-config文件夹，这里注意即可。" class="headerlink" title="在/home/xxx/snap/qv2ray/2733/.config/qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl+h才能显示隐藏的.config文件夹，这里注意即可。"></a>在/home/xxx/snap/qv2ray/2733/.config/qv2ray文件夹下新建vcore文件夹，并将之前下载的核心文件去全部拷贝到vcore文件夹内。注意这里的2733版本号是不固定的，根据你自己的来就好。另外就是你可能需要ctrl+h才能显示隐藏的.config文件夹，这里注意即可。</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-06-18.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-06-52.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-13.png"></p>
+<h5 id="验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功"><a href="#验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功" class="headerlink" title="验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功"></a>验证核心文件。设置里查看内核设置下的文件目录都对应不，不对应的需要手动更改。查看无误点击检查核心设置按钮，出现检查通过即为成功</h5><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-30.png"><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-07-34.png"></p>
+<h3 id="回到app首页配置入网config文件。选择新建下的手动输入开始录入信息"><a href="#回到app首页配置入网config文件。选择新建下的手动输入开始录入信息" class="headerlink" title="回到app首页配置入网config文件。选择新建下的手动输入开始录入信息"></a>回到app首页配置入网config文件。选择新建下的手动输入开始录入信息</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-08-27.png"></p>
+<p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-08-55.png"></p>
+<blockquote>
+<p><strong>以下是我经常获取free acounts的两个网址：<br>link 1:  <a href="http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/">http://tr1.freeair888.club/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/</a><br>link 2: <a href="https://view.freev2ray.org/">https://view.freev2ray.org/</a><br>ink 2的accounts info每12H 会更新一次，只要删除旧连接添加另一个新连接就哦了</strong></p>
+</blockquote>
+<h3 id="最后主页右键选中线路连接就搞定啦"><a href="#最后主页右键选中线路连接就搞定啦" class="headerlink" title="最后主页右键选中线路连接就搞定啦"></a>最后主页右键选中线路连接就搞定啦</h3><p><img data-src="../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AEQv2ray/Screenshot%20from%202020-09-08%2014-09-20.png"><br>&emsp;</p>
+<blockquote>
+<p><em>写在最后：请在合理合法的范围内使用。希望大家都好好珍惜这些资源，不然使用不当造成账号被封是大家都不愿意看到的事。</em></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>科学上网指南</category>
+      </categories>
+      <tags>
+        <tag>Qv2ray</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</title>
     <url>/post/1a71c089.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -627,6 +625,45 @@
       </categories>
       <tags>
         <tag>TensorFlow Object Detection API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu20.04安装v2rayL</title>
+    <url>/post/a2e7ced5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="blue">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
+<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a2e7ced5.html"><font color="red">Ubuntu20.04下成功配置v2rayL</font></a> </p>
+<h3 id="添加铜豌豆软件源"><a href="#添加铜豌豆软件源" class="headerlink" title="添加铜豌豆软件源"></a>添加铜豌豆软件源</h3><p>第一次使用 铜豌豆 Linux 的系统，需要先添加铜豌豆软件源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt -y install wget</span><br><span class="line">sudo wget -c -O atzlinux-archive-keyring_lastest_all.deb </span><br><span class="line">sudo https://www.atzlinux.com/atzlinux/pool/main/a/atzlinux-archive-keyring/atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo apt -y install ./atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install v2raylui</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png" alt="安装v2rayL"></p>
+<h3 id="配置订阅"><a href="#配置订阅" class="headerlink" title="配置订阅"></a>配置订阅</h3><p>上面安装完成后，可以在应用里看到这个萝卜图标，右键添加到桌面栏常用。</p>
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%B7%B2%E5%AE%89%E8%A3%85.png" alt="已安装"></p>
+<p>点击打开应用，选择配置订阅，将URL填到横线上然后<span id="inline-red"> 回车</span>。</p>
+<div class="note info"><p>一定要回车，不然无法添加成功线路</p></div>
+
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E9%85%8D%E7%BD%AE.png" alt="配置"></p>
+<p>再返回可用连接即可看到添加的线路了，将按钮点击即可由off转换为on，连接成功！</p>
+<p><img data-src="/home/zhangjiao/Pictures/6.23/%E7%BA%BF%E8%B7%AF.png" alt="线路"></p>
+<p>现在就可以享受冲浪啦~~~</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a href="https://github.com/jiangxufeng/v2rayL"><font color="black">Github源码v2rayL</font></a> </p>
+<p><i class="fas fa-rss"></i><a href="https://www.atzlinux.com/allpackages.htm"><font color="black">铜豌豆软件源</font></a> </p>
+<p><i class="fas fa-rss"></i><a href="https://github.com/freefq/free"><font color="black">免费节点</font></a> </p>
+]]></content>
+      <categories>
+        <category>科学上网指南</category>
+      </categories>
+      <tags>
+        <tag>v2rayL</tag>
       </tags>
   </entry>
   <entry>
@@ -969,8 +1006,7 @@
 </ol>
 <p><img data-src="../images/%E5%85%B3%E4%BA%8ETensorRT%E5%92%8CTF-TRT%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E5%84%BF/%E8%AE%AD%E7%BB%83%E4%BC%98%E5%8C%96.png" alt="训练优化"></p>
 <h3 id="推理阶段优化方法"><a href="#推理阶段优化方法" class="headerlink" title="推理阶段优化方法"></a>推理阶段优化方法</h3><ol>
-<li><p>模型压缩：</p>
-<ol>
+<li>模型压缩：<ol>
 <li>前端压缩：<ol>
 <li>知识蒸馏</li>
 <li>模型紧凑结构化</li>
@@ -986,8 +1022,7 @@
 </li>
 </ol>
 </li>
-<li><p>优化推理引擎</p>
-<ol>
+<li>优化推理引擎<ol>
 <li><p>TVM</p>
 </li>
 <li><p>TensorRT</p>
@@ -1321,6 +1356,52 @@
       </tags>
   </entry>
   <entry>
+    <title>记录Hexo博客成功迁移</title>
+    <url>/post/f16bee1a.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>换工作新换了电脑，要写文档，正好就把hexo博客迁移过来，所以把自己成功迁移的整个过程记录下来，也方便有同样需求的小伙伴进行参考</p>
+
+</blockquote>
+
+<a id="more"></a>
+
+<h3 id="配置基础环境"><a href="#配置基础环境" class="headerlink" title="配置基础环境"></a>配置基础环境</h3><h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br><span class="line"><span class="comment">#查看版本确认是否安装成功</span></span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/git-1624500855165.png" alt="git"></p>
+<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置GitHub的用户名与邮箱</span></span><br><span class="line">git config --global user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;youremail&quot;</span></span><br><span class="line"><span class="comment">#查看config确认是否配置成功</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/config1-1624500911806.png" alt="config1"></p>
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/config2-1624501026878.png" alt="config2"></p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span></span><br><span class="line"><span class="comment">#显示密钥信息，下一步要用</span></span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/key1.png" alt="key1"></p>
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/key2.png" alt="key2"></p>
+<h4 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h4><p>点击GitHub头像选择setting</p>
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/github1.png" alt="github1"></p>
+<p>选择SSH and GPG keys新建SSH keys,这块名字任意取，key的内容将上面一步显示的key信息填进去。</p>
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/github2.png" alt="github2"></p>
+<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
+<h4 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h3 id="迁移相关文件"><a href="#迁移相关文件" class="headerlink" title="迁移相关文件"></a>迁移相关文件</h3><p>新建blog文件夹将原先blog文件夹下的所有文件拷贝过来即可。</p>
+<h3 id="新电脑下重新部署"><a href="#新电脑下重新部署" class="headerlink" title="新电脑下重新部署"></a>新电脑下重新部署</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> Bella_Blog</span><br><span class="line"><span class="comment">#安装原始插件列表</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/hexo1.png" alt="hexo1"></p>
+<h4 id="生成并部署"><a href="#生成并部署" class="headerlink" title="生成并部署"></a>生成并部署</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/hexo2.png" alt="hexo2"></p>
+<p><img data-src="../images/%E8%AE%B0%E5%BD%95Hexo%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F%E8%BF%81%E7%A7%BB/hexo3.png" alt="hexo3"></p>
+<p>迁移成功！</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a href="https://swayye.xyz/2020/01/10/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"><font color="black">hexo博客迁移</font></a> </p>
+]]></content>
+      <categories>
+        <category>小白学搭Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TensorRT成功测试自己的数据集SSD模型二</title>
     <url>/post/fbaa150c.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -1490,91 +1571,6 @@
       </categories>
       <tags>
         <tag>TensorFlow Object Detection API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu20.04安装v2rayL</title>
-    <url>/post/a2e7ced5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>不知道为啥Qv2ray突然连不上忘了，切换线路毫无反应，换了代理也连不上，最后索性换个工具好了，直接github上搜索到了v2rayL，也是包含图像界面，其他操作也与Qv2ray无二，那么废话不多说，直接上教程</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/a6ffce94.html"><font color="blue">Windows下成功配置Qv2ray</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a231f91f.html"><font color="blue">Ubuntu20.04下成功配置Qv2ray</font></a> </p>
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/a2e7ced5.html"><font color="red">Ubuntu20.04下成功配置v2rayL</font></a> </p>
-<h3 id="添加铜豌豆软件源"><a href="#添加铜豌豆软件源" class="headerlink" title="添加铜豌豆软件源"></a>添加铜豌豆软件源</h3><p>第一次使用 铜豌豆 Linux 的系统，需要先添加铜豌豆软件源</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt -y install wget</span><br><span class="line">sudo wget -c -O atzlinux-archive-keyring_lastest_all.deb </span><br><span class="line">sudo https://www.atzlinux.com/atzlinux/pool/main/a/atzlinux-archive-keyring/atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo apt -y install ./atzlinux-archive-keyring_lastest_all.deb</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install v2raylui</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png" alt="安装v2rayL"></p>
-<h3 id="配置订阅"><a href="#配置订阅" class="headerlink" title="配置订阅"></a>配置订阅</h3><p>上面安装完成后，可以在应用里看到这个萝卜图标，右键添加到桌面栏常用。</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%B7%B2%E5%AE%89%E8%A3%85.png" alt="已安装"></p>
-<p>点击打开应用，选择配置订阅，将URL填到横线上然后<span id="inline-red"> 回车</span>。</p>
-<div class="note info"><p>一定要回车，不然无法添加成功线路</p></div>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E9%85%8D%E7%BD%AE.png" alt="配置"></p>
-<p>再返回可用连接即可看到添加的线路了，将按钮点击即可由off转换为on，连接成功！</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E7%BA%BF%E8%B7%AF.png" alt="线路"></p>
-<p>现在就可以享受冲浪啦~~~</p>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a href="https://github.com/jiangxufeng/v2rayL"><font color="black">Github源码v2rayL</font></a> </p>
-<p><i class="fas fa-rss"></i><a href="https://www.atzlinux.com/allpackages.htm"><font color="black">铜豌豆软件源</font></a> </p>
-<p><i class="fas fa-rss"></i><a href="https://github.com/freefq/free"><font color="black">免费节点</font></a> </p>
-]]></content>
-      <categories>
-        <category>科学上网指南</category>
-      </categories>
-      <tags>
-        <tag>v2rayL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>记录Hexo博客成功迁移</title>
-    <url>/post/f16bee1a.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>换工作新换了电脑，要写文档，正好就把hexo博客迁移过来，所以把自己成功迁移的整个过程记录下来，也方便有同样需求的小伙伴进行参考</p>
-
-</blockquote>
-
-<a id="more"></a>
-
-<h3 id="配置基础环境"><a href="#配置基础环境" class="headerlink" title="配置基础环境"></a>配置基础环境</h3><h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br><span class="line"><span class="comment">#查看版本确认是否安装成功</span></span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/git.png" alt="git"></p>
-<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置GitHub的用户名与邮箱</span></span><br><span class="line">git config --global user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;youremail&quot;</span></span><br><span class="line"><span class="comment">#查看config确认是否配置成功</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/config1.png" alt="config1"></p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/config2.png" alt="config2"></p>
-<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span></span><br><span class="line"><span class="comment">#显示密钥信息，下一步要用</span></span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/key1.png" alt="key1"></p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/key2.png" alt="key2"></p>
-<h4 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h4><p>点击GitHub头像选择setting</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/github1.png" alt="github1"></p>
-<p>选择SSH and GPG keys新建SSH keys,这块名字任意取，key的内容将上面一步显示的key信息填进去。</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/github2.png" alt="github2"></p>
-<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
-<h4 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="迁移相关文件"><a href="#迁移相关文件" class="headerlink" title="迁移相关文件"></a>迁移相关文件</h3><p>新建blog文件夹将原先blog文件夹下的所有文件拷贝过来即可。</p>
-<h3 id="新电脑下重新部署"><a href="#新电脑下重新部署" class="headerlink" title="新电脑下重新部署"></a>新电脑下重新部署</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> Bella_Blog</span><br><span class="line"><span class="comment">#安装原始插件列表</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/hexo1.png" alt="hexo1"></p>
-<h4 id="生成并部署"><a href="#生成并部署" class="headerlink" title="生成并部署"></a>生成并部署</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/home/zhangjiao/Pictures/6.23/hexo2.png" alt="hexo2"></p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/hexo3.png" alt="hexo3"></p>
-<p>迁移成功！</p>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a href="https://swayye.xyz/2020/01/10/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"><font color="black">hexo博客迁移</font></a> </p>
-]]></content>
-      <categories>
-        <category>小白学搭Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>

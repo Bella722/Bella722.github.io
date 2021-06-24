@@ -645,15 +645,15 @@
 
 <h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install v2raylui</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%AE%89%E8%A3%85v2rayL.png" alt="安装v2rayL"></p>
+<p><img data-src="../images/Ubuntu20-04%E5%AE%89%E8%A3%85v2rayL/%E5%AE%89%E8%A3%85v2rayL.png" alt="安装v2rayL"></p>
 <h3 id="配置订阅"><a href="#配置订阅" class="headerlink" title="配置订阅"></a>配置订阅</h3><p>上面安装完成后，可以在应用里看到这个萝卜图标，右键添加到桌面栏常用。</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E5%B7%B2%E5%AE%89%E8%A3%85.png" alt="已安装"></p>
+<p><img data-src="../images/Ubuntu20-04%E5%AE%89%E8%A3%85v2rayL/%E5%B7%B2%E5%AE%89%E8%A3%85.png" alt="已安装"></p>
 <p>点击打开应用，选择配置订阅，将URL填到横线上然后<span id="inline-red"> 回车</span>。</p>
 <div class="note info"><p>一定要回车，不然无法添加成功线路</p></div>
 
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E9%85%8D%E7%BD%AE.png" alt="配置"></p>
+<p><img data-src="../images/Ubuntu20-04%E5%AE%89%E8%A3%85v2rayL/%E9%85%8D%E7%BD%AE.png" alt="配置"></p>
 <p>再返回可用连接即可看到添加的线路了，将按钮点击即可由off转换为on，连接成功！</p>
-<p><img data-src="/home/zhangjiao/Pictures/6.23/%E7%BA%BF%E8%B7%AF.png" alt="线路"></p>
+<p><img data-src="../images/Ubuntu20-04%E5%AE%89%E8%A3%85v2rayL/%E7%BA%BF%E8%B7%AF.png" alt="线路"></p>
 <p>现在就可以享受冲浪啦~~~</p>
 <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><i class="fas fa-rss"></i><a href="https://github.com/jiangxufeng/v2rayL"><font color="black">Github源码v2rayL</font></a> </p>
 <p><i class="fas fa-rss"></i><a href="https://www.atzlinux.com/allpackages.htm"><font color="black">铜豌豆软件源</font></a> </p>

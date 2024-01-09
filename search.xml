@@ -1526,7 +1526,7 @@
 
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
-<h3 id="迁移相关文件"><a href="#迁移相关文件" class="headerlink" title="迁移相关文件"></a><strong>迁移相关文件</strong></h3><p><font color=red>新建blog文件夹将原先blog文件夹下的所有文件拷贝过来即可</font></p>
+<h3 id="迁移相关文件"><a href="#迁移相关文件" class="headerlink" title="迁移相关文件"></a><strong>迁移相关文件</strong></h3><p><font color="red">新建blog文件夹将原先blog文件夹下的所有文件拷贝过来即可</font></p>
 <h3 id="新电脑下重新部署"><a href="#新电脑下重新部署" class="headerlink" title="新电脑下重新部署"></a><strong>新电脑下重新部署</strong></h3><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a><strong>安装插件</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> Bella_Blog</span><br><span class="line"><span class="comment">#安装原始插件列表</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="C:\Users\72766\Documents\blog_pics\v2-142c9675ab35090fa83f9818d7244d6f_r.jpg"></p>

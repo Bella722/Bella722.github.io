@@ -39,6 +39,28 @@
   </entry>
   
   <entry>
+    <title>Ubuntu20.04下成功配置Qv2ray</title>
+    <link href="https://bella722.github.io/post/a231f91f.html"/>
+    <id>https://bella722.github.io/post/a231f91f.html</id>
+    <published>2024-01-08T03:29:44.343Z</published>
+    <updated>2020-11-06T02:38:53.695Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
+    
+    
+    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《Deep Learning》第一章读书笔记二</title>
     <link href="https://bella722.github.io/post/39c58280.html"/>
     <id>https://bella722.github.io/post/39c58280.html</id>
@@ -341,28 +363,6 @@
     
     
     <category term="Hexo" scheme="https://bella722.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu20.04下成功配置Qv2ray</title>
-    <link href="https://bella722.github.io/post/a231f91f.html"/>
-    <id>https://bella722.github.io/post/a231f91f.html</id>
-    <published>2020-09-08T07:35:46.212Z</published>
-    <updated>2020-11-06T02:38:53.695Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;对于一名码农来说，经常需要解决bug, 加上有时还需要对最新paper方向的掌握，也都需要上网查资料获取，尤其是深度学习方向最新的一些数据集以及模型的下载，都需要合适的网络环境，所以在这里我把自己在Ubuntu下解决这一问题的过程记录下来，希望能够帮助到和我有同样需求的小伙伴&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
-    
-    
-    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
     
   </entry>
   

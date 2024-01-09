@@ -417,14 +417,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -440,7 +440,7 @@
 
 </blockquote>
 
-<a id="more"></a>
+<span id="more"></span>
 
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
@@ -454,30 +454,28 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-0 --output_directory trained-inference-graphs/output_inference_graph_v1.pb</span><br></pre></td></tr></table></figure>
 
-
-
 <h3 id="uff-ssd"><a href="#uff-ssd" class="headerlink" title="uff_ssd"></a>uff_ssd</h3><p>首先，定位到TensorRT-7.0.0.11/samples/python/uff_ssd</p>
 <p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B%E4%B8%89/Screenshot%20from%202020-09-21%2009-27-59.png"></p>
 <p>打开<span id="inline-blue"> detect_object.py </span></p>
 <ul>
 <li><h4 id="COCO-label-list"><a href="#COCO-label-list" class="headerlink" title="COCO label list"></a>COCO label list</h4></li>
 </ul>
-<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COCO_CLASSES_LIST = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>utils/coco.py 148行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">COCO_CLASSES_LIST</span> = [<span class="string">&#x27;unlabeled&#x27;</span>, <span class="string">&#x27;dirty&#x27;</span>, <span class="string">&#x27;oil&#x27;</span>, <span class="string">&#x27;pit&#x27;</span>, <span class="string">&#x27;scratch&#x27;</span>, <span class="string">&#x27;wire_drawing&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
 <div class="note danger"><p>定义你自己的CLASSES_LIST，切记'unlabeled'不能少</p></div>
 
 <ul>
 <li><h4 id="MODEL-NAME"><a href="#MODEL-NAME" class="headerlink" title="MODEL_NAME"></a>MODEL_NAME</h4></li>
 </ul>
-<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line">MODEL_NAME = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>detect_objects.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model used for inference</span></span><br><span class="line"><span class="variable constant_">MODEL_NAME</span> = <span class="string">&#x27;my_model&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>  接着注释掉model下的raise error和download_model</p>
-<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>uff_ssd/utils/model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> model_name != <span class="string">&quot;ssd_inception_v2_coco_2017_11_17&quot;</span>:</span><br><span class="line">    <span class="comment"># raise NotImplementedError(</span></span><br><span class="line">    <span class="comment">#     &quot;Model &#123;&#125; is not supported yet&quot;.format(model_name))</span></span><br><span class="line">    <span class="comment">#####test#####</span></span><br><span class="line">    print(model_name)</span><br><span class="line"><span class="comment">######test#####</span></span><br><span class="line"><span class="comment">#download_model(model_name, silent)</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><h4 id="numClasses"><a href="#numClasses" class="headerlink" title="numClasses"></a>numClasses</h4></li>
 </ul>
-<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NMS = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1</span>e-<span class="number">8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0</span>.<span class="number">6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>utils/model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NMS</span> = gs.create_plugin_node(</span><br><span class="line">    name=<span class="string">&quot;NMS&quot;</span>,</span><br><span class="line">    op=<span class="string">&quot;NMS_TRT&quot;</span>,</span><br><span class="line">    shareLocation=<span class="number">1</span>,</span><br><span class="line">    varianceEncodedInTarget=<span class="number">0</span>,</span><br><span class="line">    backgroundLabelId=<span class="number">0</span>,</span><br><span class="line">    confidenceThreshold=<span class="number">1e-8</span>,</span><br><span class="line">    nmsThreshold=<span class="number">0.6</span>,</span><br><span class="line">    topK=<span class="number">100</span>,</span><br><span class="line">    keepTopK=<span class="number">100</span>,</span><br><span class="line">    numClasses=<span class="number">6</span>,</span><br><span class="line">    inputOrder=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">    confSigmoid=<span class="number">1</span>,</span><br><span class="line">    isNormalized=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <div class="note danger"><p>切记这里的numClasses为classes+1</p></div>
 

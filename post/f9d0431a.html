@@ -431,7 +431,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.3k</span>
+      <span>3.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -454,7 +454,7 @@
 
 </blockquote>
 
-<a id="more"></a>
+<span id="more"></span>
 
 <p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/f9d0431a.html"><font color="red">利用Google Colab成功测试TensorRT指南一</font></a> </p>
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/4f1188dc.html"><font color="blue">利用Google Colab成功测试TensorRT指南二</font></a> </p>
@@ -473,10 +473,10 @@
 <h3 id="查看当前的CUDA版本"><a href="#查看当前的CUDA版本" class="headerlink" title="查看当前的CUDA版本"></a>查看当前的CUDA版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!nvcc --version</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-03-47.png"></p>
-<h3 id="查看Ubuntu版本"><a href="#查看Ubuntu版本" class="headerlink" title="查看Ubuntu版本"></a>查看Ubuntu版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!cat /etc/issue</span><br></pre></td></tr></table></figure>
+<h3 id="查看Ubuntu版本"><a href="#查看Ubuntu版本" class="headerlink" title="查看Ubuntu版本"></a>查看Ubuntu版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="built_in">cat</span> /etc/issue</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-05-02.png"></p>
-<h3 id="查看Tensorflow版本"><a href="#查看Tensorflow版本" class="headerlink" title="查看Tensorflow版本"></a>查看Tensorflow版本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">print(tf.__version__)</span><br></pre></td></tr></table></figure>
+<h3 id="查看Tensorflow版本"><a href="#查看Tensorflow版本" class="headerlink" title="查看Tensorflow版本"></a>查看Tensorflow版本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="built_in">print</span>(tf.__version__)</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="../images/%E5%88%A9%E7%94%A8Google-Colab%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95TensorRT%E6%8C%87%E5%8D%97%E4%B8%80/Screenshot%20from%202020-10-10%2017-06-30.png"></p>
 <p>现在我要换掉cuda cudnn 以及tensorflow的版本，所以先要卸载掉就版本。</p>

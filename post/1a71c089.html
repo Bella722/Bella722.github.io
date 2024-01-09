@@ -443,12 +443,12 @@
 
 </blockquote>
 
-<a id="more"></a>
+<span id="more"></span>
 
 <p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/1a71c089.html"><font color="red">Ubuntu20.04下成功配置TensorFlow Object Detection API 教程</font></a> </p>
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/bb2ec196.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API训练自己的数据</font></a> </p>
 <p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/e88b7107.html"><font color="blue">Ubuntu下用TensorFlow Object Detection API测试自己的数据</font></a> </p>
-<h3 id="新建一个名为TensorFlow的文件夹"><a href="#新建一个名为TensorFlow的文件夹" class="headerlink" title="新建一个名为TensorFlow的文件夹"></a>新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir TensorFlow</span><br></pre></td></tr></table></figure>
+<h3 id="新建一个名为TensorFlow的文件夹"><a href="#新建一个名为TensorFlow的文件夹" class="headerlink" title="新建一个名为TensorFlow的文件夹"></a>新建一个名为TensorFlow的文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> TensorFlow</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="打开终端，cd进入TensorFlow"><a href="#打开终端，cd进入TensorFlow" class="headerlink" title="打开终端，cd进入TensorFlow"></a>打开终端，cd进入TensorFlow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> TensorFlow</span><br></pre></td></tr></table></figure>
@@ -460,12 +460,12 @@
 
 <h3 id="配置Protobuf"><a href="#配置Protobuf" class="headerlink" title="配置Protobuf"></a>配置Protobuf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install protobuf</span><br><span class="line"><span class="built_in">cd</span> models/research/</span><br><span class="line">protoc object_detection/protos/*.proto --python_out=.</span><br></pre></td></tr></table></figure>
 
-<h3 id="配置COCO-API"><a href="#配置COCO-API" class="headerlink" title="配置COCO API"></a>配置COCO API</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cocodataset/cocoapi.git</span><br><span class="line"><span class="built_in">cd</span> cocoapi/PythonAPI</span><br><span class="line">make</span><br><span class="line">cp -r pycocotools &lt;PATH_TO_TF&gt;/TensorFlow/models/research/</span><br></pre></td></tr></table></figure>
+<h3 id="配置COCO-API"><a href="#配置COCO-API" class="headerlink" title="配置COCO API"></a>配置COCO API</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cocodataset/cocoapi.git</span><br><span class="line"><span class="built_in">cd</span> cocoapi/PythonAPI</span><br><span class="line">make</span><br><span class="line"><span class="built_in">cp</span> -r pycocotools &lt;PATH_TO_TF&gt;/TensorFlow/models/research/</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-04-34-1598871276938.png"></p>
 <p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-05-1598871293831.png"></p>
 <h3 id="安装Object-Detection-API"><a href="#安装Object-Detection-API" class="headerlink" title="安装Object Detection API"></a>安装Object Detection API</h3><p>这里需要注意一点，先要确认你的tensorflow版本，我的是tf1.x，所以这里我要拷贝的是tf1的setup,如果你的是tf2.x,那就拷贝tf2的setup.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#确保你当前在TensorFlow/models/research/文件夹下</span></span><br><span class="line">cp object_detection/packages/tf2/setup.py .</span><br><span class="line">python -m pip install .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#确保你当前在TensorFlow/models/research/文件夹下</span></span><br><span class="line"><span class="built_in">cp</span> object_detection/packages/tf2/setup.py .</span><br><span class="line">python -m pip install .</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="/../images/Ubuntu20-04%E4%B8%8B%E6%88%90%E5%8A%9F%E9%85%8D%E7%BD%AETensorFlow-Object-Detection-API-%E6%95%99%E7%A8%8B/Screenshot%20from%202020-08-31%2016-05-18-1598871310225.png"></p>
 <h3 id="测试Object-Detection-API是否安装成功"><a href="#测试Object-Detection-API是否安装成功" class="headerlink" title="测试Object Detection API是否安装成功"></a>测试Object Detection API是否安装成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python object_detection/builders/model_builder_tf1_test.py</span><br></pre></td></tr></table></figure>

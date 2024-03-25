@@ -25,18 +25,37 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="Windows+anaconda+4050 6G+chatglm本地部署四中文文本向量表征文本向量表征这里我对比了三种不同模型embedding的结果：分别是shibing624&#x2F;text2vec-base-chinese和 w2v-light-tencent-chinese 以及 shibing624&#x2F;text2vec-base-chinese-paraphrase 调用方法如下： 1234fr">
+  <meta name="description" content="本文就文本的向量表示以及向量数据库结合大模型的使用作以介绍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows+anaconda+4050 6G+chatglm本地部署四">
 <meta property="og:url" content="https://bella722.github.io/post/8c955109.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="Windows+anaconda+4050 6G+chatglm本地部署四中文文本向量表征文本向量表征这里我对比了三种不同模型embedding的结果：分别是shibing624&#x2F;text2vec-base-chinese和 w2v-light-tencent-chinese 以及 shibing624&#x2F;text2vec-base-chinese-paraphrase 调用方法如下： 1234fr">
+<meta property="og:description" content="本文就文本的向量表示以及向量数据库结合大模型的使用作以介绍">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20151218.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20144410.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20154855.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20112047.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20115739.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20120713.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20134438.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20154231.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20160123.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20162824.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20163644.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20164940.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165503.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165411.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165429.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165449.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20163922.png">
+<meta property="og:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20165434.png">
 <meta property="article:published_time" content="2024-03-25T08:36:49.000Z">
-<meta property="article:modified_time" content="2024-03-25T08:46:37.160Z">
+<meta property="article:modified_time" content="2024-03-25T13:35:49.257Z">
 <meta property="article:author" content="Bella">
 <meta property="article:tag" content="大模型 chatglm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20151218.png">
 
 
 <link rel="canonical" href="https://bella722.github.io/post/8c955109.html">
@@ -255,7 +274,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-anaconda-4050-6G-chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B"><span class="nav-number">1.</span> <span class="nav-text">Windows+anaconda+4050 6G+chatglm本地部署四</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">中文文本向量表征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">文本向量表征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">向量相似度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">向量数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chroma%E5%90%91%E9%87%8F%E5%BA%93%E5%88%9B%E5%BB%BA"><span class="nav-number">1.2.1.</span> <span class="nav-text">chroma向量库创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E5%AF%BB%E8%BF%91%E4%BC%BC%E5%90%91%E9%87%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">搜寻近似向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%BA%93-%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">向量库+大模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.3.</span> <span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.</span> <span class="nav-text">中文文本向量表征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">文本向量表征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">向量相似度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">向量数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chroma%E5%90%91%E9%87%8F%E5%BA%93%E5%88%9B%E5%BB%BA"><span class="nav-number">2.1.</span> <span class="nav-text">chroma向量库创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E5%AF%BB%E8%BF%91%E4%BC%BC%E5%90%91%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">搜寻近似向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%BA%93-%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">向量库+大模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -368,7 +387,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-03-25 16:36:49 / 修改时间：16:46:37" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:49+08:00">2024-03-25</time>
+      <time title="创建时间：2024-03-25 16:36:49 / 修改时间：21:35:49" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:49+08:00">2024-03-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -409,14 +428,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.2k</span>
+      <span>7.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -427,7 +446,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Windows-anaconda-4050-6G-chatglm本地部署四"><a href="#Windows-anaconda-4050-6G-chatglm本地部署四" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署四"></a>Windows+anaconda+4050 6G+chatglm本地部署四</h1><h2 id="中文文本向量表征"><a href="#中文文本向量表征" class="headerlink" title="中文文本向量表征"></a>中文文本向量表征</h2><h3 id="文本向量表征"><a href="#文本向量表征" class="headerlink" title="文本向量表征"></a>文本向量表征</h3><p>这里我对比了三种不同模型embedding的结果：分别是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>和 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec/releases/download/1.1.4/light_Tencent_AILab_ChineseEmbedding.bin">w2v-light-tencent-chinese</a> 以及 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese-paraphrase">shibing624/text2vec-base-chinese-paraphrase</a></p>
+        <blockquote class="blockquote-center">
+<p>本文就文本的向量表示以及向量数据库结合大模型的使用作以介绍</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h2 id="中文文本向量表征"><a href="#中文文本向量表征" class="headerlink" title="中文文本向量表征"></a>中文文本向量表征</h2><h3 id="文本向量表征"><a href="#文本向量表征" class="headerlink" title="文本向量表征"></a>文本向量表征</h3><p>这里我对比了三种不同模型embedding的结果：分别是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>和 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec/releases/download/1.1.4/light_Tencent_AILab_ChineseEmbedding.bin">w2v-light-tencent-chinese</a> 以及 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese-paraphrase">shibing624/text2vec-base-chinese-paraphrase</a></p>
 <p>调用方法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> text2vec <span class="keyword">import</span> SentenceModel, Word2Vec</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">model = Word2Vec(<span class="string">&#x27;w2v-light-tencent-chinese&#x27;</span>)</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -435,23 +460,23 @@
 <p>我这里对比了三段文本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from text2vec import SentenceModel, Word2Vec</span><br><span class="line"><span class="comment"># model = SentenceModel(&quot;shibing624/text2vec-base-chinese&quot;)</span></span><br><span class="line"><span class="comment"># model = Word2Vec(&#x27;w2v-light-tencent-chinese&#x27;)</span></span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br><span class="line">textvec1 = model.encode(<span class="string">&quot;铲子里还带着刚从地下带出的旧土，离奇的是，这一杯土正不停的向外渗着鲜红的液体，就像刚刚在血液里蘸过一样&quot;</span>)</span><br><span class="line">textvec2 = model.encode(<span class="string">&quot;“下不下去喃？要得要不得，一句话，莫七里八里的！”独眼的小伙子说：“你说你个老人家腿脚不方便，就莫下去了，我和我弟两个下去，管他什么东西，直接给他来一梭子。”&quot;</span>)</span><br><span class="line">textvec3 = model.encode(<span class="string">&quot;果然，这样一来他就和洞里的东西对持住了，双方都各自吃力，但是都拉不动分毫，僵持了有10几秒，就听到洞里一声盒子炮响，然后听到他爹大叫：“三伢子，快跑！！！！！！”，就觉的绳子一松，土耗子嗖一声从洞里弹了出来，好象上面还挂了什么东西！那时候老三也顾不得那么多了，他知道下面肯定出了事情了，一把接住土耗子，扭头就跑！他一口七跑出有2里多地，才敢停下来，掏出他怀里的土耗子一看，吓的大叫了一声，原来土耗子上什么都没勾，只勾着一只血淋淋的断手。他认得那手上，不由哭了出来，他手是分明是他二哥的。看样子他二哥就算不死也残废了，想到这里，他不由一咬，就想回去救他二哥和老爹，刚一回头，就看见背后蹲着个血红血红的东西，正直钩钩看着他&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec2))</span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec3))</span><br></pre></td></tr></table></figure>
 
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 151218.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20151218.png"></p>
 <p>由此可见，在embedding阶段选取不同的模型也会影响最后相似性的结果。一般中文比较用的最多的是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>。</p>
 <p>一般通过在线下载方式最后模型文件夹的保存路径一般在C:\Users\xxx.cache\huggingface\hub</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 144410.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20144410.png"></p>
 <p>如果没有安装text2vec也可以通过其他两种方式加载模型完成文本embedding。</p>
 <p>方式一：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import torch</span><br><span class="line">from transformers import AutoTokenizer, AutoModel</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;KMP_DUPLICATE_LIB_OK&quot;</span>] = <span class="string">&quot;TRUE&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mean Pooling - Take attention mask into account for correct averaging</span></span><br><span class="line">def mean_pooling(model_output, attention_mask):</span><br><span class="line">    token_embeddings = model_output[0]  <span class="comment"># First element of model_output contains all token embeddings</span></span><br><span class="line">    input_mask_expanded = attention_mask.unsqueeze(-1).<span class="built_in">expand</span>(token_embeddings.size()).<span class="built_in">float</span>()</span><br><span class="line">    <span class="built_in">return</span> torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load model from HuggingFace Hub</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">model = AutoModel.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"><span class="comment"># Tokenize sentences</span></span><br><span class="line">encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors=<span class="string">&#x27;pt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute token embeddings</span></span><br><span class="line">with torch.no_grad():</span><br><span class="line">    model_output = model(**encoded_input)</span><br><span class="line"><span class="comment"># Perform pooling. In this case, max pooling.</span></span><br><span class="line">sentence_embeddings = mean_pooling(model_output, encoded_input[<span class="string">&#x27;attention_mask&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
 
 <p>方式一加载模型并将文本映射到高维空间后再次计算相似度，还是用同一文本对</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 154855.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20154855.png"></p>
 <p>和上面计算的结果稍稍有点差别。</p>
 <p>方式二：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sentence_transformers import SentenceTransformer</span><br><span class="line"></span><br><span class="line">m = SentenceTransformer(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"></span><br><span class="line">sentence_embeddings = m.encode(sentences)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
 
 <p>方式二的加载方式和text2vet没有差别，计算结果通过验证也没有差别。</p>
 <h3 id="向量相似度计算"><a href="#向量相似度计算" class="headerlink" title="向量相似度计算"></a>向量相似度计算</h3><p>回想之前高数的时候学过，向量之间夹角的表示</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 112047.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20112047.png"></p>
 <p>方便理解就是父母和孩子长相的相似性，亲生的就很像，这里就可以类比理解成向量的夹角Θ越接近0，孩子和陌生人就一点也不像，也就是Θ值越接近90°，就像坐标系的坐标轴，各自不能相互表示，也就是互不相关。</p>
 <p>但是一般我们不直接求解Θ，只求到 cos Θ 就可以实现同样的效果，即<font face="黑体" color="red" size="5"> cos Θ 值越接近等于1就说明两向量越相似，cos Θ 值越接近等于0就说明两向量越不相关。</font></p>
 <p>这里介绍两种计算方式</p>
@@ -462,9 +487,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cos_sim_matrx</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(a, torch.Tensor):</span><br><span class="line">        a = torch.tensor(a) <span class="comment">#使用cuda计算可改为torch.tensor(a).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(b, torch.Tensor):</span><br><span class="line">        a = torch.tensor(b) <span class="comment">#使用cuda计算可改为torch.tensor(b).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(a.shape)==<span class="number">1</span>:</span><br><span class="line">        a = a.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(b.shape)==<span class="number">1</span>:</span><br><span class="line">        b = b.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    a_norm = torch.nn.functional.normalize(a, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    b_norm = torch.nn.functional.normalize(b, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> torch.mm(a_norm, b_norm.transpose(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 
 <p>其实第二种方法是对公式做了变式</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 115739.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20115739.png"></p>
 <p>最后看一下两种方法的计算结果：</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 120713.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20120713.png"></p>
 <p>可以看出结果是一致的。</p>
 <h2 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h2><p>接着之前的步骤，完成文本切块后，接着需要对文本向量化并存储，方便之后大模型调用</p>
 <h3 id="chroma向量库创建"><a href="#chroma向量库创建" class="headerlink" title="chroma向量库创建"></a>chroma向量库创建</h3><p>使用方法</p>
@@ -474,36 +499,36 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>)</span><br><span class="line">to</span><br><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>最终会在主文件夹下新建vector_zhenhuanzhuan文件夹，并保存向量文件。</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 134438.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20134438.png"></p>
 <h3 id="搜寻近似向量"><a href="#搜寻近似向量" class="headerlink" title="搜寻近似向量"></a>搜寻近似向量</h3><p>上一步已经创建好向量库，接下来测试一下输入一段文本，看能否找到最相关的文本段</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关于相似性搜索chroma提供了5种函数</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_relevance_scores(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_score(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector_with_relevance_scores(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">每种搜索结果默认返回4条文本，需要修改的话，直接按照如下指定就行</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串, K=5)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">ques = <span class="string">&#x27;甄嬛离宫去了哪儿？&#x27;</span></span><br><span class="line">ques_embedding = hf.embed_query(ques) <span class="comment">#这里直接调用前文定义的embedding模型</span></span><br><span class="line"></span><br><span class="line">res_similarity_search = db.similarity_search(ques)</span><br><span class="line">res_similarity_search_with_relevance_scores = db.similarity_search_with_relevance_scores(ques)</span><br><span class="line">res_similarity_search_with_score = db.similarity_search_with_score(ques)</span><br><span class="line">res_similarity_search_by_vector = db.similarity_search_by_vector(ques_embedding)</span><br><span class="line">res_similarity_search_by_vector_with_relevance_scores = db.similarity_search_by_vector_with_relevance_scores(ques_embedding)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 154231.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20154231.png"></p>
 <p><font face="黑体" color="red" size="5">可以看出不同搜寻相似向量的返回结果都是殊途同归的，其实看源码的话，会发现有些方法其实是套壳写的，比如similarity_search里面就是调用了similarity_search_with_score</font></p>
 <p>再看看向量输入与字符串输入的搜寻近似结果</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 160123.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20160123.png"></p>
 <p><font face="黑体" color="red" size="5">similarity_search_with_score 与 similarity_search_by_vector_with_relevance_scores 的结果一模一样，完全相等</font></p>
 <p>至此流程跑通了，现在重点看看搜索结果的匹配度，这块直接影响到后期大模型回答问题的准确性，所以需要调整一下</p>
 <p>开始我设置切块文本长度在256，想了一下，这里原始数据来自于高度提炼和总结的文本，所以是不是应该把断句调小一些，这样更准呢？所以我把256换成64，重新创建新的数据库，再搜索输入看看返回的准确性。</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 162824.png)</p>
-<p>![屏幕截图 2024-03-22 163644](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 163644.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20162824.png"></p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20163644.png" alt="屏幕截图 2024-03-22 163644"></p>
 <p><font face="黑体" color="red" size="5">效果真的好了很多，很多问题都能找到正确答案，但是也要注意：1. 问题问的太细其实是匹配不到结果的，也对应了原始数据中没有匹配的数据；2. 提问可以多样性，也能找到答案</font></p>
 <h3 id="向量库-大模型"><a href="#向量库-大模型" class="headerlink" title="向量库+大模型"></a>向量库+大模型</h3><p>思路是：调用大模型，根据输入问题在向量库里搜寻最相似的文档段集合并返回，由llm归纳输出。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">retrieval_ = db.as_retriever()</span><br><span class="line">from langchain.prompts import PromptTemplate</span><br><span class="line">QA_CHAIN_PROMPT = PromptTemplate.from_template(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">如果你不知道答案，就回答不知道，不要试图编造答案。</span></span><br><span class="line"><span class="string">总是在答案结束时说”谢谢你的提问！“</span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string">问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span>)</span><br><span class="line">qa = RetrievalQA.from_chain_type(</span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retrieval_,</span><br><span class="line">    verbose=True,</span><br><span class="line">    chain_type_kwargs=&#123;<span class="string">&quot;prompt&quot;</span>: QA_CHAIN_PROMPT&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">response = qa.run(<span class="string">&quot;翠果打谁了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
 
 <p>最终看看大模型的归纳结果如何</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 164940.png)</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165503.png)</p>
-<p>![屏幕截图 2024-03-22 165411](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165411.png)</p>
-<p>![屏幕截图 2024-03-22 165429](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165429.png)</p>
-<p>![屏幕截图 2024-03-22 165449](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165449.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20164940.png"></p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165503.png"></p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165411.png" alt="屏幕截图 2024-03-22 165411"></p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165429.png" alt="屏幕截图 2024-03-22 165429"></p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-22%20165449.png" alt="屏幕截图 2024-03-22 165449"></p>
 <p>根据<a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/modules/data_connection/vectorstores/">官网</a>说明，提供了3种向量数据库，</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 163922.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20163922.png"></p>
 <p>不同的数据库需要先完成依赖安装才能使用。</p>
 <p>遇到小插曲</p>
 <p>在Windows上遇到了“Symbol cudaLaunchKernel not found，…，RuntimeError: Library cublasLt is not initialized”</p>
 <p>网上的方法对我没有用，我在用nvcc -V检查cuda的时候提示nvcc命令无效，应该是cuda出现了问题。所以重新安装了cuda,还是用的之前的版本。重新安装后再运行代码文件就也没再报错了。</p>
-<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 165434.png)</p>
+<p><img data-src="./../images/Windows+anaconda+4050%206G+chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-21%20165434.png"></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec">Text2vec: Text to Vector</a></p>
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">text2vec-base-chinese</a></p>
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bytezonex.com/archives/26.html">FAISS和Chroma：两种流行的向量数据库的比较</a></p>

@@ -284,6 +284,13 @@
   </url>
   
   <url>
+    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
+    <lastmod>2024-03-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bella722.github.io/tags/TensorFlow-Object-Detection-API/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
@@ -291,7 +298,7 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/tags/Ubuntu/</loc>
+    <loc>https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -313,13 +320,6 @@
   
   <url>
     <loc>https://bella722.github.io/tags/hexo/</loc>
-    <lastmod>2024-03-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -349,13 +349,6 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/</loc>
-    <lastmod>2024-03-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
@@ -363,7 +356,7 @@
   </url>
   
   <url>
-    <loc>https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://bella722.github.io/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -371,6 +364,13 @@
   
   <url>
     <loc>https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2024-03-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

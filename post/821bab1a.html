@@ -25,16 +25,25 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Bella&#39;s Blog">
-<meta property="og:url" content="https://bella722.github.io/archives/index.html">
+  <meta name="description" content="Windows+anaconda+4050 6G+chatglm本地部署二幻觉问题 可以看出的问题有：  多轮问答出现自我矛盾； 原因可能是模型在整个对话过程中失去了对上下文的跟踪或者无法保持长期记忆的一致性；  生成与事实冲突的内容；    ![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131022.png) ![](C:\Use">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows+anaconda+4050 6G+chatglm本地部署二">
+<meta property="og:url" content="https://bella722.github.io/post/821bab1a.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="Windows+anaconda+4050 6G+chatglm本地部署二幻觉问题 可以看出的问题有：  多轮问答出现自我矛盾； 原因可能是模型在整个对话过程中失去了对上下文的跟踪或者无法保持长期记忆的一致性；  生成与事实冲突的内容；    ![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131022.png) ![](C:\Use">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/72766/AppData/Roaming/Typora/typora-user-images/image-20240316101400256.png">
+<meta property="og:image" content="c:/Users/72766/AppData/Roaming/Typora/typora-user-images/image-20240316103029915.png">
+<meta property="og:image" content="c:/Users/72766/AppData/Roaming/Typora/typora-user-images/image-20240316105125298.png">
+<meta property="article:published_time" content="2024-03-25T08:36:40.000Z">
+<meta property="article:modified_time" content="2024-03-25T08:42:56.603Z">
 <meta property="article:author" content="Bella">
+<meta property="article:tag" content="大模型 chatglm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/72766/AppData/Roaming/Typora/typora-user-images/image-20240316101400256.png">
 
 
-<link rel="canonical" href="https://bella722.github.io/archives/">
+<link rel="canonical" href="https://bella722.github.io/post/821bab1a.html">
 
 
 <script class="page-configurations">
@@ -42,12 +51,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | Bella's Blog</title>
+  <title>Windows+anaconda+4050 6G+chatglm本地部署二 | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -238,7 +247,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -250,6 +259,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-anaconda-4050-6G-chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%BA%8C"><span class="nav-number">1.</span> <span class="nav-text">Windows+anaconda+4050 6G+chatglm本地部署二</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BB%E8%A7%89%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">幻觉问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BB%E8%A7%89%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.2.</span> <span class="nav-text">幻觉出现的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BB%E8%A7%89%E7%BC%93%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">幻觉缓解</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -325,223 +335,257 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/821bab1a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows+anaconda+4050 6G+chatglm本地部署二
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:40 / 修改时间：16:42:56" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:40+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 28 篇日志。 继续努力。</span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/821bab1a.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/821bab1a.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Windows-anaconda-4050-6G-chatglm本地部署二"><a href="#Windows-anaconda-4050-6G-chatglm本地部署二" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署二"></a>Windows+anaconda+4050 6G+chatglm本地部署二</h1><h2 id="幻觉问题"><a href="#幻觉问题" class="headerlink" title="幻觉问题"></a>幻觉问题</h2><p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316101400256.png" alt="image-20240316101400256"></p>
+<p>可以看出的问题有：</p>
+<ol>
+<li><p>多轮问答出现自我矛盾；</p>
+<p>原因可能是模型在整个对话过程中失去了对上下文的跟踪或者无法保持长期记忆的一致性；</p>
+</li>
+<li><p>生成与事实冲突的内容；</p>
+</li>
+</ol>
+<p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316103029915.png" alt="image-20240316103029915"></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131022.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131136.png)<br>这种情况下可见模型是具备一些知识的，但是生成内容是不正确的</p>
+<p>如何判别模型其实自身具备某些知识呢？</p>
+<ol>
+<li><p>自我纠正</p>
+<p>就是用模型生成的结果再去反问模型，验证回答的准确性</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 132335.png)</p>
+<ol start="2">
+<li>用生成结果与真实结果结合输入给模型让模型回答</li>
+</ol>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 134050.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 134116.png)<br>由上可以看出，给出选项的时候大模型更倾向于输出正确的答案</p>
+</li>
+<li><p>误解意图</p>
+<p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316105125298.png" alt="image-20240316105125298"></p>
+</li>
+</ol>
+<h2 id="幻觉出现的原因"><a href="#幻觉出现的原因" class="headerlink" title="幻觉出现的原因"></a>幻觉出现的原因</h2><ol>
+<li><p>知识不足：</p>
+<p>a. 训练语料的知识不足；</p>
+<p>b. 针对性的知识不足；</p>
+<p>c. 干净正确的知识不足；</p>
+</li>
+<li><p>生成策略</p>
+<p>在解码的时候用的是topk采样，并不是一定就选中概率值最高的token做输出，万一选中了错的token, 根据生成策略，大模型还是会继续顺着前面错误的生成继续往下生成token，也会导致幻觉像滚雪球越来越严重。</p>
+</li>
+<li><p>“谄媚”</p>
+<p>大模型从不质疑人类的输入，一味附和人类的喜好做输出</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143313.png)</p>
+</li>
+</ol>
+<h2 id="幻觉缓解"><a href="#幻觉缓解" class="headerlink" title="幻觉缓解"></a>幻觉缓解</h2><ol>
+<li><p>补充知识</p>
+<p>a. 加大数据投喂量；</p>
+<p>b. 人工清除数据库中的噪声；</p>
+<p>c. 外挂知识库</p>
+</li>
+<li><p>诚实性微调</p>
+</li>
+<li><p>自查</p>
+<p>即模型自己判断自己生成内容的正确性：先生成回答，再判断回答是否为真；</p>
+</li>
+<li><p>多生成几次</p>
+<p>通过生成内容的一致性来判断是否是幻觉</p>
+</li>
+</ol>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143600.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143634.png)</p>
+<p>可以看出，在幻觉出现时，每次输出相差挺大的。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:37:00+08:00" content="2024-03-25">
-          03-25
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/post/976efb4f.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署六</span>
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/821bab1a.html" title="Windows+anaconda+4050 6G+chatglm本地部署二">https://bella722.github.io/post/821bab1a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
           </a>
-      </div>
+        </div>
 
-      
-    </header>
-  </article>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:54+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/9177334c.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署五</span>
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:49+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/8c955109.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署四</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:45+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/c0473d17.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署三</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:40+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/821bab1a.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署二</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:31+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/b99b85b3.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署一</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-03-25T16:36:18+08:00" content="2024-03-25">
-          03-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/2092d409.html" itemprop="url">
-            <span itemprop="name">Windows+anaconda+4050 6G+chatglm本地部署七</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-01-08T12:16:41+08:00" content="2024-01-08">
-          01-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/f16bee1a.html" itemprop="url">
-            <span itemprop="name">记录Hexo博客成功迁移</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2024-01-08T11:29:44+08:00" content="2024-01-08">
-          01-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/a231f91f.html" itemprop="url">
-            <span itemprop="name">Ubuntu20.04下成功配置Qv2ray</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-04-29T20:33:02+08:00" content="2021-04-29">
-          04-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/39c58280.html" itemprop="url">
-            <span itemprop="name">《Deep Learning》第一章读书笔记二</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/" rel="tag"><i class="fa fa-tag"></i> 大模型 chatglm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/b99b85b3.html" rel="prev" title="Windows+anaconda+4050 6G+chatglm本地部署一">
+                  <i class="fa fa-chevron-left"></i> Windows+anaconda+4050 6G+chatglm本地部署一
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/c0473d17.html" rel="next" title="Windows+anaconda+4050 6G+chatglm本地部署三">
+                  Windows+anaconda+4050 6G+chatglm本地部署三 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -719,7 +763,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/archives/",
+      path: "/post/821bab1a.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

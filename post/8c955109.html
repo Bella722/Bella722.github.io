@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="LvN4FGGbc9Vme6ce05eYu_48RUGHRy_pigApzzTaM3M">
+  <meta name="baidu-site-verification" content="o6hoZgunLj">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="fonts.loli.net/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic|Cinzel+Decorative:300,300italic,400,400italic,700,700italic|Source+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="Windows+anaconda+4050 6G+chatglm本地部署四中文文本向量表征文本向量表征这里我对比了三种不同模型embedding的结果：分别是shibing624&#x2F;text2vec-base-chinese和 w2v-light-tencent-chinese 以及 shibing624&#x2F;text2vec-base-chinese-paraphrase 调用方法如下： 1234fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows+anaconda+4050 6G+chatglm本地部署四">
+<meta property="og:url" content="https://bella722.github.io/post/8c955109.html">
+<meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="Windows+anaconda+4050 6G+chatglm本地部署四中文文本向量表征文本向量表征这里我对比了三种不同模型embedding的结果：分别是shibing624&#x2F;text2vec-base-chinese和 w2v-light-tencent-chinese 以及 shibing624&#x2F;text2vec-base-chinese-paraphrase 调用方法如下： 1234fr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-25T08:36:49.000Z">
+<meta property="article:modified_time" content="2024-03-25T08:44:38.268Z">
+<meta property="article:author" content="Bella">
+<meta property="article:tag" content="大模型 chatglm">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://bella722.github.io/post/8c955109.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows+anaconda+4050 6G+chatglm本地部署四 | Bella's Blog</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-176286323-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?769f4127dcca8da828bdccc3e338c7d4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Bella's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bella's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-anaconda-4050-6G-chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%9B%9B"><span class="nav-number">1.</span> <span class="nav-text">Windows+anaconda+4050 6G+chatglm本地部署四</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">中文文本向量表征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E8%A1%A8%E5%BE%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">文本向量表征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">向量相似度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">向量数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chroma%E5%90%91%E9%87%8F%E5%BA%93%E5%88%9B%E5%BB%BA"><span class="nav-number">1.2.1.</span> <span class="nav-text">chroma向量库创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E5%AF%BB%E8%BF%91%E4%BC%BC%E5%90%91%E9%87%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">搜寻近似向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%BA%93-%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">向量库+大模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.3.</span> <span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bella" src="/images/unnamed.jpg">
+  <p class="site-author-name" itemprop="name">Bella</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Bella722" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Bella722" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:727664970@qq.com" title="E-Mail → mailto:727664970@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Isabella_Galaxy" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Isabella_Galaxy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/galaxyzhangj" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;galaxyzhangj" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Bella722" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/8c955109.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows+anaconda+4050 6G+chatglm本地部署四
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:49 / 修改时间：16:44:38" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:49+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/8c955109.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/8c955109.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Windows-anaconda-4050-6G-chatglm本地部署四"><a href="#Windows-anaconda-4050-6G-chatglm本地部署四" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署四"></a>Windows+anaconda+4050 6G+chatglm本地部署四</h1><h2 id="中文文本向量表征"><a href="#中文文本向量表征" class="headerlink" title="中文文本向量表征"></a>中文文本向量表征</h2><h3 id="文本向量表征"><a href="#文本向量表征" class="headerlink" title="文本向量表征"></a>文本向量表征</h3><p>这里我对比了三种不同模型embedding的结果：分别是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>和 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec/releases/download/1.1.4/light_Tencent_AILab_ChineseEmbedding.bin">w2v-light-tencent-chinese</a> 以及 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese-paraphrase">shibing624/text2vec-base-chinese-paraphrase</a></p>
+<p>调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> text2vec <span class="keyword">import</span> SentenceModel, Word2Vec</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">model = Word2Vec(<span class="string">&#x27;w2v-light-tencent-chinese&#x27;</span>)</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>看看不同embeddding模型对于同一输入最终表征结果的差异性：</p>
+<p>我这里对比了三段文本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from text2vec import SentenceModel, Word2Vec</span><br><span class="line"><span class="comment"># model = SentenceModel(&quot;shibing624/text2vec-base-chinese&quot;)</span></span><br><span class="line"><span class="comment"># model = Word2Vec(&#x27;w2v-light-tencent-chinese&#x27;)</span></span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br><span class="line">textvec1 = model.encode(<span class="string">&quot;铲子里还带着刚从地下带出的旧土，离奇的是，这一杯土正不停的向外渗着鲜红的液体，就像刚刚在血液里蘸过一样&quot;</span>)</span><br><span class="line">textvec2 = model.encode(<span class="string">&quot;“下不下去喃？要得要不得，一句话，莫七里八里的！”独眼的小伙子说：“你说你个老人家腿脚不方便，就莫下去了，我和我弟两个下去，管他什么东西，直接给他来一梭子。”&quot;</span>)</span><br><span class="line">textvec3 = model.encode(<span class="string">&quot;果然，这样一来他就和洞里的东西对持住了，双方都各自吃力，但是都拉不动分毫，僵持了有10几秒，就听到洞里一声盒子炮响，然后听到他爹大叫：“三伢子，快跑！！！！！！”，就觉的绳子一松，土耗子嗖一声从洞里弹了出来，好象上面还挂了什么东西！那时候老三也顾不得那么多了，他知道下面肯定出了事情了，一把接住土耗子，扭头就跑！他一口七跑出有2里多地，才敢停下来，掏出他怀里的土耗子一看，吓的大叫了一声，原来土耗子上什么都没勾，只勾着一只血淋淋的断手。他认得那手上，不由哭了出来，他手是分明是他二哥的。看样子他二哥就算不死也残废了，想到这里，他不由一咬，就想回去救他二哥和老爹，刚一回头，就看见背后蹲着个血红血红的东西，正直钩钩看着他&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec2))</span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec3))</span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 151218.png)</p>
+<p>由此可见，在embedding阶段选取不同的模型也会影响最后相似性的结果。一般中文比较用的最多的是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>。</p>
+<p>一般通过在线下载方式最后模型文件夹的保存路径一般在C:\Users\xxx.cache\huggingface\hub</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 144410.png)</p>
+<p>如果没有安装text2vec也可以通过其他两种方式加载模型完成文本embedding。</p>
+<p>方式一：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import torch</span><br><span class="line">from transformers import AutoTokenizer, AutoModel</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;KMP_DUPLICATE_LIB_OK&quot;</span>] = <span class="string">&quot;TRUE&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mean Pooling - Take attention mask into account for correct averaging</span></span><br><span class="line">def mean_pooling(model_output, attention_mask):</span><br><span class="line">    token_embeddings = model_output[0]  <span class="comment"># First element of model_output contains all token embeddings</span></span><br><span class="line">    input_mask_expanded = attention_mask.unsqueeze(-1).<span class="built_in">expand</span>(token_embeddings.size()).<span class="built_in">float</span>()</span><br><span class="line">    <span class="built_in">return</span> torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load model from HuggingFace Hub</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">model = AutoModel.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"><span class="comment"># Tokenize sentences</span></span><br><span class="line">encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors=<span class="string">&#x27;pt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute token embeddings</span></span><br><span class="line">with torch.no_grad():</span><br><span class="line">    model_output = model(**encoded_input)</span><br><span class="line"><span class="comment"># Perform pooling. In this case, max pooling.</span></span><br><span class="line">sentence_embeddings = mean_pooling(model_output, encoded_input[<span class="string">&#x27;attention_mask&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
+
+<p>方式一加载模型并将文本映射到高维空间后再次计算相似度，还是用同一文本对</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 154855.png)</p>
+<p>和上面计算的结果稍稍有点差别。</p>
+<p>方式二：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sentence_transformers import SentenceTransformer</span><br><span class="line"></span><br><span class="line">m = SentenceTransformer(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"></span><br><span class="line">sentence_embeddings = m.encode(sentences)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
+
+<p>方式二的加载方式和text2vet没有差别，计算结果通过验证也没有差别。</p>
+<h3 id="向量相似度计算"><a href="#向量相似度计算" class="headerlink" title="向量相似度计算"></a>向量相似度计算</h3><p>回想之前高数的时候学过，向量之间夹角的表示</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 112047.png)</p>
+<p>方便理解就是父母和孩子长相的相似性，亲生的就很像，这里就可以类比理解成向量的夹角Θ越接近0，孩子和陌生人就一点也不像，也就是Θ值越接近90°，就像坐标系的坐标轴，各自不能相互表示，也就是互不相关。</p>
+<p>但是一般我们不直接求解Θ，只求到 cos Θ 就可以实现同样的效果，即<font face="黑体" color="red" size="5"> cos Θ 值越接近等于1就说明两向量越相似，cos Θ 值越接近等于0就说明两向量越不相关。</font></p>
+<p>这里介绍两种计算方式</p>
+<p>一种是直接用计算公式写的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cos_sim_hard</span>(<span class="params">v1, v2</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(v1, np.ndarray):</span><br><span class="line">		v1 = np.array(v1)</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(v2, np.ndarray):</span><br><span class="line">        v2 = np.array(v2)</span><br><span class="line">    up = <span class="built_in">float</span>(np.<span class="built_in">sum</span>(v1*v2))  <span class="comment">## 向量乘积</span></span><br><span class="line">    down = np.linalg.norm(v1)*np.linalg.norm(v2) <span class="comment">## 向量模乘积</span></span><br><span class="line">    <span class="keyword">if</span> down!=<span class="number">0</span>:</span><br><span class="line">        res = up/down  <span class="comment">## 计算除法一定要保证分子不为0</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>第二种是利用矩阵求解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cos_sim_matrx</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(a, torch.Tensor):</span><br><span class="line">        a = torch.tensor(a) <span class="comment">#使用cuda计算可改为torch.tensor(a).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(b, torch.Tensor):</span><br><span class="line">        a = torch.tensor(b) <span class="comment">#使用cuda计算可改为torch.tensor(b).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(a.shape)==<span class="number">1</span>:</span><br><span class="line">        a = a.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(b.shape)==<span class="number">1</span>:</span><br><span class="line">        b = b.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    a_norm = torch.nn.functional.normalize(a, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    b_norm = torch.nn.functional.normalize(b, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> torch.mm(a_norm, b_norm.transpose(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>其实第二种方法是对公式做了变式</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 115739.png)</p>
+<p>最后看一下两种方法的计算结果：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 120713.png)</p>
+<p>可以看出结果是一致的。</p>
+<h2 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h2><p>接着之前的步骤，完成文本切块后，接着需要对文本向量化并存储，方便之后大模型调用</p>
+<h3 id="chroma向量库创建"><a href="#chroma向量库创建" class="headerlink" title="chroma向量库创建"></a>chroma向量库创建</h3><p>使用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.document_loaders.text <span class="keyword">import</span> TextLoader</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>)</span><br><span class="line">text_split = RecursiveCharacterTextSplitter(</span><br><span class="line">        chunk_size = <span class="number">256</span>,</span><br><span class="line">        chunk_overlap  = <span class="number">10</span>,</span><br><span class="line">        length_function = <span class="built_in">len</span>,</span><br><span class="line">        add_start_index = <span class="literal">True</span>)</span><br><span class="line">split_docs = text_split.split_documents(loader.load())</span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan&#x27;</span></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">hf = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line">db = Chroma.from_documents(documents=split_docs, embedding=hf, persist_directory=persist_directory)</span><br><span class="line">db.persist()</span><br></pre></td></tr></table></figure>
+
+<p><font face="黑体" color="red" size="5">UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xac in position 2: illegal multibyte sequence</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>)</span><br><span class="line">to</span><br><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最终会在主文件夹下新建vector_zhenhuanzhuan文件夹，并保存向量文件。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 134438.png)</p>
+<h3 id="搜寻近似向量"><a href="#搜寻近似向量" class="headerlink" title="搜寻近似向量"></a>搜寻近似向量</h3><p>上一步已经创建好向量库，接下来测试一下输入一段文本，看能否找到最相关的文本段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关于相似性搜索chroma提供了5种函数</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_relevance_scores(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_score(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector_with_relevance_scores(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">每种搜索结果默认返回4条文本，需要修改的话，直接按照如下指定就行</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串, K=5)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">ques = <span class="string">&#x27;甄嬛离宫去了哪儿？&#x27;</span></span><br><span class="line">ques_embedding = hf.embed_query(ques) <span class="comment">#这里直接调用前文定义的embedding模型</span></span><br><span class="line"></span><br><span class="line">res_similarity_search = db.similarity_search(ques)</span><br><span class="line">res_similarity_search_with_relevance_scores = db.similarity_search_with_relevance_scores(ques)</span><br><span class="line">res_similarity_search_with_score = db.similarity_search_with_score(ques)</span><br><span class="line">res_similarity_search_by_vector = db.similarity_search_by_vector(ques_embedding)</span><br><span class="line">res_similarity_search_by_vector_with_relevance_scores = db.similarity_search_by_vector_with_relevance_scores(ques_embedding)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 154231.png)</p>
+<p><font face="黑体" color="red" size="5">可以看出不同搜寻相似向量的返回结果都是殊途同归的，其实看源码的话，会发现有些方法其实是套壳写的，比如similarity_search里面就是调用了similarity_search_with_score</font></p>
+<p>再看看向量输入与字符串输入的搜寻近似结果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 160123.png)</p>
+<p><font face="黑体" color="red" size="5">similarity_search_with_score 与 similarity_search_by_vector_with_relevance_scores 的结果一模一样，完全相等</font></p>
+<p>至此流程跑通了，现在重点看看搜索结果的匹配度，这块直接影响到后期大模型回答问题的准确性，所以需要调整一下</p>
+<p>开始我设置切块文本长度在256，想了一下，这里原始数据来自于高度提炼和总结的文本，所以是不是应该把断句调小一些，这样更准呢？所以我把256换成64，重新创建新的数据库，再搜索输入看看返回的准确性。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 162824.png)</p>
+<p>![屏幕截图 2024-03-22 163644](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 163644.png)</p>
+<p><font face="黑体" color="red" size="5">效果真的好了很多，很多问题都能找到正确答案，但是也要注意：1. 问题问的太细其实是匹配不到结果的，也对应了原始数据中没有匹配的数据；2. 提问可以多样性，也能找到答案</font></p>
+<h3 id="向量库-大模型"><a href="#向量库-大模型" class="headerlink" title="向量库+大模型"></a>向量库+大模型</h3><p>思路是：调用大模型，根据输入问题在向量库里搜寻最相似的文档段集合并返回，由llm归纳输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">retrieval_ = db.as_retriever()</span><br><span class="line">from langchain.prompts import PromptTemplate</span><br><span class="line">QA_CHAIN_PROMPT = PromptTemplate.from_template(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">如果你不知道答案，就回答不知道，不要试图编造答案。</span></span><br><span class="line"><span class="string">总是在答案结束时说”谢谢你的提问！“</span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string">问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span>)</span><br><span class="line">qa = RetrievalQA.from_chain_type(</span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retrieval_,</span><br><span class="line">    verbose=True,</span><br><span class="line">    chain_type_kwargs=&#123;<span class="string">&quot;prompt&quot;</span>: QA_CHAIN_PROMPT&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">response = qa.run(<span class="string">&quot;翠果打谁了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+<p>最终看看大模型的归纳结果如何</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 164940.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165503.png)</p>
+<p>![屏幕截图 2024-03-22 165411](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165411.png)</p>
+<p>![屏幕截图 2024-03-22 165429](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165429.png)</p>
+<p>![屏幕截图 2024-03-22 165449](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165449.png)</p>
+<p>根据<a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/modules/data_connection/vectorstores/">官网</a>说明，提供了3种向量数据库，</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 163922.png)</p>
+<p>不同的数据库需要先完成依赖安装才能使用。</p>
+<p>遇到小插曲</p>
+<p>在Windows上遇到了“Symbol cudaLaunchKernel not found，…，RuntimeError: Library cublasLt is not initialized”</p>
+<p>网上的方法对我没有用，我在用nvcc -V检查cuda的时候提示nvcc命令无效，应该是cuda出现了问题。所以重新安装了cuda,还是用的之前的版本。重新安装后再运行代码文件就也没再报错了。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 165434.png)</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec">Text2vec: Text to Vector</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">text2vec-base-chinese</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bytezonex.com/archives/26.html">FAISS和Chroma：两种流行的向量数据库的比较</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/8c955109.html" title="Windows+anaconda+4050 6G+chatglm本地部署四">https://bella722.github.io/post/8c955109.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/" rel="tag"><i class="fa fa-tag"></i> 大模型 chatglm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/c0473d17.html" rel="prev" title="Windows+anaconda+4050 6G+chatglm本地部署三">
+                  <i class="fa fa-chevron-left"></i> Windows+anaconda+4050 6G+chatglm本地部署三
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/9177334c.html" rel="next" title="Windows+anaconda+4050 6G+chatglm本地部署五">
+                  Windows+anaconda+4050 6G+chatglm本地部署五 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isabella</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/post/8c955109.html",
+    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

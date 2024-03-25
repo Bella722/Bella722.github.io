@@ -25,28 +25,21 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。并且介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，">
+  <meta name="description" content="Windows+anaconda+4050 6G+chatglm本地部署五数据收集开始我下载的是小说，但是发现小说和我所知道的电视剧改动比较大，而且小说的语法用词不太白话文，后面又想着字幕是不是好一点，但是忽略了字幕会跳过最重要的环节：人物关系，也就是丢给大模型，它并不明白这话都是谁说的，无法联系起来。所以最终决定从分集剧情作为数据，更简单干练。 因为我要从网站上把每集的分集剧情内容爬下来，所以不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorRT成功测试自己的数据集SSD模型一">
-<meta property="og:url" content="https://bella722.github.io/post/c02a3ba5.html">
+<meta property="og:title" content="Windows+anaconda+4050 6G+chatglm本地部署五">
+<meta property="og:url" content="https://bella722.github.io/post/9177334c.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
-<meta property="og:description" content="经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。并且介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，">
+<meta property="og:description" content="Windows+anaconda+4050 6G+chatglm本地部署五数据收集开始我下载的是小说，但是发现小说和我所知道的电视剧改动比较大，而且小说的语法用词不太白话文，后面又想着字幕是不是好一点，但是忽略了字幕会跳过最重要的环节：人物关系，也就是丢给大模型，它并不明白这话都是谁说的，无法联系起来。所以最终决定从分集剧情作为数据，更简单干练。 因为我要从网站上把每集的分集剧情内容爬下来，所以不">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-148078235d66d2480f6c503d8ea398a8_r.jpg">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-87374487a31bae782989d1c0bcaeaca4_r.jpg">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-86d66326888b51bbb37372e7fec9f5c0_r.jpg">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-39b61e60e7a07ae33c66b0b70609f4f3_r.jpg">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-f3c225f88d9c5b2d0d733e9ea3b9670c_r.jpg">
-<meta property="og:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg">
-<meta property="article:published_time" content="2020-09-16T09:10:59.000Z">
-<meta property="article:modified_time" content="2020-11-06T02:23:39.302Z">
+<meta property="article:published_time" content="2024-03-25T08:36:54.000Z">
+<meta property="article:modified_time" content="2024-03-25T08:44:55.710Z">
 <meta property="article:author" content="Bella">
-<meta property="article:tag" content="TensorRT">
+<meta property="article:tag" content="大模型 chatglm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bella722.github.io/images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-148078235d66d2480f6c503d8ea398a8_r.jpg">
 
 
-<link rel="canonical" href="https://bella722.github.io/post/c02a3ba5.html">
+<link rel="canonical" href="https://bella722.github.io/post/9177334c.html">
 
 
 <script class="page-configurations">
@@ -59,7 +52,7 @@
   };
 </script>
 
-  <title>TensorRT成功测试自己的数据集SSD模型一 | Bella's Blog</title>
+  <title>Windows+anaconda+4050 6G+chatglm本地部署五 | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -262,7 +255,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85%E5%B9%B6%E8%A7%A3%E5%8E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装包并解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python%E7%9A%84tensorRT%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">安装python的tensorRT包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo-pip3-command-not-found"><span class="nav-number">1.2.1.</span> <span class="nav-text">sudo: pip3 :command not found</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ERROR-tensorrt-7-0-0-11-cp37-none-linux-x86-64-whl-is-not-a-supported-wheel-on-this-platform"><span class="nav-number">1.2.2.</span> <span class="nav-text">ERROR: tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl is not a supported wheel on this platform</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-anaconda-4050-6G-chatglm%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%BA%94"><span class="nav-number">1.</span> <span class="nav-text">Windows+anaconda+4050 6G+chatglm本地部署五</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">数据收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E4%B8%8D%E5%8F%AF%E5%A4%8D%E5%88%B6%E4%BB%A3%E7%A0%81%E5%9D%97%E5%86%85%E5%AE%B9%E6%8F%90%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">网页不可复制代码块内容提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89%E4%B8%8B%E4%B8%80%E9%A1%B5%E6%A0%BC%E5%BC%8F%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E6%8F%90%E5%8F%96"><span class="nav-number">1.1.2.</span> <span class="nav-text">带有下一页格式网页内容提取</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -347,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/c02a3ba5.html">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/9177334c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/unnamed.jpg">
@@ -363,7 +356,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TensorRT成功测试自己的数据集SSD模型一
+          Windows+anaconda+4050 6G+chatglm本地部署五
         </h1>
 
         <div class="post-meta-container">
@@ -373,23 +366,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-09-16 17:10:59" itemprop="dateCreated datePublished" datetime="2020-09-16T17:10:59+08:00">2020-09-16</time>
+      <time title="创建时间：2024-03-25 16:36:54 / 修改时间：16:44:55" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:54+08:00">2024-03-25</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:23:39" itemprop="dateModified" datetime="2020-11-06T10:23:39+08:00">2020-11-06</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
         </span>
     </span>
 
@@ -409,8 +396,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/post/c02a3ba5.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/c02a3ba5.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/9177334c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/9177334c.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -422,14 +409,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -440,79 +427,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <blockquote class="blockquote-center">
-<p>经过好几个月的摸索，终于成功调用起TensorRT测试自己的数据集训练得到的SSD模型。期间遇到的坑也是一个接一个，不断的调整环境，一遍又一遍的训练，现在总算是有了结果，开心。并且介于自己在实践期间在网上并没有找到很新很全的资料，现在就想把这些日子总结的经(xue)验(lei)写出来，从一开始的环境配置再到训练模型，再到tensorrt测试模型，以及一些error的解决办法，都做一个全面的整理，希望能帮助到有同样需求的同学。</p>
+        <h1 id="Windows-anaconda-4050-6G-chatglm本地部署五"><a href="#Windows-anaconda-4050-6G-chatglm本地部署五" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署五"></a>Windows+anaconda+4050 6G+chatglm本地部署五</h1><h2 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h2><p>开始我下载的是小说，但是发现小说和我所知道的电视剧改动比较大，而且小说的语法用词不太白话文，后面又想着字幕是不是好一点，但是忽略了字幕会跳过最重要的环节：人物关系，也就是丢给大模型，它并不明白这话都是谁说的，无法联系起来。所以最终决定从分集剧情作为数据，更简单干练。</p>
+<p>因为我要从网站上把每集的分集剧情内容爬下来，所以不得不提爬虫工具。</p>
+<h3 id="网页不可复制代码块内容提取"><a href="#网页不可复制代码块内容提取" class="headerlink" title="网页不可复制代码块内容提取"></a>网页不可复制代码块内容提取</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.zhihu.com/question/467685925&quot;</span>  <span class="comment"># 替换为你要爬取的网页URL</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">html_content = response.content</span><br><span class="line">soup = BeautifulSoup(html_content, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">class_element = soup.find(<span class="string">&#x27;div&#x27;</span>, class_=<span class="string">&#x27;highlight&#x27;</span>)  <span class="comment">## 这里的class_就对应根据关键字在网页源码找到具体块</span></span><br><span class="line">class_text = class_element.text</span><br><span class="line"><span class="built_in">print</span>(class_text)</span><br></pre></td></tr></table></figure>
 
-</blockquote>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 101753.png)</p>
+<p>可以看下效果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 102136.png)</p>
+<h3 id="带有下一页格式网页内容提取"><a href="#带有下一页格式网页内容提取" class="headerlink" title="带有下一页格式网页内容提取"></a>带有下一页格式网页内容提取</h3><p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 111344.png)</p>
+<p>观察网页格式可以得到网页命名格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/0-2</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/0-3</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-4</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-5</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-6</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/20-63</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/21-64</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/25-76</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<span id="more"></span>
+<p>所以中心思想是遍历所有网页再根据关键信息提取对应的块内容</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113753.png)</p>
+<p><font face="黑体" color="red" size="5">这里一定注意：1.查找时尽量找文本最后的字符为查找对象，才能找对，文档前面的字符可能会在网页源码中多次出现，不注意的话很容易找错地方。2. 文本提取出来看看有没有不相关的内容尽早清洗剔除掉，保证数据干净</font></p>
+<p>所以整体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_html</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    获取网页源代码</span></span><br><span class="line"><span class="string">    :param url: URL</span></span><br><span class="line"><span class="string">    :return: str</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: UserAgent().random&#125;</span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">return</span> response.text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_html</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    解析网页源码并提取数据</span></span><br><span class="line"><span class="string">    :param html: Page_Source</span></span><br><span class="line"><span class="string">    :return: generator</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    class_element = soup.find(<span class="string">&#x27;article&#x27;</span>, class_=<span class="string">&#x27;clear epi_c&#x27;</span>)</span><br><span class="line">    description = class_element.text </span><br><span class="line">    <span class="comment">## 数据清洗</span></span><br><span class="line">    description = description.replace(<span class="string">&#x27;(后宫·甄嬛传剧情系电视猫原创，未经许可，请勿转载！转载许可)&#x27;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;上传剧照图片&quot;</span>, <span class="string">&#x27;&#x27;</span>).strip()+ <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(description)</span><br><span class="line">    <span class="keyword">return</span> description</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write2csv</span>(<span class="params">filename, rows</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    保存数据到csv文件</span></span><br><span class="line"><span class="string">    :param filename: </span></span><br><span class="line"><span class="string">    :param rows: </span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;a+&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        csv_writer = csv.writer(f)</span><br><span class="line">        csv_writer.writerows(rows)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write2txt</span>(<span class="params">filename, contents</span>):</span><br><span class="line">      fh = <span class="built_in">open</span>(filename, <span class="string">&#x27;a+&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">      fh.write(contents)</span><br><span class="line">      fh.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    入口函数</span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    filename = <span class="string">&#x27;./甄嬛传剧情.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/0-2</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/0-3</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-4</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-5</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-6</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/20-63</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/21-64</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/25-76</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">77</span>):</span><br><span class="line">        shang = index//<span class="number">3</span></span><br><span class="line">        rest = index%<span class="number">3</span></span><br><span class="line">        <span class="keyword">if</span>  rest==<span class="number">0</span>:</span><br><span class="line">            pageNo = shang -<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pageNo = shang</span><br><span class="line">        <span class="keyword">if</span> index ==<span class="number">1</span>:</span><br><span class="line">            url = <span class="string">&#x27;https://www.tvmao.com/drama/YicsIy8=/episode&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            url = <span class="string">&#x27;https://www.tvmao.com/drama/YicsIy8=/episode/&#123;&#125;-&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNo, index)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        page_source = get_html(url)</span><br><span class="line">        <span class="built_in">print</span>(url)</span><br><span class="line">        content = parse_html(page_source)</span><br><span class="line">        write2txt(filename, content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
-<p><i class="fas fa-hand-point-right"></i><a href="https://bella722.github.io/post/c02a3ba5.html"><font color="red">TensorRT成功测试自己的数据集SSD模型一</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/fbaa150c.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型二</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/b9f68301.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型三</font></a> </p>
-<p><i class="far fa-hand-point-right"></i><a href="https://bella722.github.io/post/f524ef1f.html"><font color="blue">TensorRT成功测试自己的数据集SSD模型四</font></a> </p>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>首先，给出我自己的软件环境及各个版本号。</p>
-<table>
-<thead>
-<tr>
-<th>Ubuntu</th>
-<th>20.04</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CUDA</td>
-<td>10.0.130</td>
-</tr>
-<tr>
-<td>CUDNN</td>
-<td>7.6.5</td>
-</tr>
-<tr>
-<td>TensorFlow</td>
-<td>1.14.0</td>
-</tr>
-<tr>
-<td>Keras</td>
-<td>2.2.5</td>
-</tr>
-<tr>
-<td>TensorRT</td>
-<td>7.0.0</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>3.7.0</td>
-</tr>
-</tbody></table>
-<div class="note danger"><p>根据经验，推荐先确定tensorrt安装版本，再回溯到cuda、cudnn、以及python版本进行安装，如果你现在已经装好了cuda以及cudnn等，这里有两个办法解决，一个就是另外装一套cuda等覆盖掉之前的版本，另一个办法就是利用虚拟环境设置一个专门针对tensorrt的环境，我自己也是先前就已经有了一套环境，后来为了配合TensorRT，就将原先的cuda以及cudnn等删除，然后再装了一套环境。</p></div>
-
-<p>另外，这里关于TensorFlow版本需要说明一点，选择1.14是因为根据Tensorrt的样例有说，在tf1.14上通过验证的，所以最后适配了这个版本。</p>
-<p>对于cuda cudnn的安装就按照一般方法装就好了。然后装好anaconda。现在从tensorrt的安装说起。</p>
-<h3 id="下载安装包并解压"><a href="#下载安装包并解压" class="headerlink" title="下载安装包并解压"></a>下载安装包并解压</h3><p>进入<a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.nvidia.com/tensorrt%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD">https://developer.nvidia.com/tensorrt选择合适的版本进行下载</a></p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-148078235d66d2480f6c503d8ea398a8_r.jpg" alt="preview"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf /Downloads/TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装python的tensorRT包"><a href="#安装python的tensorRT包" class="headerlink" title="安装python的tensorRT包"></a>安装python的tensorRT包</h3><p>进入tensorRT目录下的Python目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /TensorRT-7.0.0.11/python</span><br><span class="line"><span class="comment"># 对于python3</span></span><br><span class="line">$ sudo pip3 install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
-
-<p>这里注意可能会遇到两个问题：</p>
-<h4 id="sudo-pip3-command-not-found"><a href="#sudo-pip3-command-not-found" class="headerlink" title="sudo: pip3 :command not found"></a><font color="red">sudo: pip3 :command not found</font></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3-pip</span><br></pre></td></tr></table></figure>
-
-<h4 id="ERROR-tensorrt-7-0-0-11-cp37-none-linux-x86-64-whl-is-not-a-supported-wheel-on-this-platform"><a href="#ERROR-tensorrt-7-0-0-11-cp37-none-linux-x86-64-whl-is-not-a-supported-wheel-on-this-platform" class="headerlink" title="ERROR: tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl is not a supported wheel on this platform"></a><font color="red">ERROR: tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl is not a supported wheel on this platform</font></h4><p>原因是cp37即python=3.7.0,如果你的anaconda下的python版本不是3.7.0就会报错。所以这里我使用创建虚拟环境解决</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name python370 python=3.7.0</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-87374487a31bae782989d1c0bcaeaca4_r.jpg" alt="preview"></p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-86d66326888b51bbb37372e7fec9f5c0_r.jpg" alt="preview"></p>
-<p>虚拟环境创建成功后进行激活再安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate python370</span><br><span class="line"><span class="built_in">cd</span> /TensorRT-7.0.0.11/python</span><br><span class="line">python -m pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl </span><br></pre></td></tr></table></figure>
-
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-39b61e60e7a07ae33c66b0b70609f4f3_r.jpg" alt="preview"></p>
-<p>进入python输入tensorRT即可验证tensorRT是否安装成功</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-f3c225f88d9c5b2d0d733e9ea3b9670c_r.jpg" alt="preview"></p>
-<p>不报错即成功</p>
-<p>接着进入uff与graphsurgeon文件夹安装whl</p>
-<p><img data-src="../images/TensorRT%E6%88%90%E5%8A%9F%E6%B5%8B%E8%AF%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86SSD%E6%A8%A1%E5%9E%8B/v2-de798d43241203c3948b2ddbf3ca2a6d_r.jpg" alt="preview"></p>
-<p>至此，TensorRT安装成功！</p>
+<p>最终的效果：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113852.png)</p>
+<p>保存提取的内容</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113932.png)</p>
 
     </div>
 
@@ -544,7 +479,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://bella722.github.io/post/c02a3ba5.html" title="TensorRT成功测试自己的数据集SSD模型一">https://bella722.github.io/post/c02a3ba5.html</a>
+      <a href="https://bella722.github.io/post/9177334c.html" title="Windows+anaconda+4050 6G+chatglm本地部署五">https://bella722.github.io/post/9177334c.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -582,20 +517,20 @@
   </div>
 
           <div class="post-tags">
-              <a href="/tags/TensorRT/" rel="tag"><i class="fa fa-tag"></i> TensorRT</a>
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/" rel="tag"><i class="fa fa-tag"></i> 大模型 chatglm</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/4f44d92e.html" rel="prev" title="Next 8.0 进阶美化篇二">
-                  <i class="fa fa-chevron-left"></i> Next 8.0 进阶美化篇二
+                <a href="/post/8c955109.html" rel="prev" title="Windows+anaconda+4050 6G+chatglm本地部署四">
+                  <i class="fa fa-chevron-left"></i> Windows+anaconda+4050 6G+chatglm本地部署四
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/fbaa150c.html" rel="next" title="TensorRT成功测试自己的数据集SSD模型二">
-                  TensorRT成功测试自己的数据集SSD模型二 <i class="fa fa-chevron-right"></i>
+                <a href="/post/976efb4f.html" rel="next" title="Windows+anaconda+4050 6G+chatglm本地部署六">
+                  Windows+anaconda+4050 6G+chatglm本地部署六 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -786,7 +721,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/post/c02a3ba5.html",
+      path: "/post/9177334c.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

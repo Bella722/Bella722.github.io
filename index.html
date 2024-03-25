@@ -264,20 +264,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -331,6 +331,1111 @@
       
 <!--轮播图-->
 
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/976efb4f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/976efb4f.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署六</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:37:00 / 修改时间：16:45:10" itemprop="dateCreated datePublished" datetime="2024-03-25T16:37:00+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/976efb4f.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/976efb4f.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署六"><a href="#Windows-anaconda-4050-6G-chatglm本地部署六" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署六"></a>Windows+anaconda+4050 6G+chatglm本地部署六</h1><h2 id="大模型表现"><a href="#大模型表现" class="headerlink" title="大模型表现"></a>大模型表现</h2><h3 id="幻觉的回答"><a href="#幻觉的回答" class="headerlink" title="幻觉的回答"></a>幻觉的回答</h3><p>表现是文本搜索结果中并没有相关的文段内容，所以大模型自由发挥胡说八道，不知道真实答案的人很容易被误导。原因可能是：</p>
+<ol>
+<li><p>资料路中相关语料内容本来就少；</p>
+<p><font face="黑体" color="red" size="5">原本语料库根本没有提及到华妃喜欢食物的相关内容</font></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 143550.png)</p>
+</li>
+<li><p>对象出现的频率很小的时候很容易被误认为是其他高频出现的对象；</p>
+<p><font face="黑体" color="red" size="5">把康禄海当成年羹尧了，原始文本中年羹尧出现31次，康禄海出现2次</font></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141506.png)</p>
+</li>
+<li><p>大模型是生成内容，前面文本出现的时候，大模型后面生成内容很容易生成常见的、极易出现的语句对，比如说天气是晴朗的，才艺是唱歌之类的。</p>
+<p><font face="黑体" color="red" size="5">大模型自由发挥</font></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141209.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141834.png)</p>
+</li>
+<li><p>大模型有时候会对输入问题出现误解，所以这时候的回答也就是错的</p>
+<p><font face="黑体" color="red" size="5">这里我提问的其实谁拥有过椒房之宠，大模型理解成谁有过错</font></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141340.png)</p>
+</li>
+</ol>
+<h3 id="不错的回答"><a href="#不错的回答" class="headerlink" title="不错的回答"></a>不错的回答</h3><p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141627.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141054.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 140925.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 140647.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 141948.png)</p>
+<p>至此，本地部署最简单的方式已经完成，这里给出部署代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="comment"># 创建向量库以及如何调用向量库查询</span></span><br><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.document_loaders.text <span class="keyword">import</span> TextLoader</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">hf = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(persist_directory):</span><br><span class="line">    <span class="comment">## 本地加载向量数据库</span></span><br><span class="line">    db = Chroma(embedding_function=hf, persist_directory=persist_directory)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    text_split = RecursiveCharacterTextSplitter(</span><br><span class="line">            chunk_size = <span class="number">32</span>,</span><br><span class="line">            chunk_overlap  = <span class="number">10</span>,</span><br><span class="line">            length_function = <span class="built_in">len</span>,</span><br><span class="line">            add_start_index = <span class="literal">True</span>)</span><br><span class="line">    split_docs = text_split.split_documents(loader.load())</span><br><span class="line">    db = Chroma.from_documents(documents=split_docs, embedding=hf, persist_directory=persist_directory)</span><br><span class="line">    db.persist()</span><br><span class="line"></span><br><span class="line">ques = <span class="string">&#x27;华妃终身不孕的原因是什么&#x27;</span></span><br><span class="line"><span class="comment"># ques_embedding = hf.embed_query(ques)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">res_similarity_search = db.similarity_search(ques)</span><br><span class="line"><span class="comment"># res_similarity_search_by_vector = db.similarity_search_by_vector(ques_embedding, k=5)</span></span><br><span class="line"><span class="comment"># res_similarity_search_by_vector_with_relevance_scores = db.similarity_search_by_vector_with_relevance_scores(ques_embedding, k=5)</span></span><br><span class="line"><span class="comment"># res_similarity_search_with_relevance_scores = db.similarity_search_with_relevance_scores(ques)</span></span><br><span class="line"><span class="comment"># res_similarity_search_with_score = db.similarity_search_with_score(ques, k=5)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;over&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>调用大模型开启对话</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.llms.chatglm <span class="keyword">import</span> ChatGLM </span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span>     <span class="comment"># 指定向量库文件夹位置</span></span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>   <span class="comment"># 指定加载embeddding模型</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">embeddings = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = Chroma(embedding_function=embeddings, persist_directory=persist_directory)  <span class="comment"># 加载之前创建的向量库文件里的向量数据</span></span><br><span class="line"></span><br><span class="line">llm = ChatGLM(                                   <span class="comment"># 通过api调用大模型</span></span><br><span class="line">        endpoint_url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        max_token=<span class="number">2000</span>,</span><br><span class="line">        top_p=<span class="number">0.7</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">retriever = db.as_retriever()</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(         <span class="comment"># 启用问答模式开始聊天</span></span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retriever,</span><br><span class="line">    chain_type= <span class="string">&quot;stuff&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:   </span><br><span class="line">    question = <span class="built_in">input</span>(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        response = qa.run(question)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;答: &quot;</span>, response)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 153446.png)</p>
+<h2 id="本地部署的改进"><a href="#本地部署的改进" class="headerlink" title="本地部署的改进"></a>本地部署的改进</h2><h4 id="中英文夹杂"><a href="#中英文夹杂" class="headerlink" title="中英文夹杂"></a>中英文夹杂</h4><p>解决办法：promt</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:   </span><br><span class="line">    question = <span class="built_in">input</span>(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        question +=<span class="string">&quot;。无法回答就说不知道，用中文回答。&quot;</span>  </span><br><span class="line">        response = qa.run(question)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;原始回答: &quot;</span>, response)</span><br></pre></td></tr></table></figure>
+
+<h3 id="webUI端部署"><a href="#webUI端部署" class="headerlink" title="webUI端部署"></a>webUI端部署</h3><p>首先安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gradio</span><br></pre></td></tr></table></figure>
+
+<p>网页端部署脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.llms.chatglm <span class="keyword">import</span> ChatGLM </span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span>     <span class="comment"># 指定向量库文件夹位置</span></span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>   <span class="comment"># 指定加载embeddding模型</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">embeddings = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = Chroma(embedding_function=embeddings, persist_directory=persist_directory)  <span class="comment"># 加载之前创建的向量库文件里的向量数据</span></span><br><span class="line"></span><br><span class="line">llm = ChatGLM(                                   <span class="comment"># 通过api调用大模型</span></span><br><span class="line">        endpoint_url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        max_token=<span class="number">2000</span>,</span><br><span class="line">        top_p=<span class="number">0.7</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">retriever = db.as_retriever()</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(         <span class="comment"># 启用问答模式开始聊天</span></span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retriever,</span><br><span class="line">    chain_type= <span class="string">&quot;stuff&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chat</span>(<span class="params">question, history</span>):</span><br><span class="line">    response = qa.run(question)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line">    demo = gr.ChatInterface(chat)</span><br><span class="line">    demo.launch(inbrowser=<span class="literal">True</span>, share= <span class="literal">True</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="built_in">print</span>(traceback.format_exc())</span><br></pre></td></tr></table></figure>
+
+<h4 id="UnicodeDecodeError-‘gbk’-codec-can’t-decode-byte-0xb2-in-position-1972-illegal-multibyte-sequence"><a href="#UnicodeDecodeError-‘gbk’-codec-can’t-decode-byte-0xb2-in-position-1972-illegal-multibyte-sequence" class="headerlink" title="UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xb2 in position 1972: illegal multibyte sequence"></a>UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xb2 in position 1972: illegal multibyte sequence</h4><p>开始问题出现在import gradio as gr，为了定位具体位置，加上traceback，最后找到是在read部分出现读入错误。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 162942.png)</p>
+<p>所以在原位置加上指定utf-8编码</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 163122.png)</p>
+<p>再次运行问题解决</p>
+<h4 id="TypeError-chat-takes-1-positional-argument-but-2-were-given"><a href="#TypeError-chat-takes-1-positional-argument-but-2-were-given" class="headerlink" title="TypeError: chat() takes 1 positional argument but 2 were given"></a>TypeError: chat() takes 1 positional argument but 2 were given</h4><p>网页打开后输入问题报错</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 163735.png)</p>
+<p>这里一定注意</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">chat</span>(<span class="params">question, history</span>):       <span class="comment">#### chat的history一定要有</span></span><br><span class="line">    response = qa.run(question)</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>加上history问题解决。</p>
+<p>最后正常运行的结果如下：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-23 164412.png)</p>
+<p>加了共享链接在手机上运行也是正常的</p>
+<p><img data-src="C:\Users\72766\Pictures\Screenshots\微信图片_20240323164305.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/9177334c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/9177334c.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署五</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:54 / 修改时间：16:44:55" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:54+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/9177334c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/9177334c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署五"><a href="#Windows-anaconda-4050-6G-chatglm本地部署五" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署五"></a>Windows+anaconda+4050 6G+chatglm本地部署五</h1><h2 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h2><p>开始我下载的是小说，但是发现小说和我所知道的电视剧改动比较大，而且小说的语法用词不太白话文，后面又想着字幕是不是好一点，但是忽略了字幕会跳过最重要的环节：人物关系，也就是丢给大模型，它并不明白这话都是谁说的，无法联系起来。所以最终决定从分集剧情作为数据，更简单干练。</p>
+<p>因为我要从网站上把每集的分集剧情内容爬下来，所以不得不提爬虫工具。</p>
+<h3 id="网页不可复制代码块内容提取"><a href="#网页不可复制代码块内容提取" class="headerlink" title="网页不可复制代码块内容提取"></a>网页不可复制代码块内容提取</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.zhihu.com/question/467685925&quot;</span>  <span class="comment"># 替换为你要爬取的网页URL</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">html_content = response.content</span><br><span class="line">soup = BeautifulSoup(html_content, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">class_element = soup.find(<span class="string">&#x27;div&#x27;</span>, class_=<span class="string">&#x27;highlight&#x27;</span>)  <span class="comment">## 这里的class_就对应根据关键字在网页源码找到具体块</span></span><br><span class="line">class_text = class_element.text</span><br><span class="line"><span class="built_in">print</span>(class_text)</span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 101753.png)</p>
+<p>可以看下效果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 102136.png)</p>
+<h3 id="带有下一页格式网页内容提取"><a href="#带有下一页格式网页内容提取" class="headerlink" title="带有下一页格式网页内容提取"></a>带有下一页格式网页内容提取</h3><p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 111344.png)</p>
+<p>观察网页格式可以得到网页命名格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/0-2</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/0-3</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-4</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-5</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/1-6</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/20-63</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/21-64</span></span><br><span class="line"><span class="string">https://www.tvmao.com/drama/YicsIy8=/episode/25-76</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>所以中心思想是遍历所有网页再根据关键信息提取对应的块内容</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113753.png)</p>
+<p><font face="黑体" color="red" size="5">这里一定注意：1.查找时尽量找文本最后的字符为查找对象，才能找对，文档前面的字符可能会在网页源码中多次出现，不注意的话很容易找错地方。2. 文本提取出来看看有没有不相关的内容尽早清洗剔除掉，保证数据干净</font></p>
+<p>所以整体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_html</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    获取网页源代码</span></span><br><span class="line"><span class="string">    :param url: URL</span></span><br><span class="line"><span class="string">    :return: str</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: UserAgent().random&#125;</span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">return</span> response.text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_html</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    解析网页源码并提取数据</span></span><br><span class="line"><span class="string">    :param html: Page_Source</span></span><br><span class="line"><span class="string">    :return: generator</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    class_element = soup.find(<span class="string">&#x27;article&#x27;</span>, class_=<span class="string">&#x27;clear epi_c&#x27;</span>)</span><br><span class="line">    description = class_element.text </span><br><span class="line">    <span class="comment">## 数据清洗</span></span><br><span class="line">    description = description.replace(<span class="string">&#x27;(后宫·甄嬛传剧情系电视猫原创，未经许可，请勿转载！转载许可)&#x27;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;上传剧照图片&quot;</span>, <span class="string">&#x27;&#x27;</span>).strip()+ <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(description)</span><br><span class="line">    <span class="keyword">return</span> description</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write2csv</span>(<span class="params">filename, rows</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    保存数据到csv文件</span></span><br><span class="line"><span class="string">    :param filename: </span></span><br><span class="line"><span class="string">    :param rows: </span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;a+&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        csv_writer = csv.writer(f)</span><br><span class="line">        csv_writer.writerows(rows)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write2txt</span>(<span class="params">filename, contents</span>):</span><br><span class="line">      fh = <span class="built_in">open</span>(filename, <span class="string">&#x27;a+&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">      fh.write(contents)</span><br><span class="line">      fh.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    入口函数</span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    filename = <span class="string">&#x27;./甄嬛传剧情.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/0-2</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/0-3</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-4</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-5</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/1-6</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/20-63</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/21-64</span></span><br><span class="line"><span class="string">    https://www.tvmao.com/drama/YicsIy8=/episode/25-76</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">77</span>):</span><br><span class="line">        shang = index//<span class="number">3</span></span><br><span class="line">        rest = index%<span class="number">3</span></span><br><span class="line">        <span class="keyword">if</span>  rest==<span class="number">0</span>:</span><br><span class="line">            pageNo = shang -<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pageNo = shang</span><br><span class="line">        <span class="keyword">if</span> index ==<span class="number">1</span>:</span><br><span class="line">            url = <span class="string">&#x27;https://www.tvmao.com/drama/YicsIy8=/episode&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            url = <span class="string">&#x27;https://www.tvmao.com/drama/YicsIy8=/episode/&#123;&#125;-&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNo, index)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        page_source = get_html(url)</span><br><span class="line">        <span class="built_in">print</span>(url)</span><br><span class="line">        content = parse_html(page_source)</span><br><span class="line">        write2txt(filename, content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>最终的效果：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113852.png)</p>
+<p>保存提取的内容</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 113932.png)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/8c955109.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/8c955109.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署四</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:49 / 修改时间：16:44:38" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:49+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/8c955109.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/8c955109.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署四"><a href="#Windows-anaconda-4050-6G-chatglm本地部署四" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署四"></a>Windows+anaconda+4050 6G+chatglm本地部署四</h1><h2 id="中文文本向量表征"><a href="#中文文本向量表征" class="headerlink" title="中文文本向量表征"></a>中文文本向量表征</h2><h3 id="文本向量表征"><a href="#文本向量表征" class="headerlink" title="文本向量表征"></a>文本向量表征</h3><p>这里我对比了三种不同模型embedding的结果：分别是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>和 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec/releases/download/1.1.4/light_Tencent_AILab_ChineseEmbedding.bin">w2v-light-tencent-chinese</a> 以及 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese-paraphrase">shibing624/text2vec-base-chinese-paraphrase</a></p>
+<p>调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> text2vec <span class="keyword">import</span> SentenceModel, Word2Vec</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">model = Word2Vec(<span class="string">&#x27;w2v-light-tencent-chinese&#x27;</span>)</span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>看看不同embeddding模型对于同一输入最终表征结果的差异性：</p>
+<p>我这里对比了三段文本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from text2vec import SentenceModel, Word2Vec</span><br><span class="line"><span class="comment"># model = SentenceModel(&quot;shibing624/text2vec-base-chinese&quot;)</span></span><br><span class="line"><span class="comment"># model = Word2Vec(&#x27;w2v-light-tencent-chinese&#x27;)</span></span><br><span class="line">model = SentenceModel(<span class="string">&quot;shibing624/text2vec-base-chinese-paraphrase&quot;</span>)</span><br><span class="line">textvec1 = model.encode(<span class="string">&quot;铲子里还带着刚从地下带出的旧土，离奇的是，这一杯土正不停的向外渗着鲜红的液体，就像刚刚在血液里蘸过一样&quot;</span>)</span><br><span class="line">textvec2 = model.encode(<span class="string">&quot;“下不下去喃？要得要不得，一句话，莫七里八里的！”独眼的小伙子说：“你说你个老人家腿脚不方便，就莫下去了，我和我弟两个下去，管他什么东西，直接给他来一梭子。”&quot;</span>)</span><br><span class="line">textvec3 = model.encode(<span class="string">&quot;果然，这样一来他就和洞里的东西对持住了，双方都各自吃力，但是都拉不动分毫，僵持了有10几秒，就听到洞里一声盒子炮响，然后听到他爹大叫：“三伢子，快跑！！！！！！”，就觉的绳子一松，土耗子嗖一声从洞里弹了出来，好象上面还挂了什么东西！那时候老三也顾不得那么多了，他知道下面肯定出了事情了，一把接住土耗子，扭头就跑！他一口七跑出有2里多地，才敢停下来，掏出他怀里的土耗子一看，吓的大叫了一声，原来土耗子上什么都没勾，只勾着一只血淋淋的断手。他认得那手上，不由哭了出来，他手是分明是他二哥的。看样子他二哥就算不死也残废了，想到这里，他不由一咬，就想回去救他二哥和老爹，刚一回头，就看见背后蹲着个血红血红的东西，正直钩钩看着他&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec2))</span><br><span class="line"><span class="built_in">print</span>(cosine_hard(textvec1, textvec3))</span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 151218.png)</p>
+<p>由此可见，在embedding阶段选取不同的模型也会影响最后相似性的结果。一般中文比较用的最多的是<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">shibing624/text2vec-base-chinese</a>。</p>
+<p>一般通过在线下载方式最后模型文件夹的保存路径一般在C:\Users\xxx.cache\huggingface\hub</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 144410.png)</p>
+<p>如果没有安装text2vec也可以通过其他两种方式加载模型完成文本embedding。</p>
+<p>方式一：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import torch</span><br><span class="line">from transformers import AutoTokenizer, AutoModel</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;KMP_DUPLICATE_LIB_OK&quot;</span>] = <span class="string">&quot;TRUE&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mean Pooling - Take attention mask into account for correct averaging</span></span><br><span class="line">def mean_pooling(model_output, attention_mask):</span><br><span class="line">    token_embeddings = model_output[0]  <span class="comment"># First element of model_output contains all token embeddings</span></span><br><span class="line">    input_mask_expanded = attention_mask.unsqueeze(-1).<span class="built_in">expand</span>(token_embeddings.size()).<span class="built_in">float</span>()</span><br><span class="line">    <span class="built_in">return</span> torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load model from HuggingFace Hub</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">model = AutoModel.from_pretrained(<span class="string">&#x27;shibing624/text2vec-base-chinese&#x27;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"><span class="comment"># Tokenize sentences</span></span><br><span class="line">encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors=<span class="string">&#x27;pt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute token embeddings</span></span><br><span class="line">with torch.no_grad():</span><br><span class="line">    model_output = model(**encoded_input)</span><br><span class="line"><span class="comment"># Perform pooling. In this case, max pooling.</span></span><br><span class="line">sentence_embeddings = mean_pooling(model_output, encoded_input[<span class="string">&#x27;attention_mask&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
+
+<p>方式一加载模型并将文本映射到高维空间后再次计算相似度，还是用同一文本对</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 154855.png)</p>
+<p>和上面计算的结果稍稍有点差别。</p>
+<p>方式二：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sentence_transformers import SentenceTransformer</span><br><span class="line"></span><br><span class="line">m = SentenceTransformer(<span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>)</span><br><span class="line">sentences = [<span class="string">&#x27;如何更换花呗绑定银行卡&#x27;</span>, <span class="string">&#x27;花呗更改绑定银行卡&#x27;</span>]</span><br><span class="line"></span><br><span class="line">sentence_embeddings = m.encode(sentences)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sentence embeddings:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sentence_embeddings)</span><br></pre></td></tr></table></figure>
+
+<p>方式二的加载方式和text2vet没有差别，计算结果通过验证也没有差别。</p>
+<h3 id="向量相似度计算"><a href="#向量相似度计算" class="headerlink" title="向量相似度计算"></a>向量相似度计算</h3><p>回想之前高数的时候学过，向量之间夹角的表示</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 112047.png)</p>
+<p>方便理解就是父母和孩子长相的相似性，亲生的就很像，这里就可以类比理解成向量的夹角Θ越接近0，孩子和陌生人就一点也不像，也就是Θ值越接近90°，就像坐标系的坐标轴，各自不能相互表示，也就是互不相关。</p>
+<p>但是一般我们不直接求解Θ，只求到 cos Θ 就可以实现同样的效果，即<font face="黑体" color="red" size="5"> cos Θ 值越接近等于1就说明两向量越相似，cos Θ 值越接近等于0就说明两向量越不相关。</font></p>
+<p>这里介绍两种计算方式</p>
+<p>一种是直接用计算公式写的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cos_sim_hard</span>(<span class="params">v1, v2</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(v1, np.ndarray):</span><br><span class="line">		v1 = np.array(v1)</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(v2, np.ndarray):</span><br><span class="line">        v2 = np.array(v2)</span><br><span class="line">    up = <span class="built_in">float</span>(np.<span class="built_in">sum</span>(v1*v2))  <span class="comment">## 向量乘积</span></span><br><span class="line">    down = np.linalg.norm(v1)*np.linalg.norm(v2) <span class="comment">## 向量模乘积</span></span><br><span class="line">    <span class="keyword">if</span> down!=<span class="number">0</span>:</span><br><span class="line">        res = up/down  <span class="comment">## 计算除法一定要保证分子不为0</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>第二种是利用矩阵求解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cos_sim_matrx</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(a, torch.Tensor):</span><br><span class="line">        a = torch.tensor(a) <span class="comment">#使用cuda计算可改为torch.tensor(a).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(b, torch.Tensor):</span><br><span class="line">        a = torch.tensor(b) <span class="comment">#使用cuda计算可改为torch.tensor(b).cuda(0)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(a.shape)==<span class="number">1</span>:</span><br><span class="line">        a = a.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(b.shape)==<span class="number">1</span>:</span><br><span class="line">        b = b.unsqueeze(<span class="number">0</span>)</span><br><span class="line">    a_norm = torch.nn.functional.normalize(a, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    b_norm = torch.nn.functional.normalize(b, p=<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> torch.mm(a_norm, b_norm.transpose(<span class="number">0</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>其实第二种方法是对公式做了变式</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 115739.png)</p>
+<p>最后看一下两种方法的计算结果：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 120713.png)</p>
+<p>可以看出结果是一致的。</p>
+<h2 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h2><p>接着之前的步骤，完成文本切块后，接着需要对文本向量化并存储，方便之后大模型调用</p>
+<h3 id="chroma向量库创建"><a href="#chroma向量库创建" class="headerlink" title="chroma向量库创建"></a>chroma向量库创建</h3><p>使用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.document_loaders.text <span class="keyword">import</span> TextLoader</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>)</span><br><span class="line">text_split = RecursiveCharacterTextSplitter(</span><br><span class="line">        chunk_size = <span class="number">256</span>,</span><br><span class="line">        chunk_overlap  = <span class="number">10</span>,</span><br><span class="line">        length_function = <span class="built_in">len</span>,</span><br><span class="line">        add_start_index = <span class="literal">True</span>)</span><br><span class="line">split_docs = text_split.split_documents(loader.load())</span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan&#x27;</span></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">hf = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line">db = Chroma.from_documents(documents=split_docs, embedding=hf, persist_directory=persist_directory)</span><br><span class="line">db.persist()</span><br></pre></td></tr></table></figure>
+
+<p><font face="黑体" color="red" size="5">UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xac in position 2: illegal multibyte sequence</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>)</span><br><span class="line">to</span><br><span class="line">loader = TextLoader(<span class="string">&#x27;甄嬛传剧情.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最终会在主文件夹下新建vector_zhenhuanzhuan文件夹，并保存向量文件。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 134438.png)</p>
+<h3 id="搜寻近似向量"><a href="#搜寻近似向量" class="headerlink" title="搜寻近似向量"></a>搜寻近似向量</h3><p>上一步已经创建好向量库，接下来测试一下输入一段文本，看能否找到最相关的文本段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关于相似性搜索chroma提供了5种函数</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_relevance_scores(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_with_score(输入为字符串)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">db.similarity_search_by_vector_with_relevance_scores(输入为字符串的embedding结果)</span></span><br><span class="line"><span class="string">每种搜索结果默认返回4条文本，需要修改的话，直接按照如下指定就行</span></span><br><span class="line"><span class="string">db.similarity_search(输入为字符串, K=5)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">ques = <span class="string">&#x27;甄嬛离宫去了哪儿？&#x27;</span></span><br><span class="line">ques_embedding = hf.embed_query(ques) <span class="comment">#这里直接调用前文定义的embedding模型</span></span><br><span class="line"></span><br><span class="line">res_similarity_search = db.similarity_search(ques)</span><br><span class="line">res_similarity_search_with_relevance_scores = db.similarity_search_with_relevance_scores(ques)</span><br><span class="line">res_similarity_search_with_score = db.similarity_search_with_score(ques)</span><br><span class="line">res_similarity_search_by_vector = db.similarity_search_by_vector(ques_embedding)</span><br><span class="line">res_similarity_search_by_vector_with_relevance_scores = db.similarity_search_by_vector_with_relevance_scores(ques_embedding)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 154231.png)</p>
+<p><font face="黑体" color="red" size="5">可以看出不同搜寻相似向量的返回结果都是殊途同归的，其实看源码的话，会发现有些方法其实是套壳写的，比如similarity_search里面就是调用了similarity_search_with_score</font></p>
+<p>再看看向量输入与字符串输入的搜寻近似结果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 160123.png)</p>
+<p><font face="黑体" color="red" size="5">similarity_search_with_score 与 similarity_search_by_vector_with_relevance_scores 的结果一模一样，完全相等</font></p>
+<p>至此流程跑通了，现在重点看看搜索结果的匹配度，这块直接影响到后期大模型回答问题的准确性，所以需要调整一下</p>
+<p>开始我设置切块文本长度在256，想了一下，这里原始数据来自于高度提炼和总结的文本，所以是不是应该把断句调小一些，这样更准呢？所以我把256换成64，重新创建新的数据库，再搜索输入看看返回的准确性。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 162824.png)</p>
+<p>![屏幕截图 2024-03-22 163644](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 163644.png)</p>
+<p><font face="黑体" color="red" size="5">效果真的好了很多，很多问题都能找到正确答案，但是也要注意：1. 问题问的太细其实是匹配不到结果的，也对应了原始数据中没有匹配的数据；2. 提问可以多样性，也能找到答案</font></p>
+<h3 id="向量库-大模型"><a href="#向量库-大模型" class="headerlink" title="向量库+大模型"></a>向量库+大模型</h3><p>思路是：调用大模型，根据输入问题在向量库里搜寻最相似的文档段集合并返回，由llm归纳输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">retrieval_ = db.as_retriever()</span><br><span class="line">from langchain.prompts import PromptTemplate</span><br><span class="line">QA_CHAIN_PROMPT = PromptTemplate.from_template(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">如果你不知道答案，就回答不知道，不要试图编造答案。</span></span><br><span class="line"><span class="string">总是在答案结束时说”谢谢你的提问！“</span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string">问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span>)</span><br><span class="line">qa = RetrievalQA.from_chain_type(</span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retrieval_,</span><br><span class="line">    verbose=True,</span><br><span class="line">    chain_type_kwargs=&#123;<span class="string">&quot;prompt&quot;</span>: QA_CHAIN_PROMPT&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">response = qa.run(<span class="string">&quot;翠果打谁了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+<p>最终看看大模型的归纳结果如何</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 164940.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165503.png)</p>
+<p>![屏幕截图 2024-03-22 165411](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165411.png)</p>
+<p>![屏幕截图 2024-03-22 165429](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165429.png)</p>
+<p>![屏幕截图 2024-03-22 165449](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-22 165449.png)</p>
+<p>根据<a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/modules/data_connection/vectorstores/">官网</a>说明，提供了3种向量数据库，</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 163922.png)</p>
+<p>不同的数据库需要先完成依赖安装才能使用。</p>
+<p>遇到小插曲</p>
+<p>在Windows上遇到了“Symbol cudaLaunchKernel not found，…，RuntimeError: Library cublasLt is not initialized”</p>
+<p>网上的方法对我没有用，我在用nvcc -V检查cuda的时候提示nvcc命令无效，应该是cuda出现了问题。所以重新安装了cuda,还是用的之前的版本。重新安装后再运行代码文件就也没再报错了。</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-21 165434.png)</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/shibing624/text2vec">Text2vec: Text to Vector</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/shibing624/text2vec-base-chinese">text2vec-base-chinese</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bytezonex.com/archives/26.html">FAISS和Chroma：两种流行的向量数据库的比较</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/c0473d17.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/c0473d17.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署三</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:45 / 修改时间：16:43:49" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:45+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/c0473d17.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/c0473d17.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署三"><a href="#Windows-anaconda-4050-6G-chatglm本地部署三" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署三"></a>Windows+anaconda+4050 6G+chatglm本地部署三</h1><h2 id="api调用chatglm"><a href="#api调用chatglm" class="headerlink" title="api调用chatglm"></a>api调用chatglm</h2><p>为了配合显存，需要调整api.py模型加载部分为int4量化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># model = AutoModel.from_pretrained(&quot;THUDM/chatglm-6b&quot;, trust_remote_code=True).half().cuda()</span></span><br><span class="line"> <span class="comment"># 丐版</span></span><br><span class="line"> model = AutoModel.from_pretrained(<span class="string">&quot;chatglm-6b&quot;</span>, trust_remote_code=<span class="literal">True</span>).quantize(<span class="number">4</span>).half().cuda()</span><br></pre></td></tr></table></figure>
+
+<h3 id="启服务"><a href="#启服务" class="headerlink" title="启服务"></a>启服务</h3><p>这样就代表启动成功</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 152252.png)</p>
+<h3 id="调用aip"><a href="#调用aip" class="headerlink" title="调用aip"></a>调用aip</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">heade_ = &#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;application/json;charset=utf-8&quot;</span>&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chat</span>(<span class="params">promt, history</span>):</span><br><span class="line">    resq = requests.post(</span><br><span class="line">        url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        json = &#123;<span class="string">&quot;prompt&quot;</span>:promt, <span class="string">&quot;history&quot;</span>:history&#125;,</span><br><span class="line">        headers= heade_</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> resq.json()[<span class="string">&quot;response&quot;</span>], resq.json()[<span class="string">&quot;history&quot;</span>]</span><br><span class="line"></span><br><span class="line">history = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    response, history =  chat(<span class="built_in">input</span>(<span class="string">&quot;Q: &quot;</span>), history)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;A: &quot;</span>, response)</span><br></pre></td></tr></table></figure>
+
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 152648.png)</p>
+<p>也可以用curl的方式调用(windows下写法)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="string">&quot;http://127.0.0.1:8000&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&quot;&#123;\&quot;prompt\&quot;: \&quot;你好\&quot;, \&quot;history\&quot;: []&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>postman调用方法</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 155007.png)</p>
+<h2 id="本地文档向量化"><a href="#本地文档向量化" class="headerlink" title="本地文档向量化"></a>本地文档向量化</h2><p>这里选择下载了甄嬛传和盗墓笔记的txt</p>
+<h3 id="文档格式统一"><a href="#文档格式统一" class="headerlink" title="文档格式统一"></a>文档格式统一</h3><p>向量化txt用的是langchain.document_loaders.directory import DirectoryLoader函数，使用中发现非utf-8文档load失败，所以转换思路，按照文件写了一些非utf-8文档转换为utf-8的函数，在源文档基础上改写，新内容覆盖原始文档内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">encode_out = &#x27;utf-8&#x27;</span><br><span class="line">dirpath = &#x27;own\\books&#x27;</span><br><span class="line"></span><br><span class="line">for book in os.listdir(dirpath):</span><br><span class="line">    with open(&quot;&#123;&#125;/&#123;&#125;&quot;.format(dirpath, book), &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read()</span><br><span class="line">        encoding_type = chardet.detect(data)[&quot;encoding&quot;] # 获取输入文档的编码类型</span><br><span class="line">        if encoding_type != encode_out:</span><br><span class="line">            with open(&quot;&#123;&#125;/&#123;&#125;&quot;.format(dirpath, book), mode=&#x27;wb+&#x27;) as fo:</span><br><span class="line">                fo.write(data.decode(encoding_type,&#x27;ignore&#x27;).encode(encode_out))</span><br><span class="line">                fo.close()</span><br></pre></td></tr></table></figure>
+
+<p>另外说一下我用下面这两种设置方式都没有成功，有没有懂得大佬指点一二。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from langchain.document_loaders.directory import DirectoryLoader</span><br><span class="line">DirectoryLoader(</span><br><span class="line">    silent_errors=True</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">from langchain.document_loaders.text import TextLoader</span><br><span class="line">TextLoader(</span><br><span class="line">    autodetect_encoding=True</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="几种有趣的文档加载方式"><a href="#几种有趣的文档加载方式" class="headerlink" title="几种有趣的文档加载方式"></a>几种有趣的文档加载方式</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/integrations/document_loaders">官网</a>提供了各式各样的加载文档的方式，其中也有很多有意思的接口，比如</p>
+<h4 id="BiliBili"><a href="#BiliBili" class="headerlink" title="BiliBili"></a><a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/integrations/document_loaders/bilibili">BiliBili</a></h4><p>可以提取视频字幕，有的原始视频没有字幕，这个方法也可以用</p>
+<p>首先需要安装bilibili-api-python</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install bilibili-api-python</span><br></pre></td></tr></table></figure>
+
+<p>其次使用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain_community.document_loaders.bilibili <span class="keyword">import</span> BiliBiliLoader</span><br><span class="line"></span><br><span class="line">loader = BiliBiliLoader([<span class="string">&#x27;https://www.bilibili.com/video/BV1t8411y7fp/?p=4&amp;spm_id_from=pageDriver&amp;vd_source=9bfa62da16aae5e7da38cd1197e6acc7&#x27;</span>])</span><br><span class="line">loader = loader.load()</span><br><span class="line">split_docs = RecursiveText.split_documents(loader)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(split_docs))</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意两个问题：</p>
+<p>a.修正C:\Users\xxx\envs\chatglm\Lib\site-packages\langchain_community\document_loaders\bilibili.py</p>
+<p>这里具体文件位置根据你自己的实际情况来有，总共有三处需要需改的地方</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##### 修改一 在开头定义credential</span></span><br><span class="line">from bilibili_api import Credential</span><br><span class="line">sessdata = <span class="string">&quot;your sessdata&quot;</span></span><br><span class="line">bili_jct = <span class="string">&quot;your bili_jct&quot;</span></span><br><span class="line">buvid3 = <span class="string">&quot;your buvid3&quot;</span></span><br><span class="line">credential = Credential(sessdata=sessdata, bili_jct=bili_jct, buvid3=buvid3)</span><br><span class="line"><span class="comment">##### 修改二、三 _get_bilibili_subs_and_info内两处video.Video增加内容</span></span><br><span class="line">        <span class="keyword">if</span> bvid is not None:</span><br><span class="line">            v = video.Video(bvid=bvid.group(),  credential=credential)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            aid = re.search(r<span class="string">&quot;av[0-9]+&quot;</span>, url)</span><br><span class="line">            <span class="keyword">if</span> aid is not None:</span><br><span class="line">                try:</span><br><span class="line">                    v = video.Video(aid=int(aid.group()[2:]), credential=credential)</span><br><span class="line">                except AttributeError:</span><br><span class="line">                    raise ValueError(f<span class="string">&quot;&#123;url&#125; is not bilibili url.&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                raise ValueError(f<span class="string">&quot;&#123;url&#125; is not bilibili url.&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样可以避免之后调用api报错 Credential 类未提供 sessdata 或者为空。</p>
+<p>sessdata、bili_jct以及buvid3的在goole chrome获取方式加下图</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 101936.png)</p>
+<p>这里展示一下调用api的效果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 105210.png)</p>
+<p>可以看出，字幕基本是提取出来了。<font face="黑体" color="red" size="5">这个接口使用的时候一定注意要清除系统代理。</font></p>
+<h4 id="Images"><a href="#Images" class="headerlink" title="Images"></a><a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/integrations/document_loaders/image">Images</a></h4><p>首先需要安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install unstructured_inference</span><br></pre></td></tr></table></figure>
+
+<p>以及单独安装<a target="_blank" rel="external nofollow noopener noreferrer" href="https://digi.bib.uni-mannheim.de/tesseract/">tesseract-ocr</a></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 114522.png)</p>
+<p>并添加环境变量</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 112538.png)</p>
+<p>使用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filepath = <span class="string">&#x27;own/2.png&#x27;</span></span><br><span class="line"><span class="keyword">from</span> langchain_community.document_loaders.image <span class="keyword">import</span> UnstructuredImageLoader</span><br><span class="line">loader = UnstructuredImageLoader(filepath)</span><br><span class="line">data = loader.load()</span><br></pre></td></tr></table></figure>
+
+<p>也是需要更改一个地方才能实现调用</p>
+<p>C:\Users\xxx\envs\chatglm\Lib\site-packages\unstructured_pytesseract\pytesseract.py</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 114821.png)</p>
+<p>这里因为调用的是unstructured_pytesseract,所以修改的unstructured_pytesseract下的pytesseract，还有一个pytesseract.py是C:\Users\xxx\envs\chatglm\Lib\site-packages\pytesseract\pytesseract.py，也可以如法炮制，以便之后使用正常。</p>
+<p>看一下加载图像后识别图像的文字效果如何</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 113924.png)</p>
+<p>英文识别效果看起来可以，再看看中文如何识别</p>
+<p>关于pytesseract使用的时候发现一些有意思的地方</p>
+<p><font face="黑体" color="red" size="5">一般画图的时候，默认左上角为坐标系起点，然而pytesseract的接口返回结果是以左下角为坐标系原点，所以不注意的时候会发现画的框的位置是错的。</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw,ImageFont</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> pytesseract</span><br><span class="line"></span><br><span class="line">filepath = <span class="string">&#x27;own/2.png&#x27;</span></span><br><span class="line">im = cv2.imread(filepath, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">font = ImageFont.truetype(font=<span class="string">&quot;simsun.ttc&quot;</span>, size=<span class="number">18</span>, encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">img = Image.fromarray(im)</span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">text3 = pytesseract.image_to_boxes(im, output_type=Output.STRING, lang=<span class="string">&#x27;chi_sim&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(text3)</span><br><span class="line">h, w = im.shape[:-<span class="number">1</span>]</span><br><span class="line">outlist =  text3.split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> outlist:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(i)==<span class="number">0</span>:</span><br><span class="line">		<span class="keyword">continue</span></span><br><span class="line">	(s, x0, y0, x1, y1, conf) = i.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">	x0, y0, x1, y1, conf = <span class="built_in">int</span>(x0), h-<span class="built_in">int</span>(y0), <span class="built_in">int</span>(x1), h-<span class="built_in">int</span>(y1), <span class="built_in">float</span>(conf)</span><br><span class="line">	draw.text((x0, y1 - <span class="number">20</span>), s, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), font=font) </span><br><span class="line">	draw.rectangle([(x0, y1), (x1, y0)], outline=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">	outimage = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)</span><br><span class="line">	cv2.imshow(<span class="string">&quot;output&quot;</span>, outimage)</span><br><span class="line">	cv2.imwrite(<span class="string">&#x27;res.jpg&#x27;</span>, outimage)</span><br><span class="line">	cv2.waitKey(<span class="number">0</span>) </span><br><span class="line">	cv2.destroyAllWindows() </span><br></pre></td></tr></table></figure>
+
+<p>改成随机颜色</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color = <span class="built_in">tuple</span>(np.random.randint(<span class="number">0</span>, <span class="number">255</span>, <span class="number">3</span>, dtype=np.int32))</span><br></pre></td></tr></table></figure>
+
+<p>看看文字提取效果</p>
+<p><img data-src="D:\Projects\ChatGLM-6B\res.jpg"></p>
+<p><font face="黑体" color="red" size="5">文字大致上没有问题，提取的位置多多少少会有些偏差。</font></p>
+<p>还有一种是按照词的结果返回，即一个框对应多个字词的样式。</p>
+<p><img data-src="D:\Projects\ChatGLM-6B\res1.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 识别出的每块框画在图像上    </span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chunk_single</span>():</span><br><span class="line">    tess_text = pytesseract.image_to_data(im, output_type=Output.DICT, lang=<span class="string">&#x27;chi_sim&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(tess_text[<span class="string">&#x27;text&#x27;</span>])):</span><br><span class="line">        word_len = <span class="built_in">len</span>(tess_text[<span class="string">&#x27;text&#x27;</span>][i])</span><br><span class="line">        <span class="keyword">if</span> word_len &gt; <span class="number">0</span>:</span><br><span class="line">            (x, y, w, h) = (tess_text[<span class="string">&#x27;left&#x27;</span>][i], tess_text[<span class="string">&#x27;top&#x27;</span>][i], tess_text[<span class="string">&#x27;width&#x27;</span>][i], tess_text[<span class="string">&#x27;height&#x27;</span>][i])</span><br><span class="line">            color = <span class="built_in">tuple</span>(np.random.randint(<span class="number">0</span>, <span class="number">255</span>, <span class="number">3</span>, dtype=np.int32))    </span><br><span class="line">            draw.text((x, y - <span class="number">20</span>), tess_text[<span class="string">&#x27;text&#x27;</span>][i], color, font=font)</span><br><span class="line">            draw.rectangle([(x, y), (x + w, y + h)], outline=color)</span><br><span class="line">            outimage = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)</span><br><span class="line">            cv2.imwrite(<span class="string">&#x27;res1.jpg&#x27;</span>, outimage)</span><br></pre></td></tr></table></figure>
+
+<p><font face="黑体" color="red" size="5">pytesseract.image_to_data的返回结果是不用做坐标转换的。</font></p>
+<h4 id="Subtitle"><a href="#Subtitle" class="headerlink" title="Subtitle"></a><a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/integrations/document_loaders/subtitle">Subtitle</a></h4><p>字幕文件内容提取，以电子榨菜甄嬛传为例</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 163149.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 164123.png)</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://python.langchain.com/docs/modules/data_connection/document_loaders/pdf">PDF</a></p>
+<p>首先需要安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymupdf</span><br></pre></td></tr></table></figure>
+
+<p>使用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loader = PyMuPDFLoader(filepath)</span><br></pre></td></tr></table></figure>
+
+<p>提取效果</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 183710.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-19 184349.png)</p>
+<h3 id="文档切块"><a href="#文档切块" class="headerlink" title="文档切块"></a>文档切块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.document_loaders.directory <span class="keyword">import</span> DirectoryLoader</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> CharacterTextSplitter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_docs</span>(<span class="params">dirpath</span>):</span><br><span class="line">    loader = DirectoryLoader(dirpath)</span><br><span class="line">    docs = loader.load()</span><br><span class="line">    text_split = CharacterTextSplitter(chunk_size =<span class="number">256</span>, chunk_overlap =<span class="number">10</span> )</span><br><span class="line">    split_docs = text_split.split_documents(docs)</span><br><span class="line">    <span class="keyword">return</span> split_docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="切块方式"><a href="#切块方式" class="headerlink" title="切块方式"></a>切块方式</h4><p>CharacterTextSplitter vs RecursiveCharacterTextSplitter vs Token splitting</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-18 100138.png)</p>
+<p>看的出来RecursiveCharacterTextSplitter 切分方法效果最好，这个方法也是langchain最推荐的。</p>
+<h4 id="切块数量"><a href="#切块数量" class="headerlink" title="切块数量"></a>切块数量</h4><p>甄嬛传当没有重复即chunk_overlap=0的时候应该是被切分为5873段</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-18 084826.png)</p>
+<p>现在chunk_overlap =10的时候，切分的数目是6572</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-18 085029.png)</p>
+<p>数目是对的上的</p>
+<h3 id="文档向量化"><a href="#文档向量化" class="headerlink" title="文档向量化"></a>文档向量化</h3><p>主要包含两步：</p>
+<p>第一步加载向量化模型；</p>
+<p>第二步向量化并存储；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载embedding</span></span><br><span class="line">embedding_model_dict = &#123;</span><br><span class="line">    <span class="string">&quot;ernie-tiny&quot;</span>: <span class="string">&quot;nghuyong/ernie-3.0-nano-zh&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ernie-base&quot;</span>: <span class="string">&quot;nghuyong/ernie-3.0-base-zh&quot;</span>,</span><br><span class="line">    <span class="string">&quot;text2vec&quot;</span>: <span class="string">&quot;GanymedeNil/text2vec-large-chinese&quot;</span>,</span><br><span class="line">    <span class="string">&quot;text2vec2&quot;</span>: <span class="string">&quot;uer/sbert-base-chinese-nli&quot;</span>,</span><br><span class="line">    <span class="string">&quot;text2vec3&quot;</span>: <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_embeding_mode</span>(<span class="params">model_name</span>):</span><br><span class="line">    encode_kwargs = &#123;<span class="string">&quot;normalize_embeddings&quot;</span>:<span class="literal">False</span>&#125;</span><br><span class="line">    model_kwargs = &#123;<span class="string">&quot;device&quot;</span>:<span class="string">&quot;cuda:0&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> HuggingFaceEmbeddings(</span><br><span class="line">        model_name=embedding_model_dict[model_name],</span><br><span class="line">        model_kwargs = model_kwargs,</span><br><span class="line">        encode_kwargs = encode_kwargs</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">store_chroma</span>(<span class="params">doc, persist_directory, embeddings</span>):</span><br><span class="line">    db = Chroma.from_documents(documents=doc, embedding=embeddings, persist_directory=persist_directory)</span><br><span class="line">    db.persist()</span><br><span class="line">    <span class="keyword">return</span> db</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/langchain-ai/langchain/issues/14213">Credential 类未提供 sessdata 或者为空</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://geekdaxue.co/read/bilibili-api-docs/docs-get-credential.md">获取 Credential 类所需信息</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/448253254">Python OCR工具pytesseract详解</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/821bab1a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/821bab1a.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署二</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:40 / 修改时间：16:42:56" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:40+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/821bab1a.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/821bab1a.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署二"><a href="#Windows-anaconda-4050-6G-chatglm本地部署二" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署二"></a>Windows+anaconda+4050 6G+chatglm本地部署二</h1><h2 id="幻觉问题"><a href="#幻觉问题" class="headerlink" title="幻觉问题"></a>幻觉问题</h2><p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316101400256.png" alt="image-20240316101400256"></p>
+<p>可以看出的问题有：</p>
+<ol>
+<li><p>多轮问答出现自我矛盾；</p>
+<p>原因可能是模型在整个对话过程中失去了对上下文的跟踪或者无法保持长期记忆的一致性；</p>
+</li>
+<li><p>生成与事实冲突的内容；</p>
+</li>
+</ol>
+<p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316103029915.png" alt="image-20240316103029915"></p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131022.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 131136.png)<br>这种情况下可见模型是具备一些知识的，但是生成内容是不正确的</p>
+<p>如何判别模型其实自身具备某些知识呢？</p>
+<ol>
+<li><p>自我纠正</p>
+<p>就是用模型生成的结果再去反问模型，验证回答的准确性</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 132335.png)</p>
+<ol start="2">
+<li>用生成结果与真实结果结合输入给模型让模型回答</li>
+</ol>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 134050.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 134116.png)<br>由上可以看出，给出选项的时候大模型更倾向于输出正确的答案</p>
+</li>
+<li><p>误解意图</p>
+<p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240316105125298.png" alt="image-20240316105125298"></p>
+</li>
+</ol>
+<h2 id="幻觉出现的原因"><a href="#幻觉出现的原因" class="headerlink" title="幻觉出现的原因"></a>幻觉出现的原因</h2><ol>
+<li><p>知识不足：</p>
+<p>a. 训练语料的知识不足；</p>
+<p>b. 针对性的知识不足；</p>
+<p>c. 干净正确的知识不足；</p>
+</li>
+<li><p>生成策略</p>
+<p>在解码的时候用的是topk采样，并不是一定就选中概率值最高的token做输出，万一选中了错的token, 根据生成策略，大模型还是会继续顺着前面错误的生成继续往下生成token，也会导致幻觉像滚雪球越来越严重。</p>
+</li>
+<li><p>“谄媚”</p>
+<p>大模型从不质疑人类的输入，一味附和人类的喜好做输出</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143313.png)</p>
+</li>
+</ol>
+<h2 id="幻觉缓解"><a href="#幻觉缓解" class="headerlink" title="幻觉缓解"></a>幻觉缓解</h2><ol>
+<li><p>补充知识</p>
+<p>a. 加大数据投喂量；</p>
+<p>b. 人工清除数据库中的噪声；</p>
+<p>c. 外挂知识库</p>
+</li>
+<li><p>诚实性微调</p>
+</li>
+<li><p>自查</p>
+<p>即模型自己判断自己生成内容的正确性：先生成回答，再判断回答是否为真；</p>
+</li>
+<li><p>多生成几次</p>
+<p>通过生成内容的一致性来判断是否是幻觉</p>
+</li>
+</ol>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143600.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-16 143634.png)</p>
+<p>可以看出，在幻觉出现时，每次输出相差挺大的。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/b99b85b3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/b99b85b3.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署一</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:31 / 修改时间：16:42:18" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:31+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/b99b85b3.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/b99b85b3.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署一"><a href="#Windows-anaconda-4050-6G-chatglm本地部署一" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署一"></a>Windows+anaconda+4050 6G+chatglm本地部署一</h1><h2 id="1-环境创建"><a href="#1-环境创建" class="headerlink" title="1. 环境创建"></a>1. 环境创建</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/THUDM/ChatGLM-6B.git</span><br><span class="line"><span class="built_in">cd</span> ChatGLM-6B</span><br><span class="line">conda creat --name chatglm python==3.10 <span class="comment">#3.12会出现奇奇怪怪的问题，这里建议还是用3.10</span></span><br><span class="line">conda activate chatglm</span><br><span class="line">pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>这里注意可能会遇到ERROR: Could not build wheels for tokenizers, which is required to install pyproject.toml-based projects</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">      running build_ext</span><br><span class="line">      running build_rust</span><br><span class="line">      error: can<span class="string">&#x27;t find Rust compiler</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      To update pip, run:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">          pip install --upgrade pip</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      and then retry package installation.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.</span></span><br><span class="line"><span class="string">      [end of output]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  note: This error originates from a subprocess, and is likely not a problem with pip.</span></span><br><span class="line"><span class="string">  ERROR: Failed building wheel for tokenizers</span></span><br><span class="line"><span class="string">Failed to build tokenizers</span></span><br><span class="line"><span class="string">ERROR: Could not build wheels for tokenizers, which is required to install pyproject.toml-based projects</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是需要安装rust.</p>
+<p>安装链接参考<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/md521/article/details/108110676">https://blog.csdn.net/md521/article/details/108110676</a></p>
+<p>在添加环境变量时注意默认安装路径是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\XXXX\.cargo\bin</span><br></pre></td></tr></table></figure>
+
+<p>添加环境变量后新开promt检查rust是否安装成功</p>
+<h2 id="2-chatglm-6b-int4"><a href="#2-chatglm-6b-int4" class="headerlink" title="2. chatglm-6b-int4"></a>2. chatglm-6b-int4</h2><p>在<a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/THUDM/chatglm-6b-int4/tree/main">huggingface</a>下载好模型文件存放在文件夹</p>
+<p>跑着试一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModel</span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(<span class="string">&quot;chatglm-6b-int4&quot;</span>, trust_remote_code=<span class="literal">True</span>)</span><br><span class="line">model = AutoModel.from_pretrained(<span class="string">&quot;chatglm-6b-int4&quot;</span>, trust_remote_code=<span class="literal">True</span>).quantize(<span class="number">4</span>).half().cuda()</span><br><span class="line">response, history = model.chat(tokenizer, <span class="string">&quot;你好&quot;</span>, history=[])</span><br><span class="line"><span class="built_in">print</span>(response)</span><br><span class="line">response, history = model.chat(tokenizer, <span class="string">&quot;晚上睡不着应该怎么办&quot;</span>, history=history)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="C:\Users\72766\AppData\Roaming\Typora\typora-user-images\image-20240315162242918.png" alt="image-20240315162242918"></p>
+<h2 id="3-结果展示"><a href="#3-结果展示" class="headerlink" title="3. 结果展示"></a>3. 结果展示</h2><p>可以换着花样把输入给模型，对比输出的变化</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-15 163935.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-15_163818.png)</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-15_164619.png)</p>
+<p>![屏幕截图 2024-03-15 164619](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-15 164619.png)</p>
+<p>![屏幕截图 2024-03-15 164613](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-15 164613.png)</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/IronSpiderMan/MachineLearningPractice/blob/main/chatglm_qa%2Fchatglm_document_qa_READM.md">https://github.com/IronSpiderMan/MachineLearningPractice/blob/main/chatglm_qa%2Fchatglm_document_qa_READM.md</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/qq_40968179/article/details/128996692">https://blog.csdn.net/qq_40968179/article/details/128996692</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/2092d409.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/2092d409.html" class="post-title-link" itemprop="url">Windows+anaconda+4050 6G+chatglm本地部署七</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-25 16:36:18 / 修改时间：16:45:36" itemprop="dateCreated datePublished" datetime="2024-03-25T16:36:18+08:00">2024-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/2092d409.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/2092d409.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-anaconda-4050-6G-chatglm本地部署七"><a href="#Windows-anaconda-4050-6G-chatglm本地部署七" class="headerlink" title="Windows+anaconda+4050 6G+chatglm本地部署七"></a>Windows+anaconda+4050 6G+chatglm本地部署七</h1><h2 id="关于chain-type的选择"><a href="#关于chain-type的选择" class="headerlink" title="关于chain_type的选择"></a>关于chain_type的选择</h2><p>这里引用 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://colab.research.google.com/github/Clarifai/examples/blob/main/Integrations/Langchain/Chains/Retrieval_QA_chain_with_Clarifai_Vectorstore.ipynb#scrollTo=XkLwLsFVLCFf">对比结果</a> 看一下不同chain_type 的效果。 我在本地只有refine和stuff成功了，另外两种使用时遇到了奇奇怪怪的问题，起初以为是中文的问题，但后来验证下来也不是这个原因，具体使用成功的案例还希望有大佬能提供思路一起学习呐。</p>
+<h3 id="stuff"><a href="#stuff" class="headerlink" title="stuff"></a>stuff</h3><p>Stuff 是一种简单的方法，它会检索所有相关的文档块，并将其作为一个整体放入提示中，然后发送给LLM 生成响应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(llm=llm, chain_type=<span class="string">&quot;stuff&quot;</span>, retriever=clarifai_vector_db.as_retriever())</span><br><span class="line">query = <span class="string">&quot;How automobile classes has been segregated with respect to engines?&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>它能有效地将从向量存储中获取的所有相关块填充到 LLM 模型的上下文中作为提示。这样就能根据用户的查询生成响应。</p>
+<p><font face="黑体" color="red" size="5">当上下文较小，需要精确回答问题时，使用 stuff 会更清晰明了。</font></p>
+<h3 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map Reduce"></a><strong>Map Reduce</strong></h3><p>Map Reduce 链首先对每个文档单独应用 LLM 链（Map 步骤），将链输出视为新文档。然后，它将所有新文档传递给单独的合并文档链，以获得单一输出（Reduce 步骤）。它可以选择先压缩或折叠映射文档，以确保它们适合合并文档链（通常会将它们传递给 LLM）。如有必要，压缩步骤会递归执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(llm=llm, chain_type=<span class="string">&quot;map_reduce&quot;</span>, retriever=clarifai_vector_db.as_retriever())</span><br><span class="line">query = <span class="string">&quot;How automobile classes has been segregated with respect to engines?&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>对于相同的查询，我们在使用 Map_reduce 链类型时得到了不同的响应，因为它在每个阶段都进行了汇总，然后才将其传递到最后阶段，因此<font face="黑体" color="red" size="5">对于需要根据汇总回答的文档块数量较多的大型场景，这种链可能是一个很好的用例。</font></p>
+<h3 id="Map-Re-rank"><a href="#Map-Re-rank" class="headerlink" title="Map Re-rank"></a><strong>Map Re-rank</strong></h3><p>映射重排会对对每个文档运行初始提示，不仅尝试完成回答，还为其答案的确定程度打分。得分最高的回答将被返回。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(llm=llm, chain_type=<span class="string">&quot;map_rerank&quot;</span>, retriever=clarifai_vector_db.as_retriever())</span><br><span class="line">query = <span class="string">&quot;How automobile classes has been segregated with respect to engines?&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面的回复中我们可以看到，生成的答案是基于 vectorstore 中排名靠前的内容块摘要，然后将其传递给 LLM 来生成回复。<font face="黑体" color="red" size="5">它可以有效地用于长上下文场景，而且 Top K 较大，文档中可能包含多个主题相同的块。</font></p>
+<h2 id="本地部署进阶优化"><a href="#本地部署进阶优化" class="headerlink" title="本地部署进阶优化"></a>本地部署进阶优化</h2><h3 id="输出语言"><a href="#输出语言" class="headerlink" title="输出语言"></a>输出语言</h3><h4 id="promt优化"><a href="#promt优化" class="headerlink" title="promt优化"></a>promt优化</h4><p>这里给出三种优化方式：</p>
+<ol>
+<li>直接调用model.chat时在搜索相关文本后将所有文档作为提示一遍输入给大模型；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">from langchain.vectorstores.chroma import Chroma</span><br><span class="line">from langchain.embeddings.huggingface import HuggingFaceEmbeddings</span><br><span class="line">import requests</span><br><span class="line">from jieba.analyse import extract_tags</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span>     <span class="comment"># 指定向量库文件夹位置</span></span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>   <span class="comment"># 指定加载embeddding模型</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: False&#125;</span><br><span class="line">embeddings = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = Chroma(embedding_function=embeddings, persist_directory=persist_directory)  <span class="comment"># 加载之前创建的向量库文件里的向量数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">heade_ = &#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;application/json;charset=utf-8&quot;</span>&#125;</span><br><span class="line">def chat(promt, <span class="built_in">history</span>):</span><br><span class="line">    resq = requests.post(</span><br><span class="line">        url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        json = &#123;<span class="string">&quot;prompt&quot;</span>:promt, <span class="string">&quot;history&quot;</span>:<span class="built_in">history</span>&#125;,</span><br><span class="line">        headers= heade_</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">return</span> resq.json()[<span class="string">&quot;response&quot;</span>], resq.json()[<span class="string">&quot;history&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">history</span> = []</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">提取问题主语和谓语</span></span><br><span class="line"><span class="string">适合用于英文，# subject, verb = extract_subject_verb(question)</span></span><br><span class="line"><span class="string">中文没有空格符，中文调用第三方包jieba</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">from nltk.tokenize import word_tokenize</span><br><span class="line">from nltk.tag import pos_tag</span><br><span class="line">def extract_subject_verb(sentence):</span><br><span class="line">    tokens = word_tokenize(sentence)</span><br><span class="line">    tags = pos_tag(tokens)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(tags)):</span><br><span class="line">        word, tag = tags[i]</span><br><span class="line">        <span class="keyword">if</span> tag.startswith(<span class="string">&#x27;NN&#x27;</span>): <span class="comment"># 名词</span></span><br><span class="line">            subject = <span class="string">&#x27; &#x27;</span>.<span class="built_in">join</span>([word <span class="keyword">for</span> word, tag <span class="keyword">in</span> tags[:i+1]])</span><br><span class="line">            verb = <span class="string">&#x27; &#x27;</span>.<span class="built_in">join</span>([word <span class="keyword">for</span> word, tag <span class="keyword">in</span> tags[i+1:]])</span><br><span class="line">            <span class="built_in">return</span> subject, verb</span><br><span class="line">    <span class="built_in">return</span> None, None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> True:   </span><br><span class="line">    question = input(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        keywords = extract_tags(question, topK=5)</span><br><span class="line"></span><br><span class="line">        similarity_docs = db.similarity_search(question)</span><br><span class="line">        promt = <span class="string">&quot;根据下面给出的资料用中文回答问题，如果资料不足请回复不知道，下面是资料：&quot;</span></span><br><span class="line">        <span class="keyword">for</span> idx, doc <span class="keyword">in</span> enumerate(similarity_docs):</span><br><span class="line">            promt += f<span class="string">&quot;&#123;idx+1&#125;.&#123;doc.page_content&#125;\n&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(promt)</span><br><span class="line">        promt = f<span class="string">&quot;下面是问题：&#123;question&#125;&quot;</span></span><br><span class="line">        response, <span class="built_in">history</span> = chat(promt, <span class="built_in">history</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;答: &quot;</span>, response)</span><br></pre></td></tr></table></figure>
+
+<p>回答效果如下：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 161427.png)</p>
+<p>![屏幕截图 2024-03-24 161631](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 161631.png)</p>
+<ol start="2">
+<li><p>调用langchain进行问答，对问题加提示词实现优化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.llms.chatglm <span class="keyword">import</span> ChatGLM </span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"><span class="keyword">from</span> langchain.prompts <span class="keyword">import</span> PromptTemplate</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span>     <span class="comment"># 指定向量库文件夹位置</span></span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>   <span class="comment"># 指定加载embeddding模型</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">embeddings = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = Chroma(embedding_function=embeddings, persist_directory=persist_directory)  <span class="comment"># 加载之前创建的向量库文件里的向量数据</span></span><br><span class="line"></span><br><span class="line">llm = ChatGLM(                                   <span class="comment"># 通过api调用大模型</span></span><br><span class="line">        endpoint_url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        max_token=<span class="number">2000</span>,</span><br><span class="line">        top_p=<span class="number">0.7</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">retriever = db.as_retriever()</span><br><span class="line"></span><br><span class="line">prompt_template = <span class="string">&quot;&quot;&quot;Use the following pieces of context to answer the question at the end.  If you don&#x27;t know the answer, answer I don&#x27;t know.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Question: &#123;question&#125;</span></span><br><span class="line"><span class="string">Answer in Chinese:&quot;&quot;&quot;</span></span><br><span class="line">PROMPT = PromptTemplate(</span><br><span class="line">    template=prompt_template, input_variables=[<span class="string">&quot;context&quot;</span>, <span class="string">&quot;question&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">chain_type_kwargs = &#123;<span class="string">&quot;prompt&quot;</span>: PROMPT,<span class="string">&quot;verbose&quot;</span>:<span class="literal">True</span>&#125;</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(         <span class="comment"># 启用问答模式开始聊天</span></span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retriever,</span><br><span class="line">    <span class="comment">#chain_type_kwargs=chain_type_kwargs)</span></span><br><span class="line">    chain_type= <span class="string">&quot;stuff&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:   </span><br><span class="line">    question = <span class="built_in">input</span>(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        question +=<span class="string">&quot;。无法回答就说不知道，用中文回答&quot;</span> </span><br><span class="line">        response = qa.run(question)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;原始回答: &quot;</span>, response)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>回答效果如下：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 162002.png)</p>
+<p>![屏幕截图 2024-03-24 162301](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 162301.png)</p>
+</li>
+<li><p>调用promt模板</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.vectorstores.chroma <span class="keyword">import</span> Chroma</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings.huggingface <span class="keyword">import</span> HuggingFaceEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.llms.chatglm <span class="keyword">import</span> ChatGLM </span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"><span class="keyword">from</span> langchain.prompts <span class="keyword">import</span> PromptTemplate</span><br><span class="line"></span><br><span class="line">persist_directory = <span class="string">&#x27;vector_zhenhuanzhuan_32&#x27;</span>     <span class="comment"># 指定向量库文件夹位置</span></span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;shibing624/text2vec-base-chinese&quot;</span>   <span class="comment"># 指定加载embeddding模型</span></span><br><span class="line">model_kwargs = &#123;<span class="string">&#x27;device&#x27;</span>: <span class="string">&#x27;cuda:0&#x27;</span>&#125;</span><br><span class="line">encode_kwargs = &#123;<span class="string">&#x27;normalize_embeddings&#x27;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">embeddings = HuggingFaceEmbeddings(</span><br><span class="line">    model_name=model_name,</span><br><span class="line">    model_kwargs=model_kwargs,</span><br><span class="line">    encode_kwargs=encode_kwargs</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db = Chroma(embedding_function=embeddings, persist_directory=persist_directory)  <span class="comment"># 加载之前创建的向量库文件里的向量数据</span></span><br><span class="line"></span><br><span class="line">llm = ChatGLM(                                   <span class="comment"># 通过api调用大模型</span></span><br><span class="line">        endpoint_url=<span class="string">&#x27;http://127.0.0.1:8000&#x27;</span>,</span><br><span class="line">        max_token=<span class="number">2000</span>,</span><br><span class="line">        top_p=<span class="number">0.7</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">retriever = db.as_retriever()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prompt_template = <span class="string">&quot;&quot;&quot;Use the following pieces of context to answer the question at the end.  If you don&#x27;t know the answer, answer I don&#x27;t know.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Question: &#123;question&#125;</span></span><br><span class="line"><span class="string">Answer in Chinese:&quot;&quot;&quot;</span></span><br><span class="line">PROMPT = PromptTemplate(</span><br><span class="line">    template=prompt_template, input_variables=[<span class="string">&quot;context&quot;</span>, <span class="string">&quot;question&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">chain_type_kwargs = &#123;<span class="string">&quot;prompt&quot;</span>: PROMPT,<span class="string">&quot;verbose&quot;</span>:<span class="literal">True</span>&#125;</span><br><span class="line"></span><br><span class="line">qa = RetrievalQA.from_chain_type(         <span class="comment"># 启用问答模式开始聊天</span></span><br><span class="line">    llm=llm,</span><br><span class="line">    retriever = retriever,</span><br><span class="line">    chain_type_kwargs=chain_type_kwargs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:   </span><br><span class="line">    question = <span class="built_in">input</span>(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        response = qa.run(question)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;原始回答: &quot;</span>, response)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>回答效果如下：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 162902.png)</p>
+<p>![屏幕截图 2024-03-24 162619](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 162619.png)</p>
+</li>
+</ol>
+<p>总结：</p>
+<p>![](C:\Users\72766\Pictures\Screenshots\屏幕截图 2024-03-24 164020.png)</p>
+<ol>
+<li><p>不变更输入的情况下，不同promt对搜索相似文本返回的匹配文档时一致的，除非变动输入，匹配结果会不同；</p>
+</li>
+<li><p>用promt模板的回答效果看起来要更好一些；</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
 
       
   
@@ -656,818 +1761,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/39c58280.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/434b3c5a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/434b3c5a.html" class="post-title-link" itemprop="url">《Deep Learning》第九章读书笔记一</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-29 19:52:21 / 修改时间：20:03:49" itemprop="dateCreated datePublished" datetime="2021-04-29T19:52:21+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《Deep Learning》读书笔记</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/434b3c5a.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/434b3c5a.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>关于卷积的运算过程相信大家已经读过各种各样的解释了，本文旨在以图示的方法从浅到深由单张图像到多张图像的卷积的图示形象的向大家解释卷积的基本原理，从单通道到多通道在卷积过程中输入到输出的具体映射都可以看到，相信在阅读本文之后，大家对卷积会有更直观的认识</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/434b3c5a.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/245ac29.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/245ac29.html" class="post-title-link" itemprop="url">《Deep Learning》第一章读书笔记一</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-29 18:41:24 / 修改时间：18:41:35" itemprop="dateCreated datePublished" datetime="2021-04-29T18:41:24+08:00">2021-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《Deep Learning》读书笔记</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/245ac29.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/245ac29.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>730</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>最近回过头来在看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/exacity/deeplearningbook-chinese"><font color="red">《Deep Learning》</font></a> 这本书，经过三年的工作时间，再看这本书的时候曾经理解不了的问题或者推导原理有了自己切身的认识与思考，所以现在想把自己曾经算是一个半路出家的机器视觉从业者从新手到上手的一些原理性和实践性的点加上我自己的思考把底层的基础点分享出来，帮助大家可以更直观的理解和学习</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/245ac29.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/575cdcda.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/575cdcda.html" class="post-title-link" itemprop="url">关于TensorRT和TF-TRT的一些事儿</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-11-10 17:25:16" itemprop="dateCreated datePublished" datetime="2020-11-10T17:25:16+08:00">2020-11-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-11 09:23:19" itemprop="dateModified" datetime="2020-11-11T09:23:19+08:00">2020-11-11</time>
-      </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/575cdcda.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/575cdcda.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/575cdcda.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/4f1188dc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/4f1188dc.html" class="post-title-link" itemprop="url">利用Google-Colab成功测试TensorRT指南二</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-15 15:33:43" itemprop="dateCreated datePublished" datetime="2020-10-15T15:33:43+08:00">2020-10-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:41:37" itemprop="dateModified" datetime="2020-11-06T10:41:37+08:00">2020-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/4f1188dc.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/4f1188dc.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/4f1188dc.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/f9d0431a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/f9d0431a.html" class="post-title-link" itemprop="url">利用Google Colab成功测试TensorRT指南一</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-10 16:37:31" itemprop="dateCreated datePublished" datetime="2020-10-10T16:37:31+08:00">2020-10-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:29:02" itemprop="dateModified" datetime="2020-11-06T10:29:02+08:00">2020-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/f9d0431a.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/f9d0431a.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/f9d0431a.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/f524ef1f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/f524ef1f.html" class="post-title-link" itemprop="url">TensorRT成功测试自己的数据集SSD模型四</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-09 13:44:58" itemprop="dateCreated datePublished" datetime="2020-10-09T13:44:58+08:00">2020-10-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:26:06" itemprop="dateModified" datetime="2020-11-06T10:26:06+08:00">2020-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">TensorRT实战记</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/f524ef1f.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/f524ef1f.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/f524ef1f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/a6ffce94.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/unnamed.jpg">
-      <meta itemprop="name" content="Bella">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bella's Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/post/a6ffce94.html" class="post-title-link" itemprop="url">Windows下成功配置Qv2ray</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-09 13:31:57" itemprop="dateCreated datePublished" datetime="2020-10-09T13:31:57+08:00">2020-10-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-06 10:37:59" itemprop="dateModified" datetime="2020-11-06T10:37:59+08:00">2020-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">科学上网指南</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/a6ffce94.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/a6ffce94.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>381</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote class="blockquote-center">
-<p>免费冲浪是真香，小伙伴且浪且珍惜</p>
-
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/a6ffce94.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

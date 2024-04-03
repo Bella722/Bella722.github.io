@@ -801,7 +801,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="1-环境创建"><a href="#1-环境创建" class="headerlink" title="1. 环境创建"></a>1. 环境创建</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/THUDM/ChatGLM-6B.git</span><br><span class="line"><span class="built_in">cd</span> ChatGLM-6B</span><br><span class="line">conda creat --name chatglm python==3.10 <span class="comment">#3.12会出现奇奇怪怪的问题，这里建议还是用3.10</span></span><br><span class="line">conda activate chatglm</span><br><span class="line">pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<h2 id="1-环境创建"><a href="#1-环境创建" class="headerlink" title="1. 环境创建"></a>1. 环境创建</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/THUDM/ChatGLM-6B.git</span><br><span class="line"><span class="built_in">cd</span> ChatGLM-6B</span><br><span class="line">conda create --name chatglm python=3.10 <span class="comment">#3.12会出现奇奇怪怪的问题，这里建议还是用3.10</span></span><br><span class="line">conda activate chatglm</span><br><span class="line">pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 
 <p>这里注意可能会遇到ERROR: Could not build wheels for tokenizers, which is required to install pyproject.toml-based projects</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">      running build_ext</span><br><span class="line">      running build_rust</span><br><span class="line">      error: can<span class="string">&#x27;t find Rust compiler</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      If you are using an outdated pip version, it is possible a prebuilt wheel is available for this package but pip is not able to install from it. Installing from the wheel would avoid the need for a Rust compiler.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      To update pip, run:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">          pip install --upgrade pip</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      and then retry package installation.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      If you did intend to build this package from source, try installing a Rust compiler from your system package manager and ensure it is on the PATH during installation. Alternatively, rustup (available at https://rustup.rs) is the recommended way to download and update the Rust compiler toolchain.</span></span><br><span class="line"><span class="string">      [end of output]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  note: This error originates from a subprocess, and is likely not a problem with pip.</span></span><br><span class="line"><span class="string">  ERROR: Failed building wheel for tokenizers</span></span><br><span class="line"><span class="string">Failed to build tokenizers</span></span><br><span class="line"><span class="string">ERROR: Could not build wheels for tokenizers, which is required to install pyproject.toml-based projects</span></span><br></pre></td></tr></table></figure>
@@ -2050,6 +2050,241 @@
       </categories>
       <tags>
         <tag>TensorRT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GroundingDINO笔记</title>
+    <url>/post/b198a1c8.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>把自己对于 groundingdino 的理解记录下来。</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="什么是开放集目标检测"><a href="#什么是开放集目标检测" class="headerlink" title="什么是开放集目标检测"></a>什么是开放集目标检测</h1><p><img data-src="./../images/GroundingDINO%E7%AC%94%E8%AE%B0/image-20240328145159760.png" alt="image-20240328145159760"></p>
+<p>首先，相比closed set目标检测，open set目标检测在步骤上看起来少了很多，一般最费人工和时间的数据阶段直接省略了；</p>
+<p>其次，视觉大模型希望不需要再重新训练和微调模型，一个模型就可以检测万物，<font face="黑体" color="red" size="5">这里注意万物包含2层意思：任意图像、任意目标，不管是真实世界图像，还是虚拟图像、动漫、素描、抽象画等，其中任何图像内容内的任何实体。</font></p>
+<h1 id="视觉大模型实现思路"><a href="#视觉大模型实现思路" class="headerlink" title="视觉大模型实现思路"></a>视觉大模型实现思路</h1><p>作者总结了2中实现开放集目标检测的思路</p>
+<p><img data-src="./../images/GroundingDINO%E7%AC%94%E8%AE%B0/image-20240328151428590.png" alt="image-20240328151428590"></p>
+<h2 id="基于CLIP"><a href="#基于CLIP" class="headerlink" title="基于CLIP"></a>基于CLIP</h2><h3 id="回顾CLIP"><a href="#回顾CLIP" class="headerlink" title="回顾CLIP"></a>回顾CLIP</h3><p><img data-src="./../images/GroundingDINO%E7%AC%94%E8%AE%B0/image-20240328152004677.png" alt="image-20240328152004677"></p>
+<p>CLIP中心思想：</p>
+<p><img data-src="./../images/GroundingDINO%E7%AC%94%E8%AE%B0/image-20240328151619346.png" alt="image-20240328151619346"></p>
+]]></content>
+      <categories>
+        <category>大模型学习笔记</category>
+      </categories>
+      <tags>
+        <tag>目标检测 视觉大模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>书生·浦语大模型全链路开源体系课程笔记一</title>
+    <url>/post/91f549e1.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>参加由上海人工智能实验室发起的《书生·浦语大模型全链路开源体系》的课程以及笔记记录</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><h3 id="InternLM2-Chat-1-8B"><a href="#InternLM2-Chat-1-8B" class="headerlink" title="InternLM2-Chat-1.8B"></a><a href="https://huggingface.co/internlm/internlm2-chat-1_8b">InternLM2-Chat-1.8B</a></h3><ul>
+<li><p>使用 <code>InternLM2-Chat-1.8B</code> 模型生成 300 字的小故事</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForCausalLM</span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(<span class="string">&quot;internlm2-chat-1_8b&quot;</span>, trust_remote_code=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># Set `torch_dtype=torch.float16` to load model in float16, otherwise it will be loaded as float32 and cause OOM Error.</span></span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(<span class="string">&quot;internlm2-chat-1_8b&quot;</span>, torch_dtype=torch.float16, trust_remote_code=<span class="literal">True</span>).cuda()</span><br><span class="line">model = model.<span class="built_in">eval</span>()</span><br><span class="line">history=[]    </span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:   </span><br><span class="line">    question = <span class="built_in">input</span>(<span class="string">&quot;请提问: &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> question == <span class="string">&quot;quit&quot;</span>:        <span class="comment">### 键入 quit 终止对话</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;已关闭对话&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        response, history = model.chat(tokenizer, question, history=history)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;答：&#x27;</span>, response)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p><img data-src="./../images/%E4%B9%A6%E7%94%9F%C2%B7%E6%B5%A6%E8%AF%AD%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E9%93%BE%E8%B7%AF%E5%BC%80%E6%BA%90%E4%BD%93%E7%B3%BB%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E4%B8%80/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-01%20112938.png"></p>
+<h3 id="huggingface-hub"><a href="#huggingface-hub" class="headerlink" title="huggingface_hub"></a><a href="https://huggingface.co/docs/huggingface_hub/main/en/guides/download">huggingface_hub</a></h3><ul>
+<li>使用 <code>huggingface_hub</code>下载单文件 <a href="https://huggingface.co/internlm/internlm2-chat-7b">internlm2-chat-7b</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> huggingface_hub <span class="keyword">import</span> hf_hub_download</span><br><span class="line">hf_hub_download(repo_id=<span class="string">&quot;internlm/internlm2-chat-7b &quot;</span>, filename=<span class="string">&quot;config.json&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="./../images/%E4%B9%A6%E7%94%9F%C2%B7%E6%B5%A6%E8%AF%AD%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E9%93%BE%E8%B7%AF%E5%BC%80%E6%BA%90%E4%BD%93%E7%B3%BB%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E4%B8%80/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-01%20093848.png"></p>
+]]></content>
+      <categories>
+        <category>大模型学习笔记</category>
+      </categories>
+      <tags>
+        <tag>InternLM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows+anaconda+4050 6G+llama2_7b本地部署一</title>
+    <url>/post/8b93c30d.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>本文就llama2本地部署以及微调训练一个客服对话机器人的使用以及效果以实验步骤做实验介绍</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h2 id="环境安装配置"><a href="#环境安装配置" class="headerlink" title="环境安装配置"></a>环境安装配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 在原有环境基础上创建一个新环境</span></span><br><span class="line">conda create -n llama2 --<span class="built_in">clone</span> chatglm </span><br><span class="line">pip install peft trl</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="./../images/Windows-anaconda-4050-6G-llama2-7b%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%80/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-03-27%20111227.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_37764129/article/details/102496746">复制Anaconda虚拟环境</a></p>
+<p><a href="https://plainenglish.io/blog/fine-tuning-llama2-0-with-qloras-single-gpu-magic">Fine-Tuning Llama 2.0 with Single GPU Magic</a></p>
+<p><a href="https://huggingface.co/datasets/timdettmers/openassistant-guanaco/tree/main">timdettmers/openassistant-guanaco</a></p>
+<p><a href="https://huggingface.co/NousResearch/Llama-2-7b-chat-hf/tree/main">NousResearch/Llama-2-7b-chat-hf</a></p>
+<p><a href="https://riteshkhanna.com/2023/03/14/running-llama-7b-on-windows-cpu-or-gpu/">Running Llama-7B on Windows CPU or GPU</a></p>
+<p><a href="https://deci.ai/blog/fine-tune-llama-2-with-lora-for-question-answering/">How to Fine-tune Llama 2 with LoRA for Question Answering: A Guide for Practitioners</a></p>
+]]></content>
+      <categories>
+        <category>大模型学习笔记</category>
+      </categories>
+      <tags>
+        <tag>大模型 llama2 lora rag</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大模型微调经验总结记录</title>
+    <url>/post/75643f1c.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>大模型使用过程中针对模型微调与预训练的经验总结记录</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Pre-Training"><a href="#Pre-Training" class="headerlink" title="Pre-Training"></a>Pre-Training</h1><h2 id="什么是Pre-Training"><a href="#什么是Pre-Training" class="headerlink" title="什么是Pre-Training"></a>什么是Pre-Training</h2><ol>
+<li><p>先收集大量不需要human labeling 的文本</p>
+</li>
+<li><p>在这些文本上做language modeling 的预训练任务</p>
+<p>这样的话模型就能从大量的unlabeled data里面掌握一个fundamental language knowledge，这个模型也被称作基座模型</p>
+</li>
+</ol>
+<h2 id="Pre-Training有哪些问题"><a href="#Pre-Training有哪些问题" class="headerlink" title="Pre-Training有哪些问题"></a>Pre-Training有哪些问题</h2><h3 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h3><p>目标：收集大量unlabeled text data</p>
+<ul>
+<li><p>通用数据：收集各种各样的网页、书籍以及对话数据等</p>
+</li>
+<li><p>专业领域：收集多语言文本、来自专业领域的专业文本，比如论文网站arxiv，代码网站github</p>
+</li>
+<li><p>文本质量越高越好，小模型在高质量文本上的训练效果也可以媲美大模型</p>
+</li>
+</ul>
+<blockquote>
+<p><em>Gunasekar et al., Textbooks Are All You Need. 2023.</em></p>
+</blockquote>
+<p>可以看一下现如今大模型的数据来源组成 </p>
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402135134452.png" alt="image-20240402135134452"></p>
+<blockquote>
+<p><em>Image from: Zhao, Wayne Xin, et al. “A survey of large language models.” arXiv preprint arXiv:2303.18223 (2023)</em></p>
+</blockquote>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>一般的数据预处理流程：</p>
+<ol>
+<li><p>从各种各样的来源收集原始语料库 raw corpus；</p>
+</li>
+<li><p>数据清洗</p>
+<ul>
+<li><p>删除：主要思路是基于统计特点做一些过滤，去除一些干扰字符, 主要方法包括：</p>
+<p>a. 语言过滤</p>
+<p>b. 关键字过滤</p>
+<p>c. 统计过滤</p>
+<p>d. 度量过滤</p>
+<p>最终实现剔除非目标任务语言、丢弃低perplexity数据、删去标点/符号过多或过长过短的句子、删除具有某些特定词汇（如html标签、链接、脏话、敏感词）的句子</p>
+</li>
+<li><p>去重：</p>
+<p>a. 包含大量重复词汇或短语的句子可以删掉；(sentence-level)</p>
+<p>b. 重复率（词/n-grams共现）过高的段落可以删掉；(document-level)</p>
+<p>c. 删除训练集中可能与测试集相关度过高的内容。(set-level)</p>
+</li>
+<li><p>隐私保护：通过关键词等方式剔除用户隐私信息（姓名、地址、电话等）</p>
+</li>
+</ul>
+</li>
+<li><p>分词：清洗语料之后便可以进行分词，要么直接使用GPT-2等现成的分词器，要么对训练语料构建基于SentencePiece、Byte Pair Encoding等算法的分词方式，最终实现词与ID的一一映射。</p>
+<p>推荐使用大语言模型数据预处理工具data-juicer</p>
+</li>
+<li><p>数据安排：</p>
+<p>a. 数据混合：不同来源的数据如何送入训练</p>
+<p>b. 数据进阶：每种数据源下数据进入训练的顺序。例如由简到难，逐渐学会复杂的问题</p>
+</li>
+</ol>
+<h3 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h3><h4 id="如何选择合适的模型"><a href="#如何选择合适的模型" class="headerlink" title="如何选择合适的模型"></a>如何选择合适的模型</h4><ol>
+<li><p>纯自监督预训练：对只有解码器的模型进行预训练的效果最好</p>
+</li>
+<li><p>多任务微调预训练：使用masked 语言建模预训练的编码器解码器表现最佳。</p>
+</li>
+</ol>
+<h4 id="长文本建模"><a href="#长文本建模" class="headerlink" title="长文本建模"></a>长文本建模</h4><ol>
+<li> window attention: 无论input有多少，可以把attention值分配给最临近的 L个 attention，实现一个有带窗口限制的最近临的attention</li>
+<li>在transformer做计算的过程中有很大量的attention score被分配最初的几个token，这种token叫做sink tokens, 也就是说他接收到了最大量的一个attention weights, 可以结合window attention, 既关注到我最近的几个邻居token，又持续关注着最开始的那几个token</li>
+</ol>
+<h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><h4 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h4><h5 id="3D-parallelism"><a href="#3D-parallelism" class="headerlink" title="3D parallelism"></a>3D parallelism</h5><ul>
+<li><p><strong>数据并行：</strong>这涉及同时在多个 GPU 或 TPU 上训练模型，每个 GPU 或 TPU 处理数据的不同部分。</p>
+</li>
+<li><p><strong>管道并行：</strong>当模型在一个gpu上都放不下时，可以将模型的参数分割到多个设备上，从而允许它们同时更新。</p>
+</li>
+<li><p><strong>张量并行：</strong>张量按照行或列的方式切分，分开计算。</p>
+</li>
+</ul>
+<h5 id="混合精度训练"><a href="#混合精度训练" class="headerlink" title="混合精度训练"></a>混合精度训练</h5><p>我们将模型的<strong>weights, activations,</strong> <strong>gradients</strong>等等信息从32位的浮点数转换为16位</p>
+<h1 id="Fine-tuning"><a href="#Fine-tuning" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h1><h2 id="什么是Fine-tuning"><a href="#什么是Fine-tuning" class="headerlink" title="什么是Fine-tuning"></a>什么是Fine-tuning</h2><p>得到基座基础之后，假如想提高某一个具体的任务，比如想做question answering或者dialogue system或者information extraction等 ，那么可以用相应的supervised learning data去做第二阶段的fine-tuning， 这样的话相当于基座模型在子任务的基础上又做了一个进一步的训练。</p>
+<p>对比pre-training与fine-tuning：</p>
+<ol>
+<li>pre-training 阶段的data规模非常大，因为它是unlable data, 来源可以是网上收集的文本；</li>
+<li>fine-tuning dataset规模小得多，它来源于人为或者高精度的模型去标注的</li>
+</ol>
+<h2 id="有监督微调（SFT）"><a href="#有监督微调（SFT）" class="headerlink" title="有监督微调（SFT）"></a>有监督微调（SFT）</h2><p>对比两组对话</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>回答</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无法登录账户应该怎么做？</td>
+<td>尝试使用 “忘记密码 “选项重置密码。</td>
+</tr>
+<tr>
+<td>无法登录账户应该怎么做？</td>
+<td>很遗憾您在登录时遇到困难。您可以尝试使用登录页面上的’忘记密码’选项重新设置密码。</td>
+</tr>
+</tbody></table>
+<p>可以看出第二组问答更符合带有同理心的服务场景。</p>
+<p>所以对 LLM 进行微调是有必要的，主要原因如下：</p>
+<ul>
+<li><p>获得与业务准则相匹配的答案。</p>
+</li>
+<li><p>提供新的特定/私人数据，这些数据在训练步骤中并未公开，以便 LLM 模型适应特定知识库。</p>
+</li>
+<li><p>教会 LLM 回答新的（未见的）问题；</p>
+</li>
+</ul>
+<h3 id="利用-Trainer-class-实现-Finetuning"><a href="#利用-Trainer-class-实现-Finetuning" class="headerlink" title="利用 Trainer class 实现 Finetuning"></a>利用 Trainer class 实现 Finetuning</h3>  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> TextDataset,DataCollatorForLanguageModeling</span><br><span class="line">tokenizer = AutoTokenizer.<span class="keyword">from</span> pretrained(<span class="string">&quot;&lt;YOUR MODEL&gt;&quot;</span>)</span><br><span class="line">train_path =<span class="string">&quot;&lt;TRAINING DATASET PATH&gt;&#x27;</span></span><br><span class="line"><span class="string">test_path = &quot;</span>&lt;TEST DATASET PATH&gt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">def load dataset(train_path,test_path,tokenizer):</span></span><br><span class="line"><span class="string">    train_dataset = TextDataset(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer,</span></span><br><span class="line"><span class="string">        file_path=train_path,</span></span><br><span class="line"><span class="string">        block_size=128)</span></span><br><span class="line"><span class="string">	test_dataset =TextDataset(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer,</span></span><br><span class="line"><span class="string">        file_path=test_path,</span></span><br><span class="line"><span class="string">        block_size=128)</span></span><br><span class="line"><span class="string">	data_collator = DatacollatorForLanguageModeling(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer, </span></span><br><span class="line"><span class="string">        mlm=False,)</span></span><br><span class="line"><span class="string">	return train_dataset,test_dataset,data_collator</span></span><br><span class="line"><span class="string">train_dataset,test_dataset,data_collator = load_dataset(train_path,test_path,tokenizer)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">from transformers import Trainer, TrainingArguments,AutoModelwithLMHead</span></span><br><span class="line"><span class="string">model = AutoModelwithLMHead.from_pretrained(&quot;</span>&lt;YOUR_ MODEL&gt;<span class="string">&quot;)</span></span><br><span class="line"><span class="string">training args = TrainingArguments(output_dir=&quot;</span>./outputs<span class="string">&quot;,#The output directory</span></span><br><span class="line"><span class="string">                                  overwrite_output_dir=True, #overwrite the content of the output directory</span></span><br><span class="line"><span class="string">                                  num_train_epochs=3,# number of training epochs</span></span><br><span class="line"><span class="string">                                  per_device_train_batch_size=32,# batch size for training</span></span><br><span class="line"><span class="string">                                  per_device_eval_batch_size=64, # batch size for evaluation</span></span><br><span class="line"><span class="string">                                  eval_steps = 400,# Number of update steps between two evaluations.</span></span><br><span class="line"><span class="string">                                  save_steps=800,# after # steps model is saved</span></span><br><span class="line"><span class="string">                                  warmup_steps=500,# number of warmup steps for learning rate scheduler</span></span><br><span class="line"><span class="string">trainer = Trainer(</span></span><br><span class="line"><span class="string">        model=model,</span></span><br><span class="line"><span class="string">        args=training_args,</span></span><br><span class="line"><span class="string">        data_collator=data_collator.</span></span><br><span class="line"><span class="string">        train_dataset=train_dataset.</span></span><br><span class="line"><span class="string">        eval_dataset=test_dataset,</span></span><br><span class="line"><span class="string">)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="利用-trl-模块的-SFTTrainer-class-实现-Finetuning"><a href="#利用-trl-模块的-SFTTrainer-class-实现-Finetuning" class="headerlink" title="利用 trl 模块的 SFTTrainer class 实现 Finetuning"></a>利用 trl 模块的 SFTTrainer class 实现 Finetuning</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLMfrom datasets <span class="keyword">import</span> load dataset</span><br><span class="line"><span class="keyword">from</span> trl <span class="keyword">import</span> SFTTrainer</span><br><span class="line">model = AutoModelForCausalLM.<span class="keyword">from</span> pretrained(<span class="string">&quot;&lt;YOUR MODEL&gt;&quot;</span>)</span><br><span class="line">trainer = SFTTrainer(</span><br><span class="line">    model,</span><br><span class="line">	train_dataset=train_dataset,</span><br><span class="line">	evaluation_dataset=evaluation_dataset,</span><br><span class="line">	data_collator=collator</span><br><span class="line">trainer.train()</span><br></pre></td></tr></table></figure>
+
+<h3 id><a href="#" class="headerlink" title></a></h3><h2 id="使用LoRA-微调-Llama-2"><a href="#使用LoRA-微调-Llama-2" class="headerlink" title="使用LoRA 微调 Llama 2"></a>使用LoRA 微调 Llama 2</h2><h3 id="量化配置"><a href="#量化配置" class="headerlink" title="量化配置"></a>量化配置</h3><p>在使用 LoRA（低秩适应）训练机器学习模型的背景下，有几个参数发挥作用。以下是每个内容的简化解释：</p>
+<p>LoRA 特定参数</p>
+<ul>
+<li><p>**Dropout Rate (lora_dropout)**：这是训练期间每个神经元的输出设置为零的概率，用于防止过度拟合。</p>
+</li>
+<li><p><strong>Rank (r)：</strong> Rank 本质上是衡量原始权重矩阵如何分解为更简单、更小的矩阵的指标。这减少了计算要求和内存消耗。较低的排名使模型更快，但可能会牺牲性能。最初的 LoRA 论文建议从 8 开始，但对于 QLoRA，需要 64 开始。</p>
+</li>
+<li><p><strong>lora_alpha</strong>：此参数控制低秩近似的缩放。这就像原始模型和低阶近似之间的平衡行为。较高的值可能会使近似值在微调过程中影响更大，从而影响性能和计算成本。一般是r的2倍。</p>
+</li>
+</ul>
+<p>通过调整这些参数，尤其是 lora_alpha 和 r，可以观察模型的性能和资源消耗变化，找到特定任务的最佳设置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> datasets <span class="keyword">import</span> load_dataset</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> (</span><br><span class="line">    AutoModelForCausalLM,</span><br><span class="line">    AutoTokenizer,</span><br><span class="line">    BitsAndBytesConfig,</span><br><span class="line">    TrainingArguments,</span><br><span class="line">    pipeline</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> peft <span class="keyword">import</span> LoraConfig</span><br><span class="line"><span class="keyword">from</span> trl <span class="keyword">import</span> SFTTrainer</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dataset</span></span><br><span class="line">data_name = <span class="string">&quot;mlabonne/guanaco-llama2-1k&quot;</span></span><br><span class="line">training_data = load_dataset(data_name, split=<span class="string">&quot;train&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Model and tokenizer names</span></span><br><span class="line">base_model_name = <span class="string">&quot;NousResearch/Llama-2-7b-chat-hf&quot;</span></span><br><span class="line">refined_model = <span class="string">&quot;llama-2-7b-mlabonne-enhanced&quot;</span> <span class="comment">#You can give it your own name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tokenizer</span></span><br><span class="line">llama_tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=<span class="literal">True</span>)</span><br><span class="line">llama_tokenizer.pad_token = llama_tokenizer.eos_token</span><br><span class="line">llama_tokenizer.padding_side = <span class="string">&quot;right&quot;</span>  <span class="comment"># Fix for fp16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Quantization Config</span></span><br><span class="line">quant_config = BitsAndBytesConfig(</span><br><span class="line">    load_in_4bit=<span class="literal">True</span>,</span><br><span class="line">    bnb_4bit_quant_type=<span class="string">&quot;nf4&quot;</span>,</span><br><span class="line">    bnb_4bit_compute_dtype=torch.float16,</span><br><span class="line">    bnb_4bit_use_double_quant=<span class="literal">False</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Model</span></span><br><span class="line">base_model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">    base_model_name,</span><br><span class="line">    quantization_config=quant_config,</span><br><span class="line">    device_map=&#123;<span class="string">&quot;&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">)</span><br><span class="line">base_model.config.use_cache = <span class="literal">False</span></span><br><span class="line">base_model.config.pretraining_tp = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LoRA Config</span></span><br><span class="line">peft_parameters = LoraConfig(</span><br><span class="line">    lora_alpha=<span class="number">16</span>,</span><br><span class="line">    lora_dropout=<span class="number">0.1</span>,</span><br><span class="line">    r=<span class="number">8</span>,</span><br><span class="line">    bias=<span class="string">&quot;none&quot;</span>,</span><br><span class="line">    task_type=<span class="string">&quot;CAUSAL_LM&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training Params</span></span><br><span class="line">train_params = TrainingArguments(</span><br><span class="line">    output_dir=<span class="string">&quot;./results_modified&quot;</span>,</span><br><span class="line">    num_train_epochs=<span class="number">1</span>,</span><br><span class="line">    per_device_train_batch_size=<span class="number">4</span>,</span><br><span class="line">    gradient_accumulation_steps=<span class="number">1</span>,</span><br><span class="line">    optim=<span class="string">&quot;paged_adamw_32bit&quot;</span>,</span><br><span class="line">    save_steps=<span class="number">25</span>,</span><br><span class="line">    logging_steps=<span class="number">25</span>,</span><br><span class="line">    learning_rate=<span class="number">2e-4</span>,</span><br><span class="line">    weight_decay=<span class="number">0.001</span>,</span><br><span class="line">    fp16=<span class="literal">False</span>,</span><br><span class="line">    bf16=<span class="literal">False</span>,</span><br><span class="line">    max_grad_norm=<span class="number">0.3</span>,</span><br><span class="line">    max_steps=-<span class="number">1</span>,</span><br><span class="line">    warmup_ratio=<span class="number">0.03</span>,</span><br><span class="line">    group_by_length=<span class="literal">True</span>,</span><br><span class="line">    lr_scheduler_type=<span class="string">&quot;constant&quot;</span>,</span><br><span class="line">    report_to=<span class="string">&quot;tensorboard&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Trainer</span></span><br><span class="line">fine_tuning = SFTTrainer(</span><br><span class="line">    model=base_model,</span><br><span class="line">    train_dataset=training_data,</span><br><span class="line">    peft_config=peft_parameters,</span><br><span class="line">    dataset_text_field=<span class="string">&quot;text&quot;</span>,</span><br><span class="line">    tokenizer=llama_tokenizer,</span><br><span class="line">    args=train_params</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">fine_tuning.train()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save Model</span></span><br><span class="line">fine_tuning.model.save_pretrained(refined_model)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402163925722.png" alt="image-20240402163925722"></p>
+<p>可以看到已经有模型保存了</p>
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402164027598.png" alt="image-20240402164027598"></p>
+<h1 id="一些经典开源语料数据集"><a href="#一些经典开源语料数据集" class="headerlink" title="一些经典开源语料数据集"></a>一些经典开源语料数据集</h1><ul>
+<li><a href="https://huggingface.co/datasets/nomic-ai/gpt4all-j-prompt-generations">GPT-4all</a> 数据集： GPT-4all（成对，英文，400k 条目）–由 OIG、P3 和 Stackoverflow 的一些子集组合而成，涵盖一般 QA 和定制的创意问题。</li>
+<li><a href="https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T">RedPajama-Data-1T</a>：RedPajama（PT，主要为英语，1.2T 词条，5TB）–完全开放的预训练数据集，遵循 LLaMA 的方法。</li>
+<li><a href="https://huggingface.co/datasets/OpenAssistant/oasst1">OASST1</a>： OpenAssistant（配对、对话、多语言、66,497 个对话树）–一个大型、人工编写、人工标注的高质量对话数据集，旨在改进 LLM 响应。</li>
+<li><a href="https://huggingface.co/datasets/databricks/databricks-dolly-15k">databricks-dolly-15k</a>： Dolly2.0（成对，英语，1.5 万+条目）–一个由人工撰写的提示和回复数据集，以问题解答和总结等任务为特色。</li>
+<li><a href="https://github.com/gururise/AlpacaDataCleaned">AlpacaDataCleaned</a>： 一些 Alpaca/ LLaMA-like 模型（成对，英文） - Alpaca、GPT_LLM 和 GPTeacher 的清理版本。</li>
+<li><a href="https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM">GPT-4-LLM</a> 数据集： 一些类似 Alpaca 的模型（Pairs、RLHF、英语、汉语，52K 条英语和汉语条目，9K 条非自然指令条目）- 由 GPT-4 和其他 LLM 生成的数据集，用于改进 Pairs 和 RLHF，包括指令和比较数据。</li>
+<li><a href="https://github.com/teknium1/GPTeacher">GPTeacher</a>：（Pairs，英语，20K 条目）- 由 GPT-4 生成的目标数据集，包括来自 Alpaca 的种子任务和角色扮演等新任务。</li>
+<li><a href="https://github.com/tatsu-lab/stanford_alpaca#data-release">Alpaca</a> 数据： Alpaca, ChatGLM-fine-tune-LoRA, Koala (Dialog, Pairs, English, 52K entries, 21.4MB) - 由 text-davinci-003 生成的数据集，用于增强语言模型遵循人类指令的能力。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大模型学习笔记</category>
+      </categories>
+      <tags>
+        <tag>大模型 Fine-tuning Training</tag>
       </tags>
   </entry>
 </search>

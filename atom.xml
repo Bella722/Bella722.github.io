@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2024-03-25T13:32:23.546Z</updated>
+  <updated>2024-04-03T07:22:20.653Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,94 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大模型微调经验总结记录</title>
+    <link href="https://bella722.github.io/post/75643f1c.html"/>
+    <id>https://bella722.github.io/post/75643f1c.html</id>
+    <published>2024-04-02T05:08:43.000Z</published>
+    <updated>2024-04-03T07:22:20.653Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;大模型使用过程中针对模型微调与预训练的经验总结记录&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="大模型 Fine-tuning Training" scheme="https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-Fine-tuning-Training/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>书生·浦语大模型全链路开源体系课程笔记一</title>
+    <link href="https://bella722.github.io/post/91f549e1.html"/>
+    <id>https://bella722.github.io/post/91f549e1.html</id>
+    <published>2024-04-01T02:28:42.000Z</published>
+    <updated>2024-04-01T03:31:35.249Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;参加由上海人工智能实验室发起的《书生·浦语大模型全链路开源体系》的课程以及笔记记录&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="InternLM" scheme="https://bella722.github.io/tags/InternLM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GroundingDINO笔记</title>
+    <link href="https://bella722.github.io/post/b198a1c8.html"/>
+    <id>https://bella722.github.io/post/b198a1c8.html</id>
+    <published>2024-03-28T06:51:00.000Z</published>
+    <updated>2024-03-31T01:02:47.343Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;把自己对于 groundingdino 的理解记录下来。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="目标检测 视觉大模型" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E8%A7%86%E8%A7%89%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows+anaconda+4050 6G+llama2_7b本地部署一</title>
+    <link href="https://bella722.github.io/post/8b93c30d.html"/>
+    <id>https://bella722.github.io/post/8b93c30d.html</id>
+    <published>2024-03-27T02:54:41.000Z</published>
+    <updated>2024-03-27T06:20:35.043Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;本文就llama2本地部署以及微调训练一个客服对话机器人的使用以及效果以实验步骤做实验介绍&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="大模型 llama2 lora rag" scheme="https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-llama2-lora-rag/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows+anaconda+4050 6G+chatglm本地部署六</title>
@@ -131,7 +219,7 @@
     <link href="https://bella722.github.io/post/b99b85b3.html"/>
     <id>https://bella722.github.io/post/b99b85b3.html</id>
     <published>2024-03-25T08:36:31.000Z</published>
-    <updated>2024-03-25T13:41:49.194Z</updated>
+    <updated>2024-03-27T03:01:07.254Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -354,94 +442,6 @@
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
 &lt;p&gt;经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
-    
-    
-    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows下成功配置Qv2ray</title>
-    <link href="https://bella722.github.io/post/a6ffce94.html"/>
-    <id>https://bella722.github.io/post/a6ffce94.html</id>
-    <published>2020-10-09T05:31:57.000Z</published>
-    <updated>2020-11-06T02:37:59.989Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;免费冲浪是真香，小伙伴且浪且珍惜&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="科学上网指南" scheme="https://bella722.github.io/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/"/>
-    
-    
-    <category term="Qv2ray" scheme="https://bella722.github.io/tags/Qv2ray/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决双系统Ubuntu检测不到NVIDIA驱动</title>
-    <link href="https://bella722.github.io/post/4b9525f5.html"/>
-    <id>https://bella722.github.io/post/4b9525f5.html</id>
-    <published>2020-09-24T02:41:13.000Z</published>
-    <updated>2020-09-27T05:52:12.812Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;昨天换到windows下写个文档顺手用电脑管家清理了下垃圾，然后再切回Ubuntu的时候发现分辨率一下降到老人机模式，再运行加载cuda的代码的时候竟然说cudainit 失败，没有可用的显卡，用nvidia-smi自查一下，凉凉，折腾了整整一天呐，现在就把解决结果记录下来。&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="教你玩转Ubuntu" scheme="https://bella722.github.io/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/"/>
-    
-    
-    <category term="Ubuntu" scheme="https://bella722.github.io/tags/Ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型三</title>
-    <link href="https://bella722.github.io/post/b9f68301.html"/>
-    <id>https://bella722.github.io/post/b9f68301.html</id>
-    <published>2020-09-21T01:18:04.000Z</published>
-    <updated>2020-11-06T02:25:13.009Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;现在我们已经成功训练好了tensorflow object detection 模型，我们的数据集为5类缺陷目标，网络模型选用的是ssd inception V2。具体训练步骤见&lt;a href=&quot;https://bella722.github.io/post/fbaa150c.html&quot;&gt;TensorRT成功测试自己的数据集SSD模型二&lt;/a&gt;，现在讲述在tensorrt中具体如何使用。&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
-    
-    
-    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型二</title>
-    <link href="https://bella722.github.io/post/fbaa150c.html"/>
-    <id>https://bella722.github.io/post/fbaa150c.html</id>
-    <published>2020-09-17T06:51:03.000Z</published>
-    <updated>2020-11-06T02:24:25.286Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;经过前面的指导我们安装好环境后，现在就准备训练我自己的数据集的SSD模型，这里我跟TensorRT的例子保持一致，都用TensorFlow Object Detection API训练获取模型。那么开始详细介绍TensorFlow Object Detection API的安装以及SSD inception V2训练我自己的数据集。&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     

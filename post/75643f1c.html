@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="LvN4FGGbc9Vme6ce05eYu_48RUGHRy_pigApzzTaM3M">
+  <meta name="baidu-site-verification" content="o6hoZgunLj">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="fonts.loli.net/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic|Cinzel+Decorative:300,300italic,400,400italic,700,700italic|Source+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="大模型使用过程中针对模型微调与预训练的经验总结记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型微调经验总结记录">
+<meta property="og:url" content="https://bella722.github.io/post/75643f1c.html">
+<meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="大模型使用过程中针对模型微调与预训练的经验总结记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402135134452.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402163925722.png">
+<meta property="og:image" content="https://bella722.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402164027598.png">
+<meta property="article:published_time" content="2024-04-02T05:08:43.000Z">
+<meta property="article:modified_time" content="2024-04-03T07:22:20.653Z">
+<meta property="article:author" content="Bella">
+<meta property="article:tag" content="大模型 Fine-tuning Training">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402135134452.png">
+
+
+<link rel="canonical" href="https://bella722.github.io/post/75643f1c.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>大模型微调经验总结记录 | Bella's Blog</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-176286323-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?769f4127dcca8da828bdccc3e338c7d4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Bella's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bella's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pre-Training"><span class="nav-number">1.</span> <span class="nav-text">Pre-Training</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFPre-Training"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Pre-Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-Training%E6%9C%89%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">Pre-Training有哪些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">模型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">如何选择合适的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%95%BF%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">长文本建模</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83"><span class="nav-number">1.2.4.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">训练策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3D-parallelism"><span class="nav-number">1.2.4.1.1.</span> <span class="nav-text">3D parallelism</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6%E8%AE%AD%E7%BB%83"><span class="nav-number">1.2.4.1.2.</span> <span class="nav-text">混合精度训练</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fine-tuning"><span class="nav-number">2.</span> <span class="nav-text">Fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFFine-tuning"><span class="nav-number">2.1.</span> <span class="nav-text">什么是Fine-tuning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%BE%AE%E8%B0%83%EF%BC%88SFT%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">有监督微调（SFT）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-Trainer-class-%E5%AE%9E%E7%8E%B0-Finetuning"><span class="nav-number">2.2.1.</span> <span class="nav-text">利用 Trainer class 实现 Finetuning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-trl-%E6%A8%A1%E5%9D%97%E7%9A%84-SFTTrainer-class-%E5%AE%9E%E7%8E%B0-Finetuning"><span class="nav-number">2.2.2.</span> <span class="nav-text">利用 trl 模块的 SFTTrainer class 实现 Finetuning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.3.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8LoRA-%E5%BE%AE%E8%B0%83-Llama-2"><span class="nav-number">2.3.</span> <span class="nav-text">使用LoRA 微调 Llama 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">量化配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%8F%E5%85%B8%E5%BC%80%E6%BA%90%E8%AF%AD%E6%96%99%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">一些经典开源语料数据集</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bella" src="/images/unnamed.jpg">
+  <p class="site-author-name" itemprop="name">Bella</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Bella722" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Bella722" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:727664970@qq.com" title="E-Mail → mailto:727664970@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Isabella_Galaxy" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Isabella_Galaxy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/galaxyzhangj" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;galaxyzhangj" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Bella722" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/75643f1c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大模型微调经验总结记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-02 13:08:43" itemprop="dateCreated datePublished" datetime="2024-04-02T13:08:43+08:00">2024-04-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2024-04-03 15:22:20" itemprop="dateModified" datetime="2024-04-03T15:22:20+08:00">2024-04-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">大模型学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/75643f1c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/75643f1c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>大模型使用过程中针对模型微调与预训练的经验总结记录</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Pre-Training"><a href="#Pre-Training" class="headerlink" title="Pre-Training"></a>Pre-Training</h1><h2 id="什么是Pre-Training"><a href="#什么是Pre-Training" class="headerlink" title="什么是Pre-Training"></a>什么是Pre-Training</h2><ol>
+<li><p>先收集大量不需要human labeling 的文本</p>
+</li>
+<li><p>在这些文本上做language modeling 的预训练任务</p>
+<p>这样的话模型就能从大量的unlabeled data里面掌握一个fundamental language knowledge，这个模型也被称作基座模型</p>
+</li>
+</ol>
+<h2 id="Pre-Training有哪些问题"><a href="#Pre-Training有哪些问题" class="headerlink" title="Pre-Training有哪些问题"></a>Pre-Training有哪些问题</h2><h3 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h3><p>目标：收集大量unlabeled text data</p>
+<ul>
+<li><p>通用数据：收集各种各样的网页、书籍以及对话数据等</p>
+</li>
+<li><p>专业领域：收集多语言文本、来自专业领域的专业文本，比如论文网站arxiv，代码网站github</p>
+</li>
+<li><p>文本质量越高越好，小模型在高质量文本上的训练效果也可以媲美大模型</p>
+</li>
+</ul>
+<blockquote>
+<p><em>Gunasekar et al., Textbooks Are All You Need. 2023.</em></p>
+</blockquote>
+<p>可以看一下现如今大模型的数据来源组成 </p>
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402135134452.png" alt="image-20240402135134452"></p>
+<blockquote>
+<p><em>Image from: Zhao, Wayne Xin, et al. “A survey of large language models.” arXiv preprint arXiv:2303.18223 (2023)</em></p>
+</blockquote>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>一般的数据预处理流程：</p>
+<ol>
+<li><p>从各种各样的来源收集原始语料库 raw corpus；</p>
+</li>
+<li><p>数据清洗</p>
+<ul>
+<li><p>删除：主要思路是基于统计特点做一些过滤，去除一些干扰字符, 主要方法包括：</p>
+<p>a. 语言过滤</p>
+<p>b. 关键字过滤</p>
+<p>c. 统计过滤</p>
+<p>d. 度量过滤</p>
+<p>最终实现剔除非目标任务语言、丢弃低perplexity数据、删去标点/符号过多或过长过短的句子、删除具有某些特定词汇（如html标签、链接、脏话、敏感词）的句子</p>
+</li>
+<li><p>去重：</p>
+<p>a. 包含大量重复词汇或短语的句子可以删掉；(sentence-level)</p>
+<p>b. 重复率（词/n-grams共现）过高的段落可以删掉；(document-level)</p>
+<p>c. 删除训练集中可能与测试集相关度过高的内容。(set-level)</p>
+</li>
+<li><p>隐私保护：通过关键词等方式剔除用户隐私信息（姓名、地址、电话等）</p>
+</li>
+</ul>
+</li>
+<li><p>分词：清洗语料之后便可以进行分词，要么直接使用GPT-2等现成的分词器，要么对训练语料构建基于SentencePiece、Byte Pair Encoding等算法的分词方式，最终实现词与ID的一一映射。</p>
+<p>推荐使用大语言模型数据预处理工具data-juicer</p>
+</li>
+<li><p>数据安排：</p>
+<p>a. 数据混合：不同来源的数据如何送入训练</p>
+<p>b. 数据进阶：每种数据源下数据进入训练的顺序。例如由简到难，逐渐学会复杂的问题</p>
+</li>
+</ol>
+<h3 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h3><h4 id="如何选择合适的模型"><a href="#如何选择合适的模型" class="headerlink" title="如何选择合适的模型"></a>如何选择合适的模型</h4><ol>
+<li><p>纯自监督预训练：对只有解码器的模型进行预训练的效果最好</p>
+</li>
+<li><p>多任务微调预训练：使用masked 语言建模预训练的编码器解码器表现最佳。</p>
+</li>
+</ol>
+<h4 id="长文本建模"><a href="#长文本建模" class="headerlink" title="长文本建模"></a>长文本建模</h4><ol>
+<li> window attention: 无论input有多少，可以把attention值分配给最临近的 L个 attention，实现一个有带窗口限制的最近临的attention</li>
+<li>在transformer做计算的过程中有很大量的attention score被分配最初的几个token，这种token叫做sink tokens, 也就是说他接收到了最大量的一个attention weights, 可以结合window attention, 既关注到我最近的几个邻居token，又持续关注着最开始的那几个token</li>
+</ol>
+<h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><h4 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h4><h5 id="3D-parallelism"><a href="#3D-parallelism" class="headerlink" title="3D parallelism"></a>3D parallelism</h5><ul>
+<li><p><strong>数据并行：</strong>这涉及同时在多个 GPU 或 TPU 上训练模型，每个 GPU 或 TPU 处理数据的不同部分。</p>
+</li>
+<li><p><strong>管道并行：</strong>当模型在一个gpu上都放不下时，可以将模型的参数分割到多个设备上，从而允许它们同时更新。</p>
+</li>
+<li><p><strong>张量并行：</strong>张量按照行或列的方式切分，分开计算。</p>
+</li>
+</ul>
+<h5 id="混合精度训练"><a href="#混合精度训练" class="headerlink" title="混合精度训练"></a>混合精度训练</h5><p>我们将模型的<strong>weights, activations,</strong> <strong>gradients</strong>等等信息从32位的浮点数转换为16位</p>
+<h1 id="Fine-tuning"><a href="#Fine-tuning" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h1><h2 id="什么是Fine-tuning"><a href="#什么是Fine-tuning" class="headerlink" title="什么是Fine-tuning"></a>什么是Fine-tuning</h2><p>得到基座基础之后，假如想提高某一个具体的任务，比如想做question answering或者dialogue system或者information extraction等 ，那么可以用相应的supervised learning data去做第二阶段的fine-tuning， 这样的话相当于基座模型在子任务的基础上又做了一个进一步的训练。</p>
+<p>对比pre-training与fine-tuning：</p>
+<ol>
+<li>pre-training 阶段的data规模非常大，因为它是unlable data, 来源可以是网上收集的文本；</li>
+<li>fine-tuning dataset规模小得多，它来源于人为或者高精度的模型去标注的</li>
+</ol>
+<h2 id="有监督微调（SFT）"><a href="#有监督微调（SFT）" class="headerlink" title="有监督微调（SFT）"></a>有监督微调（SFT）</h2><p>对比两组对话</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>回答</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无法登录账户应该怎么做？</td>
+<td>尝试使用 “忘记密码 “选项重置密码。</td>
+</tr>
+<tr>
+<td>无法登录账户应该怎么做？</td>
+<td>很遗憾您在登录时遇到困难。您可以尝试使用登录页面上的’忘记密码’选项重新设置密码。</td>
+</tr>
+</tbody></table>
+<p>可以看出第二组问答更符合带有同理心的服务场景。</p>
+<p>所以对 LLM 进行微调是有必要的，主要原因如下：</p>
+<ul>
+<li><p>获得与业务准则相匹配的答案。</p>
+</li>
+<li><p>提供新的特定/私人数据，这些数据在训练步骤中并未公开，以便 LLM 模型适应特定知识库。</p>
+</li>
+<li><p>教会 LLM 回答新的（未见的）问题；</p>
+</li>
+</ul>
+<h3 id="利用-Trainer-class-实现-Finetuning"><a href="#利用-Trainer-class-实现-Finetuning" class="headerlink" title="利用 Trainer class 实现 Finetuning"></a>利用 Trainer class 实现 Finetuning</h3>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> TextDataset,DataCollatorForLanguageModeling</span><br><span class="line">tokenizer = AutoTokenizer.<span class="keyword">from</span> pretrained(<span class="string">&quot;&lt;YOUR MODEL&gt;&quot;</span>)</span><br><span class="line">train_path =<span class="string">&quot;&lt;TRAINING DATASET PATH&gt;&#x27;</span></span><br><span class="line"><span class="string">test_path = &quot;</span>&lt;TEST DATASET PATH&gt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">def load dataset(train_path,test_path,tokenizer):</span></span><br><span class="line"><span class="string">    train_dataset = TextDataset(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer,</span></span><br><span class="line"><span class="string">        file_path=train_path,</span></span><br><span class="line"><span class="string">        block_size=128)</span></span><br><span class="line"><span class="string">	test_dataset =TextDataset(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer,</span></span><br><span class="line"><span class="string">        file_path=test_path,</span></span><br><span class="line"><span class="string">        block_size=128)</span></span><br><span class="line"><span class="string">	data_collator = DatacollatorForLanguageModeling(</span></span><br><span class="line"><span class="string">        tokenizer=tokenizer, </span></span><br><span class="line"><span class="string">        mlm=False,)</span></span><br><span class="line"><span class="string">	return train_dataset,test_dataset,data_collator</span></span><br><span class="line"><span class="string">train_dataset,test_dataset,data_collator = load_dataset(train_path,test_path,tokenizer)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">from transformers import Trainer, TrainingArguments,AutoModelwithLMHead</span></span><br><span class="line"><span class="string">model = AutoModelwithLMHead.from_pretrained(&quot;</span>&lt;YOUR_ MODEL&gt;<span class="string">&quot;)</span></span><br><span class="line"><span class="string">training args = TrainingArguments(output_dir=&quot;</span>./outputs<span class="string">&quot;,#The output directory</span></span><br><span class="line"><span class="string">                                  overwrite_output_dir=True, #overwrite the content of the output directory</span></span><br><span class="line"><span class="string">                                  num_train_epochs=3,# number of training epochs</span></span><br><span class="line"><span class="string">                                  per_device_train_batch_size=32,# batch size for training</span></span><br><span class="line"><span class="string">                                  per_device_eval_batch_size=64, # batch size for evaluation</span></span><br><span class="line"><span class="string">                                  eval_steps = 400,# Number of update steps between two evaluations.</span></span><br><span class="line"><span class="string">                                  save_steps=800,# after # steps model is saved</span></span><br><span class="line"><span class="string">                                  warmup_steps=500,# number of warmup steps for learning rate scheduler</span></span><br><span class="line"><span class="string">trainer = Trainer(</span></span><br><span class="line"><span class="string">        model=model,</span></span><br><span class="line"><span class="string">        args=training_args,</span></span><br><span class="line"><span class="string">        data_collator=data_collator.</span></span><br><span class="line"><span class="string">        train_dataset=train_dataset.</span></span><br><span class="line"><span class="string">        eval_dataset=test_dataset,</span></span><br><span class="line"><span class="string">)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="利用-trl-模块的-SFTTrainer-class-实现-Finetuning"><a href="#利用-trl-模块的-SFTTrainer-class-实现-Finetuning" class="headerlink" title="利用 trl 模块的 SFTTrainer class 实现 Finetuning"></a>利用 trl 模块的 SFTTrainer class 实现 Finetuning</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLMfrom datasets <span class="keyword">import</span> load dataset</span><br><span class="line"><span class="keyword">from</span> trl <span class="keyword">import</span> SFTTrainer</span><br><span class="line">model = AutoModelForCausalLM.<span class="keyword">from</span> pretrained(<span class="string">&quot;&lt;YOUR MODEL&gt;&quot;</span>)</span><br><span class="line">trainer = SFTTrainer(</span><br><span class="line">    model,</span><br><span class="line">	train_dataset=train_dataset,</span><br><span class="line">	evaluation_dataset=evaluation_dataset,</span><br><span class="line">	data_collator=collator</span><br><span class="line">trainer.train()</span><br></pre></td></tr></table></figure>
+
+<h3 id><a href="#" class="headerlink" title></a></h3><h2 id="使用LoRA-微调-Llama-2"><a href="#使用LoRA-微调-Llama-2" class="headerlink" title="使用LoRA 微调 Llama 2"></a>使用LoRA 微调 Llama 2</h2><h3 id="量化配置"><a href="#量化配置" class="headerlink" title="量化配置"></a>量化配置</h3><p>在使用 LoRA（低秩适应）训练机器学习模型的背景下，有几个参数发挥作用。以下是每个内容的简化解释：</p>
+<p>LoRA 特定参数</p>
+<ul>
+<li><p>**Dropout Rate (lora_dropout)**：这是训练期间每个神经元的输出设置为零的概率，用于防止过度拟合。</p>
+</li>
+<li><p><strong>Rank (r)：</strong> Rank 本质上是衡量原始权重矩阵如何分解为更简单、更小的矩阵的指标。这减少了计算要求和内存消耗。较低的排名使模型更快，但可能会牺牲性能。最初的 LoRA 论文建议从 8 开始，但对于 QLoRA，需要 64 开始。</p>
+</li>
+<li><p><strong>lora_alpha</strong>：此参数控制低秩近似的缩放。这就像原始模型和低阶近似之间的平衡行为。较高的值可能会使近似值在微调过程中影响更大，从而影响性能和计算成本。一般是r的2倍。</p>
+</li>
+</ul>
+<p>通过调整这些参数，尤其是 lora_alpha 和 r，可以观察模型的性能和资源消耗变化，找到特定任务的最佳设置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> datasets <span class="keyword">import</span> load_dataset</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> (</span><br><span class="line">    AutoModelForCausalLM,</span><br><span class="line">    AutoTokenizer,</span><br><span class="line">    BitsAndBytesConfig,</span><br><span class="line">    TrainingArguments,</span><br><span class="line">    pipeline</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> peft <span class="keyword">import</span> LoraConfig</span><br><span class="line"><span class="keyword">from</span> trl <span class="keyword">import</span> SFTTrainer</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dataset</span></span><br><span class="line">data_name = <span class="string">&quot;mlabonne/guanaco-llama2-1k&quot;</span></span><br><span class="line">training_data = load_dataset(data_name, split=<span class="string">&quot;train&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Model and tokenizer names</span></span><br><span class="line">base_model_name = <span class="string">&quot;NousResearch/Llama-2-7b-chat-hf&quot;</span></span><br><span class="line">refined_model = <span class="string">&quot;llama-2-7b-mlabonne-enhanced&quot;</span> <span class="comment">#You can give it your own name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tokenizer</span></span><br><span class="line">llama_tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=<span class="literal">True</span>)</span><br><span class="line">llama_tokenizer.pad_token = llama_tokenizer.eos_token</span><br><span class="line">llama_tokenizer.padding_side = <span class="string">&quot;right&quot;</span>  <span class="comment"># Fix for fp16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Quantization Config</span></span><br><span class="line">quant_config = BitsAndBytesConfig(</span><br><span class="line">    load_in_4bit=<span class="literal">True</span>,</span><br><span class="line">    bnb_4bit_quant_type=<span class="string">&quot;nf4&quot;</span>,</span><br><span class="line">    bnb_4bit_compute_dtype=torch.float16,</span><br><span class="line">    bnb_4bit_use_double_quant=<span class="literal">False</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Model</span></span><br><span class="line">base_model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">    base_model_name,</span><br><span class="line">    quantization_config=quant_config,</span><br><span class="line">    device_map=&#123;<span class="string">&quot;&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">)</span><br><span class="line">base_model.config.use_cache = <span class="literal">False</span></span><br><span class="line">base_model.config.pretraining_tp = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LoRA Config</span></span><br><span class="line">peft_parameters = LoraConfig(</span><br><span class="line">    lora_alpha=<span class="number">16</span>,</span><br><span class="line">    lora_dropout=<span class="number">0.1</span>,</span><br><span class="line">    r=<span class="number">8</span>,</span><br><span class="line">    bias=<span class="string">&quot;none&quot;</span>,</span><br><span class="line">    task_type=<span class="string">&quot;CAUSAL_LM&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training Params</span></span><br><span class="line">train_params = TrainingArguments(</span><br><span class="line">    output_dir=<span class="string">&quot;./results_modified&quot;</span>,</span><br><span class="line">    num_train_epochs=<span class="number">1</span>,</span><br><span class="line">    per_device_train_batch_size=<span class="number">4</span>,</span><br><span class="line">    gradient_accumulation_steps=<span class="number">1</span>,</span><br><span class="line">    optim=<span class="string">&quot;paged_adamw_32bit&quot;</span>,</span><br><span class="line">    save_steps=<span class="number">25</span>,</span><br><span class="line">    logging_steps=<span class="number">25</span>,</span><br><span class="line">    learning_rate=<span class="number">2e-4</span>,</span><br><span class="line">    weight_decay=<span class="number">0.001</span>,</span><br><span class="line">    fp16=<span class="literal">False</span>,</span><br><span class="line">    bf16=<span class="literal">False</span>,</span><br><span class="line">    max_grad_norm=<span class="number">0.3</span>,</span><br><span class="line">    max_steps=-<span class="number">1</span>,</span><br><span class="line">    warmup_ratio=<span class="number">0.03</span>,</span><br><span class="line">    group_by_length=<span class="literal">True</span>,</span><br><span class="line">    lr_scheduler_type=<span class="string">&quot;constant&quot;</span>,</span><br><span class="line">    report_to=<span class="string">&quot;tensorboard&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Trainer</span></span><br><span class="line">fine_tuning = SFTTrainer(</span><br><span class="line">    model=base_model,</span><br><span class="line">    train_dataset=training_data,</span><br><span class="line">    peft_config=peft_parameters,</span><br><span class="line">    dataset_text_field=<span class="string">&quot;text&quot;</span>,</span><br><span class="line">    tokenizer=llama_tokenizer,</span><br><span class="line">    args=train_params</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">fine_tuning.train()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save Model</span></span><br><span class="line">fine_tuning.model.save_pretrained(refined_model)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402163925722.png" alt="image-20240402163925722"></p>
+<p>可以看到已经有模型保存了</p>
+<p><img data-src="./../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BD%95/image-20240402164027598.png" alt="image-20240402164027598"></p>
+<h1 id="一些经典开源语料数据集"><a href="#一些经典开源语料数据集" class="headerlink" title="一些经典开源语料数据集"></a>一些经典开源语料数据集</h1><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/datasets/nomic-ai/gpt4all-j-prompt-generations">GPT-4all</a> 数据集： GPT-4all（成对，英文，400k 条目）–由 OIG、P3 和 Stackoverflow 的一些子集组合而成，涵盖一般 QA 和定制的创意问题。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T">RedPajama-Data-1T</a>：RedPajama（PT，主要为英语，1.2T 词条，5TB）–完全开放的预训练数据集，遵循 LLaMA 的方法。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/datasets/OpenAssistant/oasst1">OASST1</a>： OpenAssistant（配对、对话、多语言、66,497 个对话树）–一个大型、人工编写、人工标注的高质量对话数据集，旨在改进 LLM 响应。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://huggingface.co/datasets/databricks/databricks-dolly-15k">databricks-dolly-15k</a>： Dolly2.0（成对，英语，1.5 万+条目）–一个由人工撰写的提示和回复数据集，以问题解答和总结等任务为特色。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gururise/AlpacaDataCleaned">AlpacaDataCleaned</a>： 一些 Alpaca/ LLaMA-like 模型（成对，英文） - Alpaca、GPT_LLM 和 GPTeacher 的清理版本。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM">GPT-4-LLM</a> 数据集： 一些类似 Alpaca 的模型（Pairs、RLHF、英语、汉语，52K 条英语和汉语条目，9K 条非自然指令条目）- 由 GPT-4 和其他 LLM 生成的数据集，用于改进 Pairs 和 RLHF，包括指令和比较数据。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/teknium1/GPTeacher">GPTeacher</a>：（Pairs，英语，20K 条目）- 由 GPT-4 生成的目标数据集，包括来自 Alpaca 的种子任务和角色扮演等新任务。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/tatsu-lab/stanford_alpaca#data-release">Alpaca</a> 数据： Alpaca, ChatGLM-fine-tune-LoRA, Koala (Dialog, Pairs, English, 52K entries, 21.4MB) - 由 text-davinci-003 生成的数据集，用于增强语言模型遵循人类指令的能力。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/75643f1c.html" title="大模型微调经验总结记录">https://bella722.github.io/post/75643f1c.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-Fine-tuning-Training/" rel="tag"><i class="fa fa-tag"></i> 大模型 Fine-tuning Training</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/91f549e1.html" rel="prev" title="书生·浦语大模型全链路开源体系课程笔记一">
+                  <i class="fa fa-chevron-left"></i> 书生·浦语大模型全链路开源体系课程笔记一
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isabella</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.15.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/post/75643f1c.html",
+    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

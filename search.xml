@@ -2287,4 +2287,122 @@
         <tag>大模型 Fine-tuning Training</tag>
       </tags>
   </entry>
+  <entry>
+    <title>神经网络专有名词理解笔记</title>
+    <url>/post/eb6a0ea3.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>本文将在此列出深度学习一些术语，并进行具体描述，希望对大家有所帮助。</p>
+
+</blockquote>
+<span id="more"></span>
+
+<p>先看几张图像</p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/image-1712130112683-3.png" alt="img"></p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/image.png" alt="img"></p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/image-1712130160745-6.png" alt="YOLO v5"></p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><ul>
+<li>原始图像</li>
+<li>经过数据预处理（数据增强、堆叠或者其他变换）的图像</li>
+<li>图像的块</li>
+</ul>
+<h1 id="Backbone"><a href="#Backbone" class="headerlink" title="Backbone"></a><strong>Backbone</strong></h1><ul>
+<li>将输入转换为特征图的部分</li>
+<li>代表性的例子包括 VGG 和 ResNet50，它们是使用 ImageNet 数据集进行预训练的。</li>
+<li>简单来说，将输入经过几个卷积层会产生一个特征图（每次经过每一层都会出现一个特征图。通常，当层经过时，会以这种方式提取特征：边缘 - 部分 - …）</li>
+</ul>
+<h1 id="Neck"><a href="#Neck" class="headerlink" title="Neck"></a>Neck</h1><ul>
+<li><p>适当协调从主干提取的特征（也可以看作是更精确地调整特征图的过程）</p>
+</li>
+<li><p>代表性的例子有FPN、PANet、BiFPN等。</p>
+</li>
+<li><p>通过对先前的图进行上采样来增加尺寸，并使用 concat 等方法在主干中反映特征图。</p>
+</li>
+<li><p>自上而下和自下而上两种方法都存在</p>
+</li>
+</ul>
+<h1 id="Head"><a href="#Head" class="headerlink" title="Head"></a>Head</h1><ul>
+<li>执行定位和分类</li>
+<li>头部由特定任务的层组成，旨在根据由骨干和颈部提取的信息产生最终预测或推断。</li>
+</ul>
+<h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a><strong>Baseline</strong></h1><ul>
+<li><p>基准模型是一种简单的模型，可作为起点或比较点。</p>
+</li>
+<li><p>基准模型通常被用作评估更先进或更复杂模型或技术有效性的基准。</p>
+</li>
+</ul>
+<h1 id="Backbone-vs-Baseline"><a href="#Backbone-vs-Baseline" class="headerlink" title="Backbone vs Baseline"></a>Backbone vs Baseline</h1><p>模型架构不一样，用途不一样：</p>
+<ul>
+<li><p>基准模型是一个简单的参考模型，用于比较 ;</p>
+</li>
+<li><p>骨干模型是一个更复杂的架构，负责特征提取。</p>
+</li>
+<li><p>基准模型作为评估的起点，而骨干模型提供了特定任务解决所需的特征表示。</p>
+</li>
+</ul>
+<h1 id="Backbone-vs-Neck"><a href="#Backbone-vs-Neck" class="headerlink" title="Backbone vs Neck"></a>Backbone vs Neck</h1><ul>
+<li><p>骨干负责从输入数据中进行初级特征提取</p>
+</li>
+<li><p>颈部则增强并合并这些特征，以提高模型的性能。</p>
+</li>
+</ul>
+<h1 id="Bottleneck"><a href="#Bottleneck" class="headerlink" title="Bottleneck"></a>Bottleneck</h1><p>在神经网络中，瓶颈层就是指比下面或上面的层神经元数量少的一层。有这样一层的存在让网络可以将特征压缩以尽可能适应空间变化。</p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/main-qimg-23264282c4634e252d8e97504632316f-pjlq.jpeg" alt="img"></p>
+<h1 id="Residual-Block"><a href="#Residual-Block" class="headerlink" title="Residual Block"></a>Residual Block</h1><p>一个残差块是一个层堆叠，排列得使得一个层的输出被取出并添加到块中更深的另一个层。</p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/1zShqrle2Gp_RiFkOTmvxEg.jpeg" alt="img"></p>
+<p>残差的作用是可以让网络变得更深，假如有的神经节点梯度消失不更新了，那可以直接不管当前这个节点，下一节点因为接收了和上一节点同样的输入，后面的节点和层还可以继续训练。</p>
+<h1 id="Skip-Connection"><a href="#Skip-Connection" class="headerlink" title="Skip Connection"></a>Skip Connection</h1><p>跳跃连接是一种快捷方式，将一个层的输出连接到相邻层的输入。</p>
+<p>对比一下跳跃连接和残差连接的区别</p>
+<ul>
+<li>跳跃连接是一个通用概念，指的是层之间的任何形式的直接连接</li>
+<li>而残差连接是ResNet架构中常用的一种特定类型的跳跃连接</li>
+<li>残差连接的主要目的是让网络学习变化，而不是直接学习整个转换过程。</li>
+</ul>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/sensors-19-03929-g001.png" alt="img"></p>
+<h1 id="Downsampling"><a href="#Downsampling" class="headerlink" title="Downsampling"></a>Downsampling</h1><p>从CNN的第一层提取特征后，如果直接将输出传递到第二层，那么这个过程会变得计算成本高昂。为了减小输出的大小，我们提取最小效果的特征并传递给下一层。这个过程旨在减小输出大小而不丢失重要信息，被称为下采样。最常见的下采样方法是最大池化。</p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/15XZK2yePcXF2VwcIVq_Pxw.webp" alt="img"></p>
+<p>有时它与图像压缩相混淆，图像压缩是在图像颜色、编码、像素上做不同的事情，并且具有和下采样完全不同的用途。这里我们只关心图像的缩小。降采样本质上意味着丢弃一些信息。下采样的各种技术中使用了多种算法，即：</p>
+<ul>
+<li>[Mipmap](<a href="http://number-none.com/product/Mipmapping">http://number-none.com/product/Mipmapping</a>, Part 1/index.html)</li>
+<li><a href="https://scholarworks.rit.edu/cgi/viewcontent.cgi?article=10864&context=theses">Box Sampling</a></li>
+<li><a href="https://www.nayuki.io/page/sinc-based-image-resampler">Sinc</a></li>
+</ul>
+<h1 id="Upsampling"><a href="#Upsampling" class="headerlink" title="Upsampling"></a>Upsampling</h1><p>上采样是下采样的相反目标：增加图像的行数和/或列数（尺寸）。有多种实现方式，</p>
+<ul>
+<li><p>例如 GAN（生成对抗网络）根据随机向量样本构建图像，模仿来自真实分布的图像。</p>
+</li>
+<li><p>以某种方式增加图像的尺寸并填充间隙（列/行）。假设将原始图像上采样 3 倍，一种方法是重复原始图像中的每一列/行。</p>
+</li>
+</ul>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/1D0HFma1Nb7D5_jBV3LPy-w.webp" alt="img"></p>
+<p>这样的结果是原始图像和生成的图像即使不完全相同，但是看起来也非常相似。本质是没有在生成的图像中创建任何“新”数据。由于重复的行和列是完全冗余的，因此该方法没有任何用处，并且它不提供任何新信息。</p>
+<p>添加新列的明智方法是在行/列之间插入新数据，这使用一些高级数学生成提供相当准确的中间值。</p>
+<p>其中一些算法的示例是：</p>
+<ul>
+<li><p><a href="https://theailearner.com/2018/12/29/image-processing-nearest-neighbour-interpolation/">最近邻插值法</a></p>
+</li>
+<li><p><a href="https://theailearner.com/2018/12/29/image-processing-bilinear-interpolation/">双线性插值</a></p>
+</li>
+<li><p>双三次样条插值</p>
+</li>
+<li><p>广义双三次插值</p>
+</li>
+</ul>
+<h1 id="1-x-1-Convolution"><a href="#1-x-1-Convolution" class="headerlink" title="1 x 1 Convolution"></a>1 x 1 Convolution</h1><ul>
+<li>降维/增维</li>
+</ul>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/13kgQ1HJvVOGK_LWS_ANoBA.png" alt="img"></p>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/1C2ei51Og0WMpoEesMFEvcA.png" alt="img"></p>
+<ul>
+<li>减少运算量提高计算效率</li>
+<li>网络设计</li>
+</ul>
+<p><img data-src="./../images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3%E7%AC%94%E8%AE%B0/1Unx7sioMBJXPT6otlYY5ww.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>目标检测学习笔记</category>
+      </categories>
+      <tags>
+        <tag>目标检测 神经网络</tag>
+      </tags>
+  </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2024-04-03T07:22:20.653Z</updated>
+  <updated>2024-04-03T08:53:49.302Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>神经网络专有名词理解笔记</title>
+    <link href="https://bella722.github.io/post/eb6a0ea3.html"/>
+    <id>https://bella722.github.io/post/eb6a0ea3.html</id>
+    <published>2024-04-03T07:29:46.000Z</published>
+    <updated>2024-04-03T08:53:49.302Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;本文将在此列出深度学习一些术语，并进行具体描述，希望对大家有所帮助。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="目标检测学习笔记" scheme="https://bella722.github.io/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="目标检测 神经网络" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>大模型微调经验总结记录</title>
     <link href="https://bella722.github.io/post/75643f1c.html"/>
     <id>https://bella722.github.io/post/75643f1c.html</id>
     <published>2024-04-02T05:08:43.000Z</published>
-    <updated>2024-04-03T07:22:20.653Z</updated>
+    <updated>2024-04-03T07:24:57.818Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -43,7 +65,7 @@
     <link href="https://bella722.github.io/post/91f549e1.html"/>
     <id>https://bella722.github.io/post/91f549e1.html</id>
     <published>2024-04-01T02:28:42.000Z</published>
-    <updated>2024-04-01T03:31:35.249Z</updated>
+    <updated>2024-04-03T07:24:57.814Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -65,7 +87,7 @@
     <link href="https://bella722.github.io/post/b198a1c8.html"/>
     <id>https://bella722.github.io/post/b198a1c8.html</id>
     <published>2024-03-28T06:51:00.000Z</published>
-    <updated>2024-03-31T01:02:47.343Z</updated>
+    <updated>2024-04-03T07:24:57.806Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -87,7 +109,7 @@
     <link href="https://bella722.github.io/post/8b93c30d.html"/>
     <id>https://bella722.github.io/post/8b93c30d.html</id>
     <published>2024-03-27T02:54:41.000Z</published>
-    <updated>2024-03-27T06:20:35.043Z</updated>
+    <updated>2024-04-03T07:24:57.818Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -420,28 +442,6 @@
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
 &lt;p&gt;前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
-    
-    
-    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TensorRT成功测试自己的数据集SSD模型四</title>
-    <link href="https://bella722.github.io/post/f524ef1f.html"/>
-    <id>https://bella722.github.io/post/f524ef1f.html</id>
-    <published>2020-10-09T05:44:58.000Z</published>
-    <updated>2020-11-06T02:26:06.113Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;经过之前一系列的工作，进坑出坑的尝试，总算是把测试结果搞出来了，所以在此总结。并结合之前一些在google colab上的测试对比，将实际数据公布出来以供大家参考。&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     

@@ -2405,4 +2405,50 @@
         <tag>目标检测 神经网络</tag>
       </tags>
   </entry>
+  <entry>
+    <title>yolov1解读笔记</title>
+    <url>/post/77611970.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>自己回顾yolo系列算法，并做个笔记进行巩固。</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="YOLOV1"><a href="#YOLOV1" class="headerlink" title="YOLOV1"></a>YOLOV1</h1><h2 id="one-stage"><a href="#one-stage" class="headerlink" title="one stage"></a>one stage</h2><p>对比RCNN模型的目标检测，做法都是<font face="黑体" color="red" size="5">先从图片中用一些方法（selective search、RPN等）给出一些可能存在对象的候选区，再对每个候选区做特征提取之后做目标分类和bbox回归。</font></p>
+<p>所以称之为two stage, 即</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418110145775.png" alt="image-20240418110145775"></p>
+<p>yolo其实并没有真正的去掉候选区域，而是在模型结构上相较rcnn并没有rpn网络，只有一个cnn网络，yolo是创造性的将候选区与目标分类合二为一。</p>
+<p>yolo采用<font face="黑体" color="red" size="5">预定义预测区域的方法来完成目标检测</font>，具体做法是：</p>
+<ol>
+<li><p>输入图像先resize为448×448</p>
+</li>
+<li><p>图像划分为7×7的网格，每个网格大小是64×64</p>
+</li>
+<li><p>每个网格根据预定义，预测2个检测目标的矩形框<font face="黑体" color="red" size="5">(YOLOV1是随机产生2个bbounding box, 既没有提前设置长宽比，也没有设置尺度，就随机任意生成，只要bbounding box的中心在这个网格内，长宽比和大小任意）</font>。那么此时整个图像相当于有98个预测区，<font face="黑体" color="red" size="5">这个预定义的前提是一张图像内包含98个目标的情况很少</font></p>
+</li>
+<li><p>对这98个区域进行目标分类和bbox回归，再进行NMS就可以得到最终的目标检测结果。</p>
+</li>
+</ol>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>与一般cnn结构的区别：</p>
+<p>输出采用线性函数替换softmax函数，原因是：yolo除了要预测概率，还要预测对象的位置，softmax无法预测具体的位置。</p>
+<h2 id="网络输出"><a href="#网络输出" class="headerlink" title="网络输出"></a>网络输出</h2><p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418113819435.png" alt="image-20240418113819435"><br>7×7×30 向量：7×7对应所有网格，30对象每个网格的2个bbox的位置和置信度以及在voc数据集上20种类别的分类概率</p>
+<p>2个bbox位置：（x_center, y_center, bbox_width, bbox_height)</p>
+<p>2个bbox的置信度：bbox内存在对象的概率×bbox与真实bbox的IOU</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418114417632.png" alt="image-20240418114417632"></p>
+<p>关于网格：</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20115357.png"></p>
+<p>如上图所示：</p>
+<p>黄色框代表目标的GT值，也就是车、狗、自行车的真实位置，<font face="黑体" color="red" size="5">根据真实值可以知道每个目标的中心点即上图绿色的点落在了49个网格中的哪些网格即上图绿色的网格，那么中心点所在的网格就负责进行预测这个目标，</font>其他网格因为bbox内存在对象的概率为0，那么对应的置信度也为0了，即使有的bbox可能与真实框交并比值很大，也因为置信度为0不会造成干扰。</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20121543.png"></p>
+<p>以上图左上角汽车举例，黄色框为GT，中心点落在绿色小框内，所以中线点落在绿色小框的预测框有汽车的pr为1，比如蓝色大框，即便与汽车真实框的IOU值不低，但是蓝色大框的中心点并不在绿色小框而是在蓝色小框，那么对应的蓝色大框预测有汽车的置信度为0。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>49个格点，含有物体的格点往往只有3、4个，其余全是不含有物体的格点。此时如果不采取点措施，那么物体检测的mAP不会太高，因为模型更倾向于不含有物体的格点。<em>λ</em><sub>coord</sub>与 <em>λ</em><sub>noobj</sub>的作用，就是让含有物体的格点，在损失函数中的权重更大，<strong>让模型更加“重视”含有物体的格点所造成的损失</strong>。</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418145918216.png" alt="image-20240418145918216"></p>
+]]></content>
+      <categories>
+        <category>目标检测学习笔记</category>
+      </categories>
+      <tags>
+        <tag>目标检测 yolo</tag>
+      </tags>
+  </entry>
 </search>

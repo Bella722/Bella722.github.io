@@ -25,18 +25,28 @@
     var CONFIG = {"hostname":"bella722.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://bella722.github.io/categories/index.html">
+  <meta name="description" content="自己回顾yolo系列算法，并做个笔记进行巩固。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yolov1解读笔记">
+<meta property="og:url" content="https://bella722.github.io/post/77611970.html">
 <meta property="og:site_name" content="Bella&#39;s Blog">
+<meta property="og:description" content="自己回顾yolo系列算法，并做个笔记进行巩固。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-25T01:42:30.000Z">
-<meta property="article:modified_time" content="2020-08-25T01:43:59.255Z">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418110145775.png">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418113819435.png">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418114417632.png">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20115357.png">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20121543.png">
+<meta property="og:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418145918216.png">
+<meta property="article:published_time" content="2024-04-18T02:36:34.000Z">
+<meta property="article:modified_time" content="2024-04-18T07:24:33.167Z">
 <meta property="article:author" content="Bella">
+<meta property="article:tag" content="目标检测 yolo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bella722.github.io/images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418110145775.png">
 
 
-<link rel="canonical" href="https://bella722.github.io/categories/">
+<link rel="canonical" href="https://bella722.github.io/post/77611970.html">
 
 
 <script class="page-configurations">
@@ -44,13 +54,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>categories | Bella's Blog
-</title>
+  <title>yolov1解读笔记 | Bella's Blog</title>
   
     <script>
       function sendPageView() {
@@ -241,7 +250,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -253,6 +262,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#YOLOV1"><span class="nav-number">1.</span> <span class="nav-text">YOLOV1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-stage"><span class="nav-number">1.1.</span> <span class="nav-text">one stage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BE%93%E5%87%BA"><span class="nav-number">1.3.</span> <span class="nav-text">网络输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">损失函数</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -328,56 +338,230 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
       
-  
-  
 
       
 
     
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bella722.github.io/post/77611970.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/unnamed.jpg">
+      <meta itemprop="name" content="Bella">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bella's Blog">
+    </span>
+
     
     
-    <div class="post-block" lang="zh-CN">
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          yolov1解读笔记
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
 
-<div class="post-meta-container">
+      <time title="创建时间：2024-04-18 10:36:34 / 修改时间：15:24:33" itemprop="dateCreated datePublished" datetime="2024-04-18T10:36:34+08:00">2024-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">目标检测学习笔记</span></a>
+        </span>
+    </span>
+
   
-
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/77611970.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/77611970.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-  <div class="category-all-title">
-    目前共计 8 个分类
-  </div>
-  <div class="category-all">
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/">TensorRT实战记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu%E4%B8%8BTensorFlow-Object-Detection-API%E5%AE%9E%E6%88%98/">Ubuntu下TensorFlow Object Detection API实战</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《Deep Learning》读书笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">大模型学习笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E7%99%BD%E5%AD%A6%E6%90%ADHexo/">小白学搭Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E4%BD%A0%E7%8E%A9%E8%BD%ACUbuntu/">教你玩转Ubuntu</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">目标检测学习笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8C%87%E5%8D%97/">科学上网指南</a><span class="category-list-count">2</span></li></ul>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>自己回顾yolo系列算法，并做个笔记进行巩固。</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="YOLOV1"><a href="#YOLOV1" class="headerlink" title="YOLOV1"></a>YOLOV1</h1><h2 id="one-stage"><a href="#one-stage" class="headerlink" title="one stage"></a>one stage</h2><p>对比RCNN模型的目标检测，做法都是<font face="黑体" color="red" size="5">先从图片中用一些方法（selective search、RPN等）给出一些可能存在对象的候选区，再对每个候选区做特征提取之后做目标分类和bbox回归。</font></p>
+<p>所以称之为two stage, 即</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418110145775.png" alt="image-20240418110145775"></p>
+<p>yolo其实并没有真正的去掉候选区域，而是在模型结构上相较rcnn并没有rpn网络，只有一个cnn网络，yolo是创造性的将候选区与目标分类合二为一。</p>
+<p>yolo采用<font face="黑体" color="red" size="5">预定义预测区域的方法来完成目标检测</font>，具体做法是：</p>
+<ol>
+<li><p>输入图像先resize为448×448</p>
+</li>
+<li><p>图像划分为7×7的网格，每个网格大小是64×64</p>
+</li>
+<li><p>每个网格根据预定义，预测2个检测目标的矩形框<font face="黑体" color="red" size="5">(YOLOV1是随机产生2个bbounding box, 既没有提前设置长宽比，也没有设置尺度，就随机任意生成，只要bbounding box的中心在这个网格内，长宽比和大小任意）</font>。那么此时整个图像相当于有98个预测区，<font face="黑体" color="red" size="5">这个预定义的前提是一张图像内包含98个目标的情况很少</font></p>
+</li>
+<li><p>对这98个区域进行目标分类和bbox回归，再进行NMS就可以得到最终的目标检测结果。</p>
+</li>
+</ol>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>与一般cnn结构的区别：</p>
+<p>输出采用线性函数替换softmax函数，原因是：yolo除了要预测概率，还要预测对象的位置，softmax无法预测具体的位置。</p>
+<h2 id="网络输出"><a href="#网络输出" class="headerlink" title="网络输出"></a>网络输出</h2><p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418113819435.png" alt="image-20240418113819435"><br>7×7×30 向量：7×7对应所有网格，30对象每个网格的2个bbox的位置和置信度以及在voc数据集上20种类别的分类概率</p>
+<p>2个bbox位置：（x_center, y_center, bbox_width, bbox_height)</p>
+<p>2个bbox的置信度：bbox内存在对象的概率×bbox与真实bbox的IOU</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418114417632.png" alt="image-20240418114417632"></p>
+<p>关于网格：</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20115357.png"></p>
+<p>如上图所示：</p>
+<p>黄色框代表目标的GT值，也就是车、狗、自行车的真实位置，<font face="黑体" color="red" size="5">根据真实值可以知道每个目标的中心点即上图绿色的点落在了49个网格中的哪些网格即上图绿色的网格，那么中心点所在的网格就负责进行预测这个目标，</font>其他网格因为bbox内存在对象的概率为0，那么对应的置信度也为0了，即使有的bbox可能与真实框交并比值很大，也因为置信度为0不会造成干扰。</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20121543.png"></p>
+<p>以上图左上角汽车举例，黄色框为GT，中心点落在绿色小框内，所以中线点落在绿色小框的预测框有汽车的pr为1，比如蓝色大框，即便与汽车真实框的IOU值不低，但是蓝色大框的中心点并不在绿色小框而是在蓝色小框，那么对应的蓝色大框预测有汽车的置信度为0。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>49个格点，含有物体的格点往往只有3、4个，其余全是不含有物体的格点。此时如果不采取点措施，那么物体检测的mAP不会太高，因为模型更倾向于不含有物体的格点。<em>λ</em><sub>coord</sub>与 <em>λ</em><sub>noobj</sub>的作用，就是让含有物体的格点，在损失函数中的权重更大，<strong>让模型更加“重视”含有物体的格点所造成的损失</strong>。</p>
+<p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418145918216.png" alt="image-20240418145918216"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Bella 微信">
+        <span>微信</span>
+      </div>
+
   </div>
 </div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Bella
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://bella722.github.io/post/77611970.html" title="yolov1解读笔记">https://bella722.github.io/post/77611970.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yolo/" rel="tag"><i class="fa fa-tag"></i> 目标检测 yolo</a>
+          </div>
 
         
-      </div>
-      
-      
-      
-    </div>
-    
 
-    
-    
-    
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/eb6a0ea3.html" rel="prev" title="神经网络专有名词理解笔记">
+                  <i class="fa fa-chevron-left"></i> 神经网络专有名词理解笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
 
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -555,7 +739,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({
       el  : '#valine-comments',
-      path: "/categories/",
+      path: "/post/77611970.html",
     }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
     ));
   }, window.Valine);

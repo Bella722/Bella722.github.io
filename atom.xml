@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2024-04-18T02:37:46.181Z</updated>
+  <updated>2024-04-18T07:24:33.167Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>yolov1解读笔记</title>
+    <link href="https://bella722.github.io/post/77611970.html"/>
+    <id>https://bella722.github.io/post/77611970.html</id>
+    <published>2024-04-18T02:36:34.000Z</published>
+    <updated>2024-04-18T07:24:33.167Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;自己回顾yolo系列算法，并做个笔记进行巩固。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="目标检测学习笔记" scheme="https://bella722.github.io/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="目标检测 yolo" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yolo/"/>
+    
+  </entry>
   
   <entry>
     <title>神经网络专有名词理解笔记</title>
@@ -420,28 +442,6 @@
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
 &lt;p&gt;继续在colab上成功安装并配置好TensorRT, 接着我进行了针对几种不同显卡的测试，统计不同显卡(Tesla K80 Tesla P4 Tesla P100 Tesla T4)的批量测试耗时结果，大家可以根据最终的检测结果看出显卡对耗时的影响程度究竟有多大。&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="TensorRT实战记" scheme="https://bella722.github.io/categories/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
-    
-    
-    <category term="TensorRT" scheme="https://bella722.github.io/tags/TensorRT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用Google Colab成功测试TensorRT指南一</title>
-    <link href="https://bella722.github.io/post/f9d0431a.html"/>
-    <id>https://bella722.github.io/post/f9d0431a.html</id>
-    <published>2020-10-10T08:37:31.000Z</published>
-    <updated>2020-11-06T02:29:02.959Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;前面总结了在本机上与谷歌colab上利用不同显卡对相同样本的检测结果，对比了二者推理耗时，最终发现借助tensorrt可以使推理时常缩减数倍，所以想着在更好的显卡上这个数值还能否再有所优化，因此本篇文章主要就如何在google colab上使用tensorrt做以说明。&lt;/p&gt;
 
 &lt;/blockquote&gt;</summary>
     

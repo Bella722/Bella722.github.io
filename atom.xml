@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2024-04-18T07:26:59.273Z</updated>
+  <updated>2024-04-18T07:32:02.138Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://bella722.github.io/post/77611970.html"/>
     <id>https://bella722.github.io/post/77611970.html</id>
     <published>2024-04-18T02:36:34.000Z</published>
-    <updated>2024-04-18T07:26:59.273Z</updated>
+    <updated>2024-04-18T07:32:02.138Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -31,10 +31,10 @@
     
     
     
-    <category term="目标检测学习笔记" scheme="https://bella722.github.io/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="目标检测 yolo网络" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yolo%E7%BD%91%E7%BB%9C/"/>
+    <category term="大模型 chatglm" scheme="https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/"/>
     
   </entry>
   

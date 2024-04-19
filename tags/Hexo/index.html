@@ -561,33 +561,3 @@ NexT.utils.loadComments('#valine-comments', () => {
 
 </body>
 </html>
-ment('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
-
-  
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({
-      el  : '#valine-comments',
-      path: "/tags/Hexo/",
-    }, {"enable":true,"appId":"Ltv8FFKiyL5zFo0qjmaNlTUC-gzGzoHsz","appKey":"bCqThijYXA0C0I9uo5cXCYEH","placeholder":"欢迎畅所欲言，名字任意写或者写QQ号，邮箱建议填写可接收回复的地址","avatar":"mm","meta":["nick","mail"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"serverURLs":null,"enableQQ":true,"requiredFields":[]}
-    ));
-  }, window.Valine);
-});
-</script>
-
-</body>
-</html>

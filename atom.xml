@@ -6,7 +6,7 @@
   <link href="https://bella722.github.io/atom.xml" rel="self"/>
   
   <link href="https://bella722.github.io/"/>
-  <updated>2024-04-18T07:42:44.013Z</updated>
+  <updated>2024-04-19T03:56:41.954Z</updated>
   <id>https://bella722.github.io/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据结构之快速排序</title>
+    <link href="https://bella722.github.io/post/bef670a6.html"/>
+    <id>https://bella722.github.io/post/bef670a6.html</id>
+    <published>2024-04-19T02:52:50.000Z</published>
+    <updated>2024-04-19T03:56:41.954Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;自己做了一些动画深刻理解数据结构之快速排序&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="https://bella722.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="数据结构 快速排序" scheme="https://bella722.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yolov2解读笔记</title>
+    <link href="https://bella722.github.io/post/caab75be.html"/>
+    <id>https://bella722.github.io/post/caab75be.html</id>
+    <published>2024-04-18T08:08:59.000Z</published>
+    <updated>2024-04-18T08:57:55.836Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;自己回顾yolov2算法，并做个笔记进行巩固。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="yolo学习笔记" scheme="https://bella722.github.io/categories/yolo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="目标检测 yolo" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yolo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>yolov1复习笔记</title>
     <link href="https://bella722.github.io/post/18814e70.html"/>
     <id>https://bella722.github.io/post/18814e70.html</id>
     <published>2024-04-18T07:42:43.000Z</published>
-    <updated>2024-04-18T07:42:44.013Z</updated>
+    <updated>2024-04-18T07:42:48.006Z</updated>
     
     
     
@@ -34,7 +78,7 @@
     <link href="https://bella722.github.io/post/77611970.html"/>
     <id>https://bella722.github.io/post/77611970.html</id>
     <published>2024-04-18T02:36:34.000Z</published>
-    <updated>2024-04-18T07:39:06.920Z</updated>
+    <updated>2024-04-18T08:10:47.318Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -44,10 +88,10 @@
     
     
     
-    <category term="大模型学习笔记" scheme="https://bella722.github.io/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="yolo学习笔记" scheme="https://bella722.github.io/categories/yolo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="大模型 chatglm" scheme="https://bella722.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B-chatglm/"/>
+    <category term="目标检测 yolo" scheme="https://bella722.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yolo/"/>
     
   </entry>
   
@@ -400,48 +444,6 @@
     
     
     <category term="Deep Learning" scheme="https://bella722.github.io/tags/Deep-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Deep Learning》第一章读书笔记一</title>
-    <link href="https://bella722.github.io/post/245ac29.html"/>
-    <id>https://bella722.github.io/post/245ac29.html</id>
-    <published>2021-04-29T10:41:24.000Z</published>
-    <updated>2021-04-29T10:41:35.380Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;最近回过头来在看&lt;a href=&quot;https://github.com/exacity/deeplearningbook-chinese&quot;&gt;&lt;font color=&quot;red&quot;&gt;《Deep Learning》&lt;/font&gt;&lt;/a&gt; 这本书，经过三年的工作时间，再看这本书的时候曾经理解不了的问题或者推导原理有了自己切身的认识与思考，所以现在想把自己曾经算是一个半路出家的机器视觉从业者从新手到上手的一些原理性和实践性的点加上我自己的思考把底层的基础点分享出来，帮助大家可以更直观的理解和学习&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="《Deep Learning》读书笔记" scheme="https://bella722.github.io/categories/%E3%80%8ADeep-Learning%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Deep Learning" scheme="https://bella722.github.io/tags/Deep-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于TensorRT和TF-TRT的一些事儿</title>
-    <link href="https://bella722.github.io/post/575cdcda.html"/>
-    <id>https://bella722.github.io/post/575cdcda.html</id>
-    <published>2020-11-10T09:25:16.000Z</published>
-    <updated>2020-11-11T01:23:19.388Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
-&lt;p&gt;近期一直在研究TensorRT的加速原理，对于层融合起先一直不理解，现在总算是知道加速的原理了，所以就把自己理解到的结合网上找到的一些资料进行整理汇总，最后我贴出自己整写的一个关于TensorRT加速原理的PPT，有需要的同学可以自己下载下来看看&lt;/p&gt;
-
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="TensorRT实战记" scheme="https://bella722.github.io/tags/TensorRT%E5%AE%9E%E6%88%98%E8%AE%B0/"/>
     
   </entry>
   

@@ -1540,10 +1540,10 @@
 <p><img data-src="./../images/yolov1%E8%A7%A3%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20240418145918216.png" alt="image-20240418145918216"></p>
 ]]></content>
       <categories>
-        <category>大模型学习笔记</category>
+        <category>yolo学习笔记</category>
       </categories>
       <tags>
-        <tag>大模型 chatglm</tag>
+        <tag>目标检测 yolo</tag>
       </tags>
   </entry>
   <entry>
@@ -2455,5 +2455,84 @@
     <title>yolov1复习笔记</title>
     <url>/post/18814e70.html</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>yolov2解读笔记</title>
+    <url>/post/caab75be.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>自己回顾yolov2算法，并做个笔记进行巩固。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="YOLOV2"><a href="#YOLOV2" class="headerlink" title="YOLOV2"></a>YOLOV2</h1><p>相较yolov1做的改进具体一一说明。</p>
+<h2 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h2><h3 id="batch-normalization"><a href="#batch-normalization" class="headerlink" title="batch normalization"></a>batch normalization</h3><p>回顾一下批归一化的作用：</p>
+<ul>
+<li><p>有助于解决反向传播中梯度消失以及梯度爆炸的问题，</p>
+</li>
+<li><p>降低对一些超参数的敏感性</p>
+</li>
+<li><p>带来的正则化效果使得获得更好的收敛效果</p>
+</li>
+</ul>
+<p>做法：在卷积后全部加入bn, 即由原来的卷积激活结构变为卷积、批标准化、激活。</p>
+<p>效果：mAP提升2%</p>
+<h2 id="hi-res-classifier"><a href="#hi-res-classifier" class="headerlink" title="hi-res classifier"></a>hi-res classifier</h2><p>用更高分辨率的图像微调分类模型</p>
+<p>YOLOV1：ImageNet的图像分类训练输入为224×224，检测时用的是448×448。</p>
+<p>YOLOV2：ImageNet的图像分类预训练输入为224×224，<font face="黑体" color="red" size="5">再采用448×448样本对分类模型微调（10个epoch), </font>然后再使用448×448样本进行检测</p>
+<p>效果：mAP提升4%</p>
+<h3 id="anchor-box"><a href="#anchor-box" class="headerlink" title="anchor box"></a>anchor box</h3><p>采用类似rcnn的anchor box来作为参考框，将目标检测转换为对参考框的判断：是不是包含目标，偏移量是多少。</p>
+<p>YOLOV1：7×7×2=98</p>
+<p>YOLOV2：13×13×5=845</p>
+<h4 id="聚类提取anchor尺度"><a href="#聚类提取anchor尺度" class="headerlink" title="聚类提取anchor尺度"></a>聚类提取anchor尺度</h4><p>Faster-rcnn：手动指定anchor比例，不一定完全适合数据集</p>
+<p>YOLOV2：对训练集中标注的边框进行聚类寻找到边框尺寸</p>
+]]></content>
+      <categories>
+        <category>yolo学习笔记</category>
+      </categories>
+      <tags>
+        <tag>目标检测 yolo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构之快速排序</title>
+    <url>/post/bef670a6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>自己做了一些动画深刻理解数据结构之快速排序</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>思想：让元素归位在它应该在的位置，<font face="黑体" color="red" size="5">即它左边的要比它小，它右边的要比它大</font>。</p>
+<p>原始数组</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419105800362.png" alt="image-20240419105800362"></p>
+<p>左右指针分别从数组始末位置开始</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419105846172.png" alt="image-20240419105846172"></p>
+<p>左指针的元素拿出来，空出位置</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110106686.png" alt="image-20240419110106686"></p>
+<p>右指针开始从末端向前移动寻找比5小的元素，比5大的元素不做任何操作，继续向前找</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110230572.png" alt="image-20240419110230572"></p>
+<p>直到找到2</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110323804.png" alt="image-20240419110323804"></p>
+<p>这时把数组右指针数值赋值给数组左指针位置</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110608848.png" alt="image-20240419110608848"></p>
+<p>右边空出，再从左边移动左指针找比5大的值，找到7</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110735465.png" alt="image-20240419110735465"></p>
+<p>交换赋值，空出左指针元素</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419110843045.png" alt="image-20240419110843045"></p>
+<p>继续重复操作，直到左指针与右指针重合，整个过程如下</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.gif"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partion</span>(<span class="params">data, left, right</span>):</span><br><span class="line">    tmp = data[left]</span><br><span class="line">    <span class="keyword">while</span> left&lt;right:</span><br><span class="line">        <span class="keyword">while</span> left&lt;right <span class="keyword">and</span> data[right]&gt;= tmp:   <span class="comment">#移动右指针，找比tmp小的值</span></span><br><span class="line">            right = right-<span class="number">1</span></span><br><span class="line">        data[left]= data[right]</span><br><span class="line">        <span class="keyword">while</span> left&lt;right <span class="keyword">and</span> data[left]&lt;= tmp:    <span class="comment">#移动左指针，找比tmp大的值</span></span><br><span class="line">            left = left+<span class="number">1</span></span><br><span class="line">        data[left]= data[right]</span><br><span class="line">     data[left]=tmp                               <span class="comment">#直到左指针与右指针碰头</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sort_quick</span>(<span class="params">data, left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left&lt;right:</span><br><span class="line">    	mid = partion(data, left, right)</span><br><span class="line">        sort_quick(data, left, mid-<span class="number">1</span>)</span><br><span class="line">        sort_quick(data, mid+<span class="number">1</span>, right)</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>不严谨理解，<font face="黑体" color="red" size="5">O(nlogn)</font></p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/image-20240419114011832.png" alt="image-20240419114011832"></p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构 快速排序</tag>
+      </tags>
   </entry>
 </search>

@@ -2535,4 +2535,77 @@
         <tag>数据结构 快速排序</tag>
       </tags>
   </entry>
+  <entry>
+    <title>数据结构之堆排序</title>
+    <url>/post/1352fd9d.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>学习数据结构之堆排序</p>
+
+</blockquote>
+<span id="more"></span>
+
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>如下所示为一棵树<br><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419134026766.png" alt="image-20240419134026766"></p>
+<p>根节点：A</p>
+<p>叶子节点：最末端的节点，也就是没有分叉的节点，对应上图的B C H I P Q K L M N节点</p>
+<p>树的深度（树的高度）：4（树有4层）</p>
+<p>节点的度：E节点的度是2（E节点分了2个叉），F节点的度是3</p>
+<p>树的度：整个树里最大的那个节点的度，对应上图就是A节点的度，即为6</p>
+<p>孩子节点/父节点：E叫做I的父节点，I叫做E的孩子节点</p>
+<p>子树：E I J P Q构成的是一个子树</p>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><ul>
+<li><p>度不超过2的树</p>
+</li>
+<li><p>每个节点最多有2个孩子节点</p>
+</li>
+<li><p>两个孩子节点被分为左孩子节点和右孩子节点</p>
+</li>
+<li><p>完全二叉树：左边最下层必须满，右边满不满无所谓</p>
+</li>
+</ul>
+<h1 id="二叉树的顺序存储"><a href="#二叉树的顺序存储" class="headerlink" title="二叉树的顺序存储"></a>二叉树的顺序存储</h1><p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419141741412.png" alt="image-20240419141741412"></p>
+<p>如图所示，这是一个完全二叉树，对应到列表以及元素位置可以写作</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419142618021.png" alt="image-20240419142618021"></p>
+<p>那么可以归纳：</p>
+<p>父节点与左孩子节点的位置关系 ：<font face="黑体" color="red" size="5"> i → 2i+1</font></p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419142736702.png" alt="image-20240419142736702"></p>
+<p>父节点与右孩子节点的位置关系： <font face="黑体" color="red" size="5">i → 2i+2</font></p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419143101222.png" alt="image-20240419143101222"></p>
+<p>那么已知左孩子节点或者右孩子节点位置，如何确定父节点位置：<font face="黑体" color="red" size="5">i → (i-1)/2</font></p>
+<h1 id="大根堆"><a href="#大根堆" class="headerlink" title="大根堆"></a>大根堆</h1><p>定义：一个完全二叉树，满足任一节点都比其孩子节点大</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419144413450.png" alt="image-20240419144413450"></p>
+<p>堆的向下调整</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419144629292.png" alt="image-20240419144629292"></p>
+<p>上图所示既不是大根堆也不是小根堆</p>
+<p>但是不看根节点的话，左右两个子树是2个有序的大根堆</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419144859320.png" alt="image-20240419144859320"></p>
+<p>如何调整上图直到成为一个堆呢？那么相当于现在省长无法领导县长</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419145404807.png" alt="image-20240419145404807"></p>
+<p>那就换个有能力的县长上去，换9上去</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419145633256.png" alt="image-20240419145633256"></p>
+<p>现在县长空了，2还是无法领导8和5两个村长，那就从8和5里选8上去当县长</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419145754871.png" alt="image-20240419145754871"></p>
+<p>现在村长空了，2还是无法领导6和4两个村民，那就从6和4里选6上去当村长</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419145908922.png" alt="image-20240419145908922"></p>
+<p>现在到叶子节点了，那么2就是到省长被一撸到底成村民的位置了</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419150034531.png" alt="image-20240419150034531"></p>
+<p>至此，已经把原来的完全二叉树调整为了一个大根堆了。</p>
+<p>我自己做了以下的演示动画可以参考学习，我这里为了更形象表达，树的内容做了简单调整，但是向下调整的思想是保持不变的</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F1.gif"><br>至此完成了9以下元素的向下调整。<br><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F2.gif"><br>至此完成了8以下元素的向下调整。</p>
+<p>所以可以借鉴堆排序实现排序问题，但是堆排序的前提是先要构造堆。</p>
+<h1 id="构造堆"><a href="#构造堆" class="headerlink" title="构造堆"></a>构造堆</h1><p>思想：<font face="黑体" color="red" size="5">农村包围城市，想要省有序，必须县有序，想要县有序，必须村先有序。</font></p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F3.gif"></p>
+<p>至此，一个大根堆构造完成，接下来便可以采用堆排序完成整个排序。</p>
+<p><img data-src="./../images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/image-20240419163907007.png" alt="image-20240419163907007"></p>
+<h1 id="堆排序的过程"><a href="#堆排序的过程" class="headerlink" title="堆排序的过程"></a>堆排序的过程</h1><p><font face="黑体" color="red" size="5">1. 构造堆，农村包围城市</font><br><font face="黑体" color="red" size="5">2. 得到堆顶元素，堆顶为最大元素</font><br><font face="黑体" color="red" size="5">3. 去掉堆顶，将最后叶子节点元素放置堆顶，通过一次向下调整使堆有序；</font><br><font face="黑体" color="red" size="5">4. 得到堆顶为第二大元素</font><br><font face="黑体" color="red" size="5">5. 重复步骤3，直到堆变空</font></p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sift</span>(<span class="params">data, low, high</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    调整子树至有序堆，即最大元素至堆顶</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        data (_type_): 输入树</span></span><br><span class="line"><span class="string">        low (_type_): 树根节点位置</span></span><br><span class="line"><span class="string">        high (_type_): 树子节点位置</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    i = low</span><br><span class="line">    j = <span class="number">2</span>*i+<span class="number">1</span></span><br><span class="line">    tmp = data[i]</span><br><span class="line">    <span class="keyword">while</span> j&lt;= high:</span><br><span class="line">        <span class="keyword">if</span>  j+<span class="number">1</span> &lt;= high <span class="keyword">and</span> data[j+<span class="number">1</span>] &gt; data[j]:</span><br><span class="line">            j = j+<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> data[j]&gt;tmp:</span><br><span class="line">            data[i] = data[j]</span><br><span class="line">            i = j</span><br><span class="line">            j = <span class="number">2</span>*i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    data[i]=tmp</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">heap_sort</span>(<span class="params">data</span>):</span><br><span class="line">    n = <span class="built_in">len</span>(data)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>((n-<span class="number">2</span>)//<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        sift(data, i, n-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        data[<span class="number">0</span>], data[i] = data[i], data[<span class="number">0</span>]</span><br><span class="line">        sift(data, <span class="number">0</span>, i-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p><font face="黑体" color="red" size="5">堆排序的时间复杂度是O(nlogn)</font></p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构 堆排序</tag>
+      </tags>
+  </entry>
 </search>
